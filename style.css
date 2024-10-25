@@ -1,0 +1,398 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap");
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    /* background-color: #353333; */
+}
+
+::selection {
+    background-color: rgba(115, 115, 115, 0.7);
+}
+
+.logo {
+    width: 100px;
+}
+
+header {
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    padding: 0 1rem;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+header nav {
+    /* background-color: red; */
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+header ul a {
+    text-decoration: none;
+    /* color: rgba(255, 255, 255, 0.7); */
+    /* color: #292323; */
+    color: #fff;
+    padding: 0 2rem 0 0.2rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+header ul li{
+    color: rgba(115, 115, 115, 0.7);
+}
+
+.hamburger{
+    padding-left: 1.5rem;
+}
+
+.hamburger a{
+    padding: 0;
+    width: 37px;
+    height: 37px;
+    display: flex;
+    border-radius: 50%;
+    background-color: rgba(115, 115, 115, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hamburger .bar{
+    position: relative;
+    width: 52%;
+    height: 1.3px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.hamburger .bar::before,
+.hamburger .bar::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 100%;
+    background-color: inherit;
+    border-radius: 2px;
+}
+
+.hamburger .bar::before {
+    top: -4.5px;
+}
+
+.hamburger .bar::after{
+    top: 4.5px;
+}
+
+main {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.parallax {
+    pointer-events: none;
+    transition: 0.45s cubic-bezier(.2,.49,.32,.99);
+    /* transform: translate(-50%, -50%); */
+
+}
+
+
+.bg-img {
+    position: absolute;
+    width: 240%;
+    top: calc(50%);
+    left: calc(50%);
+    z-index: 1;
+    transform: translate(-50%, -50%);
+}
+
+.sun-rays {
+    position: absolute;
+    width: 80%;
+    /* top: calc(50% - 150px); */
+    top: 31.48%;
+    /* left: calc(50% + 700px); */
+    left: 98.61%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.house-1 {
+    position: absolute;
+    /* width: 1820px; */
+    width: 110.63%;
+    /* top: calc(50% + 100px); */
+    top: 65%;
+    /* left: calc(50%); */
+    left: 50%;
+    z-index: 3;
+}
+
+.house-4 {
+    position: absolute;
+    /* width: 320px; */
+    width: 19.45%;
+    /* top: calc(50% + 200px); */
+    top: 71.55%;
+    /* left: calc(50% - 720px); */
+    left: 6.23%;
+    z-index: 4;
+}
+
+.house-2 {
+    position: absolute;
+    /* width: 260px; */
+    width: 15.8%;
+    /* top: calc(50% + 420px); */
+    top: 95.25%;
+    /* left: calc(50% + 720px); */
+    left: 93.76%;
+    z-index: 8;
+}
+
+.fog-7 {
+    position: absolute;
+    /* width: 3000px; */
+    width: 182.37%;
+    /* top: calc(50% - 100px); */
+    top: 39.22%;
+    /* left: calc(50% + 360px); */
+    left: 71.88%;
+    z-index: 5;
+}
+
+.house-3 {
+    position: absolute;
+    /* width: 1340px; */
+    width: 81.45%;
+    /* top: calc(50% + 380px); */
+    /* left: calc(50% - 280px); */
+    top: 93%;
+    left: 33%;
+    z-index: 6;
+}
+
+.text {
+    position: absolute;
+    /* top: calc(50%); */
+    top: 50%;
+    left: 50%;
+    text-transform: uppercase;
+    color: #fff;
+    /* color: rgba(115, 115, 115, 1); */
+    z-index: 8;
+    pointer-events: auto;
+}
+
+.text h1 {
+    font-weight: 100;
+    font-size: 5.5rem;
+    letter-spacing: 1.2rem;
+    line-height: 0.8;
+    text-align: center;
+    margin-left: 1.2rem;
+}
+
+.text h2 {
+    font-weight: 900;
+    font-size: 6.5rem;
+    line-height: 0.8;
+    text-align: center;
+}
+
+.text p {
+    text-transform:lowercase;
+    font-weight: 100;
+    font-size: 1.2rem;
+    letter-spacing: 0.15rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.fog-6 {
+    position: absolute;
+    /* width: 2840px; */
+    width: 172.64%;
+    /* top: calc(50% + 260px); */
+    top: 78.01%;
+    /* left: calc(50% + 360px); */
+    left: 71.88%;
+    z-index: 9;
+}
+
+.vignette {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.7));
+    z-index: 100;
+    pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+    .text h1 {
+        font-size: 4.5rem;
+    }
+
+    .text h2 {
+        font-size: 5.5rem;
+    }
+    .house-1{
+        width: initial;
+        height: 70%;
+        top: 69%;
+    }
+    .fog-6{
+        width: initial;
+        height: 75%;
+    }
+}
+
+@media (max-width: 725px) {
+    .text h1 {
+        font-size: 3.8rem;
+        line-height: 1.1;
+    }
+
+    .text h2 {
+        font-size: 4.7rem;
+        line-height: 1.1;
+    }
+
+    header nav{
+        padding: 0 1rem;
+    }
+
+    .logo{
+        width: 75px;
+    }
+
+    header ul a{
+        font-size: 0.73rem;
+        padding: 0 0.9rem;
+    }
+
+    .hamburger{
+        padding-left: 0.9rem;
+    }
+
+    .hamburger a{
+        width: 30px;
+        height: 30px;
+    }
+
+    .bg-img{
+        width: initial;
+        height: 384%;
+    }
+
+    .house-1{
+        width: initial;
+        height: 70%;
+        top: 69%;
+    }
+    .fog-6{
+        width: initial;
+        height: 75%;
+    }
+}
+
+@media (max-width: 620px) {
+    .text h1 {
+        font-size: 2.2rem;
+    }
+
+    .text h2 {
+        font-size: 4.1rem;
+    }
+
+    header ul a{
+        font-size: 0.6rem;
+        padding: 0 0.5rem;
+    }
+
+    .house-1{
+        width: initial;
+        height: 70%;
+        top: 70%;
+    }
+
+    .fog-6{
+        width: initial;
+        height: 75%;
+    }
+}
+
+@media (max-width: 520px) {
+    header ul a{
+        font-size: 0.5rem;
+    }
+    .house-1{
+        width: initial;
+        height: 89%;
+        top: 59%;
+    }
+
+    .house-2{
+        width: initial;
+        height: 75%;
+        top: 75%;
+        left: 93%;
+    }
+
+    .house-3{
+        width: initial;
+        height: 70%;
+        top: 80%;
+        left: 29%;
+    }
+
+    .house-4{
+        width: initial;
+        height: 80%;
+        top: 75%;
+        left: 10%;
+    }
+
+    .fog-7{
+        width: initial;
+        height: 95%;
+        left: 40%;
+    }
+
+    .fog-6{
+        width: initial;
+        height: 75%;
+    }
+
+    .vignette{
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.3));
+    
+    }
+}
