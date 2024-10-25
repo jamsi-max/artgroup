@@ -285,6 +285,11 @@ main {
         line-height: 1.1;
     }
 
+    .text p {
+        font-size: 1rem;
+    letter-spacing: 0.1rem;
+    }
+
     header nav{
         padding: 0 1rem;
     }
@@ -332,6 +337,11 @@ main {
         font-size: 4.1rem;
     }
 
+    .text p {
+        font-size: 0.9rem;
+        letter-spacing: 0.08rem;
+    }
+
     header ul a{
         font-size: 0.6rem;
         padding: 0 0.5rem;
@@ -350,6 +360,7 @@ main {
 }
 
 @media (max-width: 520px) {
+    
     header ul a{
         font-size: 0.5rem;
     }
