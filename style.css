@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;800&display=swap");
 
 *, *::before, *::after {
     margin: 0;
@@ -7,8 +7,8 @@
 }
 
 body {
+    min-height: 100vh;
     font-family: "Poppins", sans-serif;
-    /* background-color: #353333; */
 }
 
 ::selection {
@@ -19,90 +19,67 @@ body {
     width: 100px;
 }
 
-header {
-    position: absolute;
-    z-index: 9999;
-    width: 100%;
-    padding: 0 1rem;
+.header {
+    position: fixed;
     top: 0;
     left: 0;
+    width: 100%;
+    padding: 0 10%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-header nav {
-    /* background-color: red; */
-    max-width: 1400px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 9999;
 }
 
-header ul {
-    display: flex;
-    list-style: none;
-    align-items: center;
-}
-
-header ul a {
-    text-decoration: none;
-    /* color: rgba(255, 255, 255, 0.7); */
-    /* color: #292323; */
-    color: #fff;
-    padding: 0 2rem 0 0.2rem;
-    text-transform: uppercase;
-    font-weight: 300;
-    font-size: 0.9rem;
-}
-
-header ul li{
-    color: rgba(115, 115, 115, 0.7);
-}
-
-.hamburger{
-    padding-left: 1.5rem;
-}
-
-.hamburger a{
-    padding: 0;
-    width: 37px;
-    height: 37px;
-    display: flex;
-    border-radius: 50%;
-    background-color: rgba(115, 115, 115, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.hamburger .bar{
-    position: relative;
-    width: 52%;
-    height: 1.3px;
-    background-color: #fff;
-    border-radius: 2px;
-}
-
-.hamburger .bar::before,
-.hamburger .bar::after{
+.header::before {
     content: "";
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    background-color: inherit;
-    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    z-index: -1;
 }
 
-.hamburger .bar::before {
-    top: -4.5px;
+.header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
+    transition: .5s ease-in-out;
 }
 
-.hamburger .bar::after{
-    top: 4.5px;
+.header:hover:after {
+    left: 100%;
+}
+
+.navbar a{
+    font-size: 1.05rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 300;
+    margin-left: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+#check {
+    display: none;
+}
+
+.icons{
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
 }
 
 main {
@@ -115,8 +92,6 @@ main {
 .parallax {
     pointer-events: none;
     transition: 0.45s cubic-bezier(.2,.49,.32,.99);
-    /* transform: translate(-50%, -50%); */
-
 }
 
 
@@ -132,9 +107,7 @@ main {
 .sun-rays {
     position: absolute;
     width: 80%;
-    /* top: calc(50% - 150px); */
     top: 31.48%;
-    /* left: calc(50% + 700px); */
     left: 98.61%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -143,54 +116,39 @@ main {
 
 .house-1 {
     position: absolute;
-    /* width: 1820px; */
     width: 110.63%;
-    /* top: calc(50% + 100px); */
     top: 65%;
-    /* left: calc(50%); */
     left: 50%;
     z-index: 3;
 }
 
 .house-4 {
     position: absolute;
-    /* width: 320px; */
     width: 19.45%;
-    /* top: calc(50% + 200px); */
     top: 71.55%;
-    /* left: calc(50% - 720px); */
     left: 6.23%;
     z-index: 4;
 }
 
 .house-2 {
     position: absolute;
-    /* width: 260px; */
     width: 15.8%;
-    /* top: calc(50% + 420px); */
     top: 95.25%;
-    /* left: calc(50% + 720px); */
     left: 93.76%;
     z-index: 8;
 }
 
 .fog-7 {
     position: absolute;
-    /* width: 3000px; */
     width: 182.37%;
-    /* top: calc(50% - 100px); */
     top: 39.22%;
-    /* left: calc(50% + 360px); */
     left: 71.88%;
     z-index: 5;
 }
 
 .house-3 {
     position: absolute;
-    /* width: 1340px; */
     width: 81.45%;
-    /* top: calc(50% + 380px); */
-    /* left: calc(50% - 280px); */
     top: 93%;
     left: 33%;
     z-index: 6;
@@ -198,12 +156,10 @@ main {
 
 .text {
     position: absolute;
-    /* top: calc(50%); */
     top: 50%;
     left: 50%;
     text-transform: uppercase;
     color: #fff;
-    /* color: rgba(115, 115, 115, 1); */
     z-index: 8;
     pointer-events: auto;
 }
@@ -235,11 +191,8 @@ main {
 
 .fog-6 {
     position: absolute;
-    /* width: 2840px; */
     width: 172.64%;
-    /* top: calc(50% + 260px); */
     top: 78.01%;
-    /* left: calc(50% + 360px); */
     left: 71.88%;
     z-index: 9;
 }
@@ -256,12 +209,24 @@ main {
 }
 
 @media (max-width: 1100px) {
+    .navbar a{
+        font-size: 1rem;
+        margin-left: 2rem;
+    }
+
+    .header{
+        padding: 0 5%;
+    }
+
     .text h1 {
         font-size: 4.5rem;
     }
 
     .text h2 {
         font-size: 5.5rem;
+    }
+    .text p {
+        font-size: 1rem;
     }
     .house-1{
         width: initial;
@@ -274,7 +239,26 @@ main {
     }
 }
 
+@media (max-width: 820px) {
+    .navbar a{
+        font-size: 0.85rem;
+        margin-left: 2rem;
+    }
+
+    .header{
+        padding: 0 2%;
+    }
+}
+
 @media (max-width: 725px) {
+    .navbar a{
+        font-size: 0.65rem;
+        margin-left: 1rem;
+    }
+
+    .header{
+        padding: 0;
+    }
     .text h1 {
         font-size: 3.8rem;
         line-height: 1.1;
@@ -286,8 +270,8 @@ main {
     }
 
     .text p {
-        font-size: 1rem;
-    letter-spacing: 0.1rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.1rem;
     }
 
     header nav{
@@ -296,20 +280,6 @@ main {
 
     .logo{
         width: 75px;
-    }
-
-    header ul a{
-        font-size: 0.73rem;
-        padding: 0 0.9rem;
-    }
-
-    .hamburger{
-        padding-left: 0.9rem;
-    }
-
-    .hamburger a{
-        width: 30px;
-        height: 30px;
     }
 
     .bg-img{
@@ -322,6 +292,7 @@ main {
         height: 70%;
         top: 69%;
     }
+    
     .fog-6{
         width: initial;
         height: 75%;
@@ -358,52 +329,53 @@ main {
         height: 75%;
     }
 }
-
-@media (max-width: 520px) {
-    
-    header ul a{
-        font-size: 0.5rem;
-    }
-    .house-1{
-        width: initial;
-        height: 89%;
-        top: 59%;
+@media (max-width: 525px) {
+    .icons{
+        display: inline-flex;
     }
 
-    .house-2{
-        width: initial;
-        height: 75%;
-        top: 75%;
-        left: 93%;
+    #check:checked~.icons #menu-icon{
+        display: none;
     }
 
-    .house-3{
-        width: initial;
-        height: 70%;
-        top: 80%;
-        left: 29%;
+    .icons #close-icon {
+        display: none;
     }
 
-    .house-4{
-        width: initial;
-        height: 80%;
-        top: 75%;
-        left: 10%;
+    #check:checked~.icons #close-icon{
+        display: block;
     }
 
-    .fog-7{
-        width: initial;
-        height: 95%;
-        left: 40%;
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: .3s ease;
     }
 
-    .fog-6{
-        width: initial;
-        height: 75%;
+    #check:checked~.navbar{
+        height: 17.7rem;
     }
 
-    .vignette{
-        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.3));
-    
+    .navbar a{
+        display: block;
+        font-size: 1.1rem;
+        margin: 2rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar a{
+        transform: translateY(0);
+        opacity: 1;
+        transition-delay: calc(.15s * var(--i));
     }
 }
