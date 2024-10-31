@@ -2,20 +2,18 @@
 <html lang="en">
 
 <head>
-  
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>АРТ Групп</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-  <header class="header hide">
-    <a href="#" class="logo">
-      <img src="img/logoArtGroup.png" alt="Artgroup" class="logo">
+  <header class="header">
+    <a href="" class="logo">
+      <img src="img/logo.svg" alt="ART Group" class="logo">
     </a>
 
     <input type="checkbox" id="check">
@@ -25,46 +23,98 @@
     </label>
 
     <nav class="navbar">
-      <a href="" style="--i:0;">Домашняя</a>
-      <a href="#" style="--i:1;">Наши проекты</a>
-      <a href="#" style="--i:2;">О компании</a>
-      <a href="#" style="--i:3;">Контакты</a>
-    </nav> 
+      <a href="" style="--i:0;" class="active">Главная</a>
+      <a href="#works" style="--i:1;">Наши работы</a>
+      <a href="services" style="--i:2;">Услуги</a>
+      <a href="#about" style="--i:3;">О компании</a>
+      <a href="#contact" style="--i:4;">Контакты</a>
+    </nav>
+
+    <div class="call-back">
+      <span class="call-back-phone">+7(905)760-35-06</span>
+      <a href="">Заказать звонок</a>
+    </div>
   </header>
 
   <main>
-    <div class="vignette hide"></div>
-    <img src="img/bg.png" data-speedx="0.3" data-speedy="0.5" 
-    data-speedz="0" data-rotation="0" data-distance="-200"
-    class="parallax bg-img">
-    <img src="img/sunrays.png" class="sun-rays hide" data-distance="200">
-    <img src="img/house4.png" data-speedx="0.05" data-speedy="0.1"
-    data-speedz="0.48" data-rotation="0.49" data-distance="850"
-    class="parallax house-4">
-    <img src="img/house2.png" data-speedx="0.22" data-speedy="0.27" 
-    data-speedz="0.57" data-rotation="0.68" data-distance="1200"
-    class="parallax house-2">
-    <img src="img/house3.png" data-speedx="0.1" data-speedy="0.11" 
-    data-speedz="0.34" data-rotation="0.57" data-distance="1400" 
-    class="parallax house-3">
-    <div class="text parallax" data-speedx="0.09" data-speedy="0.09" 
-    data-speedz="0" data-rotation="0" data-distance="0">
-      <h2>АРТ</h2>
-      <h1>ГРУПП</h1>
-      <p>Мы создаем уникальные проекты, соответствующие высоким стандартам и обеспечивающие успешное прохождение всех необходимых этапов</p>
-    </div>
-    <img src="img/fog7.png" data-speedx="0.47" data-speedy="0.52"
-    data-speedz="0.8" data-rotation="0" data-distance="1600"
-    class="parallax fog-7">
-    <img src="img/house1.png" data-speedx="0.065" data-speedy="0.05" 
-    data-speedz="0.73" data-rotation="0.28" data-distance="1800"
-    class="parallax house-1">
-    <img src="img/fog6.png" data-speedx="0.2" data-speedy="0.26" 
-    data-speedz="0" data-rotation="0" data-distance="2000"
-    class="parallax fog-6">
+
+    <section class="home-section" id="home">
+      <div class="section-content">
+        <div class="home-details">
+          <h2 class="title">Архитектурное Бюро</h2>
+          <h3 class="subtitle">"<span>art</span> group"</h3>
+          <p class="description">"Мы проектируем живую, визуально разнообразную и информационно 
+            насыщенную среду, а так же формируем новое качество жизни и верим, что 
+            пространство способно вдохновлять!"</p>
+          <div class="button">
+            <a href="#" class="button-link contact-us"><span>Портфолио</span></a>
+          </div>
+        </div>
+        <div class="img-wrapper">
+          <img src="img/home-img.png" alt="АРТ Групп" class="home-img">
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>О компании</h2>
+
+      <div class="about-content">
+
+        <!-- <div class="content-img">
+          <img src="img/about-1.jpg" alt="">
+        </div> -->
+        <div class="content-img">
+          <div class="slides">
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <!-- slides -->
+             <div class="slide first">
+              <img src="img/about-1.jpg" alt="АРТ Групп">
+             </div>
+             <div class="slide">
+              <img src="img/about-2.jpg" alt="АРТ Групп">
+             </div>
+             <div class="slide">
+              <img src="img/about-3.jpg" alt="АРТ Групп">
+             </div>
+             <!-- auto navi -->
+              <div class="nav-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+              </div>
+          </div>
+          <div class="nav-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+          </div>
+        </div>
+
+        <div class="content-info">
+          <p >Архитектурное Бюро ART GROUP - российское архитектурное бюро, основано в 1995г.</p>
+          <p class="about-description">Сфера деятельности - разработка проектов, различных
+            по сложности и сункциональному назначению — градостроительных комплексов, общественных, культурных и спортивных сооружений, многоэтажных и
+            частных жилых домов, интеоьесов и олагоустоопства</p>
+          <p class="about-description">Наша основная задача - моделирование яркого и счастливого будущего благодаря
+            использованию настоящей архитектуры, финансового багажа знаний, юридического оформления, 
+            современных инновационных изобретений, передовых Т технологий из числа патентов нашей команды, а также внешних рынков.</p>
+          
+          <div class="button">
+            <a href="#" class="button-link contact-us"><span>Подробнее</span></a>
+          </div>
+        </div>
+
+      </div>
+      
+      
+
+    </section>
+
   </main>
 
-</body>
 
 
   <script src="js/gsap.min.js"></script>
