@@ -27,8 +27,10 @@
 
 html {
     /* font-size: 62.5%; */
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
+    overflow-x: scroll;
     overflow-y: scroll;
+    /*overflow-y: hidden;*/
     scroll-padding-top: 60px;
 }
 
