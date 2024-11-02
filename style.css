@@ -961,6 +961,10 @@ section {
     .partners-logo::after{
         background: none;
     }
+    .logos-slider img{
+        width: 140px;
+        height: 140px;
+    }
 
     footer{
         flex-direction: column;
@@ -975,27 +979,3 @@ section {
     }
     
 }
-/* @media (max-width: 680px) {
-    .home-img img {
-        width: 80vw;
-        top: 4%;
-        left: 50%;
-        transform: translate(-50%);
-    }
-    .home-content {
-        width: 60vw;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%);
-    }
-    .home-content h1 {
-        font-size: 2rem;
-    }
-    .home-content h2 {
-        font-size: 3.8rem;
-    }
-    .home-content p {
-        font-size: 1.3rem;
-        margin-top: 2rem;
-    }
-} */
