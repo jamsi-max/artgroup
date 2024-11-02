@@ -955,6 +955,9 @@ section {
         display: block;
     }
 
+    .partners{
+        min-height: 40vh;
+    }
     .partners-logo::before{
         background: none;
     }
