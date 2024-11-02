@@ -57,7 +57,7 @@ ScrollReveal().reveal('.home-img, .about-content, .services-container, .portfoli
 
 // TYPED JS
 const typed = new Typed('.multiple-text', {
-    strings: ['"<span class="first-word">art</span> group"', '"<span class="first-word">арт</span> групп"'],
+    strings: ['"<span class="first-word">Art</span> group"', '"<span class="first-word">Арт</span> групп"'],
     typeSpeed: 100,
     backSpeed: 100,
     backDelay: 1000,
