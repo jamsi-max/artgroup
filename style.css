@@ -28,7 +28,8 @@
 html {
     /* font-size: 62.5%; */
     overflow-x: hidden;
-    /* scroll-padding-top: 60px; */
+    overflow-y: scroll;
+    scroll-padding-top: 60px;
 }
 
 body {
