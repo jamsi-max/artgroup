@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>АРТ Групп</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <header class="header">
+    <a href="" class="logo">
+      <img src="img/logo.svg" alt="ART Group" class="logo">
+    </a>
+
+    <input type="checkbox" id="check">
+    <label for="check" class="icons">
+      <i class='bx bx-menu' id="menu-icon"></i>
+      <i class='bx bx-x' id="close-icon"></i>
+    </label>
+
+    <nav class="navbar">
+      <a href="#home" style="--i:0;" class="active">Главная</a>
+      <a href="#about" style="--i:1;">О компании</a>
+      <a href="#services" style="--i:2;">Услуги</a>
+      <a href="#portfolio" style="--i:3;">Наши работы</a>
+      <a href="#contact" style="--i:4;">Контакты</a>
+
+      <a href="tel:79057603506" style="--i:5;" class="header-phone">тел. +7(905)760-35-06</a>
+    </nav>
+
+    <div class="call-back">
+      <span class="call-back-phone">+7(905)760-35-06</span>
+      <a href="">Заказать звонок</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="home-section" id="home">
+      <div class="section-content">
+        <div class="home-details">
+          <h2 class="title">Архитектурное Бюро</h2>
+          <h3 class="subtitle"> <span class="multiple-text"></span></h3>
+          <p class="description">"Мы проектируем живую, визуально разнообразную и информационно 
+            насыщенную среду, а так же формируем новое качество жизни и верим, что 
+            пространство способно вдохновлять!"</p>
+          <div class="button">
+            <a href="" class="button-link contact-us"><span>Портфолио</span></a>
+          </div>
+        </div>
+        <div class="img-wrapper">
+          <img src="img/home-img.png" alt="АРТ Групп" class="home-img">
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2 class="about-heading title">О компании</h2>
+
+      <div class="about-content">
+
+        <!-- SLIDER-1 about-slider -->
+        <div class="about-slider">
+          <input type="radio" name="radio-btn" id="radio1">
+          <input type="radio" name="radio-btn" id="radio2">
+          <input type="radio" name="radio-btn" id="radio3">
+          
+          <div class="slides">
+            <div class="slide first">
+              <img src="img/about-1.jpg" alt="АРТ Групп">
+            </div>
+            <div class="slide">
+              <img src="img/about-2.jpg" alt="АРТ Групп">
+            </div>
+            <div class="slide">
+              <img src="img/about-3.jpg" alt="АРТ Групп">
+            </div>
+          </div>
+
+          <div class="nav-manual">
+            <label for="radio1" class="manual-btn manual-btn-1"></label>
+            <label for="radio2" class="manual-btn manual-btn-2"></label>
+            <label for="radio3" class="manual-btn manual-btn-3"></label>
+          </div>
+        </div>
+        <!-- END SLIDER  -->
+
+        <div class="content-info">
+          <p >Архитектурное Бюро ART GROUP - российское архитектурное бюро, основано в 1995г.</p>
+          <p class="about-description">Сфера деятельности - разработка проектов, различных
+            по сложности и функциональному назначению — градостроительных комплексов, общественных, культурных и спортивных сооружений, многоэтажных и
+            частных жилых домов, интерьеров и благоустройства.</p>
+          <p class="about-description">Наша основная задача - моделирование яркого и счастливого будущего благодаря
+            использованию настоящей архитектуры, финансового багажа знаний, юридического оформления, 
+            современных инновационных изобретений, передовых IT технологий из числа патентов нашей команды, а также внешних рынков.</p>
+          
+          <div class="button">
+            <a href="#" class="button-link contact-us"><span>Подробнее</span></a>
+          </div>
+        </div>
+
+      </div>
+      
+      
+
+    </section>
+
+    <section class="services" id="services">
+      <h2 class="services-heading title">Почему мы?</h2>
+
+      <div class="services-container">
+
+        <div class="services-box">
+          <img src="img/img-srv-1.png" alt="Эффективность">
+          <h3>Эффективность</h3>
+          <p>В основе нашей работы - эффективная
+            организация пространства и использование
+            BIM - технологий. 30-летний опыт
+            работы и слаженная команда позволяет добиваться
+            необходимых результатов в сжатые сроки.</p>
+        </div>
+
+        <div class="services-box">
+          <img src="img/img-srv-2.png" alt="Эффективность">
+          <h3>Творчество</h3>
+          <p>Мы считаем, что любой проект, будь технологий
+            жилой комплекс или новый аэропорт,
+            помимо эффективных решений, должен
+            обладать яркими, запоминающимся
+            образом, формипующим лицо города.</p>
+        </div>
+
+        <div class="services-box">
+          <img src="img/img-srv-3.png" alt="Эффективность">
+          <h3>Партнерство</h3>
+          <p>Кооперация и взаимодействие с
+            различными экспертами и проектными
+            компаниями - конструкторами, дизайнерами,
+            инженерами, экономистами, социологами - позволяет
+            решать одновременно ряд крупных проектных задач.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="partners">
+      <h2 class="services-heading title">Наши партнеры</h2>
+
+      <div class="partners-logo">
+        <div class="logos-slider">
+          <img src="img/logo/equal.svg" alt="EQUAL">
+          <img src="img/logo/gazprom.svg" alt="GAZPROMNEFT">
+          <img src="img/logo/mcdonald.svg" alt="MCDonald">
+          <img src="img/logo/mercedes.svg" alt="Mercedes">
+          <img src="img/logo/metro.svg" alt="MoscowMetro">
+          <img src="img/logo/sber.svg" alt="SBERBANK">
+          <img src="img/logo/stroygazmontazh.svg" alt="STROYGAZMONTAZH">
+          <img src="img/logo/vtb.svg" alt="VTB">
+        </div>
+        <div class="logos-slider">
+          <img src="img/logo/equal.svg" alt="EQUAL">
+          <img src="img/logo/gazprom.svg" alt="GAZPROMNEFT">
+          <img src="img/logo/mcdonald.svg" alt="MCDonald">
+          <img src="img/logo/mercedes.svg" alt="Mercedes">
+          <img src="img/logo/metro.svg" alt="MoscowMetro">
+          <img src="img/logo/sber.svg" alt="SBERBANK">
+          <img src="img/logo/stroygazmontazh.svg" alt="STROYGAZMONTAZH">
+          <img src="img/logo/vtb.svg" alt="VTB">
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <h2 class="portfolio-heading title">Наши работы</h2>
+
+      <div class="portfolio-container">
+
+        <div class="portfolio-box">
+          <img src="img/portfolio/portfolio-1.jpg" alt="Территориум башня Империя">
+          <div class="portfolio-layer">
+            <h4>Территориум башня "Империя"</h4>
+            <p>Проект на крыше башня "Империя". Архитектурное бюро "ART GROUP"</p>
+            <a href="#"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="img/portfolio/portfolio-2.jpg" alt="Конкурсный проект в Риме">
+          <div class="portfolio-layer">
+            <h4>Конкурсный проект в Риме</h4>
+            <p>Конкурсный проект в Риме. Архитектурное бюро "ART GROUP"</p>
+            <a href="#"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="img/portfolio/portfolio-3.jpg" alt="Роддом в Магадане">
+          <div class="portfolio-layer">
+            <h4>Роддом в Магадане"</h4>
+            <p>Проект роддом в Магадане. Архитектурное бюро "ART GROUP"</p>
+            <a href="#"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="img/portfolio/portfolio-4.jpg" alt="Многофунцкиональный спортивный комплекс в Строгино">
+          <div class="portfolio-layer">
+            <h4>МФУ в Строгино"</h4>
+            <p>МФУ спортивный комплекс в Строгино. Архитектурное бюро "ART GROUP"</p>
+            <a href="#"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="img/portfolio/portfolio-5.jpg" alt="МФК на Рублевском шоссе">
+          <div class="portfolio-layer">
+            <h4>МФК на Рублевском шоссе</h4>
+            <p>МФК на Рублевском шоссе. Архитектурное бюро "ART GROUP"</p>
+            <a href="#"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="img/portfolio/portfolio-6.jpg" alt="Проект Ухоглаз">
+          <div class="portfolio-layer">
+            <h4>Проект Ухоглаз</h4>
+            <p>Проект Ухоглаз. Архитектурное бюро "ART GROUP"</p>
+            <a href="#"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  
+    <section class="contact" id="contact">
+      <h2 class="contact-heading title">Контакты</h2>
+
+      <div class="contact-content">
+        <form action="#">
+          <div class="input-box">
+            <input type="email" placeholder="Email">
+            <input type="number" placeholder="Телефон">
+            <input type="text" placeholder="Имя">
+            <textarea name="" id="" cols="30" rows="10" placeholder="Комментарий"></textarea>
+            <input type="submit" value="Отправить" class="btn">
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-text text-left">
+      <p><span>Сотрудничество:</span> artgroupas@gmail.com</p>
+    </div>
+
+    <div class="footer-icon">
+      <a href="#" class="logo">
+        <img src="img/logo-footer.png" alt="АРТ Групп" class="logo img-logo-footer">
+      </a>
+    </div>
+
+    <div class="footer-text text-right">
+      <p>г. Москва</p>
+    </div>
+  </footer>
+
+  <script src="js/gsap.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="js/app.js" defer></script>
+</body>
+
+</html>
