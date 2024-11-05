@@ -49,7 +49,7 @@
             насыщенную среду, а так же формируем новое качество жизни и верим, что 
             пространство способно вдохновлять!"</p>
           <div class="button">
-            <a href="" class="button-link contact-us"><span>Портфолио</span></a>
+            <a href="#portfolio" class="button-link contact-us"><span>Портфолио</span></a>
           </div>
         </div>
         <div class="img-wrapper">
@@ -65,9 +65,9 @@
 
         <!-- SLIDER-1 about-slider -->
         <div class="about-slider">
-          <input type="radio" name="radio-btn" id="radio1">
-          <input type="radio" name="radio-btn" id="radio2">
-          <input type="radio" name="radio-btn" id="radio3">
+          <input type="radio" name="radio-btn" id="radio1" value="1">
+          <input type="radio" name="radio-btn" id="radio2" value="2">
+          <input type="radio" name="radio-btn" id="radio3" value="3">
           
           <div class="slides">
             <div class="slide first">
@@ -235,6 +235,50 @@
 
       </div>
     </section>
+
+    <section class="directors director1" id="director1">
+      <h2 class="directors-heading title">Руководители бюро:</h2>
+
+        <div class="director-box">
+
+          <div class="director-content">
+            <h3 class="directors-subtitle">Тюрин Михаил</h3>
+            <p class="description">- Основатель, архитектор</p>
+            <p class="description">Здесь будет рассказ о руководителе компании, его компетенциях, образовании, регалиях и т.д.</p>
+            <p class="description">Здесь будет рассказ о руководителе компании, его компетенциях, образовании, регалиях и т.д.</p>
+            <p class="description">Здесь будет рассказ о руководителе компании, его компетенциях, образовании, регалиях и т.д.</p>
+            <p class="description">Здесь будет рассказ о руководителе компании, его компетенциях, образовании, регалиях и т.д.</p>
+            <p class="description">Здесь будет рассказ о руководителе компании, его компетенциях, образовании, регалиях и т.д.</p>
+          </div>
+
+          <div class="director-img">
+            <img src="img/director-1.jpg" alt="Михаил Тюрин">
+          </div>
+
+        </div>
+
+    </section>
+
+    <section class="directors director2" id="director2">
+
+      <div class="director-box">
+        <div class="director-img">
+          <img src="img/director-2.jpg" alt="Морозова Елизавета">
+        </div>
+
+        <div class="director-content">
+          <h3 class="directors-subtitle">Морозова Елизавета</h3>
+          <p class="description">- Член союза юристов Москвы, Эсперт по недвижимости, Управляющий партнер, Автор книги «Pro счастье»</p>
+          <p class="description">Открытый Университет Великобритании. Курс: «Профессиональный Сертификат в области менеджмента».</p>
+          <p class="description">Здесь будет рассказ о руководителе компании, его компетенциях, образовании, регалиях и т.д.</p>
+          <p class="description">Здесь будет рассказ о руководителе компании, его компетенциях, образовании, регалиях и т.д.</p>
+          <p class="description">Здесь будет рассказ о руководителе компании, его компетенциях, образовании, регалиях и т.д.</p>
+          <p class="description">Здесь будет рассказ о руководителе компании, его компетенциях, образовании, регалиях и т.д.</p>
+        </div>
+
+      </div>
+
+    </section>
   
     <section class="contact" id="contact">
       <h2 class="contact-heading title">Контакты</h2>
@@ -242,13 +286,23 @@
       <div class="contact-content">
         <form action="#">
           <div class="input-box">
-            <input type="email" placeholder="Email">
-            <input type="number" placeholder="Телефон">
+            <!-- <input type="email" placeholder="Email">
+            <input type="number" placeholder="Телефон"> -->
+            <input type="text" placeholder="Email или телефон">
             <input type="text" placeholder="Имя">
             <textarea name="" id="" cols="30" rows="10" placeholder="Комментарий"></textarea>
             <input type="submit" value="Отправить" class="btn">
           </div>
         </form>
+
+        <!-- <div class="contact-box">
+          <h2>Остались вопросы?</h2>
+          <p>Задайте их нам, заполнив форму и мы свяжемся с Вами в ближайшее время, для того, что бы уточнить все детали и ответить на все интересующие Вас вопросы!</p>
+          <div class="contact-image-wrapper">
+            <img src="img/contact-img.png" alt="АРТ Групп" class="contact-img">
+          </div>
+        </div> -->
+
       </div>
     </section>
 
@@ -256,7 +310,7 @@
 
   <footer class="footer">
     <div class="footer-text text-left">
-      <p><span>Сотрудничество:</span> artgroupas@gmail.com</p>
+      <p class="footer-cooperation">Сотрудничество: artgroupas@gmail.com</p>
     </div>
 
     <div class="footer-icon">
@@ -266,7 +320,7 @@
     </div>
 
     <div class="footer-text text-right">
-      <p>г. Москва</p>
+      <p сlass="footer-city">г. Москва</p>
     </div>
   </footer>
 

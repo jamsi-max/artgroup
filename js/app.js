@@ -14,6 +14,7 @@ function handleMenuClick(event) {
 // SLIDER
 let count = 2;
 setInterval(function() {
+    
     document.getElementById('radio' + count).checked = true;
     count++;
     if (count > 3) {
@@ -52,7 +53,7 @@ ScrollReveal({
 });
 
 ScrollReveal().reveal('.title, .home-details', { origin: 'top' });
-ScrollReveal().reveal('.home-img, .about-content, .services-container, .portfolio-container, .contact-content', { origin: 'bottom' });
+ScrollReveal().reveal('.home-img, .about-content, .director-box, .services-container, .portfolio-container, .contact-content', { origin: 'bottom' });
 // END SCROLL REVAL
 
 // TYPED JS
