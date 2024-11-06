@@ -791,7 +791,8 @@ section {
 .contact form textarea{
     width: 59%;
     padding: 1.5rem;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    font-family: "Poppins", sans-serif;
     color: #333;
     background: #f7f7f7;
     margin: .7rem 0;
