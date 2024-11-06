@@ -66,3 +66,35 @@ const typed = new Typed('.multiple-text', {
     
 })
 // END TYPED JS
+
+// POPUP BOX
+const portfolioItems = document.querySelector('.portfolio-container');
+const popup = document.querySelector('.popup-box');
+const popupCloseBtn = popup.querySelector('.popup-close-btn');
+const popupCloseIcon = popup.querySelector('.popup-close-icon');
+portfolioItems.addEventListener('click', function(e) {
+    // console.log(e.target.tagName.toLowerCase());
+    if(e.target.tagName.toLowerCase() == "button") {
+        const item = e.target.parentElement;
+        // console.log(item.querySelector("h4").innerHTML);
+        const h4 = item.querySelector("h4").innerHTML;
+        const readMoreCont = item.querySelector('.read-more-content').innerHTML;
+        popup.querySelector('h3').innerHTML = h4;
+        popup.querySelector('.popup-body').innerHTML = readMoreCont;
+        popupBox();
+    }
+})
+
+popupCloseBtn.addEventListener('click', popupBox);
+popupCloseIcon.addEventListener('click', popupBox);
+
+popup.addEventListener('click', function(e) {
+    if(e.target == popup) {
+        popupBox();
+    }
+})
+
+function popupBox(){
+    popup.classList.toggle('open');
+}
+// END POPUP BOX
