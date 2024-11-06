@@ -1291,6 +1291,13 @@ footer .text-left p::after{
     .popup-box .popup-header h3{
         font-size: 1.2rem;
     }
+    .popup-box .popup-header .popup-close-icon{
+        font-size: 2rem;
+        height: 35px;
+        width: 35px;
+        right: 0;
+        top: 0;
+    }
     .popup-box .popup-body{
         margin-top: 1rem;
         max-height: 67%;
