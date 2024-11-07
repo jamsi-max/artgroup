@@ -37,8 +37,6 @@ body {
     background: var(--bg-color);
     background-size: cover;
     color: var(--text-color);
-
-    overflow: hidden;
 }
 
 a {
