@@ -212,6 +212,7 @@ section {
 }
 
 .home-section .home-details .title{
+    margin-top: 10%;
     font-size: 2.8rem;
     font-weight: 300;
 }
@@ -227,11 +228,22 @@ section {
     color: var(--main-color);
 }
 
+.home-section .home-details p.description{
+    font-size: 1.3rem;
+    margin-top: 3%;
+}
+
+.home-section .home-details p.description-1{
+    margin-top: 8%;
+}
+.home-section .home-details p.description-2{
+    /* font-size: 1rem; */
+    font-weight: 600;
+}
+
 .home-section .home-details .description{
-    font-size: 1.2rem;
     font-weight: 100;
-    margin-top: 10%;
-    max-width: 70%;
+    max-width: 100%;
 }
 
 .home-section .img-wrapper{
@@ -239,7 +251,7 @@ section {
     margin-right: 27.5%;
 }
 .home-section .img-wrapper img{
-    width: 250%;
+    width: 215%;
     animation: floatImage 4s ease-in-out infinite;
 }
 
@@ -258,7 +270,7 @@ section {
 
 /* ABOUT */
 .about{
-    min-height: 80vh;
+    min-height: 60vh;
     background-color: rgba(255, 255, 255, 1);
     overflow: hidden;
     padding: 2% 5%;
@@ -284,6 +296,13 @@ section {
 
 .about-content .content-info p{
     line-height: 2rem;
+}
+
+.about-content .content-info .director-link{
+    color: var(--main-color);
+    /* text-decoration: underline; */
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .about-content .about-description{
@@ -602,16 +621,21 @@ section {
     visibility: visible;
     opacity: 1;
 }
+/* body.prevent-scroll {
+    position: relative !important;
+} */
 
 .popup-box .popup-content{
     background: #ffffff;
-    width: 90%;
+    width: 80%;
     height: 80%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: .5rem;
+    /* padding: .5rem; */
+
+    touch-action: none;
 }
 
 .popup-box .popup-header{
@@ -635,11 +659,12 @@ section {
     text-align: center;
     line-height: 40px;
     cursor: pointer;
+    color: var(--main-color);
 }
 
 .popup-box .popup-body{
     padding: 1rem;
-    max-height: 70%;
+    max-height: 85%;
     /* max-width: 80%; */
     overflow-y: auto;
 }
@@ -650,7 +675,7 @@ section {
     object-fit: contain;
     overflow: hidden;
     display: block;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 }
 
 .popup-box .popup-footer{
@@ -659,9 +684,9 @@ section {
 }
 
 .popup-box .popup-footer .btn{
-    /* margin-top: 1rem; */
+    margin-top: 1rem;
     cursor: pointer;
-    display: inline-block;
+    /* display: inline-block; */
     width: 170px;
     height: 70px;
     padding-bottom: 1%;
@@ -866,12 +891,16 @@ footer .text-left p::after{
 
 /* RESPONSIVE */
 @media (max-width: 1320px) {
+    .home-section .home-details{
+        margin-top: 8%;
+    }
     .home-section .home-details .title{
         font-size: 2.5rem;
     }
-    .home-section .home-details .subtitle{
-        font-size: 3.2rem;
+    .home-section .home-details h3.subtitle{
+        font-size: 2.5rem;
     }
+
 
     .about-content .about-slider {
         width: 250%;
@@ -938,7 +967,7 @@ footer .text-left p::after{
         padding: .5rem;
     }
     .popup-box .popup-body{
-        max-height: 75%;
+        max-height: 90%;
         overflow-y: auto;
     }
     .popup-box .popup-footer{
@@ -953,11 +982,14 @@ footer .text-left p::after{
 }
 
 @media (max-width: 960px) {
+    #home{
+        padding: 0 2%;
+    }
     .home-section .home-details .title{
         font-size: 1.7rem;
     }
-    .home-section .home-details .subtitle{
-        font-size: 2.8rem;
+    .home-section .home-details h3.subtitle{
+        font-size: 2rem;
     }
     .home-section .home-details .description{
         font-size: 1rem;
@@ -1071,7 +1103,7 @@ footer .text-left p::after{
         padding: .5rem;
     }
     .popup-box .popup-body{
-        max-height: 75%;
+        max-height: 90%;
         overflow-y: auto;
     }
     .popup-box .popup-footer{
@@ -1086,6 +1118,13 @@ footer .text-left p::after{
 }
 
 @media (max-width: 720px) {
+    .home-section .home-details p.description-1{
+        margin-top: 2%;
+    }
+    .home-section .home-details p.description{
+        max-width: 100%;
+        font-size: 1rem;
+    }
     .home-section .section-content{
         flex-direction: column-reverse;
         justify-content: center;
@@ -1286,8 +1325,8 @@ footer .text-left p::after{
     .popup-box .popup-content{
         margin-top: 1.5rem;
         padding: 1rem .5rem;
-        height: 78%;
-        overflow-y: auto;
+        height: 80%;
+        width: 90%;
     }
     .popup-box .popup-header{
         padding: .5rem;
@@ -1303,8 +1342,7 @@ footer .text-left p::after{
         top: 0;
     }
     .popup-box .popup-body{
-        margin-top: 1rem;
-        max-height: 67%;
+        max-height: 90%;
         overflow-y: auto;
     }
     .popup-box .popup-body p{

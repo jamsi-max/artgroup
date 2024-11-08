@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="style.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  <script src="some-path-where-you-dump-the-javascript-libraries/lib/bodyScrollLock.js"></script>
 </head>
 
 <body>
@@ -46,9 +48,13 @@
         <div class="home-details">
           <h2 class="title">Архитектурное Бюро</h2>
           <h3 class="subtitle"> <span class="multiple-text"></span></h3>
-          <p class="description">"Мы проектируем живую, визуально разнообразную и информационно 
-            насыщенную среду, а так же формируем новое качество жизни и верим, что 
-            пространство способно вдохновлять!"</p>
+          <p class="description description-1">Девиз:</p>
+          <p class="description description-2">«От абстрактного к конкретному»</p>
+          <p class="description">МЫ</p>
+          <p class="description">Создаем счастливую и эффективную среду</p>
+          <p class="description">Решаем Вашу проблему в области проектирования, архитектуры и согласований</p>
+          <p class="description">Помогаем увидеть ценность объектов клиента с точки зрения экономической, юридической и творческой стороны</p>
+          <p class="description">С нами приятно работать, мы улыбаемся!</p>
           <div class="button">
             <a href="#portfolio" class="button-link contact-us"><span>Портфолио</span></a>
           </div>
@@ -91,13 +97,15 @@
         <!-- END SLIDER  -->
 
         <div class="content-info">
-          <p >Архитектурное Бюро ART GROUP - российское архитектурное бюро, основано в 1995г.</p>
-          <p class="about-description">Сфера деятельности - разработка проектов, различных
-            по сложности и функциональному назначению — градостроительных комплексов, общественных, культурных и спортивных сооружений, многоэтажных и
-            частных жилых домов, интерьеров и благоустройства.</p>
-          <p class="about-description">Наша основная задача - моделирование яркого и счастливого будущего благодаря
-            использованию настоящей архитектуры, финансового багажа знаний, юридического оформления, 
-            современных инновационных изобретений, передовых IT технологий из числа патентов нашей команды, а также внешних рынков.</p>
+          <p >Компания «АРТ групп» как бренд основана архитектором <a href="#director1" class="director-link">Михаилом Тюриным</a></p>
+          <p class="about-description">В 1995 г. и работает на Российском и международном рынках в сфере 
+            строительства и архитектуры. Неоднократно была реорганизована, но сам бизнес не закрывался 
+            несмотря на кризисы. Последняя реорганизация проведена в 2006 году.</p>
+          <p class="about-description">В 2009 году управление компании заняла <a href="#director2" class="director-link">Елизавета Морозова</a>,
+            создавшая социально-архитектурную концепцию 
+            «Счастливый город», которая предусматривает научный подход к созданию новых пространств 
+            городской среды и объектов для жилья, работы, спорта, где люди ощущают себя более 
+            счастливыми и реализованными.</p>
           
           <div class="button">
             <a href="#" class="button-link contact-us"><span>Подробнее</span></a>
@@ -185,7 +193,7 @@
           <div class="portfolio-layer">
             <h4>Территориум башня "Империя"</h4>
             <p>Проект на крыше башня "Империя". Архитектурное бюро "ART GROUP"</p>
-            <button>Подробнее</button>
+            <button onClick="showDialog()">Подробнее</button>
 
             <div class="read-more-content">
               <img src="img/territorium-3.jpg" alt="Территориум башня Империя">
@@ -209,7 +217,7 @@
           <div class="portfolio-layer">
             <h4>Конкурсный проект в Риме</h4>
             <p>Конкурсный проект в Риме. Архитектурное бюро "ART GROUP"</p>
-            <button>Подробнее</button>
+            <button onClick="showDialog()">Подробнее</button>
 
             <div class="read-more-content">
               <img src="img/portfolio/portfolio-2.jpg" alt="Конкурсный проект в Риме">
@@ -231,7 +239,7 @@
           <div class="portfolio-layer">
             <h4>Роддом в Магадане"</h4>
             <p>Проект роддом в Магадане. Архитектурное бюро "ART GROUP"</p>
-            <button>Подробнее</button>
+            <button onClick="showDialog()">Подробнее</button>
 
             <div class="read-more-content">
               <img src="img/portfolio/portfolio-3.jpg" alt="Роддом в Магадане">
@@ -253,7 +261,7 @@
           <div class="portfolio-layer">
             <h4>МФУ в Строгино"</h4>
             <p>МФУ спортивный комплекс в Строгино. Архитектурное бюро "ART GROUP"</p>
-            <button>Подробнее</button>
+            <button onClick="showDialog()">Подробнее</button>
 
             <div class="read-more-content">
               <img src="img/portfolio/portfolio-4.jpg" alt="Многофунцкиональный спортивный комплекс в Строгино">
@@ -275,7 +283,7 @@
           <div class="portfolio-layer">
             <h4>МФК на Рублевском шоссе</h4>
             <p>МФК на Рублевском шоссе. Архитектурное бюро "ART GROUP"</p>
-            <button>Подробнее</button>
+            <button onClick="showDialog()">Подробнее</button>
 
             <div class="read-more-content">
               <img src="img/portfolio/portfolio-5.jpg" alt="МФК на Рублевском шоссе">
@@ -297,7 +305,7 @@
           <div class="portfolio-layer">
             <h4>Проект Ухоглаз</h4>
             <p>Проект Ухоглаз. Архитектурное бюро "ART GROUP"</p>
-            <button>Подробнее</button>
+            <button onClick="showDialog()">Подробнее</button>
 
             <div class="read-more-content">
               <img src="img/portfolio/portfolio-6.jpg" alt="Проект Ухоглаз">
@@ -317,18 +325,18 @@
       </div>
     </section>
     <!-- READ ME MORE POPUP -->
-    <div class="popup-box">
+    <div class="popup-box" id="popup">
       <div class="popup-content">
         <div class="popup-header">
           <h3>Арт групп</h3>
-          <span class="popup-close-icon">&times;</span>
+          <span class="popup-close-icon" onClick="closeDialog()">&times;</span>
         </div>
         <div class="popup-body">
           <p>Арт групп</p>
         </div>
-        <div class="popup-footer">
-          <button class="btn popup-close-btn">Закрыть</button>
-        </div>
+        <!-- <div class="popup-footer">
+          <button class="btn popup-close-btn" onClick="closeDialog()">Закрыть</button>
+        </div> -->
       </div>
     </div>
     <!-- READ ME MORE POPUP END -->
@@ -426,6 +434,8 @@
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="js/app.js" defer></script>
+
+  <script src="lib/bodyScrollLock.js"></script>
 </body>
 
 </html>
