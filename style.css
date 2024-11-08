@@ -406,7 +406,7 @@ section {
 
 /* DIRECTORS */
 .directors{
-    min-height: 80vh;
+    min-height: 60vh;
     padding: 2% 5%;
 }
 .director1{
@@ -428,18 +428,17 @@ section {
 .director-box{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     gap: 2rem;
 }
 
 .director-content{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     flex: 1 1 33.333%;
-    gap: 2rem;
-    margin-left: 5rem;
+    gap: 1rem;
+    margin-left: 3rem;
 }
 
 .directors-subtitle{
@@ -448,11 +447,14 @@ section {
 }
 
 .director-content p{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .director-content .description{
     margin-top: 1%;
+}
+.director-box .director-img img{
+    height: 90%;
 }
 
 /* END DIRECTORS */
@@ -784,7 +786,7 @@ section {
 /* CONTACT */
 .contact{
     padding: 2% 5%;
-    min-height: 100vh;
+    min-height: 70vh;
     /* background: url("img/bg.jpg") no-repeat center; */
     background: rgb(79, 79, 79) ;
     background-size: cover;
@@ -816,11 +818,17 @@ section {
 .contact form textarea{
     width: 59%;
     padding: 1.5rem;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     font-family: "Poppins", sans-serif;
     color: #333;
     background: #f7f7f7;
     margin: .7rem 0;
+}
+
+.contact form textarea{
+    width: 59%;
+    padding: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .contact form input.btn{
@@ -944,6 +952,8 @@ footer .text-left p::after{
         font-size: 1.1rem;
     }
 
+    
+    
     .directors{
         padding: 0 3%;
     }
@@ -951,12 +961,12 @@ footer .text-left p::after{
         gap: 1rem;
     }
     .director-content{
-        gap: 1.5rem;
-        margin-left: 1.5rem;
-        flex: 1 1 50%;
+        gap: 1rem;
+        margin-left: 1rem;
+        /* flex: 1 0 50%; */
     }
     .director-content p{
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .popup-box .popup-content{
@@ -1118,12 +1128,19 @@ footer .text-left p::after{
 }
 
 @media (max-width: 720px) {
+    .home-section .home-details {
+        margin-top: 0;
+    }
+    .home-section .home-details .title {
+        margin-top: 5%;
+    }
     .home-section .home-details p.description-1{
-        margin-top: 2%;
+        margin-top: 5%;
     }
     .home-section .home-details p.description{
         max-width: 100%;
         font-size: 1rem;
+        margin-top: 2%;
     }
     .home-section .section-content{
         flex-direction: column-reverse;
@@ -1274,7 +1291,7 @@ footer .text-left p::after{
         font-size: 2rem;
     }
     .director-content{
-        gap: 1rem;
+        gap: .8rem;
         margin-left: 1rem;
         flex: 1 1 60%;
     }
