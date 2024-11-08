@@ -1141,6 +1141,9 @@ footer .text-left p::after{
     .home-section .home-details .subtitle{
         font-size: 1.6rem;
     }
+    .home-section .section-content .home-details {
+        margin-bottom: 5%;
+    }
 
     .about-content{
         flex-direction: column;
