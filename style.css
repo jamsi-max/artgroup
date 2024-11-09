@@ -1209,6 +1209,7 @@ footer .text-left p::after{
     }
     .portfolio-box .portfolio-layer p{
         font-size: 1rem;
+        max-height: 40%;
     }
     .portfolio-box .portfolio-layer a{
         margin-top: 1rem;
@@ -1225,6 +1226,9 @@ footer .text-left p::after{
         width: 100%;
         max-height: 350px;
         transition: .5s ease;
+    }
+    .portfolio-box .portfolio-layer button {
+        margin-top: .5rem;
     }
 
     .icons {
