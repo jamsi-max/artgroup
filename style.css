@@ -205,6 +205,7 @@ section {
     align-items: center;
     min-height: 100vh;
     color: #fff;
+    padding: 2% 0;
 }
 
 .home-section .section-content .home-details{
@@ -292,16 +293,26 @@ section {
     font-size: 1.2rem;
 }
 
+#mybox1id p{ 
+    margin-top: 3%; 
+}
+#mybox1id p span{ 
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
 .about-content .about-slider{
     width: 120%;
     align-self: start;
+    flex: 1 0 40%;
 }
 
 .about-content .content-info p{
     line-height: 2rem;
 }
 
-.about-content .content-info .director-link{
+.about-content .content-info .director-link,
+.about-content .content-info .company-link{
     color: var(--main-color);
     /* text-decoration: underline; */
     font-weight: 600;
@@ -309,20 +320,25 @@ section {
 }
 
 .about-content .about-description{
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 .about-content .content-info .button-link{
     clip-path: polygon(0% 0%, 100% 0%, 80% 80%, 15% 90%);
     background-color: var(--main-color);
     color: #fff;
-    line-height: 45px;
+    padding-bottom: 2rem;
 }
 
 .about-content .content-info .button-link:hover{
     color: var(--text-color);
     background-color: rgba(227, 227, 227, 1);
 
+}
+
+#mybox1id{
+    display: none;
+    margin-top: 5%;
 }
 
 /* ------------SLIDER-------------- */

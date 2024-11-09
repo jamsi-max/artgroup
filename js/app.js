@@ -53,7 +53,7 @@ ScrollReveal({
 });
 
 ScrollReveal().reveal('.title, .home-details', { origin: 'top' });
-ScrollReveal().reveal('.home-img, .about-content, .director-box, .services-container, .contact-content', { origin: 'bottom' });
+ScrollReveal().reveal('.home-img, .director-box, .services-container, .contact-content', { origin: 'bottom' });
 // END SCROLL REVAL
 
 // PRINT TEXT TYPED JS
@@ -102,3 +102,23 @@ function popupBox(){
     popup.classList.toggle('open');
 }
 // END POPUP BOX
+
+
+function changeReadMore() {
+    const mycontent =
+        document.getElementById('mybox1id');
+    const mybutton =
+        document.getElementById('mybuttonid');
+
+    if (mycontent.style.display === 'none'
+        || mycontent.style.display === '') {
+        mycontent.style.display = 'block';
+        mycontent.style.marginTop = '3%';
+        mycontent.style.fontSize = '1.2rem';
+        mycontent.style.fontFamily = 'Poppins, sans-serif';
+        mybutton.textContent = 'Свернуть';
+    } else {
+        mycontent.style.display = 'none';
+        mybutton.textContent = 'Подробнее';
+    }
+}
