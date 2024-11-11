@@ -332,14 +332,14 @@ section {
     margin-top: 3%;
 }
 
-.about-content .content-info .button-link{
+.button-link{
     clip-path: polygon(0% 0%, 100% 0%, 80% 80%, 15% 90%);
     background-color: var(--main-color);
     color: #fff;
     padding-bottom: 2rem;
 }
 
-.about-content .content-info .button-link:hover{
+.button-link:hover{
     color: var(--text-color);
     background-color: rgba(227, 227, 227, 1);
 
@@ -479,9 +479,43 @@ section {
     margin-top: 1%;
 }
 .director-box .director-img img{
-    height: 90%;
+    max-height: 100%;
 }
 
+.mybox{
+    display: none;
+    margin-top: 5%;
+}
+#mybox2id p:first-child, 
+#mybox3id p:first-child{
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+#mybox2id p, 
+#mybox3id p{
+     
+    margin-top: 3%; 
+}
+#mybox2id p span{ 
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+#mybuttonid3 {
+    background-color: rgba(227, 227, 227, 1);
+    color: var(--text-color);
+}
+
+#mybuttonid3:hover{
+    color: #fff;
+    background-color: var(--main-color);
+
+}
+#mybox3id p a{
+    color: #d84040;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-decoration: underline;
+}
 /* END DIRECTORS */
 
 /* SERVICRS */

@@ -124,3 +124,40 @@ function changeReadMore() {
     }
 }
 // END READ MORE ABOUT
+function changeReadMore2() {
+    const mycontent =
+        document.getElementById('mybox2id');
+    const mybutton =
+        document.getElementById('mybuttonid2');
+
+    if (mycontent.style.display === 'none'
+        || mycontent.style.display === '') {
+        mycontent.style.display = 'block';
+        mycontent.style.marginTop = '3%';
+        mycontent.style.fontSize = '1.2rem';
+        mycontent.style.fontFamily = 'Poppins, sans-serif';
+        mybutton.textContent = 'Свернуть';
+    } else {
+        mycontent.style.display = 'none';
+        mybutton.textContent = 'Подробнее';
+    }
+}
+
+function changeReadMore3() {
+    const mycontent =
+        document.getElementById('mybox3id');
+    const mybutton =
+        document.getElementById('mybuttonid3');
+
+    if (mycontent.style.display === 'none'
+        || mycontent.style.display === '') {
+        mycontent.style.display = 'block';
+        mycontent.style.marginTop = '3%';
+        mycontent.style.fontSize = '1.2rem';
+        mycontent.style.fontFamily = 'Poppins, sans-serif';
+        mybutton.textContent = 'Свернуть';
+    } else {
+        mycontent.style.display = 'none';
+        mybutton.textContent = 'Подробнее';
+    }
+}
