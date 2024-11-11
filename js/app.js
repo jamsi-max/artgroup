@@ -52,8 +52,9 @@ ScrollReveal({
     delay: 200
 });
 
-ScrollReveal().reveal('.title, .home-details', { origin: 'top' });
-ScrollReveal().reveal('.home-img, .director-box, .services-container, .contact-content', { origin: 'bottom' });
+ScrollReveal().reveal('.home-details', { origin: 'top' });
+// ScrollReveal().reveal('.home-img, .director-box, .services-container, .contact-content', { origin: 'bottom' });
+ScrollReveal().reveal('.home-img', { origin: 'bottom' });
 // END SCROLL REVAL
 
 // PRINT TEXT TYPED JS
@@ -103,7 +104,7 @@ function popupBox(){
 }
 // END POPUP BOX
 
-
+// READ MORE ABOUT
 function changeReadMore() {
     const mycontent =
         document.getElementById('mybox1id');
@@ -122,3 +123,4 @@ function changeReadMore() {
         mybutton.textContent = 'Подробнее';
     }
 }
+// END READ MORE ABOUT
