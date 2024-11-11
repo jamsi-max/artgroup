@@ -124,6 +124,8 @@ function changeReadMore() {
     }
 }
 // END READ MORE ABOUT
+
+// READ MORE DIRECTORS
 function changeReadMore2() {
     const mycontent =
         document.getElementById('mybox2id');
@@ -161,3 +163,55 @@ function changeReadMore3() {
         mybutton.textContent = 'Подробнее';
     }
 }
+// END READ MORE DIRECTORS
+
+// SEND TELEGRAM FORM
+const TEKLEGRAM_BOT_TOKEN = '7926428166:AAFNtiaRDgs2egDYqaW_mnT6XRA1a1GuA6I';
+const TELEGRAM_CHAT_ID = '-1002266189533';
+const API = `https://api.telegram.org/bot${TEKLEGRAM_BOT_TOKEN}/sendMessage`;
+
+async function sendTelegram(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formBtn = form.querySelector('.form-send-btn');
+    const formSendResult = document.querySelector('.form-send-result');
+    formSendResult.textContent = '';
+
+    const {phone, name, comment} = Object.fromEntries(new FormData(form).entries());
+
+    message = `🟢 Заявка с сайта Art group\nИмя: ${name}\nТелефон: ${phone}\nКомментарий: ${comment}`;
+
+    try {
+        formBtn.textContent = 'Отправка...';
+        const response = await fetch(API, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message
+            })
+        });
+
+        if (response.ok) {
+            formSendResult.textContent = `${name}! Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время!`;
+            formSendResult.style.color = 'rgb(26 244 5)';
+            formSendResult.style.fontSize = '2rem';
+            form.reset();
+            form.style.display = 'none';
+        } else {
+            throw new Error(response.statusText);
+        }
+    } catch (error) {
+        console.error(error);
+        formSendResult.textContent = 'Произошла ошибка отправки! Попробуйте еще раз.';
+        formSendResult.style.color = 'red';
+    } finally {
+        formBtn.textContent = 'Отправить';
+    }
+};
+
+
+// END SEND TELEGRAM FORM
