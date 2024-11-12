@@ -1381,7 +1381,7 @@ footer .text-left p::after{
     .director-box{
         flex-direction: column;
     }
-    .director1 .director-box{
+    .director2 .director-box{
         flex-direction: column-reverse;
     }
     .director-img{
@@ -1396,6 +1396,9 @@ footer .text-left p::after{
     }
     .director-content p{
         font-size: 1rem;
+    }
+    .director-content .button {
+        margin-top: 0;
     }
 
     footer{
