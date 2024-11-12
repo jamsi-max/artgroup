@@ -515,11 +515,11 @@ section {
     background-color: var(--main-color);
 
 }
-#mybox3id p a{
+#mybox2id p a{
     color: #d84040;
     font-weight: 600;
     font-size: 1.3rem;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 /* END DIRECTORS */
 

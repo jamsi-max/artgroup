@@ -212,6 +212,4 @@ async function sendTelegram(e) {
         formBtn.textContent = 'Отправить';
     }
 };
-
-
 // END SEND TELEGRAM FORM
