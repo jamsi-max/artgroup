@@ -12,14 +12,26 @@ function handleMenuClick(event) {
 // END CLOSE MENU HAMBURGER
 
 // SLIDER
-let count = 2;
-setInterval(function() {
-    
-    document.getElementById('radio' + count).checked = true;
-    count++;
-    if (count > 3) {
-        count = 1;
+let slideIndex = 0;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
     }
+    slides[slideIndex - 1].style.display = "block";
+}
+// AUTO SLIDER
+setInterval(function() {
+    plusSlides(1);
 }, 4000);
 // END SLIDER
 
