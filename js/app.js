@@ -186,7 +186,7 @@ async function sendTelegram(e) {
     e.preventDefault();
 
     const form = e.target;
-    const formBtn = form.querySelector('.form-send-btn');
+    const formBtn = form.querySelector('.send-btn');
     const formSendResult = document.querySelector('.form-send-result');
     formSendResult.textContent = '';
 
@@ -209,8 +209,11 @@ async function sendTelegram(e) {
 
         if (response.ok) {
             formSendResult.textContent = `${name}! Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время!`;
+            formSendResult.style.position = 'relative';
+            formSendResult.style.zIndex = '100';
             formSendResult.style.color = 'rgb(26 244 5)';
-            formSendResult.style.fontSize = '2rem';
+            formSendResult.style.fontSize = '1rem';
+            formSendResult.style.fontWeight = '600';
             form.reset();
             form.style.display = 'none';
         } else {

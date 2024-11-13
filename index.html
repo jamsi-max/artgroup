@@ -651,40 +651,80 @@
 
     </section>
 
-    
-  
     <section class="contact" id="contact">
-      <h2 class="contact-heading title">Заказать звонок</h2>
-
       <div class="contact-content">
-        <form class="form" onsubmit="sendTelegram(event)" id="contact-form">
-          <div class="input-box">
-            <input name="phone" type="tel" avtocomplete="off" maxlength="20" required placeholder="Телефон">
-            <input name="name" type="text" avtocomplete="off" maxlength="50" required placeholder="Имя">
-            <textarea name="comment" avtocomplete="off" maxlength="300" required id="" cols="30" rows="4" placeholder="Комментарий"></textarea>
+        <h2>Остались вопросы?</h2>
+        <p>
+          Задайте их нам, заполнив форму и мы свяжемся с Вами в ближайшее время,
+          для того, что бы уточнить все детали и ответить на все интересующие Вас
+          вопросы!
+        </p>
+      </div>
+      <div class="contact-container">
+        <div class="contactInfo">
 
-            <div class="button">
-              <button type="submit" class="form-send-btn button-link contact-us">Отправить</button>
+          <div class="box">
+            <div class="icon"><b></b><i class='bx bx-map'></i></div>
+            <div class="text">
+              <p>Наш адрес:</p>
+              <p><a href="https://yandex.ru/maps/-/CDtHQZJm" target="_blank">г. Москва ул. Красная площадь 1</a></p>
             </div>
           </div>
-        </form>
+          <div class="box">
+            <div class="icon"><b></b><i class='bx bx-phone-call'></i></div>
+            <div class="text">
+              <p>Телефон:</p>
+              <p><a href="tel:79057603506">+7(905)760-35-06</a></p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="icon"><b></b><i class='bx bx-envelope' ></i></div>
+            <div class="text">
+              <p>Почта:</p>
+              <p><a href="mailto:infoartgroupp@yandex.ru">infoartgroupp@yandex.ru</a></p>
+            </div>
+          </div>
 
-        <div class="form-send-result"></div> 
+          <h2 class="txt contact-social-title">Мы в социальных сетях:</h2>
+          <ul class="sci">
+            <li><a href="#contact"><i class='bx bxl-vk'></i></a></li>
+            <li><a href="#contact"><i class='bx bxl-telegram' ></i></a></li>
+            <li><a href="#contact"><i class='bx bxl-instagram' ></i></a></li>
+          </ul>
 
+        </div>
+        <div class="contactForm">
+
+          <form class="form" onsubmit="sendTelegram(event)" id="contact-form">
+            <h2>Заказать звонок</h2>
+            <div class="inputBox">
+              <input name="phone" type="tel" avtocomplete="off" maxlength="20" required="required">
+              <span>Телефон</span>
+            </div>
+            <div class="inputBox">
+              <input name="name" type="text" avtocomplete="off" maxlength="50" required="required">
+              <span>Имя</span>
+            </div>
+            <div class="inputBox">
+              <textarea name="comment" avtocomplete="off" maxlength="300" required="required"></textarea>
+              <span>Комментарий</span>
+            </div>
+
+            <div class="inputBox">
+              <input type="submit" value="Отправить" class="send-btn">
+            </div>
+          </form>
+
+          <div class="form-send-result"></div>
+        </div>
       </div>
     </section>
-
-    <!-- <section class="contact">
-      <div class="contact-content">
-        <h2>Заказать </h2>
-      </div>
-    </section> -->
 
   </main>
 
   <footer class="footer">
     <div class="footer-text text-left">
-      <p class="footer-cooperation">Сотрудничество: infoartgroupp@yandex.ru</p>
+      <p class="footer-cooperation">Сотрудничество: <a href="mailto:infoartgroupp@yandex.ru">infoartgroupp@yandex.ru</a></p>
     </div>
 
     <div class="footer-icon">
