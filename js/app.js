@@ -129,10 +129,23 @@ function changeReadMore() {
         mycontent.style.marginTop = '3%';
         mycontent.style.fontSize = '1.2rem';
         mycontent.style.fontFamily = 'Poppins, sans-serif';
-        mybutton.textContent = 'Свернуть';
+        if (hash == 'ru') {
+            mybutton.textContent = 'Свернуть';
+        }
+        if (hash == 'en') {
+            mybutton.textContent = 'Roll up';
+        }
+        // mybutton.textContent = 'Свернуть';
     } else {
         mycontent.style.display = 'none';
-        mybutton.textContent = 'Подробнее';
+        if (hash == 'ru') {
+            mybutton.textContent = 'Подробнее';
+        }
+        if (hash == 'en') {
+            mybutton.textContent = 'More';
+        }
+
+        // mybutton.textContent = 'Подробнее';
     }
 }
 // END READ MORE ABOUT
@@ -228,3 +241,35 @@ async function sendTelegram(e) {
     }
 };
 // END SEND TELEGRAM FORM
+
+// MULTILANGUAGES
+const select = document.querySelector('select');
+const allLng = ['ru', 'en'];
+
+select.addEventListener('change', changeURLLng);
+
+function changeURLLng() {
+    let lng = select.value;
+    location.href = window.location.pathname + '#' + lng;
+    location.reload();
+}
+
+var hash
+function changeLanguage() {
+    hash = window.location.hash;
+    hash = hash.substring(1);
+    if (!allLng.includes(hash)) {
+        location.href = window.location.pathname + '#ru';
+        location.reload();
+    }
+    select.value = hash;
+    document.querySelector('html').setAttribute('lang', hash);
+    document.querySelector('title').innerHTML = mainLang['html-title'][hash];
+
+    for (let key in langList) {
+        document.querySelector('.lng-' + key).innerHTML = langList[key][hash];
+    }
+}
+changeLanguage()
+
+// END MULTILANGUAGES
