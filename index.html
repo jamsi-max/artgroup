@@ -661,13 +661,39 @@
         </p>
       </div>
       <div class="contact-container">
+
+        <div class="contactForm">
+
+          <form class="form" onsubmit="sendTelegram(event)" id="contact-form">
+            <h2>Заказать звонок</h2>
+            <div class="inputBox">
+              <input name="phone" type="tel" avtocomplete="off" maxlength="20" required="required">
+              <span>Телефон</span>
+            </div>
+            <div class="inputBox">
+              <input name="name" type="text" avtocomplete="off" maxlength="50" required="required">
+              <span>Имя</span>
+            </div>
+            <div class="inputBox">
+              <textarea name="comment" avtocomplete="off" maxlength="300" required="required"></textarea>
+              <span>Комментарий</span>
+            </div>
+
+            <div class="inputBox">
+              <input type="submit" value="Отправить" class="send-btn">
+            </div>
+          </form>
+
+          <div class="form-send-result"></div>
+        </div>
+
         <div class="contactInfo">
 
           <div class="box">
             <div class="icon"><b></b><i class='bx bx-map'></i></div>
             <div class="text">
               <p>Наш адрес:</p>
-              <p><a href="https://yandex.ru/maps/-/CDtHQZJm" target="_blank">г. Москва ул. Красная площадь 1</a></p>
+              <p><a href="https://yandex.ru/maps/-/CDt2ZNkR" target="_blank">г. Москва Гранатный пер. 12</a></p>
             </div>
           </div>
           <div class="box">
@@ -693,30 +719,7 @@
           </ul>
 
         </div>
-        <div class="contactForm">
 
-          <form class="form" onsubmit="sendTelegram(event)" id="contact-form">
-            <h2>Заказать звонок</h2>
-            <div class="inputBox">
-              <input name="phone" type="tel" avtocomplete="off" maxlength="20" required="required">
-              <span>Телефон</span>
-            </div>
-            <div class="inputBox">
-              <input name="name" type="text" avtocomplete="off" maxlength="50" required="required">
-              <span>Имя</span>
-            </div>
-            <div class="inputBox">
-              <textarea name="comment" avtocomplete="off" maxlength="300" required="required"></textarea>
-              <span>Комментарий</span>
-            </div>
-
-            <div class="inputBox">
-              <input type="submit" value="Отправить" class="send-btn">
-            </div>
-          </form>
-
-          <div class="form-send-result"></div>
-        </div>
       </div>
     </section>
 
