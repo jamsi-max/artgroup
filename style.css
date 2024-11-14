@@ -651,6 +651,13 @@ select option span{
 .portfolio-box .portfolio-layer .read-more-content{
     display: none;
 }
+.popup-link-contact{
+    color: var(--main-color);
+    
+}
+.popup-link-contact:hover{
+    filter: drop-shadow(0 0 10px var(--main-color));
+}
 
 .popup-box{
     position: fixed;

@@ -87,7 +87,6 @@ const popup = document.querySelector('.popup-box');
 const popupCloseIcon = popup.querySelector('.popup-close-icon');
 
 portfolioItems.addEventListener('click', function(e) {
-    // console.log(e.target.tagName.toLowerCase());
 
     if(e.target.tagName.toLowerCase() == "button") {
         const item = e.target.parentElement;
@@ -105,7 +104,7 @@ portfolioItems.addEventListener('click', function(e) {
 popupCloseIcon.addEventListener('click', popupBox);
 
 popup.addEventListener('click', function(e) {
-    if(e.target == popup) {
+    if(e.target == popup || e.target.tagName.toLowerCase() === 'a') {
         popupBox();
         closeDialog()
     }
