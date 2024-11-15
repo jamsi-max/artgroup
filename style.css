@@ -1303,8 +1303,11 @@ footer .text-left p::after{
     /* .portfolio-box:hover .portfolio-layer{
         transform: translateY(0);
     } */
+    .portfolio-box .portfolio-layer {
+        padding: 0 2rem;
+    }
     .portfolio-box .portfolio-layer h4{
-        font-size: 1rem;
+        font-size: .9rem;
     }
     .portfolio-box .portfolio-layer p{
         font-size: .7rem;
@@ -1555,11 +1558,15 @@ footer .text-left p::after{
         grid-template-columns: repeat(1, 1fr);
         gap: 1.3rem;
     }
+    .portfolio-box .portfolio-layer {
+        padding: 0 1rem;
+    }
     .portfolio-box .portfolio-layer h4{
-        font-size: 1.3rem;
+        font-size: 1rem;
+        font-weight: 300;
     }
     .portfolio-box .portfolio-layer p{
-        font-size: 1rem;
+        font-size: .8rem;
         max-height: 40%;
     }
     .portfolio-box .portfolio-layer a{
