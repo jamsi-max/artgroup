@@ -1669,7 +1669,7 @@ footer .text-left p::after{
     /* servisec-1 */
     .container-services .services-box{
         width: 90%;
-        flex: none;
+        flex: 1 1 100%;
     }
     .services-box .services-content h2{
         top: -140px;
