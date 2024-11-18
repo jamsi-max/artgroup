@@ -180,7 +180,129 @@ const langList = {
         "en": "Learn more about the organization's services",
     },
 
+    "services-title" : {
+        "ru": "Наши услуги",
+        "en": "Our services",
+    },
+    "services-1-title" : {
+        "ru": "ЭТАПЫ ПРОЕКТИРОВАНИЯ",
+        "en": "DESIGN STAGES",
+    },
+    "services-1-text" : {
+        "ru": "От того, насколько грамотно выполнено проектирование объекта, зависит исход всех \
+        ремонтно-строительных мероприятий. На стадии архитектурного проектирования удается \
+        определить не только конечный вид будущего объекта, но и произвести расчет затрат на его создание.",
+        "en": "The outcome of all events depends on how well the design of the object is carried out \
+        repair and construction activities. At the stage of architectural design, it is possible \
+        determine not only the final appearance of the future object, but also calculate the cost of its creation.",
+    },
+    "services-2-title" : {
+        "ru": "УПРАВЛЕНИЕ СТРОИТЕЛЬСТВОМ",
+        "en": "CONSTRUCTION MANAGEMENT",
+    },
+    "services-2-text" : {
+        "ru": "Система взаимосвязанных процессов и инструментов, которые обеспечивают успешную\
+        реализацию инвестиционно-строительного проекта путем применения инструментов управления и\
+        контроля на всех этапах его жизненного цикла – предпроектная проработка, проектирование, \
+        строительство и ввод объекта в эксплуатацию.",
+        "en": "A system of interrelated processes and tools that ensure successful\
+        implementation of an investment and construction project through the use of management tools and\
+        control at all stages of its life cycle – pre-design, design, construction and commissioning of the facility.",
+    },
+    "services-3-title" : {
+        "ru": "ТЕХНИЧЕСКИЙ ЗАКАЗЧИК",
+        "en": "TECHNICAL CUSTOMER",
+    },
+    "services-3-text" : {
+        "ru": "Участник инвестиционно-строительного проекта, осуществляющий организацию, планирование и\
+        управление строительством, направленные на своевременное и надлежащее выполнение всеми\
+        участниками проекта обязательств с целью успешной реализации проекта.",
+        "en": "A participant in an investment and construction project that organizes, plans and\
+        construction management aimed at timely and proper execution by allthe participants of the\
+         project are committed to the successful implementation of the project.",
+    },
+    "services-4-title" : {
+        "ru": "СТРОИТЕЛЬНЫЙ АУДИТ",
+        "en": "CONSTRUCTION AUDIT",
+    },
+    "services-4-text" : {
+        "ru": "Объективная независимая экспертная оценка инвестиционно-строительного проекта, которая\
+        позволяет выявить имеющиеся на проекте несоответствия, определить причины их возникновения,\
+        возможные риски, к которым они могут привести, и выработать рекомендации по их устранению.",
+        "en": "An objective independent expert assessment of an investment and construction project, which\
+        It allows you to identify inconsistencies in the project, determine the causes of their occurrence,\
+        possible risks to which they may lead, and develop recommendations for their elimination.",
+    },
 
+    
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
+    "nav-call" : {
+        "ru": "заказать звонок",
+        "en": "Please contact us",
+    },
     "nav-call" : {
         "ru": "заказать звонок",
         "en": "Please contact us",

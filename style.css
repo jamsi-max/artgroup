@@ -504,7 +504,7 @@ select option span{
 	margin: 0 0 10px;
 	padding: 0;
 	font-size: 24px;
-	font-weight: 500;
+	font-weight: 400;
 	color: #fff;
 }
 .services-box .services-content p{
@@ -512,6 +512,7 @@ select option span{
 	padding: 0;
 	color: #fff;
 	font-size: 16px;
+    font-weight: 200;
 }
 .services-box .services-content a{
     position: relative;
