@@ -32,7 +32,7 @@ function showSlides(n) {
 // AUTO SLIDER
 setInterval(function() {
     plusSlides(1);
-}, 4000);
+}, 3000);
 // END SLIDER
 
 // ACTIVE MENU

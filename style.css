@@ -417,6 +417,126 @@ select option span{
 
 /* END ABOUT */
 
+/* SERVICES */
+.services-1{
+    min-height: 60vh;
+    padding: 2% 5%;   
+}
+.services-1-heading{
+    margin-bottom: 2%;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #fff;
+}
+.container-services{
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    grid-auto-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-rows: auto;
+    grid-gap: 0 40px;
+}
+.container-services .services-box{
+    position: relative;
+	height: 450px;
+    background: url("img/bg.jpg") no-repeat;
+    background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    flex: 1 1 25%;
+}
+.container-services .services-box::before{
+    content: '';
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	background: #fff;
+	transform: skew(2deg,2deg);
+	z-index: -1;
+}
+.container-services .services-box:nth-child(1):before{
+    background: linear-gradient(315deg,#520707,#520707);
+}
+.container-services .services-box:nth-child(2):before{
+    background: linear-gradient(315deg,#c8c8c8,#c8c8c8)
+}
+.container-services .services-box:nth-child(3):before{
+    background: linear-gradient(315deg,#520707,#520707)
+}
+.container-services .services-box:nth-child(4):before{
+    background: linear-gradient(315deg,#c8c8c8,#c8c8c8)
+}
+.container-services .services-box::after{
+    content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	background: rgba(255,255,255.0.05);
+	pointer-events: none;
+}
+.services-content{
+    position: relative;
+	padding: 20px;
+	transform: translateY(40px);
+}
+.services-box .services-content h2{
+    position: absolute;
+	top: -60px;
+	right: 20px;
+	margin: 0;
+	padding: 0;
+	font-size: 10em;
+	color: rgb(255,255,255,.05);
+	transition: 0.5s;
+}
+.services-box:hover .services-content h2{
+    top: -140px;
+}
+.services-box .services-content h3{
+	margin: 0 0 10px;
+	padding: 0;
+	font-size: 24px;
+	font-weight: 500;
+	color: #fff;
+}
+.services-box .services-content p{
+    margin: 0;
+	padding: 0;
+	color: #fff;
+	font-size: 16px;
+}
+.services-box .services-content a{
+    position: relative;
+	margin: 20px 0 0;
+	padding: 10px 20px;
+	text-decoration: none;
+	border: 1px solid #fff;
+	display: inline-block;
+	color: #fff;
+	transition: 0.5s;
+	transform: translateY(-40px);
+	opacity: 0;
+	visibility: hidden;
+}
+.services-box:hover .services-content a{
+    transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
+}
+.services-box .services-content a:hover{
+    color: #000;
+	background: #fff;
+}
+/* END SERVICES */
+
 /* DIRECTORS */
 .directors{
     min-height: 60vh;
@@ -1157,6 +1277,17 @@ footer .text-left p::after{
         height: 400px;
     }
 
+    .services-1{
+        min-height: 50vh;  
+    }
+    .container-services{
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    .container-services .services-box{
+        flex: 1 1 33.333%;
+    }
+
     .services{
         padding-bottom: 7%;
     }
@@ -1415,6 +1546,9 @@ footer .text-left p::after{
 }
 
 @media (max-width: 720px) {
+    .logo {
+        width: 120px;
+    }
     .icons {
         display: inline-flex;
     }
@@ -1530,6 +1664,15 @@ footer .text-left p::after{
     }
     .about-content .about-description {
         margin-top: 2%;
+    }
+
+    /* servisec-1 */
+    .container-services .services-box{
+        width: 90%;
+        flex: none;
+    }
+    .services-box .services-content h2{
+        top: -140px;
     }
 
     .services{
@@ -1724,7 +1867,7 @@ footer .text-left p::after{
     }
     .contact-container .contactInfo .box .text p a{
         font-weight: 500;
-        font-size: 1.1rem;
+        font-size: 1rem;
 
     }
 
