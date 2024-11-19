@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap");
 /* @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;600;700;800;900&display=swap"); */
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
-@import url("main.css");
+/* @import url("responsive.css"); */
 
 *, *::before, *::after {
     margin: 0;
@@ -441,12 +441,11 @@ select option span{
 }
 .container-services .services-box{
     position: relative;
-	height: 450px;
+	height: 730px;
     background: url("img/bg.jpg") no-repeat;
     background-size: cover;
 	display: flex;
 	justify-content: center;
-	align-items: center;
     flex: 1 1 25%;
 }
 .container-services .services-box::before{
@@ -485,7 +484,7 @@ select option span{
 .services-content{
     position: relative;
 	padding: 20px;
-	transform: translateY(40px);
+	transform: translateY(100px);
 }
 .services-box .services-content h2{
     position: absolute;
@@ -535,6 +534,23 @@ select option span{
 .services-box .services-content a:hover{
     color: #000;
 	background: #fff;
+}
+.services-1-calc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.services-1-calc-link{
+    clip-path: polygon(0% 0%, 100% 0%, 90% 95%, 10% 85%);
+    background-color: var(--main-color);
+    color: #fff;
+    margin-top: 3%;
+    padding: 2rem;
+    font-size: 1.2rem;
+}
+.services-1-calc-link:hover{
+    color: var(--text-color);
+    background-color: rgba(227, 227, 227, 1);
 }
 /* END SERVICES */
 
@@ -704,8 +720,18 @@ select option span{
     position: relative;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    display: flex
+    /* display: flex */
+    display: none;
 }
+.portfolio-container .portfolio-box:nth-child(1),
+.portfolio-container .portfolio-box:nth-child(2),
+.portfolio-container .portfolio-box:nth-child(3),
+.portfolio-container .portfolio-box:nth-child(4),
+.portfolio-container .portfolio-box:nth-child(5),
+.portfolio-container .portfolio-box:nth-child(6){
+    display: block;
+}
+
 
 .portfolio-box img{
     width: 100%;
@@ -778,6 +804,30 @@ select option span{
 }
 .popup-link-contact:hover{
     filter: drop-shadow(0 0 10px var(--main-color));
+}
+.portfolio-load-more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.portfolio-load-more button{
+    margin-top: 1.5rem;
+    cursor: pointer;
+    display: inline-block;
+    width: 170px;
+    height: 70px;
+    padding-bottom: 3%;
+    color: var(--text-color);
+    background-color: rgba(227, 227, 227, 1);
+    clip-path: polygon(0% 0%, 100% 0%, 80% 95%,12% 80%);
+    font-size: 1.1rem;
+    transition: .3s ease;
+    line-height: 4rem;
+}
+
+.portfolio-load-more button:hover{
+    color: #fff;
+    background-color: var(--main-color);
 }
 
 .popup-box{
@@ -943,7 +993,6 @@ select option span{
      rgba(255, 255, 255, 0)
     );
 }
-
 
 .partners-logo:hover .logos-slider{
     animation-play-state: paused;
@@ -1287,6 +1336,7 @@ footer .text-left p::after{
     }
     .container-services .services-box{
         flex: 1 1 33.333%;
+        height: 600px;
     }
 
     .services{
@@ -1294,12 +1344,17 @@ footer .text-left p::after{
     }
     .services-container .services-box{
         padding: .5rem 1rem;
+        
     }
     .services-container .services-box h3 {
         font-size: 1.5rem;
     }
     .services-container .services-box p{
         font-size: 1.1rem;
+    }
+
+    .partners{
+        min-height: 40vh;
     }
 
     .portfolio-container{
@@ -1419,6 +1474,10 @@ footer .text-left p::after{
         margin-top: 4%;
     }
 
+    .container-services .services-box{
+        height: 680px;
+    }
+
     .services{
         padding-bottom: 7%;
     }
@@ -1430,6 +1489,10 @@ footer .text-left p::after{
     }
     .services-container .services-box p{
         font-size: 1.1rem;
+    }
+
+    .partners{
+        min-height: 40vh;
     }
 
     /* .portfolio-box:hover .portfolio-layer{
@@ -1669,11 +1732,19 @@ footer .text-left p::after{
 
     /* servisec-1 */
     .container-services .services-box{
-        width: 90%;
+        /* width: 90%; */
         flex: 1 1 100%;
+        height: 500px;
+        
     }
     .services-box .services-content h2{
         top: -140px;
+    }
+    .services-1-calc{
+        margin-top: 4%;
+    }
+    .services-1-calc-link{
+        font-size: 1rem;
     }
 
     .services{
@@ -1696,7 +1767,7 @@ footer .text-left p::after{
     }
 
     .portfolio{
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
     .portfolio-container{
         grid-template-columns: repeat(1, 1fr);
@@ -1799,16 +1870,6 @@ footer .text-left p::after{
     display: none;
     }
     
-    /* .popup-box .popup-content{
-        background: #ffffff;
-        width: 90%;
-        height: 80%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: .5rem;
-    } */
     .popup-box .popup-content{
         margin-top: 1.5rem;
         padding: 1rem .5rem;
@@ -1875,5 +1936,43 @@ footer .text-left p::after{
     .contact-container .contactForm form .inputBox input[type="submit"] {
         font-size: .9rem;
         clip-path: polygon(20% 10%, 75% 10%, 65% 95%, 30% 80%);
+    }
+}
+@media (max-width: 500px) {
+    .container-services .services-box{
+        height: 580px;
+    }
+    .container-services .services-box:nth-child(2){
+        height: 450px;
+    }
+    .container-services .services-box:nth-child(3){
+        height: 320px;
+    }
+    .container-services .services-box:nth-child(4){
+        height: 480px;
+    }
+    .services-box .services-content h2 {
+        top: -70px;
+        font-size: 7rem;
+    }
+    .services-content {
+        padding: 0 .5rem;
+    }
+}
+@media (max-width: 360px) {
+    .container-services .services-box{
+        height: 730px;
+    }
+    .container-services .services-box:nth-child(2){
+        height: 600px;
+    }
+    .container-services .services-box:nth-child(3){
+        height: 470px;
+    }
+    .container-services .services-box:nth-child(4){
+        height: 630px;
+    }
+    .services-1-calc-link{
+        font-size: .8rem;
     }
 }

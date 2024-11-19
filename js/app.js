@@ -11,30 +11,6 @@ function handleMenuClick(event) {
 }
 // END CLOSE MENU HAMBURGER
 
-// SLIDER
-let slideIndex = 0;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slides[slideIndex - 1].style.display = "block";
-}
-// AUTO SLIDER
-setInterval(function() {
-    plusSlides(1);
-}, 3000);
-// END SLIDER
-
 // ACTIVE MENU
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
@@ -79,6 +55,25 @@ const typed = new Typed('.multiple-text', {
     
 })
 // END PRINT TEXT TYPED JS
+
+// PORTFOLIO LOAD MORE
+let box = document.querySelectorAll('.portfolio-box');
+let loadMoreBtn = document.querySelector('.portfolio-load-more-btn');
+let currentimg = 6;
+
+loadMoreBtn.addEventListener('click', () => {
+    for (let i = currentimg; i < currentimg + 3; i++) {
+        if (box[i]){
+            box[i].style.display = 'block';
+        }
+        
+    }
+    currentimg += 3;
+    if (currentimg >= box.length) {
+        loadMoreBtn.style.display = 'none';
+    }
+})
+// END PORTFOLIO LOAD MORE
 
 // POPUP BOX
 const portfolioItems = document.querySelector('.portfolio-container');

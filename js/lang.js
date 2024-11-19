@@ -185,56 +185,67 @@ const langList = {
         "en": "Our services",
     },
     "services-1-title" : {
-        "ru": "ЭТАПЫ ПРОЕКТИРОВАНИЯ",
-        "en": "DESIGN STAGES",
+        "ru": "КОНЦЕПЦИЯ ПРОЕКТИРОВАНИЯ",
+        "en": "DESIGN CONCEPT",
     },
     "services-1-text" : {
-        "ru": "От того, насколько грамотно выполнено проектирование объекта, зависит исход всех \
-        ремонтно-строительных мероприятий. На стадии архитектурного проектирования удается \
-        определить не только конечный вид будущего объекта, но и произвести расчет затрат на его создание.",
-        "en": "The outcome of all events depends on how well the design of the object is carried out \
-        repair and construction activities. At the stage of architectural design, it is possible \
-        determine not only the final appearance of the future object, but also calculate the cost of its creation.",
+        "ru": "Концепция (буклет с предпроектными наработками) разрабатывается для формирования\
+        архитектурного облика объекта, расчета ТЭП (Технико-экономических показателей),\
+        разработки планировок. Концепция необходима:<br>1. для понимания инвестором\
+         собственником вариантов развития территории /объектов<br>2. на стадиях прохождения ГЗК\
+          (Градостроительно-земельной комиссии)<br>3. для получения АГР (Свидетельство об \
+          архитектурно-градостроительном решении), что является обязательным документом для\
+           прохождения Экспертизы.",
+        "en": "The concept (booklet with pre-design developments) is being developed to form\
+        the architectural appearance of the object, the calculation of the TEP (Technical and economic\
+         indicators), the development of layouts. The concept is necessary:<br>1. for understanding\
+          by the investor the owner of the options for the development of the territory\
+           facilities<br>2. at the stages of passing the GPC (Urban Planning and Land Commission)3. to\
+            obtain an AGR (Certificate of architectural and urban planning decision), which is a\
+             mandatory document for passing the Examination",
     },
     "services-2-title" : {
-        "ru": "УПРАВЛЕНИЕ СТРОИТЕЛЬСТВОМ",
-        "en": "CONSTRUCTION MANAGEMENT",
+        "ru": "ПРОЕКТНАЯ ДОКУМЕНТАЦИЯ",
+        "en": "PROJECT DOCUMENTATION",
     },
     "services-2-text" : {
-        "ru": "Система взаимосвязанных процессов и инструментов, которые обеспечивают успешную\
-        реализацию инвестиционно-строительного проекта путем применения инструментов управления и\
-        контроля на всех этапах его жизненного цикла – предпроектная проработка, проектирование, \
-        строительство и ввод объекта в эксплуатацию.",
-        "en": "A system of interrelated processes and tools that ensure successful\
-        implementation of an investment and construction project through the use of management tools and\
-        control at all stages of its life cycle – pre-design, design, construction and commissioning of the facility.",
+        "ru": "Разработка проектной документации согласно Постановлению Правительства РФ от 16.02.2008\
+         N 87 (ред. от 06.05.2024) «О составе разделов проектной документации и требованиях к их \
+         содержанию»<br>Прохождение Государственной или негосударственной экспертизы входит в данный\
+          вид услуги.",
+        "en": "Development of project documentation in accordance with the Decree of the Government of\
+         the Russian Federation dated 02/16/2008 N 87 (as amended on 05/06/2024) «On the composition of\
+          sections of project documentation and requirements for their content»<br>Passing a State or\
+           non-state examination is included in this type of service.",
     },
     "services-3-title" : {
-        "ru": "ТЕХНИЧЕСКИЙ ЗАКАЗЧИК",
-        "en": "TECHNICAL CUSTOMER",
+        "ru": "РАБОЧАЯ ДОКУМЕНТАЦИЯ",
+        "en": "WORKING DOCUMENTATION",
     },
     "services-3-text" : {
-        "ru": "Участник инвестиционно-строительного проекта, осуществляющий организацию, планирование и\
-        управление строительством, направленные на своевременное и надлежащее выполнение всеми\
-        участниками проекта обязательств с целью успешной реализации проекта.",
-        "en": "A participant in an investment and construction project that organizes, plans and\
-        construction management aimed at timely and proper execution by allthe participants of the\
-         project are committed to the successful implementation of the project.",
+        "ru": "Расширенная документация с учетом всех спецификаций, объемов материалов. Проект,\
+         готовый для выхода на площадку для проведения строительно-монтажных работ.",
+        "en": "Extended documentation taking into account all specifications and volumes of\
+         materials. The project is ready to enter the site for construction and installation work.",
     },
     "services-4-title" : {
-        "ru": "СТРОИТЕЛЬНЫЙ АУДИТ",
-        "en": "CONSTRUCTION AUDIT",
+        "ru": "СОГЛАСОВАНИЯ ПРОЕКТА",
+        "en": "PROJECT APPROVAL",
     },
     "services-4-text" : {
-        "ru": "Объективная независимая экспертная оценка инвестиционно-строительного проекта, которая\
-        позволяет выявить имеющиеся на проекте несоответствия, определить причины их возникновения,\
-        возможные риски, к которым они могут привести, и выработать рекомендации по их устранению.",
-        "en": "An objective independent expert assessment of an investment and construction project, which\
-        It allows you to identify inconsistencies in the project, determine the causes of their occurrence,\
-        possible risks to which they may lead, and develop recommendations for their elimination.",
+        "ru": "Сопровождение Заказчика на этапе земельно-правовых отношений, получения ГПЗУ\
+         (Градостроительного плана земельного участка), внесения изменений в ПЗЗ (Правила землепользования\
+          и застройки), получения Технических условий, получения АГР (Свидетельство об \
+          архитектурно-градостроительном решении) и иных документов, необходимых для проектирования и \
+          ввода объекта в эксплуатацию.",
+        "en": "Support of the Customer at the stage of land and legal relations, obtaining a GPP\
+         (Urban planning plan of a land plot), making changes to the GPP (Rules of land use and\
+          development), obtaining Technical Specifications, obtaining an AGR (Certificate of architectural\
+           and urban planning decision) and other documents necessary for the design and commissioning\
+            of the facility.",
     },
 
-    
+
     "nav-call" : {
         "ru": "заказать звонок",
         "en": "Please contact us",
