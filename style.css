@@ -1936,6 +1936,7 @@ footer .text-left p::after{
     .contact-container .contactForm form .inputBox input[type="submit"] {
         font-size: .9rem;
         clip-path: polygon(20% 10%, 75% 10%, 65% 95%, 30% 80%);
+        font-weight: 700;
     }
 }
 @media (max-width: 500px) {

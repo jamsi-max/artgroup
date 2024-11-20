@@ -185,8 +185,8 @@ const langList = {
         "en": "Our services",
     },
     "services-1-title" : {
-        "ru": "КОНЦЕПЦИЯ ПРОЕКТИРОВАНИЯ",
-        "en": "DESIGN CONCEPT",
+        "ru": "КОНЦЕПЦИЯ (ПЕРДПРОЕКТ)",
+        "en": "CONCEPT (PERDPROJECT)",
     },
     "services-1-text" : {
         "ru": "Концепция (буклет с предпроектными наработками) разрабатывается для формирования\
@@ -291,7 +291,7 @@ const langList = {
         "en": "More work",
     },
 
-    
+
     "portfolio-1-title" : {
         "ru": "Концепция ЖК «Будь счастлив!»",
         "en": "The concept of the complex «Be happy!»",
@@ -346,82 +346,84 @@ const langList = {
     },
 
 
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-2-title" : {
+        "ru": "Многофунцкиональная набережная «Москва-Сити»",
+        "en": "Multi-functional embankment «Moscow City»",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-2-text" : {
+        "ru": "Проект реконструкции",
+        "en": "Reconstruction project",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-2-subtext" : {
+        "ru": "Архитектурно-юридическая компания<br>«ART group»",
+        "en": "Architectural law company<br>«ART group»",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-2-btn-more" : {
+        "ru": "Подробнее",
+        "en": "More",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-2-subtext-1" : {
+        "ru": "Компания «АРТ групп» является инициатором и разработчиком проекта «Многофункциональная общественная зона в границах Набережной Москва-Сити» по адресу г. Москва Краснопресненская набережная уч. 1",
+        "en": "The ART Group company is the initiator and developer of the project «Multifunctional public zone within the boundaries of the Moscow City Embankment» at the address Krasnopresnenskaya 1, Moscow",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-2-subtext-2" : {
+        "ru": "Концепция организации подземного многоуровневого пространства в габаритах Набережной не занимает дополнительной площади, вписывается в существующую архитектурную застройку. В предложении разработана оптимальная пространственно-конструктивная схема (патент № 110766), не нарушающая целостности грунта, предусматривающая естественное освещение за счет боковых проемов в набережной, на которой расположены площади для размещения гостиничных номеров, социальной инфраструктуры, ТПУ в районе водного транспорта, мини-мариной, площади для размещения кафе подземного паркинга с возможностью соединения с существующим подземным пространством офисных центров ММДЦ «Москва-Сити». Проект предусматривает также объединение двух парковых зон за счет создания озелененной прогулочной зоны на нижней набережно",
+        "en": "The concept of organizing an underground multi-level space in the dimensions of the Embankment does not take up additional space, fits into the existing architectural development. The proposal has developed an optimal spatial and structural scheme (patent No. 110766) that does not violate the integrity of the soil, providing natural lighting due to side openings in the embankment, on which there are areas for hotel rooms, social infrastructure, TPU in the area of water transport, a mini-marina, an area for underground parking cafes with the possibility of connection with the existing underground space of the Moscow-City MMDC office centers. The project also provides for the unification of two park areas by creating a green walking area on the lower embankment",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-2-subtext-3" : {
+        "ru": "Запатентованная технология строительства с воды не требуют перекладки инженерных сетей, а также остановки транспорта наземной части.",
+        "en": "The patented technology of construction from the water does not require the re-laying of engineering networks, as well as stopping the transport of the land part.",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-2-subtext-4" : {
+        "ru": "Проект получил ряд одобрений на уровне Правительства Москвы и экспертного мнения, получено письмо от ПАО «Сбербанк» о готовности частичного финансирования проекта.",
+        "en": "The project has received a number of approvals at the level of the Moscow Government and expert opinion, and a letter has been received from Sberbank PJSC on the readiness of partial financing of the project.",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-2-subtext-5" : {
+        "ru": "<b>Если Вы хотите более подробно ознакомиться с проектом или принять в нем участие, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
+        "en": "<b>If you want to learn more about the project or take part in it, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+
+    "portfolio-3-title" : {
+        "ru": "Проект «Территориум» башня «Империя»",
+        "en": "The «Territorium» project «Empire Tower»",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-3-subtext" : {
+        "ru": "Концепция приспособления крыши",
+        "en": "Roof fitting concept",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-3-subtext" : {
+        "ru": "Архитектурно-юридическая компания<br>«ART group»",
+        "en": "Architectural law company<br>«ART group»",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-3-btn-more" : {
+        "ru": "Подробнее",
+        "en": "More",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-3-subtext-2" : {
+        "ru": "ООО «АРТ групп» по заказу ПАО «Сити» разработало в рамках архитектурных практик «Территориум» концепцию приспособления крыши башни «Империя» в ММДЦ «Сити» с целью для функционального использования под рекреацию, деловые встречи, развлечения",
+        "en": "ART Group LLC, commissioned by PJSC City, has developed, within the framework of architectural practices of «Territorium», the concept of adapting the roof of the «Empire» Tower to the MMDC «City» in order for functional use for recreation, business meetings, entertainment",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-3-subtext-3" : {
+        "ru": "Концепция предусматривает 3 варианта развития площадки:",
+        "en": "The concept provides for 3 options for the development of the site:",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-3-subtext-4" : {
+        "ru": "&#8226; Вариант 1: «Imperial crown» - спокойный, уютный формат в теплых оттенках",
+        "en": "&#8226; Option 1: «Imperial crown» - a calm, cozy format in warm shades",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-3-subtext-5" : {
+        "ru": "&#8226; Вариант 2: «Water in the sky» - яркий динамичный, как с точки зрения конечного потребителя, так и архитектуры",
+        "en": "&#8226; Option 2: «Water in the sky» is bright and dynamic, both from the point of view of the end user and architecture",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-3-subtext-6" : {
+        "ru": "&#8226; Общая обзорная площадка для обоих вариантов",
+        "en": "&#8226; A common observation deck for both options",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "portfolio-3-subtext-7" : {
+        "ru": "<b>При желании ознакомиться с полной концепцией, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
+        "en": "<b>If you want to get acquainted with the full concept, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
     },
+
     "nav-call" : {
         "ru": "заказать звонок",
         "en": "Please contact us",
