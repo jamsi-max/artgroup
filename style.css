@@ -641,6 +641,9 @@ select option span{
     font-size: 1.3rem;
     /* text-decoration: underline; */
 }
+#mybox2id p a:hover{
+    filter: drop-shadow(0 0 10px var(--main-color));
+}
 /* END DIRECTORS */
 
 /* SERVICRS */

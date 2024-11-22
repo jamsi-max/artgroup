@@ -22,7 +22,7 @@ window.onscroll = () => {
         let height = sec.offsetHeight;
         let id = sec.getAttribute('id');
 
-        if (top >= offset && top < offset + height) {
+        if (top >= offset && top < offset + height && id != null && id != 'director1' && id != 'director2') {
             navLinks.forEach(links => {
                 links.classList.remove('active');
                 document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
@@ -66,7 +66,6 @@ loadMoreBtn.addEventListener('click', () => {
         if (box[i]){
             box[i].style.display = 'block';
         }
-        
     }
     currentimg += 3;
     if (currentimg >= box.length) {
@@ -101,7 +100,7 @@ popupCloseIcon.addEventListener('click', popupBox);
 popup.addEventListener('click', function(e) {
     if(e.target == popup || e.target.tagName.toLowerCase() === 'a') {
         popupBox();
-        closeDialog()
+        // closeDialog();
     }
 })
 

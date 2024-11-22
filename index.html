@@ -10,7 +10,12 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
-  <script src="some-path-where-you-dump-the-javascript-libraries/lib/bodyScrollLock.js"></script>
+  <!-- <script src="some-path-where-you-dump-the-javascript-libraries/lib/bodyScrollLock.js"></script> -->
+  <script src="js/gsap.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="js/lang.js" defer></script>
+  <script src="js/app.js" defer></script>
   <script src="js/about-slider.js" defer></script>
 </head>
 
@@ -420,7 +425,8 @@
             <h4 class="lng-portfolio-1-title">Концепция ЖК «Будь счатлив!»</h4>
             <p class="lng-portfolio-1-text-1">Проект жилого комплекса</p>
             <p class="lng-portfolio-1-text-2">Архитектурно-юридическая компания<br>"ART group"</p>
-            <button onClick="showDialog()" class="lng-portfolio-1-btn-more">Подробнее</button>
+            <!-- <button onClick="showDialog()" class="lng-portfolio-1-btn-more">Подробнее</button> -->
+            <button class="lng-portfolio-1-btn-more">Подробнее</button>
 
             <div class="read-more-content">
               <p class="lng-portfolio-1-subtext-1"><b>Концепция ЖК «Будь счатлив!»</b></p>
@@ -465,7 +471,8 @@
             <h4 class="lng-portfolio-2-title">Многофунцкиональная набережная "Москва-Сити"</h4>
             <p class="lng-portfolio-2-text">Проект реконструкции</p>
             <p class="lng-portfolio-2-subtext">Архитектурно-юридическая компания<br>"ART group"</p>
-            <button onClick="showDialog()" class="lng-portfolio-2-btn-more">Подробнее</button>
+            <!-- <button onClick="showDialog()" class="lng-portfolio-2-btn-more">Подробнее</button> -->
+            <button class="lng-portfolio-2-btn-more">Подробнее</button>
 
             <div class="read-more-content">
               <img src="img/portfolio/portfolio-0.1.jpg" alt="Многофунцкиональная набережная Москва-Сити">
@@ -501,7 +508,8 @@
             <h4 class="lng-portfolio-3-title">Проект «Территориум» башня «Империя»</h4>
             <p class="lng-portfolio-3-subtext">Концепция приспособления крыши</p>
             <p class="lng-portfolio-3-subtext-1">Архитектурно-юридическая компания<br>"ART group"</p>
-            <button onClick="showDialog()" class="lng-portfolio-3-btn-more">Подробнее</button>
+            <!-- <button onClick="showDialog()" class="lng-portfolio-3-btn-more">Подробнее</button> -->
+            <button class="lng-portfolio-3-btn-more">Подробнее</button>
 
             <div class="read-more-content">
               <img src="img/portfolio/portfolio-1.1.jpg" alt="Концепция приспособления крыши башни «Империя»">
@@ -524,17 +532,18 @@
         <div class="portfolio-box">
           <img src="img/portfolio/portfolio-2.jpg" alt="Конкурсный проект в Риме «Психологический куб»">
           <div class="portfolio-layer">
-            <h4>Конкурсный проект в Риме</h4>
-            <p>«Психологический куб»</p>
-            <p>Архитектурно-юридическая компания<br>"ART group"</p>
-            <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button>
+            <h4 class="lng-portfolio-4-title">Конкурсный проект в Риме</h4>
+            <p class="lng-portfolio-4-subtext">«Психологический куб»</p>
+            <p class="lng-portfolio-4-subtext-1">Архитектурно-юридическая компания<br>"ART group"</p>
+            <!-- <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button> -->
+            <button class="lng-portfolio-btn-more lng-portfolio-4-btn-more">Подробнее</button>
 
             <div class="read-more-content">
-              <p>Конкурс Захи Хаддид на благоустройство площади музея современного искусства в Риме.</p>
+              <p class="lng-portfolio-4-subtext-2">Конкурс Захи Хаддид на благоустройство площади музея современного искусства в Риме.</p>
               <img src="img/portfolio/portfolio-2.1.jpg" alt="Конкурсный проект в Риме «Психологический куб»">
-              <p>Основная идея проекта – дать возможность человеку поразмышлять, а кто он на самом деле.<br>В Куб можно зайти и оказаться среди зеркальных, преломляющихся стен , словно грани души.</p>
+              <p class="lng-portfolio-4-subtext-3">Основная идея проекта – дать возможность человеку поразмышлять, а кто он на самом деле.<br>В Куб можно зайти и оказаться среди зеркальных, преломляющихся стен , словно грани души.</p>
               <img src="img/portfolio/portfolio-2.2.jpg" alt="Конкурсный проект в Риме «Психологический куб»">
-              <p><b>При желании ознакомиться с полной концепцией, напишите нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
+              <p class="lng-portfolio-4-subtext-4"><b>При желании ознакомиться с полной концепцией, напишите нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
             </div>
 
           </div>
@@ -543,22 +552,23 @@
         <div class="portfolio-box">
           <img src="img/portfolio/portfolio-3.jpg" alt="Реконструкция родильного дома в г. Магадане">
           <div class="portfolio-layer">
-            <h4>Проект родильного дома в г. Магадане</h4>
-            <p>Реконструкция объекта</p>
-            <p>Архитектурно-юридическая компания<br>"ART group"</p>
-            <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button>
+            <h4 class="lng-portfolio-5-title">Проект родильного дома в г. Магадане</h4>
+            <p class="lng-portfolio-5-subtext">Реконструкция объекта</p>
+            <p class="lng-portfolio-5-subtext-1">Архитектурно-юридическая компания<br>"ART group"</p>
+            <!-- <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button> -->
+            <button class="lng-portfolio-btn-more lng-portfolio-5-btn-more">Подробнее</button>
 
             <div class="read-more-content">
-              <p>Реконструкция родильного дома в г. Магадане под гинекологическое отделение на 50 коек
+              <p class="lng-portfolio-5-subtext-2">Реконструкция родильного дома в г. Магадане под гинекологическое отделение на 50 коек
                  со строительством акушерского корпуса на 100 коек</p>
               <img src="img/portfolio/portfolio-3.1.jpg" alt="Реконструкция родильного дома в г. Магадане">
-              <p><b>Адрес:</b> г. Магадан, ул. Наровчатого, д.1</p>
-              <p><b>Вид работ:</b> Проектная документация.</p>
-              <p><b>Заказчик:</b> ЗАО «Медторгсервис»</p>
+              <p class="lng-portfolio-5-subtext-3"><b>Адрес:</b> г. Магадан, ул. Наровчатого, д.1</p>
+              <p class="lng-portfolio-5-subtext-4"><b>Вид работ:</b> Проектная документация.</p>
+              <p class="lng-portfolio-5-subtext-5"><b>Заказчик:</b> ЗАО «Медторгсервис»</p>
               <img src="img/portfolio/portfolio-3.2.jpg" alt="Реконструкция родильного дома в г. Магадане">
               <p></p>
               <img src="img/portfolio/portfolio-3.jpg" alt="Реконструкция родильного дома в г. Магадане">
-              <p><b>Если вы хотите подробнее узнать о проекте, напишите нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
+              <p class="lng-portfolio-5-subtext-6"><b>Если вы хотите подробнее узнать о проекте, напишите нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
             </div>
 
           </div>
@@ -567,21 +577,17 @@
         <!-- <div class="portfolio-box">
           <img src="img/portfolio/portfolio-4.jpg" alt="Многофунцкиональный спортивный комплекс в Строгино">
           <div class="portfolio-layer">
-            <h4>МФУ в Строгино"</h4>
-            <p>Мультифункциональный спортивный комплекс</p>
-            <p>Архитектурно-юридическая компания<br>"ART group"</p>
-            <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button>
+            <h4 class="lng-portfolio-6-title">МФУ в Строгино"</h4>
+            <p class="lng-portfolio-6-subtext">Мультифункциональный спортивный комплекс</p>
+            <p class="lng-portfolio-6-subtext-1">Архитектурно-юридическая компания<br>"ART group"</p>
+            <button class="lng-portfolio-6-btn-more">Подробнее</button>
 
             <div class="read-more-content">
               <img src="img/portfolio/portfolio-4.jpg" alt="Многофунцкиональный спортивный комплекс в Строгино">
-              <p>Lers, qui officia deserunt mollit anim id est laborum:</p>
-              <p>- Lers, qui officia deserunt mollit anim id est laborum</p>
-              <p>- Lers, qui officia deserunt mollit anim id est laborum</p>
-              <p>- Lers, qui officia deserunt mollit anim id est laborum</p>
-              <p>- Lers, qui officia deserunt mollit anim id est laborum</p>
-              <p>- Lers, qui officia deserunt mollit anim id est laborum</p>
+              <p class="lng-portfolio-6-subtext-2">Многофунцкиональный спортивный комплекс в Строгино</p>
               <img src="img/portfolio/portfolio-4.jpg" alt="Многофунцкиональный спортивный комплекс в Строгино">
-              <p>Lers, qui officia deserunt mollit anim id est laborum</p>
+              <p class="lng-portfolio-6-subtext-3">Многофунцкиональный спортивный комплекс в Строгино</p>
+              <p class="lng-portfolio-6-subtext-4"><b>Если вы хотите подробнее узнать о проекте, напишите нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
             </div>
 
           </div>
@@ -590,26 +596,27 @@
         <div class="portfolio-box">
           <img src="img/portfolio/portfolio-5.jpg" alt="Мультифункциональный жилой комплекс на Рублевском шоссе">
           <div class="portfolio-layer">
-            <h4>МФК на Рублевском шоссе</h4>
-            <p>Мультифункциональный жилой комплекс</p>
-            <p>Архитектурно-юридическая компания<br>"ART group"</p>
-            <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button>
+            <h4 class="lng-portfolio-7-title">МФК на Рублевском шоссе</h4>
+            <p class="lng-portfolio-7-subtext">Мультифункциональный жилой комплекс</p>
+            <p class="lng-portfolio-7-subtext-1">Архитектурно-юридическая компания<br>"ART group"</p>
+            <!-- <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button> -->
+            <button class="lng-portfolio-btn-more lng-portfolio-7-btn-more">Подробнее</button>
 
             <div class="read-more-content">
-              <p><b>Концепция Многофункционального комплекса с ФОК по адресу: г. Москва, Рублевское ш., вл. 68-70</b></p>
+              <p class="lng-portfolio-7-subtext-2"><b>Концепция Многофункционального комплекса с ФОК по адресу: г. Москва, Рублевское ш., вл. 68-70</b></p>
               <img src="img/portfolio/portfolio-5.1.jpg" alt="Мультифункциональный жилой комплекс на Рублевском шоссе">
-              <p><b>Заказчик: ООО «СтройВест»</b></p>
-              <p>Главной идеей архитектурных решений многофункционального комплекса становится 
+              <p class="lng-portfolio-7-subtext-3"><b>Заказчик: ООО «СтройВест»</b></p>
+              <p class="lng-portfolio-7-subtext-4">Главной идеей архитектурных решений многофункционального комплекса становится 
                 создание яркого акцентного здания, маркирующего въезд в столицу с Рублёвского шоссе.</p>
               <img src="img/portfolio/portfolio-5.2.jpg" alt="Мультифункциональный жилой комплекс на Рублевском шоссе">
-              <p>Сочетание в отделке фасадов панорамного остекления с вытянутыми вертикальными ритмами 
+              <p class="lng-portfolio-7-subtext-5">Сочетание в отделке фасадов панорамного остекления с вытянутыми вертикальными ритмами 
                 облицовки оттенков слоновой кости и золотистого металла, создают образ легкого 
                 современного здания. “Складка” поверхности главного фасада добавляет зданию динамику и
                  формирует в верхней части объемный силуэт, напоминающий букву «М», — таким образом, все 
                  здание работает как хорошо заметный въездной знак в Москву</p>
               <img src="img/portfolio/portfolio-5.3.jpg" alt="Мультифункциональный жилой комплекс на Рублевском шоссе">
-              <p>Концепция разработана совместно с архитектурным бюро Асадовых</p>
-              <p><b>При желании ознакомиться с полной концепцией, напишите нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
+              <p class="lng-portfolio-7-subtext-6">Концепция разработана совместно с архитектурным бюро Асадовых</p>
+              <p class="lng-portfolio-7-subtext-7"><b>При желании ознакомиться с полной концепцией, напишите нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
             </div>
 
           </div>
@@ -618,39 +625,40 @@
         <div class="portfolio-box">
           <img src="img/portfolio/portfolio-6.jpg" alt="Архитектурная инсталляция «Ухоглаз»">
           <div class="portfolio-layer">
-            <h4>Архитектурная инсталляция «Ухоглаз»</h4>
-            <p>Архитектурно-юридическая компания<br>"ART group"</p>
-            <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button>
+            <h4 class="lng-portfolio-8-title">Архитектурная инсталляция «Ухоглаз»</h4>
+            <p class="lng-portfolio-8-subtext">Архитектурно-юридическая компания<br>"ART group"</p>
+            <!-- <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button> -->
+            <button class="lng-portfolio-btn-more lng-portfolio-8-btn-more">Подробнее</button>
 
             <div class="read-more-content">
-              <p><b>Архитектурная инсталляция «Ухоглаз»</b></p>
-              <p><b>Заказчик: Президентский Фонд поддержки слепоглухих «Со-единение»</b></p>
+              <p class="lng-portfolio-8-subtext-2"><b>Архитектурная инсталляция «Ухоглаз»</b></p>
+              <p class="lng-portfolio-8-subtext-3"><b>Заказчик: Президентский Фонд поддержки слепоглухих «Со-единение»</b></p>
               <img src="img/portfolio/portfolio-6.1.jpg" alt="Архитектурная инсталляция «Ухоглаз»">
-              <p>Актуальную в наше время проблему слепоглухоты рассмотрели и представили для 
+              <p class="lng-portfolio-8-subtext-4">Актуальную в наше время проблему слепоглухоты рассмотрели и представили для 
                 общественности в рамках Международной выставки архитектуры и дизайна, которая 
                 проходила с 27 по 31 мая. Выставка состоялась на площадке Garden Fest во внутреннем 
                 дворе ЦДХ, ее организаторами стали Управляющая компания «A.R.T. group», под руководством 
                 Елизаветы Морозовой, Фонд поддержки слепоглухих «Со-единение»,, а также Архитектурная 
                 лаборатория «Абстракт студио» под руководством Михаила Тюрина.</p>
-              <p>Новая инсталляция представляла собой объединение архитектурных, дизайнерских и
+              <p class="lng-portfolio-8-subtext-5">Новая инсталляция представляла собой объединение архитектурных, дизайнерских и
                  художественных начал в современной обработке. Визуально образом выставочного павильона
                   представил собой необычный контраст специфического и даже пугающего облика с весьма
                    гармоничной средой интерьера. На первый взгляд этот павильон очень напоминает
                     «Черный квадрат» Малевича, выполненный в трехмерном пространстве. Сверху он дополнен
                      внушительных размеров изображениями мозга, глаза и уха – словно с картин Дали</p>
               <img src="img/portfolio/portfolio-6.2.jpg" alt="Архитектурная инсталляция «Ухоглаз»">
-              <p>Таким нестандартным решением архитекторы попытались привлечь внимание граждан к проблеме,
+              <p class="lng-portfolio-8-subtext-6">Таким нестандартным решением архитекторы попытались привлечь внимание граждан к проблеме,
                  которая касается очень многих, и заодно постарались продумать пути решения этой проблемы.
                   Внутренняя часть павильона оказывается абсолютно иной – это яркие изображения, большое 
                   количество света и обилие голографии. Это словно наглядно демонстрирует, что слепоглухие
                    люди непреодолимым образом отделены от внешней среды и заключены в свой внутренний мир.
                     В состав экспозиции также вошли различные изделия из сферы специализированного 
                     оборудования для лиц с ограниченными физическими возможностями</p>
-              <p>Подобные технологические изделия делают жизни слепоглухих более простой и комфортной. 
+              <p class="lng-portfolio-8-subtext-7">Подобные технологические изделия делают жизни слепоглухих более простой и комфортной. 
                 Пользоваться ими могут как те, что не видит и не слышит с самого рождения, так и люди, 
                 потерявшие зрение и слух по разным обстоятельства</p>
               <img src="img/portfolio/portfolio-6.3.jpg" alt="Архитектурная инсталляция «Ухоглаз»">
-              <p>Слепоглухота тесным образом связана с мозгом, поскольку ядра зрительного нерва находятся
+              <p class="lng-portfolio-8-subtext-8">Слепоглухота тесным образом связана с мозгом, поскольку ядра зрительного нерва находятся
                  в затылочной доле мозга. Ухо и глаз являются своеобразными средствами для восприятия 
                  сознания, поэтому в проекте они играют весьма большую роль. Сам куб, выполненный из 
                  стекла, обозначает собой легкость и свет – наличие у человека духа и души, вне 
@@ -659,7 +667,7 @@
                  организаторы намерены создать рабочую группу, которая займется разработкой стандартов 
                  для слепоглухих и их внедрению в жизнь. Также эти стандарты будут полезны и для 
                  зрячеслышащих людей, уверены организаторы данной выставки</p>
-              <p>Любимый слоган компании «АРТ групп» - «от абстрактного к конкретному» как обозначает 
+              <p class="lng-portfolio-8-subtext-9">Любимый слоган компании «АРТ групп» - «от абстрактного к конкретному» как обозначает 
                 Ильенков в своем одноименном труде, что это является идеальной моделью творения. 
                 Один из крупных исследователей в области метапсихологии Рише писал, что мысли одного 
                 человека самым неведомым образом передаются мыслям других случайных людей. Это доказывает 
@@ -670,7 +678,7 @@
                 часто лаборатория становится своеобразным “законодателем мод”, архитектурных тенденций и 
                 новых направлений, которые начинаются с обычных идей</p>
               <img src="img/portfolio/portfolio-6.4.jpg" alt="Архитектурная инсталляция «Ухоглаз»">
-              <p><b>При желании Вы можете узнать больше о деятельности нашей компании, написав нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
+              <p class="lng-portfolio-8-subtext-10"><b>При желании Вы можете узнать больше о деятельности нашей компании, написав нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
             </div>
 
           </div>
@@ -679,22 +687,23 @@
         <div class="portfolio-box">
           <img src="img/portfolio/portfolio-8.jpg" alt="Учебно-оздоровительный центр «Икша»">
           <div class="portfolio-layer">
-            <h4>Учебно-оздоровительный центр «Икша»</h4>
-            <p>Концепция по ландшафтному планированию</p>
-            <p>Архитектурно-юридическая компания<br>"ART group"</p>
-            <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button>
+            <h4 class="lng-portfolio-9-title">Учебно-оздоровительный центр «Икша»</h4>
+            <p class="lng-portfolio-9-subtext">Концепция по ландшафтному планированию</p>
+            <p class="lng-portfolio-9-subtext-2">Архитектурно-юридическая компания<br>"ART group"</p>
+            <!-- <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button> -->
+            <button class="lng-portfolio-btn-more lng-portfolio-9-btn-more">Подробнее</button>
 
             <div class="read-more-content">
-              <p><b>Концепция по ландшафтному планированию зоны климат-терапии филиала Учебно-оздоровительного центра «Икша» ФГБУ "МФК Минфина России"</b></p>
-              <p><b>Адрес:</b> Московская область г.п. Мытищи деревня Большая Чёрная ул. Онежская вл. 1/33.</p>
-              <p><b>Заказчик:</b> ФГБУ «МФК Минфина России»</p>
+              <p class="lng-portfolio-9-subtext-3"><b>Концепция по ландшафтному планированию зоны климат-терапии филиала Учебно-оздоровительного центра «Икша» ФГБУ "МФК Минфина России"</b></p>
+              <p class="lng-portfolio-9-subtext-4"><b>Адрес:</b> Московская область г.п. Мытищи деревня Большая Чёрная ул. Онежская вл. 1/33.</p>
+              <p class="lng-portfolio-9-subtext-5"><b>Заказчик:</b> ФГБУ «МФК Минфина России»</p>
               <img src="img/portfolio/portfolio-8.1.jpg" alt="Мультифункциональный жилой комплекс на Рублевском шоссе">
-              <p>Стилистические решения соответствуют стилю минимализма, а формообразование - плавным 
+              <p class="lng-portfolio-9-subtext-6">Стилистические решения соответствуют стилю минимализма, а формообразование - плавным 
                 изгибам водного пространства, что в совокупности представляет собой легкую архитектуру, 
                 являющуюся продолжением природы, призванную создать максимально благоприятный эффект 
                 климат –терапии</p>
               <img src="img/portfolio/portfolio-8.2.jpg" alt="Мультифункциональный жилой комплекс на Рублевском шоссе">
-              <p>На территории предлагается разместить зоны для приема солнечных ванн , где планируется 
+              <p class="lng-portfolio-9-subtext-7">На территории предлагается разместить зоны для приема солнечных ванн , где планируется 
                 расположить декинг-патио с группами шезлонгов на комфортном расстоянии друг от друга. 
                 В вечернее время элементы декинг-патио подсвечиваются точечными светильниками теплого 
                 света. В естественной низине юго –восточной части участка предусмотрена зона BBQ с тремя
@@ -704,12 +713,12 @@
                   солнца или играть в непогоду, вторую - многоуровневую песочницу с малыми архитектурными
                    формами</p>
               <img src="img/portfolio/portfolio-8.3.jpg" alt="Мультифункциональный жилой комплекс на Рублевском шоссе">
-              <p>Существующий ландшафт дает возможность гармонично сформировать несколько зон 
+              <p class="lng-portfolio-9-subtext-8">Существующий ландшафт дает возможность гармонично сформировать несколько зон 
                 климат-терапии, обеспечивающих создание приятной атмосферы, окунающей посетителей в 
                 идиллию природы. Территория обеспечивает безопасность нахождения детей, для чего 
                 предусмотрена установка ограждения, повторяющего береговую линию с оформлением их зелеными
                  насаждениями</p>
-              <p><b>При желании ознакомиться с полной концепцией, напишите нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
+              <p class="lng-portfolio-9-subtext-9"><b>При желании ознакомиться с полной концепцией, напишите нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
             </div>
 
           </div>
@@ -718,14 +727,15 @@
         <div class="portfolio-box">
           <img src="img/portfolio/portfolio-9.jpg" alt="Общественно-деловой центр в Жуковке на Рублевском шосс">
           <div class="portfolio-layer">
-            <h4>Общественно-деловой центр в Жуковке на Рублевском шоссе</h4>
-            <p>Архитектурно-юридическая компания<br>"ART group"</p>
-            <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button>
+            <h4 class="lng-portfolio-10-title">Общественно-деловой центр в Жуковке на Рублевском шоссе</h4>
+            <p class="lng-portfolio-10-subtext">Архитектурно-юридическая компания<br>"ART group"</p>
+            <!-- <button onClick="showDialog()" class="lng-portfolio-btn-more">Подробнее</button> -->
+            <button class="lng-portfolio-btn-more lng-portfolio-10-btn-more">Подробнее</button>
 
             <div class="read-more-content">
-              <p><b>Общественно-деловой центр в Жуковке на Рублевском шоссе</b></p>
+              <p class="lng-portfolio-10-subtext-2"><b>Общественно-деловой центр в Жуковке на Рублевском шоссе</b></p>
               <img src="img/portfolio/portfolio-9.1.jpg" alt="Общественно-деловой центр в Жуковке на Рублевском шосс">
-              <p>Знаковый объект в знаковом месте. Находится в центре Жуковки по левой стороне Рублевского 
+              <p class="lng-portfolio-10-subtext-3">Знаковый объект в знаковом месте. Находится в центре Жуковки по левой стороне Рублевского 
                 шоссе, выходит на площадь элитного района, где располагаются несколько lounge зон, 
                 излюбленных для посещения политиков и знаменитостей. Перед входом в деловой центр 
                 размещается парковка. Слева располагается культовый ресторан «Дача». Справа - автосалон 
@@ -734,7 +744,7 @@
                 козырьком-навесом над входом которые создают lounge эффект. В этом смысле достигнут эффект 
                 интеграции делового центра в элитную дачную среду</p>
               <img src="img/portfolio/portfolio-9.2.jpg" alt="Общественно-деловой центр в Жуковке на Рублевском шосс">
-              <p>При создании образа ставилась задача изобрести новый стиль. В архитектуре фасадов 
+              <p class="lng-portfolio-10-subtext-4">При создании образа ставилась задача изобрести новый стиль. В архитектуре фасадов 
                 гармонично сочетаются дерево, натуральный камень и стекло. Название стиля авторы 
                 сформулировали как «Hi -tech country». Этот стиль вполне вписывается в атмосферу рублевских
                  построек. Дизайн интерьеров основан на сплошном витражном остеклении на всю высоту зданий.
@@ -742,10 +752,10 @@
                   Силуэт имеет ступенчатую форму, что позволяет сохранить 3-х этажную фасадную часть улицы. 
                   При этом имеется 4 этаж с выходом на эксплуатируемую кровлю</p>
               <img src="img/portfolio/portfolio-9.3.jpg" alt="Общественно-деловой центр в Жуковке на Рублевском шосс">
-              <p>Объект насыщен полным спектром услуг для обеспечения нужд общественно -делового 
+              <p class="lng-portfolio-10-subtext-5">Объект насыщен полным спектром услуг для обеспечения нужд общественно -делового 
                 функционала, в том числе банк</p>
-              <p>Объект реализован в 2006 г.</p>
-              <p><b>При желании ознакомиться с деятельностью компании, Вы можете написать нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
+              <p class="lng-portfolio-10-subtext-6">Объект реализован в 2006 г.</p>
+              <p class="lng-portfolio-10-subtext-7"><b>При желании ознакомиться с деятельностью компании, Вы можете написать нам по <a href="#contact" class="popup-link-contact">форме обратной связи!</a></b></p>
             </div>
 
           </div>
@@ -761,11 +771,12 @@
     <div class="popup-box" id="popup">
       <div class="popup-content">
         <div class="popup-header">
-          <h3>Арт групп</h3>
-          <span class="popup-close-icon" onClick="closeDialog()">&times;</span>
+          <h3 class="lng-popup-title">Арт групп</h3>
+          <!-- <span class="popup-close-icon" onClick="closeDialog()">&times;</span> -->
+          <span class="popup-close-icon">&times;</span>
         </div>
         <div class="popup-body">
-          <p>Арт групп</p>
+          <p class="lng-popup-text">Арт групп</p>
         </div>
         <!-- <div class="popup-footer">
           <button class="btn popup-close-btn" onClick="closeDialog()">Закрыть</button>
@@ -775,7 +786,7 @@
     <!-- READ ME MORE POPUP END -->
 
     <section class="directors director1" id="director1">
-      <h2 class="directors-heading title">Руководители компании:</h2>
+      <h2 class="directors-heading title lng-directors-heading">Руководители компании:</h2>
 
       <div class="director-box">
         <div class="director-img">
@@ -783,59 +794,60 @@
         </div>
 
         <div class="director-content">
-          <h3 class="directors-subtitle">Морозова Елизавета</h3>
-          <p class="description">Генеральный директор, Управляющий партнер</p>
-          <p class="description">Окончила Открытый Университет Великобритании и курс: «Профессиональный Сертификат в области менеджмента».</p>
-          <p class="description">Член союза юристов Москвы, Эсперт по недвижимости.</p>
-          <p class="description">Автор социально-архитектурной инициативы «Счастливый город» и «Министр Счастья».</p>
-          <p class="description">Сооснователь образовательной методики детского-юнешеского Технопарка Abstract.</p>
-          <p class="description">Член Ассоциации практикующих психологов и коучей. Автор курсов для взрослых и детей «Уроки счастья»</p>
-          <p class="description">Исследователь счастья. Автор книги «Pro счастье» «Точка Х: прошлое и будущее в моменте»</p>
+          <h3 class="directors-subtitle lng-director-1-subtitle">Морозова Елизавета</h3>
+          <p class="description lng-director-1-text-1">Генеральный директор, Управляющий партнер</p>
+          <p class="description lng-director-1-text-2">Окончила Открытый Университет Великобритании и курс: «Профессиональный Сертификат в области менеджмента».</p>
+          <p class="description lng-director-1-text-3">Член союза юристов Москвы, Эсперт по недвижимости.</p>
+          <p class="description lng-director-1-text-4">Автор социально-архитектурной инициативы «Счастливый город» и «Министр Счастья».</p>
+          <p class="description lng-director-1-text-5">Сооснователь образовательной методики детского-юнешеского Технопарка Abstract.</p>
+          <p class="description lng-director-1-text-6">Член Ассоциации практикующих психологов и коучей. Автор курсов для взрослых и детей «Уроки счастья»</p>
+          <p class="description lng-director-1-text-7">Исследователь счастья. Автор книги «Pro счастье» «Точка Х: прошлое и будущее в моменте»</p>
         
           <div class="mybox director-description" id="mybox2id">
-            <p>Личные достижения:</p>
-            <p>Участник Общегражданского форума РФ 2019 по внедрению понятия Счастья в Россию, 
+            <p class="lng-director-1-text-8">Личные достижения:</p>
+            <p class="lng-director-1-text-9">Участник Общегражданского форума РФ 2019 по внедрению понятия Счастья в Россию, 
               как стимул развития страны (2019) 
             </p>
-            <p>Спикер в дискуссии в рамках ежегодного Фестиваля в Сколково “Наука и джаз” . “Нейроурбанизм. Счастье в городе” (2019)</p>
-            <p><a href="https://www.infox.ru/press/news/223050-festival-skolkovo-jazz-science-vaznaa-tocka-na-karte-kulturnoj-i-naucnoj-zizni-moskvy " target="_blank">Фестиваль Skolkovo Jazz Science 2024</a></p>
-            <p><a href="https://old.sk.ru/news/b/articles/archive/2019/08/27/v-innograde-proshel-4y-festival-skolkovo-jazz-science.aspx " target="_blank">Фестиваль Skolkovo Jazz Science 2019</a></p>
-            <p><a href="http://www.fa.ru/org/science/niocttuz/News/2019-08-26-Skolkovo-Jazz-Science.aspx " target="_blank">Фестиваль Skolkovo Jazz Science 2019</a></p>
-            <p>Эксперт по экологическому образу жизни на международном конкурсе “ Live Organic” (2019) </p>
-            <p>Презентация методологии Счастливый город на международном форуме “Фиабси” (2019) </p>
-            <p>Неоднократные творческие встречи с презентацией книги в Москве (“Культурный центр на Патриарших”, “Дом князей Долгоруких на Покровке”и др.) </p>
-            <p>Куратор направления Счастливый город на ежегодном Форуме Счастья (соорганизатор “Живые города”) 2020 </p>
+            <p class="lng-director-1-text-10">Спикер в дискуссии в рамках ежегодного Фестиваля в Сколково “Наука и джаз” . “Нейроурбанизм. Счастье в городе” (2019)</p>
+            <p><a href="https://www.infox.ru/press/news/223050-festival-skolkovo-jazz-science-vaznaa-tocka-na-karte-kulturnoj-i-naucnoj-zizni-moskvy " target="_blank">infox.ru</a></p>
+            <p><a href="https://old.sk.ru/news/b/articles/archive/2019/08/27/v-innograde-proshel-4y-festival-skolkovo-jazz-science.aspx " target="_blank">old.sk.ru</a></p>
+            <p><a href="http://www.fa.ru/org/science/niocttuz/News/2019-08-26-Skolkovo-Jazz-Science.aspx " target="_blank">fa.ru</a></p>
+            <p class="lng-director-1-text-11">Эксперт по экологическому образу жизни на международном конкурсе “ Live Organic” (2019)</p>
+            <p class="lng-director-1-text-12">Презентация методологии Счастливый город на международном форуме “Фиабси” (2019)</p>
+            <p class="lng-director-1-text-13">Неоднократные творческие встречи с презентацией книги в Москве (“Культурный центр на Патриарших”, “Дом князей Долгоруких на Покровке”и др.)</p>
+            <p class="lng-director-1-text-14">Куратор направления Счастливый город на ежегодном Форуме Счастья (соорганизатор “Живые города”) 2020</p>
             <p><a href="https://happy-culture.ru/ " target="_blank">happy-culture.ru</a></p>
-            <p>Серия вебинаров, в том числе вебинар и в период пандемии “Дух. Душа. Тело. Интеграция” в рамках Форума Счастья 2020</p>
+            <p class="lng-director-1-text-15">Серия вебинаров, в том числе вебинар и в период пандемии “Дух. Душа. Тело. Интеграция” в рамках Форума Счастья 2020</p>
             <p><a href="https://happyforum.ru/program" target="_blank">happyforum.ru</a></p>
-            <p>Приглашенный спикер для студентов ВШСД МАРХИ по теме “Как создавать счастливые архитектурные пространства” (2020) </p>
-            <p>Приглашенный спикер на международном конгрессе по архитектуре “Счастье и человек”(2020)</p>
+            <p class="lng-director-1-text-16">Приглашенный спикер для студентов ВШСД МАРХИ по теме “Как создавать счастливые архитектурные пространства” (2020)</p>
+            <p class="lng-director-1-text-17">Приглашенный спикер на международном конгрессе по архитектуре “Счастье и человек”(2020)</p>
             <p><a href="http://congress.group/program2020#HAPPINESSANDPEOPLE" target="_blank">congress.group</a></p>
-            <p>Проведение экспертизы жилого комплекса Ока City в Рязани на предмет соответствия “Счастливой среды”(2022)</p>
-            <p>Интервью для радио Монте Карло в Калининграде о Happy City и создания министерства счастья в России</p>
-            <p><a href="https://youtu.be/BGBysWpaVw8" target="_blank">youtu.be</a></p>
-            <p>Консалтинг составителей национального проекта “Комфортная среда”(2023)</p>
-            <p>Лекция «Как архитектура влияет на сознание» для студентов и преподавателей колледжа 21 на Факультете Мегадизайн (2023)</p>
+            <p class="lng-director-1-text-18">Проведение экспертизы жилого комплекса Ока City в Рязани на предмет соответствия “Счастливой среды”(2022)</p>
+            <p class="lng-director-1-text-19">Интервью для радио Монте Карло в Калининграде о Happy City и создания министерства счастья в России</p>
+            <!-- <p><a href="https://youtu.be/BGBysWpaVw8" target="_blank">youtu.be</a></p> -->
+            <iframe width="520" height="345" src="https://youtu.be/BGBysWpaVw8">youtu.be</iframe>
+            <p class="lng-director-1-text-20">Консалтинг составителей национального проекта “Комфортная среда”(2023)</p>
+            <p class="lng-director-1-text-21">Лекция «Как архитектура влияет на сознание» для студентов и преподавателей колледжа 21 на Факультете Мегадизайн (2023)</p>
             <p><a href="https://vk.com/megadesign21tk?w=wall-108288219_2010" target="_blank">vk.com</a></p>
-            <p>Первая персональная выставка нейрокартин с творчески-музыкальным вечером в Союзе Архитекторов России  (2023г.)</p>
+            <p class="lng-director-1-text-22">Первая персональная выставка нейрокартин с творчески-музыкальным вечером в Союзе Архитекторов России (2023г.)</p>
             <p><a href="https://uar.ru/news/vystavka-elizavety-morozovoy-mezhdu-biznesom-proydyet-v-prostranstve-granat/" target="_blank">uar.ru</a></p>
-            <p>Спикер на дискуссии Главных Архитекторов городов России в Казани</p>
+            <p class="lng-director-1-text-23">Спикер на дискуссии Главных Архитекторов городов России в Казани</p>
             <p><a href="https://rebusforum.ru/tpost/61at2rubh1-chelovek-schaste-i-gorod" target="_blank">rebusforum.ru</a></p>
-            <p>Спикер на тему “Счастливый город” на международной конференции по недвижимости в Светлогорске (Янтарь Холл), организованный Застройщиком “Русская Европа” (2023)</p>
-            <p>Лекция на тему личного счастья на Фестивале радости, организованным Олегом Семичевым (официальный представитель йога смеха в России)</p>
-            <p>Прямой эфир  в Авторской программе Олега Свиридова (2023)</p>
+            <p class="lng-director-1-text-24">Спикер на тему “Счастливый город” на международной конференции по недвижимости в Светлогорске (Янтарь Холл), организованный Застройщиком “Русская Европа” (2023)</p>
+            <p class="lng-director-1-text-25">Лекция на тему личного счастья на Фестивале радости, организованным Олегом Семичевым (официальный представитель йога смеха в России)</p>
+            <p class="lng-director-1-text-26">Прямой эфир в Авторской программе Олега Свиридова (2023)</p>
             <p><a href="https://youtu.be/s8T31uX8LkI" target="_blank">youtu.be</a></p>
             <p><a href="https://vk.com/sviridovrealtor" target="_blank">vk.com</a></p>
-            <p>Лекция по приглашению Минстрой России на ВДНХ на тему “Экология отношений”</p>
+            <p class="lng-director-1-text-27">Лекция по приглашению Минстрой России на ВДНХ на тему “Экология отношений”</p>
             <p><a href="https://roskapstroy.ru/news/news_4964/" target="_blank">roskapstroy.ru</a></p>
-            <p>Приглашенный спикер в закрытый клуб “Рябиновый джаз” с темой “Разговор о счастье” в г. Серпухов (2024 г.)</p>
-            <p>Вторая персональная выставка “Тайна Дамы в красном” (2024г.)</p>
-            <p>спикер Международного архитектурного конгресса (установочная сессия для студентов) и  Сесия “Реновация городов силами компаний: Как сделать город счастливым”</p>
+            <p class="lng-director-1-text-28">Приглашенный спикер в закрытый клуб “Рябиновый джаз” с темой “Разговор о счастье” в г. Серпухов (2024 г.)</p>
+            <p class="lng-director-1-text-29">Вторая персональная выставка “Тайна Дамы в красном” (2024г.)</p>
+            <p class="lng-director-1-text-30">Спикер Международного архитектурного конгресса (установочная сессия для студентов) и  Сесия “Реновация городов силами компаний: Как сделать город счастливым”</p>
             <p><a href="https://mcmarch.ru/session31" target="_blank">mcmarch.ru/session31</a></p>
             <p><a href="https://mcmarch.ru/session31" target="_blank">mcmarch.ru/session31</a></p>
           </div>
           <div class="button">
-            <button id="mybuttonid2" onclick="changeReadMore2()" class="btn-read-more button-link contact-us">Подробнее</button>
+            <button id="mybuttonid2" onclick="changeReadMore2()" class="btn-read-more button-link contact-us lng-director-1-btn-more">Подробнее</button>
           </div>
         </div>
 
@@ -995,13 +1007,13 @@
     </div>
   </footer>
 
-  <script src="js/gsap.min.js"></script>
+  <!-- <script src="js/gsap.min.js"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="js/lang.js" defer></script>
-  <script src="js/app.js" defer></script>
+  <script src="js/app.js" defer></script> -->
 
-  <script src="lib/bodyScrollLock.js"></script>
+  <!-- <script src="lib/bodyScrollLock.js"></script> -->
 </body>
 
 </html>
