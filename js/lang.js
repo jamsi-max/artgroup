@@ -382,6 +382,42 @@ const langList = {
         "ru": "<b>Если Вы хотите более подробно ознакомиться с проектом или принять в нем участие, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
         "en": "<b>If you want to learn more about the project or take part in it, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
     },
+    "portfolio-2-subtext-6" : {
+        "ru": "О проекте в средствах массовой информации",
+        "en": "About the project in the media",
+    },
+    "portfolio-2-subtext-7" : {
+        "ru": "Какой может стать набережная ММДЦ «Москва-Сити»",
+        "en": "What can the embankment of the MIBC «Moscow City» become?",
+    },
+    "portfolio-2-subtext-8" : {
+        "ru": "Компания «АРТ Групп» разработала проект развития Пресненской набережной, возле которой находится Московский международный деловой центр «Москва-Сити».",
+        "en": "The ART Group company has developed a project for the development of Presnenskaya Embankment, near which the Moscow International Business Center «Moscow City» is located.",
+    },
+    "portfolio-2-subtext-9" : {
+        "ru": "Архитекторы представили пятиуровневую набережную у «Москва-Сити»",
+        "en": "The architects presented a five-level embankment near the Moscow City",
+    },
+    "portfolio-2-subtext-10" : {
+        "ru": "На разных уровнях могут появиться прогулочные зоны, парковка, торговля и переходы в деловой центр «Москва-Сити»",
+        "en": "Walking areas, parking, retail and transitions to the Moscow City business center may appear on different levels",
+    },
+    "portfolio-2-subtext-11" : {
+        "ru": "Строительство фрагмента набережной Москва-Сити обойдется в $100 млн",
+        "en": "The construction of a fragment of the embankment of Moscow City will cost $ 100 million",
+    },
+    "portfolio-2-subtext-12" : {
+        "ru": "Строительство первого фрагмента набережной ММДЦ «Москва-сити» обойдется в 100 миллионов долларов, рассказали РИА Новости в компании «АРТ Групп»",
+        "en": "The construction of the first fragment of the embankment of the Moscow City Shopping Mall will cost $ 100 million, ART Group told RIA Novosti",
+    },
+    "portfolio-2-subtext-13" : {
+        "ru": "Да пребудет Сити!",
+        "en": "May the City be!",
+    },
+    "portfolio-2-subtext-14" : {
+        "ru": "Это инициативный проект создателя компании и архитектора Михаила Тюрина, все первоначальное инвестирование ведется компанией «АРТ Групп» – три миллиона долларов мы уже вложили",
+        "en": "This is an initiative project of the company's creator and architect Mikhail Tyurin, all initial investments are being made by ART Group – we have already invested three million dollars",
+    },
 
     "portfolio-3-title" : {
         "ru": "Проект «Территориум» башня «Империя»",
@@ -391,7 +427,7 @@ const langList = {
         "ru": "Концепция приспособления крыши",
         "en": "Roof fitting concept",
     },
-    "portfolio-3-subtext" : {
+    "portfolio-3-subtext-1" : {
         "ru": "Архитектурно-юридическая компания<br>«ART group»",
         "en": "Architectural law company<br>«ART group»",
     },
@@ -688,6 +724,71 @@ const langList = {
     "portfolio-10-subtext-7" : {
         "ru": "<b>При желании ознакомиться с деятельностью компании, Вы можете написать нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
         "en": "<b>If you want to get acquainted with the company's activities, you can write to us using the <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
+    },
+
+    "portfolio-11-title" : {
+        "ru": "Проект многоуровневого паркинга",
+        "en": "Multi-level parking project",
+    },
+    "portfolio-11-subtext-1" : {
+        "ru": "Архитектурно-юридическая компания<br>«ART group»",
+        "en": "Architectural law company<br>«ART group»",
+    },
+    "portfolio-11-btn-more" : {
+        "ru": "Подробнее",
+        "en": "More",
+    },
+    "portfolio-11-subtext-2" : {
+        "ru": "За единицу измерения ситуации, наша группа определила квартал, ограниченный улицами Хамовнический вал, вдоль которого идет зеленая полоса , ул. Усачева, Савельева, комплексом зданий ЗАО МНПО «Спектр», гостиницей «Юность», метро «Спортивная» и строящемуся ТПУ «Лужники», который после ввода в эксплуатацию увеличит количество людей до 3000 человек в час пик.",
+        "en": "As a unit of measurement of the situation, our group identified a block bounded by Khamovnichesky Val streets, along which there is a green strip, Usacheva St., Savelyev St., the complex of buildings of JSC MNPO Spectrum, the Yunost hotel, Sportivnaya metro station and the Luzhniki TPU under construction, which after commissioning will increase the number of people to 3,000 a man in rush hour.",
+    },
+    "portfolio-11-subtext-3" : {
+        "ru": "Это во многом определило основной подход к общей концепции проекта, согласно которой предлагается оставить паркинг на четырех верхних уровнях, в то время как 80% от площади 1 этажа предоставить пешеходам в качестве площади с экологической тематикой, организовав информационные панели о потреблении энергии здания в режиме реального времени, а также общую информацию о событиях в области экологии",
+        "en": "This largely determined the main approach to the overall concept of the project, according to which it is proposed to leave parking on the four upper levels, while 80% of the 1st floor area should be provided to pedestrians as an area with an environmental theme, organizing information panels on the energy consumption of the building in real time, as well as general information about events in the area ecology",
+    },
+    "portfolio-11-subtext-4" : {
+        "ru": "Непосредственная связь со сквером позволяет размещение детской игровой комнаты, в которой работающие в соседних зданиях могут оставить своих детей под присмотром в течение рабочего дня",
+        "en": "The direct connection with the park allows the placement of a children's playroom, in which workers in neighboring buildings can leave their children under supervision during the working day",
+    },
+    "portfolio-11-subtext-5" : {
+        "ru": "В нашем предложении архитектурный подход обусловлен следующими принципиальными аспектами:",
+        "en": "In our proposal, the architectural approach is conditioned by the following fundamental aspects:",
+    },
+    "portfolio-11-subtext-6" : {
+        "ru": "&#8226; влияние на социально-городскую среду",
+        "en": "&#8226; impact on the socio-urban environment",
+    },
+    "portfolio-11-subtext-7" : {
+        "ru": "&#8226; влияние на окружающую среду",
+        "en": "&#8226; environmental impact",
+    },
+    "portfolio-11-subtext-8" : {
+        "ru": "&#8226; использование альтернативных источников энергии",
+        "en": "&#8226; the use of alternative energy sources",
+    },
+    "portfolio-11-subtext-9" : {
+        "ru": "Забота об окружающей среде заслуживает особого внимания. Выбор 'зелёных фасадов', покрытых вечно-зелёными растениями имеет двойной эффект: во первых, в жаркие периоды года солнечное тепло не будет скапливаться в массе здания, а придаст свежести не только внутри здания, но и улице, во вторых растения будут поглощать углекислый газ и загрязнённый машинами воздух ввиду своего естественного назначения путём фотосинтез",
+        "en": "Taking care of the environment deserves special attention. The choice of 'green facades' covered with evergreen plants has a double effect: firstly, in hot periods of the year, solar heat will not accumulate in the mass of the building, but will give freshness not only inside the building, but also outside, secondly, plants will absorb carbon dioxide and air polluted by cars due to their natural purpose by photosynthesis",
+    },
+    "portfolio-11-subtext-10" : {
+        "ru": "В качестве растений предлагается можжевельник, кизильник и бересклет из семейства плющевых, адаптированных к холодному московскому климату",
+        "en": "Juniper, dogwood and birch bark from the ivy family adapted to the cold Moscow climate are offered as plants",
+    },
+    "portfolio-11-subtext-11" : {
+        "ru": "<b>При желании ознакомиться с полной концепцией, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
+        "en": "<b>If you want to get acquainted with the full concept, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
+    },
+    "portfolio-11-subtext-12" : {
+        "ru": "Мнение Архсовета по данному проекту г. Москвы можно посмотреть на сайте",
+        "en": "The opinion of the Arch Council on this project in Moscow can be viewed on the website",
+    },
+    "portfolio-11-subtext-13" : {
+        "ru": "Вторая жизнь «долгостроев»",
+        "en": "The second life of 'long construction'",
+    },
+    "portfolio-11-subtext-14" : {
+        "ru": "Публикуем подборку вынесенных на Рабочие рассмотрения проектов, связанных с реконструкциями «замороженных» объектов строительства либо существующих зданий, на которые появились новые инвестпроекты и потребности в расширении площадей",
+        "en": "We publish a selection of projects submitted for consideration related to the reconstruction of «frozen» construction sites or existing buildings for which new investment projects and needs for expansion of areas have appeared",
     },
     
     "popup-title" : {

@@ -60,6 +60,13 @@ section {
     padding: 0 5%;
     overflow: hidden;
 }
+.hr-line {
+	margin: 20px 0;
+	padding: 0;
+	height: 0;
+	border: none;
+	border-top: 1px solid #333;
+}
 
 .logo {
     width: 150px;
@@ -678,11 +685,11 @@ select option span{
 .link-preview__link {
     text-decoration: none;
 }
-  .link-preview__wrapper {
+.link-preview__wrapper {
     display: flex;
     flex-wrap: wrap;
-  }
-  .link-preview__content {
+}
+.link-preview__content {
     box-sizing: border-box;
     padding: 8px;
     flex: 1 1 270px;
@@ -693,8 +700,8 @@ select option span{
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-  }
-  .link-preview__title {
+}
+.link-preview__title {
     font-weight: 600;
     line-height: 24px;
     max-height: 50px;
@@ -706,8 +713,8 @@ select option span{
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     display: -webkit-box;
-  }
-  .link-preview__description {
+}
+.link-preview__description {
     margin-top: 8px;
     color: hsl(220, 15%, 30%);
     line-height: 20px;
@@ -721,15 +728,13 @@ select option span{
     display: -webkit-box;
     font-size: 16px;
     font-family: "Open Sans", sans-serif;
-  }
-  .link-preview__domain {
+}
+.link-preview__domain {
     margin-top: 12px;
     font-size: 12px;
     font-family: monospace;
     color: hsl(221, 10%, 40%);
-  }
-
-
+}
 
 /* END DIRECTORS */
 
@@ -887,6 +892,12 @@ select option span{
 
 .portfolio-box .portfolio-layer .read-more-content{
     display: none;
+}
+.popup-body h3{
+    margin-top: 6%;
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-align: center;
 }
 .popup-link-contact{
     color: var(--main-color);
