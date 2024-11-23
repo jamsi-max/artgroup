@@ -647,16 +647,37 @@ select option span{
 }
 
 
+
+.container-iframe {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+}
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .link-preview {
     margin: 0 auto;
     max-width: 1200px;
     padding: 0;
     box-shadow: inset 0 0 0 1px rgb(230 230 230);
     height: auto;
-  }
-  .link-preview__link {
+    
+}
+.link-preview:hover {
+    box-shadow: inset 0 0 0 .5px var(--main-color);
+}
+.link-preview__link {
     text-decoration: none;
-  }
+}
   .link-preview__wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -707,19 +728,6 @@ select option span{
     font-family: monospace;
     color: hsl(221, 10%, 40%);
   }
-  .link-preview__image {
-    display: block;
-    padding: 0;
-    margin: 0;
-    flex: 0 0 clamp(260px, (606px - 100%) * 1000, 100%);
-    height: auto;
-    background-position: 50% 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-origin: border-box;
-    aspect-ratio: 2;
-    box-shadow: inset 0 0 0 1px rgb(230 230 230);
-  }  
 
 
 
