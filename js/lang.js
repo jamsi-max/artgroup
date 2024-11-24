@@ -790,6 +790,55 @@ const langList = {
         "ru": "Публикуем подборку вынесенных на Рабочие рассмотрения проектов, связанных с реконструкциями «замороженных» объектов строительства либо существующих зданий, на которые появились новые инвестпроекты и потребности в расширении площадей",
         "en": "We publish a selection of projects submitted for consideration related to the reconstruction of «frozen» construction sites or existing buildings for which new investment projects and needs for expansion of areas have appeared",
     },
+
+    "portfolio-12-title" : {
+        "ru": "Реконструкция перехода от м.Театральная к ГУМу",
+        "en": "Reconstruction of the transition from the Teatralnaya metro station to GUM",
+    },
+    "portfolio-12-subtext-1" : {
+        "ru": "Архитектурно-юридическая компания<br>«ART group»",
+        "en": "Architectural law company<br>«ART group»",
+    },
+    "portfolio-12-btn-more" : {
+        "ru": "Подробнее",
+        "en": "More",
+    },
+    "portfolio-12-subtext-3" : {
+        "ru": "На момент разработки проекта нашей организацией совместно с архитектором Л.Л.Павловым из «Моспроекта-2» в 1995г. правообладателем двора была компания «Старград», выступавшая заказчиком реконструкции перехода.",
+        "en": "At the time of the development of the project, our organization, together with architect L.L.Pavlov from Mosproekt-2 in 1995, the copyright holder of the yard was the Stargrad company, which was the customer of the reconstruction of the transition.",
+    },
+    "portfolio-12-subtext-4" : {
+        "ru": "С советских времен территория двора Спасского собора оставалась обветшалой и не обустроенной. Нами было предложено несколько вариантов его реконструкции (см. рис1) , основная идея которой заключалась в том, чтобы максимально освободить визуальное пространство перед храмом путем переноса согласно проекту регенерации квартала с организацией пешеходных связей (см. рис2) вентиляционного киоска на 25 метров в сторону Монетного двора., где около строения № 4 исторически размещалось первое учебное заведение в России -Бурса. Проект регенерации квартала с организацией пешеходных связей (см. рис2 (схема пешеходных связей)) давал основание использовать для этого место застройки утерянного здания Бурсы.",
+        "en": "Since Soviet times, the territory of the courtyard of the Spassky Cathedral has remained dilapidated and unfurnished. We proposed several options for its reconstruction (see Fig1), the main idea of which was to maximize the visual space in front of the temple by transferring, according to the project of regeneration of the quarter with the organization of pedestrian connections (see fig2), a ventilation kiosk 25 meters towards the Mint., where the first educational building was historically located near building No. 4 the institution in Russia is Bursa. The project of regeneration of the quarter with the organization of pedestrian links (see fig2 (diagram of pedestrian connections)) gave reason to use the building site of the lost Bursa building for this purpose.",
+    },
+    "portfolio-12-subtext-5" : {
+        "ru": "Таким образом, достигались две цели: воссоздание исторического объема и высвобождение пространства для парадного двора собора.",
+        "en": "Thus, two goals were achieved: the reconstruction of the historical volume and the release of space for the cathedral's front yard.",
+    },
+    "portfolio-12-subtext-6" : {
+        "ru": "Сейчас, когда, наконец-то Церкви после всех гонений в тяжелые времена советской власти возвращаются храмы, иконы, земли, законно ей принадлежавшие, проект благоустройства двора Спасского собора Заиконоспасского монастыря, на наш взгляд, не теряет актуальности. Он мог бы быть использован Церковью с целью как создания атмосферы, соответствующей церковной жизни, так повысить экономическое положение монастыря (например, путем организации за счет освобожденного пространства объектов продажи церковной утвари, выставочно-конгрессного центра для проведения мероприятий православного содержания)",
+        "en": "Now, when, finally, churches, icons, and lands that legally belonged to the Church are returned to the Church after all the persecutions in the difficult times of the Soviet government, the project of landscaping the courtyard of the Spassky Cathedral of the Zaikonospassky Monastery, in our opinion, does not lose relevance. It could be used by the Church both to create an atmosphere appropriate to church life and to improve the economic situation of the monastery (for example, by organizing, at the expense of the vacated space, objects for the sale of church utensils, an exhibition and congress center for holding events of Orthodox content)",
+    },
+    "portfolio-12-subtext-7" : {
+        "ru": "Также хотелось бы открыть глаза на то, что проект, прошедший в 2002 государственную экспертизу, будучи полностью согласован и Архитектурным, и Общественным советом представляет собой совсем иное, нежели то, во что его превратили при попытках реализации.",
+        "en": "I would also like to open my eyes to the fact that the project, which passed the state examination in 2002, being fully coordinated by both the Architectural and Public Council, is completely different from what it was turned into when trying to implement.",
+    },
+    "portfolio-12-subtext-8" : {
+        "ru": "Необходимость строительства современной коммуникации, соединяющей Театральную площадь и метро с Никольской улицей, ГУМом, Красной площадью возникла в связи с увеличением пешеходных потоков из объединенного вестибюля станций метро «Театральная» и «Площадь революции», где исторически была улица. По статистическим данным, полученным нами во время разработки проекта (эта фраза указывает на период стат. данных) – основной пешеходный поток сосредоточен именно на месте перехода и имеет наиболее высокую проходимость . Поэтому логично было организовать дополнительный вход со стороны Заиконоспасского двора к храму, откуда он хорошо виден и доступен для людей. Перепад между Театральной площадью и Никольской улицей составляет более 5 м – это почти два уровня, к тому же данный узел имеет пересечение с двором музея Ленина и переходит к Иверским воротам, являющимися продолжением Китай-городской стены.",
+        "en": "The need to build modern communications connecting Teatralnaya Square and the metro with Nikolskaya Street, GUM, and Red Square arose due to an increase in pedestrian flows from the combined lobby of the Teatralnaya and Ploshchad Revolyutsii metro stations, where historically there was a street. According to the statistical data obtained by us during the development of the project (this phrase indicates the period of stat. data) – the main pedestrian flow is concentrated precisely at the crossing point and has the highest passability . Therefore, it was logical to organize an additional entrance from the Zaikonospassky courtyard to the temple, from where it is clearly visible and accessible to people. The difference between Teatralnaya Square and Nikolskaya Street is more than 5 m – it is almost two levels, besides, this node has an intersection with the courtyard of the Lenin Museum and goes to the Iversky Gate, which is a continuation of the Kitai-Gorod Wall.",
+    },
+    "portfolio-12-subtext-9" : {
+        "ru": "Также в 1995 г. наша компания предложила концепцию регенерации части квартала, пострадавшего в советское время при строительстве метро, когда было утрачено около 100 м Китайгородской стены, под которой когда-то протекала река Неглинка (см. рис3 фасад со стороны театр площади). Мастерская «Моспроекта-2» в 70-80-е гг. квартал вообще собирались снести и на его месте построить дорогу.",
+        "en": "Also in 1995, our company proposed the concept of regeneration of a part of the quarter that was damaged during the construction of the metro in Soviet times, when about 100 m of the Kitaygorodskaya wall was lost, under which the Neglinka River once flowed (see Fig. 3 facade from the theater square). The Mosproject-2 workshop in the 70s and 80s. the quarter was generally going to be demolished and a road built in its place.",
+    },
+    "portfolio-12-subtext-10" : {
+        "ru": "Реализация пешеходно-туристических маршрутов Китай-города, о которых было уже упомянуто ранее, (см. рис2. (схема пешеходных связей)) позволила бы связать не только стену, но и дворы 2-го квартала – от Казанского собора до Лубянки, где располагаются Монетный двор, РГГУ, Николо-Греческий монастырь, офисный центр «Никольская 17», театр Пакровкого, бывший ресторан «Славянский базар» до магазинов Третьяковского проезда, имеющие как уличные, так и дворовые фасады (см. рис № )Предполагалась реновация домовладений 7-9 и школы Осипа Бове, построенной одновременно с Театральной площадью",
+        "en": "The implementation of the Kitay-Gorod hiking routes, which were already mentioned earlier (see Fig. 2. (diagram of pedestrian connections)) it would allow linking not only the wall, but also the courtyards of the 2nd quarter - from the Kazan Cathedral to the Lubyanka, where the Mint, the Russian State University, the Nikolo–Greek Monastery, the Nikolskaya 17 office center, the Pakrovsky Theater, the former Slavyansky Bazaar restaurant to the Tretyakov Passage shops, which have both street and courtyard facades (see Figure no. )It was supposed to renovate households 7-9 and the Osip Bove school, built simultaneously with the Theater Square",
+    },
+    "portfolio-12-subtext-11" : {
+        "ru": "<b>При желании ознакомиться с полной концепцией, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
+        "en": "<b>If you want to get acquainted with the full concept, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
+    },
     
     "popup-title" : {
         "ru": "Арт групп",
@@ -848,6 +897,30 @@ const langList = {
         "ru": "Спикер в дискуссии в рамках ежегодного Фестиваля в Сколково “Наука и джаз” . “Нейроурбанизм. Счастье в городе” (2019)",
         "en": "Speaker in the discussion at the annual Skolkovo Festival 'Science and Jazz'. 'Neurourbanism. Happiness in the City' (2019)",
     },
+    "director-1-text-10-1" : {
+        "ru": "Фестиваль Skolkovo Jazz Science – важная точка на карте культурной и научной жизни Москвы",
+        "en": "The Skolkovo Jazz Science Festival is an important point on the map of Moscow's cultural and scientific life",
+    },
+    "director-1-text-10-2" : {
+        "ru": "24 августа в инновационном центре «Сколково» прошел четвертый фестиваль Skolkovo Jazz Science. Ежегодный летний open-air, объединяющий музыку и науку, посетило более 4500 человек. В лайн-апе – яркие московские и зарубежные джазовые исполнители, а в расписании научной программы – лекции, дискуссия, познавательные мастер-классы, лаборатории и интерактивные образовательные игры для всей семьи.",
+        "en": "On August 24, the fourth Skolkovo Jazz Science Festival was held at the Skolkovo Innovation Center. The annual summer open-air, combining music and science, was attended by more than 4,500 people. The line-up features bright Moscow and foreign jazz performers, and the scientific program schedule includes lectures, discussions, educational workshops, laboratories and interactive educational games for the whole family.",
+    },
+    "director-1-text-10-3" : {
+        "ru": "В иннограде прошел 4-й Фестиваль Skolkovo Jazz Science",
+        "en": "The 4th Skolkovo Jazz Science Festival was held in Innograd",
+    },
+    "director-1-text-10-4" : {
+        "ru": "Свыше 4,5 тысяч человек побывало на традиционном сколковском фестивале, объединяющем музыку и науку.",
+        "en": "Over 4.5 thousand people attended the traditional Skolkovo festival, which combines music and science.",
+    },
+    "director-1-text-10-5" : {
+        "ru": "На фестивале Skolkovo Jazz Science 2019 обсудили проблемы оценки технологий",
+        "en": "The problems of technology assessment were discussed at the Skolkovo Jazz Science 2019 Festival",
+    },
+    "director-1-text-10-6" : {
+        "ru": "24 августа 2019 года в Сколково состоялся Skolkovo Jazz Science 2019, в котором принял участие Александр Костин - научный руководитель научно-исследовательского образовательного центра компетенций в области трансфера технологий и управления знаниями Финансового университета при Правительстве Российской Федерации",
+        "en": "On August 24, 2019, Skolkovo hosted the Skolkovo Jazz Science 2019, which was attended by Alexander Kostin, Scientific director of the Research and educational Competence Center in the field of technology transfer and knowledge management at the Financial University under the Government of the Russian Federation",
+    },
     "director-1-text-11" : {
         "ru": "Эксперт по экологическому образу жизни на международном конкурсе “Live Organic” (2019)",
         "en": "An expert on the ecological lifestyle at the international competition 'Live Organic' (2019)",
@@ -864,9 +937,25 @@ const langList = {
         "ru": "Куратор направления Счастливый город на ежегодном Форуме Счастья (соорганизатор “Живые города”) 2020",
         "en": "Curator of the Happy City direction at the annual Happiness Forum (co-organizer of 'Living Cities') 2020",
     },
+    "director-1-text-14-1" : {
+        "ru": "Реализованные проекты",
+        "en": "Completed projects",
+    },
+    "director-1-text-14-2" : {
+        "ru": "Мы живем в удивительное время, когда люди наконец-то начали осознавать, какое сильное влияние оказывает на все сферы деятельности их психологическое и эмоциональное состояние. Слова депрессия и стресс вдруг стали общеупотребимыми.",
+        "en": "We live in an amazing time when people have finally begun to realize how much influence their psychological and emotional state has on all spheres of activity. The words depression and stress suddenly became common.",
+    },
     "director-1-text-15" : {
         "ru": "Серия вебинаров, в том числе вебинар и в период пандемии “Дух. Душа. Тело. Интеграция” в рамках Форума Счастья 2020",
         "en": "A series of webinars, including a webinar during the pandemic 'Spirit. Soul. Body. Integration' within the framework of the Happiness Forum 2020",
+    },
+    "director-1-text-15-1" : {
+        "ru": "Программа Форума Счастья по дням",
+        "en": "The program of the Forum of Happiness by day",
+    },
+    "director-1-text-15-2" : {
+        "ru": "Календарь прямых эфиров",
+        "en": "Live Broadcast Calendar",
     },
     "director-1-text-16" : {
         "ru": "Приглашенный спикер для студентов ВШСД МАРХИ по теме “Как создавать счастливые архитектурные пространства” (2020)",
@@ -875,6 +964,14 @@ const langList = {
     "director-1-text-17" : {
         "ru": "Приглашенный спикер на международном конгрессе по архитектуре “Счастье и человек”(2020)",
         "en": "Invited Speaker at the International Congress on Architecture “Happiness and Man” (2020)",
+    },
+    "director-1-text-17-1" : {
+        "ru": "СЧАСТЬЕ И ЛЮДИ",
+        "en": "HAPPINESS AND PEOPLE",
+    },
+    "director-1-text-17-2" : {
+        "ru": "Творческий кластер для государства и общества. Психически и физически здоровое общество — это счастливое общество, по мнению разных стран и народов мира, в рамках Всемирного архитектурного конгресса RIO2021",
+        "en": "Creative cluster for the state and society. A mentally and physically healthy society is a happy society in the understanding of different countries and peoples of the world on the topics of the RIO2021 World Architectural Congress",
     },
     "director-1-text-18" : {
         "ru": "Проведение экспертизы жилого комплекса Ока City в Рязани на предмет соответствия “Счастливой среды”(2022)",
@@ -892,13 +989,37 @@ const langList = {
         "ru": "Лекция «Как архитектура влияет на сознание» для студентов и преподавателей колледжа 21 на Факультете Мегадизайн (2023)",
         "en": "Lecture 'How architecture affects consciousness' for students and teachers of College 21 at the Faculty of Megadesign (2023)",
     },
+    "director-1-text-21-1" : {
+        "ru": "МЕГАДИЗАЙН (ГБПОУ ТК №21)",
+        "en": "MEGADESIGN (GBPOU TC No.21)",
+    },
+    "director-1-text-21-2" : {
+        "ru": "На нашем факультете прошла партнерская встреча, роад-шоу модераторов и руководителей Московского инновационного кластера по программе Креатонов «Московской недели интерьера и дизайна» со студентами дизайнерских групп факультета",
+        "en": "Our faculty hosted a partner meeting, a roadshow of moderators and heads of the Moscow Innovation Cluster under the Creatone program 'Moscow Week of Interior and Design' with students of the design groups of the faculty",
+    },
     "director-1-text-22" : {
         "ru": "Первая персональная выставка нейрокартин с творчески-музыкальным вечером в Союзе Архитекторов России (2023г.)",
         "en": "The first solo exhibition of neurocartins with a creative and musical evening at the Union of Architects of Russia (2023)",
     },
+    "director-1-text-22-1" : {
+        "ru": "Выставка Елизаветы Морозовой «Между___бизнесом» пройдёт в пространстве «Гранат»",
+        "en": "Elizaveta Morozova's exhibition 'Between ___Business' will be held in the Garnet space",
+    },
+    "director-1-text-22-2" : {
+        "ru": "16 июня в 18:00 в здании Союза архитекторов России по адресу Гранатный переулок, д.12 состоится открытие персональной выставки генерального директора Архитектурно-строительной и юридической компании «АРТ групп» Елизаветы Морозовой под названием «Между____бизнесом»",
+        "en": "On June 16 at 18:00 in the building of the Union of Architects of Russia at 12 Granatny Lane, the opening of the personal exhibition of the General director of the Architectural, Construction and law company ART Group Elizaveta Morozova entitled 'Between ____business' will take place",
+    },
     "director-1-text-23" : {
         "ru": "Спикер на дискуссии Главных Архитекторов городов России в Казани",
         "en": "Speaker at the discussion of the Main Architects of Russian cities in Kazan",
+    },
+    "director-1-text-23-1" : {
+        "ru": "Человек, счастье и город",
+        "en": "Man, happiness and the city",
+    },
+    "director-1-text-23-2" : {
+        "ru": "Юрист, писатель и исследователь счастья, генеральный директор архитектурно-юридической и строительсной компании «АРТ групп» Елизавета Морозова размышляла о том, что такое счастливый город",
+        "en": "Elizaveta Morozova, a lawyer, writer and researcher of happiness, general director of the architectural, legal and construction company ART Group, reflected on what a happy city is",
     },
     "director-1-text-24" : {
         "ru": "Спикер на тему “Счастливый город” на международной конференции по недвижимости в Светлогорске (Янтарь Холл), организованный Застройщиком “Русская Европа” (2023)",
@@ -916,6 +1037,14 @@ const langList = {
         "ru": "Лекция по приглашению Минстрой России на ВДНХ на тему “Экология отношений”",
         "en": "Lecture at the invitation of the Ministry of Construction of Russia at VDNH on the topic 'Ecology of relations'",
     },
+    "director-1-text-27-1" : {
+        "ru": "3 декабря в павильоне Стройкомплекса России на ВДНХ состоялись лекции ФАУ «РосКапСтрой» #НаВыставкеРоссия",
+        "en": "On December 3, lectures by the FAA 'RosKapStroy' took place in the pavilion of the Russian Construction Complex at VDNH #Russia",
+    },
+    "director-1-text-27-2" : {
+        "ru": "В рамках международной выставки-форума «Россия» ФАУ «РосКапСтрой» проводит ряд мастер-классов, лекций и общественных мероприятий. Так, 3 декабря 2023 года в Павильоне 15 ВДНХ на площадке Минстроя России учреждением были организованы две лекции",
+        "en": "Within the framework of the international exhibition and forum 'Russia', the FAA 'RosKapStroy' conducts a number of master classes, lectures and public events. So, on December 3, 2023, two lectures were organized by the institution in Pavilion 15 of VDNH at the site of the Ministry of Construction of the Russian Federation",
+    },
     "director-1-text-28" : {
         "ru": "Приглашенный спикер в закрытый клуб “Рябиновый джаз” с темой “Разговор о счастье” в г. Серпухов (2024 г.)",
         "en": "Invited speaker to the private club 'Rowan jazz' with the theme 'Conversation about happiness' in Serpukhov (2024)",
@@ -928,262 +1057,233 @@ const langList = {
         "ru": "Спикер Международного архитектурного конгресса (установочная сессия для студентов) и  Сесия “Реновация городов силами компаний: Как сделать город счастливым”",
         "en": "Speaker of the International Architectural Congress (an introductory session for students) and the Session 'Urban renovation by companies: How to make a city happy'",
     },
+    "director-1-text-30-1" : {
+        "ru": "Сессия 31: Реновация городов – силами компаний Как сделать город счастливым",
+        "en": "Session 31: Urban renovation – by companies How to make a city happy",
+    },
+    "director-1-text-30-2" : {
+        "ru": "Елизавета Морозова. Сооснователь архитектурно-юридической компании «АРТ групп». Сооснователь образовательной методики детского-юношеского технопарка «Abstract»",
+        "en": "Elizaveta Morozova. Co-founder of the architectural and legal company ART Group. Co-founder of the educational methodology of the children's and youth technopark «Abstract»",
+    },
+    "director-1-text-30-3" : {
+        "ru": "Сессия 38: Общественные пространства для молодежи",
+        "en": "Session 38: Public spaces for young people",
+    },
+    "director-1-text-30-4" : {
+        "ru": "Елизавета Морозова. Сооснователь архитектурно-юридической компании «АРТ групп». Сооснователь образовательной методики детского-юношеского технопарка «Abstract»",
+        "en": "Elizaveta Morozova. Co-founder of the architectural and legal company ART Group. Co-founder of the educational methodology of the children's and youth technopark «Abstract»",
+    },
     "director-1-btn-more" : {
         "ru": "Подробнее",
         "en": "More",
     },
 
-    "nav-call" : {
-        "ru": "заказать звонок",
+    "director-2-title" : {
+        "ru": "Тюрин Михаил",
+        "en": "Tyurin Mikhail",
+    },
+    "director-2-text-1" : {
+        "ru": "Архитектор",
+        "en": "Architect",
+    },
+    "director-2-text-2" : {
+        "ru": "Член Союза Архитекторов",
+        "en": "Member of the Union of Architects",
+    },
+    "director-2-text-3" : {
+        "ru": "Сооснователь компании АРТ групп",
+        "en": "Co-founder of the ART Group company",
+    },
+    "director-2-text-4" : {
+        "ru": "Сооснователь архитектурного технопарка Abstract",
+        "en": "Co-founder of the architectural technopark Abstract",
+    },
+    "director-2-text-5" : {
+        "ru": "Лауреат международных конкурсов по архитектуре и дизайну",
+        "en": "Winner of international architecture and design competitions",
+    },
+    "director-2-text-6" : {
+        "ru": "Наследник мультипликационного достояния «Левша»",
+        "en": "The heir to the cartoon heritage 'Lefty'",
+    },
+    "director-2-text-7" : {
+        "ru": "Выпускник МАРХИ 90 факультет жилищно-общественное строительство МАРХИ 90",
+        "en": "Graduate of MARHI 90 Faculty of Housing and Public Construction of MARHI 90",
+    },
+    "director-2-text-8" : {
+        "ru": "Выпускник открытого Университета Великобритании по курсу: «Профессиональный Сертификат в области менеджмента»",
+        "en": "Graduate of the Open University of Great Britain in the course: 'Professional Certificate in management'",
+    },
+    "director-2-text-9" : {
+        "ru": "Личные достижения:",
+        "en": "Personal achievements:",
+    },
+    "director-2-text-10" : {
+        "ru": "Родился в семье известного художника-мультипликатора Тюрина Аркадия Георгиевича, создавшего образ «Левши» для одноименного мультфильма по сказу Н. С. Лескова,  а также являющегося первым художником, попавшим на закрытый Космодром Байконур и посвятивший серию работ Космосу.",
+        "en": "He was born in the family of the famous cartoonist Tyurin Arkady Georgievich, who created the image of 'Lefty' for the cartoon of the same name based on the tale of N. S. Leskov, and is also the first artist to get to the closed Baikonur Cosmodrome and dedicated a series of works to Space.",
+    },
+    "director-2-text-11" : {
+        "ru": "МАРХИ – работа в мастерской профессора Б.Г. Бархина.",
+        "en": "MARKHI is a work in the workshop of Professor B.G. Barkhin.",
+    },
+    "director-2-text-12" : {
+        "ru": "Разработка макета для конкурса горнолыжного комплекса «Бакуриани» под руководством Некрасов",
+        "en": "Development of the layout for the competition of the Bakuriani ski complex under the leadership of Nekrasov",
+    },
+    "director-2-text-13" : {
+        "ru": "Практика на русском севере в Архангельской области, где восстанавливал церкви топором",
+        "en": "Practice in the Russian north in the Arkhangelsk region, where he restored churches with an axe",
+    },
+    "director-2-text-14" : {
+        "ru": "Выставка в Лондоне. Развертка Красной площади.  Ручная графика. Неорусский стиль",
+        "en": "An exhibition in London. A sweep of the Red Square.  Manual graphics. Neo-Russian style",
+    },
+    "director-2-text-15" : {
+        "ru": "Макет фирмы «Burda-moden» по проекту С.Б. Киселева",
+        "en": "The layout of the Burda-moden company designed by S.B. Kiselyov",
+    },
+    "director-2-text-16" : {
+        "ru": "Прага. Участие в театральной выставке «Квадриенале» (макет). 1-е место на международном конкурсе — Театральное пространство в конкретной градостроительной ситуации",
+        "en": "Prague. Participation in the theatrical exhibition 'Quadrienale' (mock-up). 1st place in the international competition — Theater space in a specific urban situation",
+    },
+    "director-2-text-17" : {
+        "ru": "Работа над территорией музея Глинки (30 квартал Новых Черемушек), реконструкцией комплекса «Соколиная охота» в парке Сокольники под руководством Московский архитектурный центр",
+        "en": "Work on the territory of the Glinka Museum (30 block of New Cheryomushki), reconstruction of the Falconry complex in Sokolniki Park under the leadership of the Moscow Architectural Center",
+    },
+    "director-2-text-18" : {
+        "ru": "Создание образа центрального небоскреба в комплексе пяти небоскребов в Бангкоке (в команде конструктора останкинской башни Остроумова)",
+        "en": "Creating an image of a central skyscraper in a complex of five skyscrapers in Bangkok (in the team of Ostankino tower designer Ostroumov)",
+    },
+    "director-2-text-19" : {
+        "ru": "1 место на выставке плакатов в ЭКОСО",
+        "en": "1st place at the poster exhibition in ECOSOC",
+    },
+    "director-2-text-20" : {
+        "ru": "Проект Музея архитектуры для конкурса японского журнала «JA». Участие в конкурсе на реконструкцию 5-этажных зданий советского периода",
+        "en": "The project of the Museum of Architecture for the competition of the Japanese magazine 'JA'. Participation in the competition for the reconstruction of 5-storey buildings of the Soviet period",
+    },
+    "director-2-text-21" : {
+        "ru": "Нью-Йорк (макет) — выставка и семинар с участием Бернарда Чуми в колумбийском университете на тему: “Brige” («Мост»)",
+        "en": "New York (mock-up) — exhibition and seminar with Bernard Tschumi at Columbia University on the topic: 'Brige'",
+    },
+    "director-2-text-22" : {
+        "ru": "Участие в архитектурной биеннале Венеции работа над частными интерьерами с компанией DIA",
+        "en": "Participation in the Venice Architecture Biennale work on private interiors with DIA",
+    },
+    "director-2-text-23" : {
+        "ru": "Москва. выставка «Exploredс » в Экспоцентре. Первый международный салон по архитектуре и дизайну в ЦДХ",
+        "en": "Moscow. the exhibition 'Explored' at the Expocenter. The first international salon on architecture and design in the Central House of Artists",
+    },
+    "director-2-text-24" : {
+        "ru": "Презентация  в Париже концепции организации   пешеходного маршрута по Китайгородской стене (ул. Китайка)",
+        "en": "Presentation in Paris of the concept of organizing a walking route along the Kitaygorodskaya Wall (Kitayka str.)",
+    },
+    "director-2-text-25" : {
+        "ru": "3-й международный салон по архитектуре. Проект воссоздания усадьбы Закревских в Парке «Студенец»",
+        "en": "The 3rd International Salon of Architecture. The project of recreating the Zakrevsky estate in Studenets Park",
+    },
+    "director-2-text-26" : {
+        "ru": "Создание проекта 8-уровневого многофункционального комплекса в зоне перехода Театральной площади — ГУМ",
+        "en": "Creation of a project for an 8-level multifunctional complex in the transition zone of the Theater Square — GUM",
+    },
+    "director-2-text-27" : {
+        "ru": "Проектирование с реализацией «Узла головных сооружений Студенец-Ваганьковского коллектора» Москва-Сити",
+        "en": "Design and implementation of the 'Node of the head structures of the Studenets-Vagankovsky collector' Moscow City",
+    },
+    "director-2-text-28" : {
+        "ru": "Участие в форуме Селигер 2007 с концепцией «набережной Москва-Сити»",
+        "en": "Participation in the Seliger 2007 Forum with the concept of the Moscow City Embankment",
+    },
+    "director-2-text-29" : {
+        "ru": "Выставка на 1-ом московском архитектурном биеннале «АРХ Москва» с концепцией «набережной Москва-Сити»",
+        "en": "Exhibition at the 1st Moscow Architecture Biennale 'ARCH Moscow'. with the concept of the 'Moscow City embankment'",
+    },
+    "director-2-text-30" : {
+        "ru": "Участие в конкурсе на благоустройство площади перед Музеем современного искусства в Риме",
+        "en": "Participation in the competition for the landscaping of the square in front of the Museum of Modern Art in Rome",
+    },
+    "director-2-text-31" : {
+        "ru": "Регистрация собственного патента на полезную модель конструкции подземного сооружения в местах перепада рельефа",
+        "en": "Registration of a proprietary patent for a utility model of the construction of an underground structure in places of relief drop",
+    },
+    "director-2-text-32" : {
+        "ru": "Участие в выставке с каталогом «Зеленый проект» (3-и публикации)",
+        "en": "Participation in the exhibition with the 'Green Project' catalog (3 publications)",
+    },
+    "director-2-text-33" : {
+        "ru": "Тьютерство на архитектурных практиках «Территориум»",
+        "en": "Tutoring at the architectural practices of the 'Territorium'",
+    },
+    "director-2-text-34" : {
+        "ru": "Тьютерство на практиках «Точка роста» (в т.ч. «набережная Сити», «крыша небоскреба Империя»)",
+        "en": "Tutoring at the 'Point of Growth' practices (including 'Embankment City', 'roof of the Empire skyscraper')",
+    },
+    "director-2-text-35" : {
+        "ru": "Участие в запуске стартапа Детский технопарк Abstract под эгидой Правительства Москвы",
+        "en": "Participation in the launch of the startup Children's Technopark Abstract under the auspices of the Moscow Government",
+    },
+    "director-2-text-36" : {
+        "ru": "Работа над концепцией «Счастливый город» совместно с Елизаветой Морозовой",
+        "en": "Working on the concept of 'Happy City' together with Elizaveta Morozova",
+    },
+    "director-2-btn-more" : {
+        "ru": "Подробнее",
+        "en": "More",
+    },
+
+
+    "contact-text-1" : {
+        "ru": "Остались вопросы?",
+        "en": "Any other questions?",
+    },
+    "contact-text-2" : {
+        "ru": "Задайте их нам, заполнив форму и мы свяжемся с Вами в ближайшее время, для того, что бы уточнить все детали и ответить на все интересующие Вас вопросы!",
+        "en": "Ask them to us by filling out the form and we will contact you soon in order to clarify all the details and answer all your questions!",
+    },
+    "contact-text-3" : {
+        "ru": "Заказать звонок",
         "en": "Please contact us",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "contact-text-4" : {
+        "ru": "Телефон",
+        "en": "Telephone",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "contact-text-5" : {
+        "ru": "Имя",
+        "en": "Name",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "contact-text-6" : {
+        "ru": "Комментарий",
+        "en": "Comment",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "contact-text-7" : {
+        "ru": "Наш адрес:",
+        "en": "Our address:",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "contact-text-8" : {
+        "ru": "г. Москва Гранатный пер. 12",
+        "en": "Moscow, Garnet lane 12",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "contact-text-9" : {
+        "ru": "Телефон",
+        "en": "Telephone",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "contact-text-10" : {
+        "ru": "Почта:",
+        "en": "Mail:",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "contact-text-11" : {
+        "ru": "Мы в социальных сетях:",
+        "en": "We are on social media:",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+
+    "footer-text-1" : {
+        "ru": "Сотрудничество: <a href='mailto:infoartgroupp@yandex.ru'>infoartgroupp@yandex.ru</a>",
+        "en": "Cooperation: <a href='mailto:infoartgroupp@yandex.ru'>infoartgroupp@yandex.ru</a>",
     },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
-    },
-    "nav-call" : {
-        "ru": "заказать звонок",
-        "en": "Please contact us",
+    "footer-text-2" : {
+        "ru": "г. Москва",
+        "en": "Moscow",
     },
 }
 

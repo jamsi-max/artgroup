@@ -157,9 +157,15 @@ function changeReadMore2() {
         mycontent.style.fontSize = '1.2rem';
         mycontent.style.fontFamily = 'Poppins, sans-serif';
         mybutton.textContent = 'Свернуть';
+        if (hash == 'en') {
+            mybutton.textContent = 'Roll up';
+        }
     } else {
         mycontent.style.display = 'none';
         mybutton.textContent = 'Подробнее';
+        if (hash == 'en') {
+            mybutton.textContent = 'More';
+        }
     }
 }
 
@@ -176,9 +182,15 @@ function changeReadMore3() {
         mycontent.style.fontSize = '1.2rem';
         mycontent.style.fontFamily = 'Poppins, sans-serif';
         mybutton.textContent = 'Свернуть';
+        if (hash == 'en') {
+            mybutton.textContent = 'Roll up';
+        }
     } else {
         mycontent.style.display = 'none';
         mybutton.textContent = 'Подробнее';
+        if (hash == 'en') {
+            mybutton.textContent = 'More';
+        }
     }
 }
 // END READ MORE DIRECTORS
@@ -237,6 +249,7 @@ async function sendTelegram(e) {
 
 // MULTILANGUAGES
 const select = document.querySelector('select');
+const sendBtn = document.querySelector('.send-btn');
 const allLng = ['ru', 'en'];
 
 select.addEventListener('change', changeURLLng);
@@ -261,6 +274,9 @@ function changeLanguage() {
 
     for (let key in langList) {
         document.querySelector('.lng-' + key).innerHTML = langList[key][hash];
+    }
+    if (hash == 'en') {
+        sendBtn.value = 'Send';
     }
 }
 changeLanguage()
