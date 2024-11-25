@@ -1389,6 +1389,21 @@ footer .text-left p::after{
     color: var(--main-color);
     filter: drop-shadow(0 0 10px var(--main-color));
 }
+/* .footer .count-visit{
+    background: #d1d1d1;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    padding: .2rem;
+}
+.footer .count-visit i{
+    font-size: 2rem;
+}
+.footer .count-visit p{
+    margin-left: .5rem;
+} */
 /* END FOOTER */
 
 /* RESPONSIVE */
@@ -1651,7 +1666,7 @@ footer .text-left p::after{
     }
 
     footer .footer-text p{
-        font-size: 1rem;
+        font-size: .9rem;
     }
 
     .popup-box .popup-content{
@@ -2039,6 +2054,9 @@ footer .text-left p::after{
         clip-path: polygon(20% 10%, 75% 10%, 65% 95%, 30% 80%);
         font-weight: 700;
     }
+    /* .footer .count-visit{
+        margin: 1rem 0;
+    } */
 }
 @media (max-width: 500px) {
     .container-services .services-box{

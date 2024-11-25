@@ -280,5 +280,8 @@ function changeLanguage() {
     }
 }
 changeLanguage()
-
 // END MULTILANGUAGES
+
+// VISITORS
+
+// END VISITORS
