@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /img/
+Allow: /js/
+Disallow: /css/
+
+
+User-agent: Googlebot
+Allow: /
+
+
+User-agent: Yandex
+Allow: /img/
+Allow: /js/
+Disallow: /css/
