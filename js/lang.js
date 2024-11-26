@@ -137,7 +137,7 @@ const langList = {
            Компания взяла за основу новый концептуальный подход «Счастливый город», создающий новые формы и\
             сценарии развития разнообразных проектов. Компания «Арт групп» занимает активную социальную позицию\
              в профессиональной сфере, является участником разнообразных форумов, выставок , конференций.\
-              Подробнее можно посмотреть по  <a href='#' class='company-link'>ссылке</a>.",
+              Подробнее можно посмотреть по  <a href='#about' class='company-link'>ссылке</a>.",
         "en": "ART Group has more than 2000 </span> completed projects in its assets.\
          In <span>2018-2019</span> For years, the ART Group company has been a developer of educational\
           programs for schoolchildren and students, and also the management company of the Children's\
@@ -145,7 +145,7 @@ const langList = {
             a new conceptual approach «Happy City», which creates new forms and scenarios for the\
              development of various projects. The Art Group company takes an active social position\
              in the professional field, he is a participant in various forums, exhibitions, and\
-              conferences. More information can be found at <a href='#' class='company-link'>link</a>.",
+              conferences. More information can be found at <a href='#about' class='company-link'>link</a>.",
     },
     "about-info-6" : {
         "ru": "<span class='mybox1-subtitle'>В настоящее время АРТ групп готовы предложить нашим клиентам:</span>",
