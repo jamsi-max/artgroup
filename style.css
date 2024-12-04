@@ -341,6 +341,10 @@ select option span{
     font-weight: 600;
     cursor: pointer;
 }
+.about-content .content-info .director-link:hover,
+.about-content .content-info .company-link:hover{
+    filter: drop-shadow(0 0 10px var(--main-color));
+}
 
 .about-content .about-description{
     margin-top: 5%;
