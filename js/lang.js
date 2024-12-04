@@ -185,7 +185,7 @@ const langList = {
         "en": "Our services",
     },
     "services-1-title" : {
-        "ru": "КОНЦЕПЦИЯ (ПЕРДПРОЕКТ)",
+        "ru": "КОНЦЕПЦИЯ (ПРЕДПРОЕКТ)",
         "en": "CONCEPT (PERDPROJECT)",
     },
     "services-1-text" : {
