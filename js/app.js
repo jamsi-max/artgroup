@@ -298,6 +298,8 @@ function changeLanguage() {
     }
     if (lng == 'en') {
         sendBtn.value = 'Send';
+    } else {
+        sendBtn.value = 'Отправить';
     }
 }
 changeLanguage()
