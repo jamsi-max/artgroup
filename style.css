@@ -844,6 +844,7 @@ select option span{
 }
 
 .portfolio-box .portfolio-layer{
+    cursor: pointer;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -856,7 +857,7 @@ select option span{
     flex-direction: column;
     text-align: center;
     padding: 0 4rem;
-    transform: translateY(110%);
+    transform: translateY(0);
     transition: .3s ease;
 }
 
@@ -889,7 +890,7 @@ select option span{
     transition: .3s ease;
 }
 
-.portfolio-box .portfolio-layer button:hover{
+.portfolio-box .portfolio-layer:hover button{
     color: #fff;
     background-color: var(--main-color);
 }

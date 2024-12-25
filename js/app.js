@@ -77,24 +77,22 @@ loadMoreBtn.addEventListener('click', () => {
 // POPUP BOX
 const portfolioItems = document.querySelector('.portfolio-container');
 const popup = document.querySelector('.popup-box');
-// const popupCloseBtn = popup.querySelector('.popup-close-btn');
 const popupCloseIcon = popup.querySelector('.popup-close-icon');
 
-portfolioItems.addEventListener('click', function(e) {
 
-    if(e.target.tagName.toLowerCase() == "button") {
-        const item = e.target.parentElement;
+portfolioItems.addEventListener('click', function(e) {
+    console.log(e.target.className)
+    if(e.target.className == "portfolio-layer") {
+        const item = e.target;
         const h4 = item.querySelector("h4").innerHTML;
         const readMoreCont = item.querySelector('.read-more-content').innerHTML;
         popup.querySelector('h3').innerHTML = h4;
         popup.querySelector('.popup-body').innerHTML = readMoreCont;
-        // popup.querySelector('.popup-body').innerHTML = readMoreCont + ' <div class="popup-footer"><button class="btn popup-close-btn" onClick="closeDialog()">Закрыть</button></div>';
 
         popupBox();
     }
 })
 
-// popupCloseBtn.addEventListener('click', popupBox);
 popupCloseIcon.addEventListener('click', popupBox);
 
 popup.addEventListener('click', function(e) {
