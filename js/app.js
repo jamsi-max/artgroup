@@ -74,38 +74,38 @@ loadMoreBtn.addEventListener('click', () => {
 })
 // END PORTFOLIO LOAD MORE
 
-// POPUP BOX
-const portfolioItems = document.querySelector('.portfolio-container');
-const popup = document.querySelector('.popup-box');
-const popupCloseIcon = popup.querySelector('.popup-close-icon');
+// // POPUP BOX
+// const portfolioItems = document.querySelector('.portfolio-container');
+// const popup = document.querySelector('.popup-box');
+// const popupCloseIcon = popup.querySelector('.popup-close-icon');
 
 
-portfolioItems.addEventListener('click', function(e) {
-    console.log(e.target.className)
-    if(e.target.className == "portfolio-layer") {
-        const item = e.target;
-        const h4 = item.querySelector("h4").innerHTML;
-        const readMoreCont = item.querySelector('.read-more-content').innerHTML;
-        popup.querySelector('h3').innerHTML = h4;
-        popup.querySelector('.popup-body').innerHTML = readMoreCont;
+// portfolioItems.addEventListener('click', function(e) {
+//     console.log(e.target.className)
+//     if(e.target.className == "portfolio-layer") {
+//         const item = e.target;
+//         const h4 = item.querySelector("h4").innerHTML;
+//         const readMoreCont = item.querySelector('.read-more-content').innerHTML;
+//         popup.querySelector('h3').innerHTML = h4;
+//         popup.querySelector('.popup-body').innerHTML = readMoreCont;
 
-        popupBox();
-    }
-})
+//         popupBox();
+//     }
+// })
 
-popupCloseIcon.addEventListener('click', popupBox);
+// popupCloseIcon.addEventListener('click', popupBox);
 
-popup.addEventListener('click', function(e) {
-    if(e.target == popup || e.target.tagName.toLowerCase() === 'a') {
-        popupBox();
-        // closeDialog();
-    }
-})
+// popup.addEventListener('click', function(e) {
+//     if(e.target == popup || e.target.tagName.toLowerCase() === 'a') {
+//         popupBox();
+//         // closeDialog();
+//     }
+// })
 
-function popupBox(){
-    popup.classList.toggle('open');
-}
-// END POPUP BOX
+// function popupBox(){
+//     popup.classList.toggle('open');
+// }
+// // END POPUP BOX
 
 // READ MORE ABOUT
 function changeReadMore() {
