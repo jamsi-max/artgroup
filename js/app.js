@@ -47,89 +47,139 @@ ScrollReveal().reveal('.director-box, .services-container, .contact-content', { 
 // END SCROLL REVAL
 
 // HOME IMAGE GEOMETRIC ANIMATION
-document.addEventListener('DOMContentLoaded', () => {
-    const shapes = document.querySelectorAll('.shape');
-    const container = document.querySelector('.home-img-container');
+function initGeometricAnimation() {
+    const shapes = gsap.utils.toArray('.shape');
+    if (shapes.length === 0) return;
 
-    if (!container || shapes.length === 0) return;
+    // Stable base rotations for the architectural "tilted" look
+    const baseRotations = shapes.map((_, i) => (Math.sin(i * 1.5) * 15));
+    const idleTweens = [];
+    let isAssembling = false;
+    let isAtHome = false;
+    let isNavigatingToHome = false;
 
-    // 1. Initial Assembly
-    // Start with shapes scattered and rotated
-    gsap.set(shapes, {
-        x: () => (Math.random() - 0.5) * 800,
-        y: () => (Math.random() - 0.5) * 800,
-        rotation: () => (Math.random() - 0.5) * 720,
-        opacity: 0,
-        scale: 0
-    });
+    function stopIdle() {
+        idleTweens.forEach(t => t.kill());
+        idleTweens.length = 0;
+    }
 
-    const assemblyTL = gsap.timeline({
-        defaults: { ease: "expo.out", duration: 2.5 }
-    });
-
-    assemblyTL.to(shapes, {
-        x: 0,
-        y: 0,
-        rotation: 0,
-        opacity: 1,
-        scale: 1,
-        stagger: {
-            amount: 1,
-            from: "random"
-        }
-    });
-
-    // 2. Idle Floating (Oscillation)
-    // After assembly, start a gentle float
-    assemblyTL.add(() => {
-        gsap.to(container, {
-            y: -30,
-            duration: 4,
-            ease: "sine.inOut",
-            repeat: -1,
-            yoyo: true
+    function startIdle() {
+        // Only idle if we are at top and not in transition
+        if (!isAtHome || isAssembling || window.scrollY > 100) return;
+        
+        stopIdle();
+        shapes.forEach((shape, i) => {
+            const t = gsap.to(shape, {
+                x: "+=" + (Math.sin(i) * 20),
+                y: "+=" + (Math.cos(i) * 20),
+                rotation: "+=" + (Math.sin(i * 2) * 10),
+                duration: 3 + Math.random() * 2,
+                ease: "sine.inOut",
+                repeat: -1,
+                yoyo: true,
+                delay: i * 0.05
+            });
+            idleTweens.push(t);
         });
-    }, "-=0.5");
+    }
 
-    // 3. Scroll-based Disintegration
+    function assemble(forceStagger = false) {
+        if (isAssembling) return;
+        if (isAtHome && !forceStagger) return;
+
+        isAssembling = true;
+        isAtHome = true;
+
+        stopIdle();
+        gsap.killTweensOf(shapes);
+
+        if (forceStagger) {
+            gsap.set(shapes, {
+                x: () => (Math.random() - 0.5) * 1000,
+                y: () => (Math.random() - 0.5) * 1000,
+                rotation: () => (Math.random() - 0.5) * 720,
+                opacity: 0,
+                scale: 0
+            });
+        }
+
+        gsap.to(shapes, {
+            x: 0,
+            y: 0,
+            rotation: (i) => baseRotations[i],
+            opacity: 1,
+            scale: 1,
+            duration: 1.5,
+            ease: "expo.out",
+            stagger: forceStagger ? { amount: 1.2, from: "random" } : 0,
+            onComplete: () => {
+                isAssembling = false;
+                startIdle();
+            }
+        });
+    }
+
+    // Initial load
+    assemble(true);
+
+    // Handle "Home" link clicks
+    document.querySelectorAll('a[href="#home"]').forEach(link => {
+        link.addEventListener('click', () => {
+            isNavigatingToHome = true;
+            assemble(true);
+        });
+    });
+
+    // Scroll listener
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
-        const maxScroll = window.innerHeight; // Distance over which full disintegration occurs
-        const progress = Math.min(scrollY / maxScroll, 1);
 
-        if (progress <= 0) {
-            // Back to assembled state (let idle animation take over for y)
-            shapes.forEach(shape => {
-                gsap.to(shape, {
-                    x: 0,
-                    y: 0,
-                    rotation: 0,
-                    opacity: 1,
-                    duration: 0.5,
-                    overwrite: 'auto'
-                });
-            });
+        // If we reach the top, reset navigation flag and reassemble if needed
+        if (scrollY < 50) {
+            isNavigatingToHome = false;
+            if (!isAtHome && !isAssembling) {
+                assemble(false);
+            }
             return;
         }
 
-        shapes.forEach((shape, index) => {
-            // Each shape flies off in a different direction
-            const factor = (index % 5 + 1) * 0.8;
-            const dirX = (index % 2 === 0 ? 1 : -1) * (1 + index * 0.1);
-            const dirY = (index % 3 === 0 ? 1 : -1) * (1 + index * 0.1);
+        // Ignore scroll disintegration if we are currently assembling or navigating home
+        if (isAssembling || isNavigatingToHome) return;
+
+        // Away from home
+        if (isAtHome) {
+            isAtHome = false;
+            stopIdle();
+        }
+
+        // Standard disintegration logic
+        const maxScroll = window.innerHeight * 1.5;
+        const progress = Math.min(scrollY / maxScroll, 1);
+        
+        shapes.forEach((shape, i) => {
+            const factor = (i % 5 + 1) * 0.8;
+            const dx = (i % 2 === 0 ? 1 : -1) * (1 + i * 0.1);
+            const dy = (i % 3 === 0 ? 1 : -1) * (1 + i * 0.1);
 
             gsap.to(shape, {
-                x: dirX * progress * 800 * factor,
-                y: dirY * progress * 800 * factor,
-                rotation: progress * 720 * factor,
+                x: dx * progress * 800 * factor,
+                y: dy * progress * 800 * factor,
+                rotation: baseRotations[i] + (progress * 720 * factor),
                 opacity: 1 - progress * 0.9,
-                duration: 0.4,
-                ease: "power1.out",
-                overwrite: 'auto'
+                duration: 0.8,
+                ease: "power2.out",
+                overwrite: "auto"
             });
         });
     });
-});
+}
+
+// Initialize on load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGeometricAnimation);
+} else {
+    initGeometricAnimation();
+}
 // END HOME IMAGE GEOMETRIC ANIMATION
 
 // PRINT TEXT TYPED JS
