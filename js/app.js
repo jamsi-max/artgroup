@@ -42,8 +42,95 @@ ScrollReveal({
 
 ScrollReveal().reveal('.home-details', { origin: 'top' });
 // ScrollReveal().reveal('.home-img, .director-box, .services-container, .contact-content', { origin: 'bottom' });
-ScrollReveal().reveal('.home-img', { origin: 'bottom' });
+// ScrollReveal().reveal('.home-img', { origin: 'bottom' });
+ScrollReveal().reveal('.director-box, .services-container, .contact-content', { origin: 'bottom' });
 // END SCROLL REVAL
+
+// HOME IMAGE GEOMETRIC ANIMATION
+document.addEventListener('DOMContentLoaded', () => {
+    const shapes = document.querySelectorAll('.shape');
+    const container = document.querySelector('.home-img-container');
+
+    if (!container || shapes.length === 0) return;
+
+    // 1. Initial Assembly
+    // Start with shapes scattered and rotated
+    gsap.set(shapes, {
+        x: () => (Math.random() - 0.5) * 800,
+        y: () => (Math.random() - 0.5) * 800,
+        rotation: () => (Math.random() - 0.5) * 720,
+        opacity: 0,
+        scale: 0
+    });
+
+    const assemblyTL = gsap.timeline({
+        defaults: { ease: "expo.out", duration: 2.5 }
+    });
+
+    assemblyTL.to(shapes, {
+        x: 0,
+        y: 0,
+        rotation: 0,
+        opacity: 1,
+        scale: 1,
+        stagger: {
+            amount: 1,
+            from: "random"
+        }
+    });
+
+    // 2. Idle Floating (Oscillation)
+    // After assembly, start a gentle float
+    assemblyTL.add(() => {
+        gsap.to(container, {
+            y: -30,
+            duration: 4,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true
+        });
+    }, "-=0.5");
+
+    // 3. Scroll-based Disintegration
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const maxScroll = window.innerHeight; // Distance over which full disintegration occurs
+        const progress = Math.min(scrollY / maxScroll, 1);
+
+        if (progress <= 0) {
+            // Back to assembled state (let idle animation take over for y)
+            shapes.forEach(shape => {
+                gsap.to(shape, {
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    overwrite: 'auto'
+                });
+            });
+            return;
+        }
+
+        shapes.forEach((shape, index) => {
+            // Each shape flies off in a different direction
+            const factor = (index % 5 + 1) * 0.8;
+            const dirX = (index % 2 === 0 ? 1 : -1) * (1 + index * 0.1);
+            const dirY = (index % 3 === 0 ? 1 : -1) * (1 + index * 0.1);
+
+            gsap.to(shape, {
+                x: dirX * progress * 800 * factor,
+                y: dirY * progress * 800 * factor,
+                rotation: progress * 720 * factor,
+                opacity: 1 - progress * 0.9,
+                duration: 0.4,
+                ease: "power1.out",
+                overwrite: 'auto'
+            });
+        });
+    });
+});
+// END HOME IMAGE GEOMETRIC ANIMATION
 
 // PRINT TEXT TYPED JS
 const typed = new Typed('.multiple-text', {
