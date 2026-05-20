@@ -64,7 +64,7 @@ const langList = {
         "en": "About us",
     },
     "about-info-1" : {
-        "ru": "A.R.T. group  - группа компаний, которая начала свою деятельность в 1995 году на Московском рынке проектных услуг. В активе имеется более 2000 реализованных проектов различного назначения, в том числе в регионах и на Международном рынке, включая Европейский.",
+        "ru": "<b>A.R.T. group</b>  - группа компаний, которая начала свою деятельность в <b>1995</b> году на Московском рынке проектных услуг. В активе имеется более <b>2000</b> реализованных проектов различного назначения, в том числе в регионах и на Международном рынке, включая Европейский.",
         "en": "A.R.T. group is a group of companies that began operations in 1995 in the Moscow design services market. Its portfolio includes over 2,000 completed projects of various types, including regional and international projects, including the European market.",
     },
     "about-info-2" : {
@@ -73,10 +73,10 @@ const langList = {
     },
     "about-btn" : {
         "ru": "Подробнее",
-        "en": "More",
+        "en": "More details",
     },
     "about-info-3" : {
-        "ru": "В 2018-2019 г. «АРТ групп» запустила start up и возглавила управляющую компанию Детского технопарка Abstract под эгидой Департамента промышленности. С 2020 г. Компания взяла за основу разработки новых объектов свой собственный  концептуальный и научно обоснованный с точки зрения нейроурбанистики подход «Счастливый город», создающий новые формы и сценарии развития жилых кварталов. Данный принцип реализован в проекте «Русская Европа» в Калининграде и применяется в жилом квартале в Ярославле, где команда «АРТ групп» является консультантом Застройщика. В настоящий момент также мы запустили собственные проекты жилого квартала в Рязанской области на 200 тыс.. м кв. и спортивно-реабилитационный комплекс в г. Раменском Московской области. ​В связи с большим количеством опыта и возможности оптимизировать бизнес-процессы, наши цены являются приятными для заказчиков, а результат удовлетворяет необходимое качество. Также, наше кредо – это доведение до конца любого вопроса и отсутствие слова «невозможно» в лексиконе команды.",
+        "ru": "В <b>2018-2019</b> г. «АРТ групп» запустила <b>start up</b> и возглавила управляющую компанию Детского технопарка <b>Abstract</b> под эгидой Департамента промышленности. С <b>2020</b> г. Компания взяла за основу разработки новых объектов свой собственный  концептуальный и научно обоснованный с точки зрения нейроурбанистики подход «Счастливый город», создающий новые формы и сценарии развития жилых кварталов. Данный принцип реализован в проекте «Русская Европа» в Калининграде и применяется в жилом квартале в Ярославле, где команда «АРТ групп» является консультантом Застройщика. В настоящий момент также мы запустили собственные проекты жилого квартала в Рязанской области на <b>200</b> тыс. м. кв. и спортивно-реабилитационный комплекс в г. Раменском Московской области. ​В связи с большим количеством опыта и возможности оптимизировать бизнес-процессы, наши цены являются приятными для заказчиков, а результат удовлетворяет необходимое качество. Также, наше кредо – это доведение до конца любого вопроса и отсутствие слова «невозможно» в лексиконе команды.",
         "en": "In 2018-2019, ART Group launched a start-up and took over the management company of the Abstract Children's Technopark under the auspices of the Department of Industry. Since 2020, the Company has been developing new projects based on its own conceptual and scientifically grounded neurourbanistics approach, «Happy City», which creates new forms and scenarios for the development of residential neighborhoods. This principle was implemented in the «Russian Europe» project in Kaliningrad and is being applied in a residential neighborhood in Yaroslavl, where the ART Group team is consulting for the developer. We have also recently launched our own projects: a 200,000-square-meter residential neighborhood in the Ryazan Region and a sports and rehabilitation complex in Ramenskoye, Moscow Region. Due to our extensive experience and ability to optimize business processes, our prices are competitive for our clients, and the results meet the required quality. Also, our credo is to see any issue through to the end and to avoid the word “impossible” in the team’s vocabulary.",
     },
 
@@ -1050,7 +1050,7 @@ const langList = {
     },
     "director-1-btn-more" : {
         "ru": "Подробнее",
-        "en": "More",
+        "en": "More details",
     },
 
     "director-2-title" : {
@@ -1203,7 +1203,7 @@ const langList = {
     },
     "director-2-btn-more" : {
         "ru": "Подробнее",
-        "en": "More",
+        "en": "More details",
     },
 
 

@@ -34,7 +34,7 @@ window.onscroll = () => {
 
 // SCROLL REVAL
 ScrollReveal({
-    reset: true,
+    reset: false, // Changed from true to false to prevent "white screen" bug during dynamic layout changes
     distance: '80px',
     duration: 2000,
     delay: 200
@@ -257,23 +257,24 @@ function changeReadMore() {
         mycontent.style.marginTop = '3%';
         mycontent.style.fontSize = '1.2rem';
         mycontent.style.fontFamily = 'Poppins, sans-serif';
-        if (lng == 'ru') {
+        if (currentLng == 'ru') {
             mybutton.textContent = 'Свернуть';
         }
-        if (lng == 'en') {
-            mybutton.textContent = 'Roll up';
+        if (currentLng == 'en') {
+            mybutton.textContent = 'Collapse';
         }
-        // mybutton.textContent = 'Свернуть';
     } else {
         mycontent.style.display = 'none';
-        if (lng == 'ru') {
+        if (currentLng == 'ru') {
             mybutton.textContent = 'Подробнее';
         }
-        if (lng == 'en') {
-            mybutton.textContent = 'More';
+        if (currentLng == 'en') {
+            mybutton.textContent = 'More details';
         }
-
-        // mybutton.textContent = 'Подробнее';
+    }
+    // Sync ScrollReveal after layout change
+    if (typeof ScrollReveal !== 'undefined') {
+        ScrollReveal().sync();
     }
 }
 // END READ MORE ABOUT
@@ -291,16 +292,24 @@ function changeReadMore2() {
         mycontent.style.marginTop = '3%';
         mycontent.style.fontSize = '1.2rem';
         mycontent.style.fontFamily = 'Poppins, sans-serif';
-        mybutton.textContent = 'Свернуть';
-        if (lng == 'en') {
-            mybutton.textContent = 'Roll up';
+        if (currentLng == 'ru') {
+            mybutton.textContent = 'Свернуть';
+        }
+        if (currentLng == 'en') {
+            mybutton.textContent = 'Collapse';
         }
     } else {
         mycontent.style.display = 'none';
-        mybutton.textContent = 'Подробнее';
-        if (lng == 'en') {
-            mybutton.textContent = 'More';
+        if (currentLng == 'ru') {
+            mybutton.textContent = 'Подробнее';
         }
+        if (currentLng == 'en') {
+            mybutton.textContent = 'More details';
+        }
+    }
+    // Sync ScrollReveal after layout change
+    if (typeof ScrollReveal !== 'undefined') {
+        ScrollReveal().sync();
     }
 }
 
@@ -316,16 +325,24 @@ function changeReadMore3() {
         mycontent.style.marginTop = '3%';
         mycontent.style.fontSize = '1.2rem';
         mycontent.style.fontFamily = 'Poppins, sans-serif';
-        mybutton.textContent = 'Свернуть';
-        if (lng == 'en') {
-            mybutton.textContent = 'Roll up';
+        if (currentLng == 'ru') {
+            mybutton.textContent = 'Свернуть';
+        }
+        if (currentLng == 'en') {
+            mybutton.textContent = 'Collapse';
         }
     } else {
         mycontent.style.display = 'none';
-        mybutton.textContent = 'Подробнее';
-        if (lng == 'en') {
-            mybutton.textContent = 'More';
+        if (currentLng == 'ru') {
+            mybutton.textContent = 'Подробнее';
         }
+        if (currentLng == 'en') {
+            mybutton.textContent = 'More details';
+        }
+    }
+    // Sync ScrollReveal after layout change
+    if (typeof ScrollReveal !== 'undefined') {
+        ScrollReveal().sync();
     }
 }
 // END READ MORE DIRECTORS
@@ -385,14 +402,16 @@ async function sendTelegram(e) {
 // MULTILANGUAGES
 const select = document.querySelector('select');
 const sendBtn = document.querySelector('.send-btn');
+let currentLng = localStorage.getItem('lang') || 'ru'; // Global variable to store current language
 
 select.addEventListener('change', () => {
-    const lng = select.value;
-    localStorage.setItem('lang', lng);
-    applyLanguage(lng);
+    currentLng = select.value;
+    localStorage.setItem('lang', currentLng);
+    applyLanguage(currentLng);
 });
 
 function applyLanguage(lng) {
+    currentLng = lng; // Ensure global variable is updated
     document.querySelector('html').setAttribute('lang', lng);
     document.querySelector('title').innerHTML = mainLang['html-title'][lng];
 
@@ -403,12 +422,26 @@ function applyLanguage(lng) {
         }
     }
     sendBtn.value = lng === 'en' ? 'Send' : 'Отправить';
+
+    // Refresh toggle buttons text if sections are expanded
+    const sections = [
+        { contentId: 'mybox1id', buttonId: 'mybuttonid' },
+        { contentId: 'mybox2id', buttonId: 'mybuttonid2' },
+        { contentId: 'mybox3id', buttonId: 'mybuttonid3' }
+    ];
+
+    sections.forEach(sec => {
+        const content = document.getElementById(sec.contentId);
+        const button = document.getElementById(sec.buttonId);
+        if (content && button && content.style.display === 'block') {
+            button.textContent = lng === 'en' ? 'Collapse' : 'Свернуть';
+        }
+    });
 }
 
 // Initialize based on localStorage or default to 'ru'
-const savedLang = localStorage.getItem('lang') || 'ru';
-select.value = savedLang;
-applyLanguage(savedLang);
+select.value = currentLng;
+applyLanguage(currentLng);
 // END MULTILANGUAGES
 
 // VISITORS
