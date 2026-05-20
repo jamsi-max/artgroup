@@ -246,61 +246,32 @@ async function sendTelegram(e) {
 // END SEND TELEGRAM FORM
 
 // MULTILANGUAGES
-// const select = document.querySelector('select');
-// const sendBtn = document.querySelector('.send-btn');
-// const allLng = ['ru', 'en'];
-
-// select.addEventListener('change', changeURLLng);
-
-// function changeURLLng() {
-//     let lng = select.value;
-//     location.href = window.location.pathname + '#' + lng;
-//     location.reload();
-// }
-
-// var hash
-// function changeLanguage() {
-//     hash = window.location.hash;
-//     hash = hash.substring(1);
-//     if (!allLng.includes(hash)) {
-//         location.href = window.location.pathname + '#ru';
-//         location.reload();
-//     }
-//     select.value = hash;
-//     document.querySelector('html').setAttribute('lang', hash);
-//     document.querySelector('title').innerHTML = mainLang['html-title'][hash];
-
-//     for (let key in langList) {
-//         document.querySelector('.lng-' + key).innerHTML = langList[key][hash];
-//     }
-//     if (hash == 'en') {
-//         sendBtn.value = 'Send';
-//     }
-// }
-// changeLanguage()
-
 const select = document.querySelector('select');
 const sendBtn = document.querySelector('.send-btn');
-const allLng = ['ru', 'en'];
 
-select.addEventListener('change', changeLanguage);
+select.addEventListener('change', () => {
+    const lng = select.value;
+    localStorage.setItem('lang', lng);
+    applyLanguage(lng);
+});
 
-var lng
-function changeLanguage() {
-    lng = select.value;
+function applyLanguage(lng) {
     document.querySelector('html').setAttribute('lang', lng);
     document.querySelector('title').innerHTML = mainLang['html-title'][lng];
 
     for (let key in langList) {
-        document.querySelector('.lng-' + key).innerHTML = langList[key][lng];
+        const element = document.querySelector('.lng-' + key);
+        if (element) {
+            element.innerHTML = langList[key][lng];
+        }
     }
-    if (lng == 'en') {
-        sendBtn.value = 'Send';
-    } else {
-        sendBtn.value = 'Отправить';
-    }
+    sendBtn.value = lng === 'en' ? 'Send' : 'Отправить';
 }
-changeLanguage()
+
+// Initialize based on localStorage or default to 'ru'
+const savedLang = localStorage.getItem('lang') || 'ru';
+select.value = savedLang;
+applyLanguage(savedLang);
 // END MULTILANGUAGES
 
 // VISITORS
