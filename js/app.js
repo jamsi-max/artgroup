@@ -37,14 +37,22 @@ ScrollReveal({
     reset: false, // Changed from true to false to prevent "white screen" bug during dynamic layout changes
     distance: '80px',
     duration: 2000,
-    delay: 200
+    delay: 200,
+    mobile: true,
+    viewFactor: 0.1 // Reveal earlier on mobile
 });
 
 ScrollReveal().reveal('.home-details', { origin: 'top' });
-// ScrollReveal().reveal('.home-img, .director-box, .services-container, .contact-content', { origin: 'bottom' });
-// ScrollReveal().reveal('.home-img', { origin: 'bottom' });
-ScrollReveal().reveal('.director-box, .services-container, .contact-content', { origin: 'bottom' });
+// Targeting individual boxes instead of tall containers for better mobile reliability
+ScrollReveal().reveal('.director-box, .services-box, .contact-content', { origin: 'bottom' });
 // END SCROLL REVAL
+
+// Ensure ScrollReveal syncs after everything (images, etc) has loaded
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        ScrollReveal().sync();
+    }, 1000);
+});
 
 // HOME IMAGE GEOMETRIC ANIMATION
 function initGeometricAnimation() {
