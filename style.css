@@ -1038,16 +1038,25 @@ select option span{
     background: rgba(0, 0, 0, 0.5);
     visibility: hidden;
     opacity: 0;
-    transition: all .3s ease-in-out;
     /* display: none; */
 
     /* A wheel/touch scroll over the dark backdrop must not chain through to
        the page behind it. */
     overscroll-behavior: contain;
+
+    /* CLOSING state. Exits are quicker than entrances so dismissing feels
+       responsive. visibility flips only after the fade finishes, otherwise the
+       box would vanish instantly and there would be no close animation. */
+    transition: opacity .2s ease-in,
+                visibility 0s linear .2s;
 }
 .popup-box.open{
     visibility: visible;
     opacity: 1;
+
+    /* OPENING state. */
+    transition: opacity .26s ease-out,
+                visibility 0s linear 0s;
 }
 
 /* Scroll lock applied by js/popup.js while the popup is open.
@@ -1067,8 +1076,36 @@ body.popup-open {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     /* padding: .5rem; */
+
+    /* CLOSING state: settles back down and shrinks slightly.
+       The translate(-50%, -50%) is what centres the box, so every keyframe of
+       the animation has to carry it. */
+    transform: translate(-50%, calc(-50% + 24px)) scale(.94);
+    opacity: 0;
+    transition: transform .2s cubic-bezier(.4, 0, 1, 1),
+                opacity .16s ease-in;
+}
+
+.popup-box.open .popup-content{
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    /* Opening: a long, decelerating ease so the panel glides into place and
+       settles rather than snapping. Starts 40ms late so the backdrop leads
+       and the panel reads as arriving on top of it.
+       Only opacity and transform animate — both are composited on the GPU, so
+       this costs no layout or repaint work. */
+    transition: transform .42s cubic-bezier(.16, 1, .3, 1) .04s,
+                opacity .3s ease-out .04s;
+}
+
+/* Users who ask for less motion get a plain fade, no movement or scaling. */
+@media (prefers-reduced-motion: reduce) {
+    .popup-box .popup-content,
+    .popup-box.open .popup-content {
+        transform: translate(-50%, -50%);
+        transition: opacity .2s linear;
+    }
 }
 
 .popup-box .popup-header{
