@@ -1030,7 +1030,9 @@ select option span{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    /* Above the sticky .header (z-index 9999) so the overlay actually covers
+       the page instead of the header floating on top of it. */
+    z-index: 10000;
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0.5);
@@ -1038,14 +1040,24 @@ select option span{
     opacity: 0;
     transition: all .3s ease-in-out;
     /* display: none; */
+
+    /* A wheel/touch scroll over the dark backdrop must not chain through to
+       the page behind it. */
+    overscroll-behavior: contain;
 }
 .popup-box.open{
     visibility: visible;
     opacity: 1;
 }
-/* body.prevent-scroll {
-    position: relative !important;
-} */
+
+/* Scroll lock applied by js/popup.js while the popup is open.
+   position: fixed (rather than just overflow: hidden) is what actually holds
+   iOS Safari still; the top offset is set inline to preserve scroll position. */
+body.popup-open {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+}
 
 .popup-box .popup-content{
     margin-top: 1.5rem;
@@ -1057,8 +1069,6 @@ select option span{
     left: 50%;
     transform: translate(-50%, -50%);
     /* padding: .5rem; */
-
-    touch-action: none;
 }
 
 .popup-box .popup-header{
@@ -1090,6 +1100,9 @@ select option span{
     max-height: 80%;
     /* max-width: 80%; */
     overflow-y: auto;
+    /* Stop the scroll from continuing into the page once this reaches
+       its top or bottom. */
+    overscroll-behavior: contain;
 }
 .popup-box .popup-body p{
     margin: 1rem 0;
