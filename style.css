@@ -26,6 +26,39 @@
     background-color: rgba(146, 28, 18, 0.7);
 }
 
+/* SCROLL REVEAL
+   Replaces the ScrollReveal library. Elements start offset/transparent and are
+   moved to their final state by adding .is-revealed (see js/app.js).
+   Reveal happens once, so a fast scroll can never interrupt a running
+   transition and leave a block stranded mid-way. */
+/* Scoped to .js (set by an inline script in <head>) so that with JavaScript
+   disabled the content simply stays visible instead of being stuck hidden. */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity .8s cubic-bezier(.5, 0, 0, 1),
+                transform .8s cubic-bezier(.5, 0, 0, 1);
+    will-change: opacity, transform;
+}
+
+.js .reveal--from-top {
+    transform: translateY(-80px);
+}
+
+.js .reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
 html {
     /* font-size: 62.5%; */
     overflow-x: hidden;
@@ -539,7 +572,7 @@ select option span{
 	left: 0;
 	width: 50%;
 	height: 100%;
-	background: rgba(255,255,255.0.05);
+	background: rgba(255,255,255,0.05);
 	pointer-events: none;
 }
 .services-content{

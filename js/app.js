@@ -15,35 +15,76 @@ function handleMenuClick(event) {
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
 
-window.onscroll = () => {
-    sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
+function updateActiveMenu() {
+    const top = window.scrollY;
 
-        if (top >= offset && top < offset + height && id != null && id != 'director1' && id != 'director2') {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
-            });
-        };
+    for (const sec of sections) {
+        const id = sec.getAttribute('id');
+        if (id == null || id == 'director1' || id == 'director2') continue;
+
+        const offset = sec.offsetTop - 150;
+        if (top < offset || top >= offset + sec.offsetHeight) continue;
+
+        const link = document.querySelector('header nav a[href*="' + id + '"]');
+        if (!link) continue;
+
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+    }
+}
+
+// Coalesce scroll work into one rAF tick. The old handler ran a nested loop of
+// DOM queries on every single scroll event, which starved the main thread
+// during fast scrolling and made reveal animations stutter.
+let activeMenuTicking = false;
+window.addEventListener('scroll', () => {
+    if (activeMenuTicking) return;
+    activeMenuTicking = true;
+    requestAnimationFrame(() => {
+        updateActiveMenu();
+        activeMenuTicking = false;
     });
-};
+}, { passive: true });
+
+updateActiveMenu();
 // END ACTIVE MENU
 
-// SCROLL REVAL
-ScrollReveal({
-    reset: true,
-    distance: '80px',
-    duration: 2000,
-    delay: 200,
-    viewFactor: 0.1
-});
+// SCROLL REVEAL
+// Native IntersectionObserver instead of the ScrollReveal library: the browser
+// recomputes intersections itself, so late-loading images shifting the layout
+// can't leave a block stuck at a stale position.
+function initScrollReveal() {
+    // .reveal lives in the markup so the starting state is painted immediately
+    // and nothing flashes before this script runs.
+    const targets = document.querySelectorAll('.reveal');
+    if (targets.length === 0) return;
 
-ScrollReveal().reveal('.home-details', { origin: 'top' });
-ScrollReveal().reveal('.director-box, .container-services, .services-container, .contact-content', { origin: 'bottom' });
-// END SCROLL REVAL
+    // Without IntersectionObserver, show everything rather than hide it.
+    if (!('IntersectionObserver' in window)) {
+        targets.forEach(el => el.classList.add('is-revealed'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-revealed');
+            // Reveal once — no reset, so scrolling back and forth quickly
+            // can never re-hide a block or interrupt its transition.
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.1,
+        // Start slightly before the element edge so it is already settled
+        // by the time it is properly in view.
+        rootMargin: '0px 0px -5% 0px'
+    });
+
+    targets.forEach(el => observer.observe(el));
+}
+
+initScrollReveal();
+// END SCROLL REVEAL
 
 // HOME IMAGE GEOMETRIC ANIMATION
 function initGeometricAnimation() {
@@ -129,8 +170,9 @@ function initGeometricAnimation() {
         });
     });
 
-    // Scroll listener
-    window.addEventListener('scroll', () => {
+    // Scroll listener — throttled to one frame. Previously this fired on every
+    // scroll event and spawned 30 fresh GSAP tweens each time.
+    function onShapeScroll() {
         const scrollY = window.scrollY;
 
         // If we reach the top, reset navigation flag and reassemble if needed
@@ -170,7 +212,17 @@ function initGeometricAnimation() {
                 overwrite: "auto"
             });
         });
-    });
+    }
+
+    let shapeTicking = false;
+    window.addEventListener('scroll', () => {
+        if (shapeTicking) return;
+        shapeTicking = true;
+        requestAnimationFrame(() => {
+            onShapeScroll();
+            shapeTicking = false;
+        });
+    }, { passive: true });
 }
 
 // Initialize on load
@@ -271,10 +323,6 @@ function changeReadMore() {
             mybutton.textContent = 'More details';
         }
     }
-    // Sync ScrollReveal after layout change
-    if (typeof ScrollReveal !== 'undefined') {
-        ScrollReveal().sync();
-    }
 }
 // END READ MORE ABOUT
 
@@ -306,10 +354,6 @@ function changeReadMore2() {
             mybutton.textContent = 'More details';
         }
     }
-    // Sync ScrollReveal after layout change
-    if (typeof ScrollReveal !== 'undefined') {
-        ScrollReveal().sync();
-    }
 }
 
 function changeReadMore3() {
@@ -338,10 +382,6 @@ function changeReadMore3() {
         if (currentLng == 'en') {
             mybutton.textContent = 'More details';
         }
-    }
-    // Sync ScrollReveal after layout change
-    if (typeof ScrollReveal !== 'undefined') {
-        ScrollReveal().sync();
     }
 }
 // END READ MORE DIRECTORS

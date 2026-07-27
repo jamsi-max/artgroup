@@ -9,12 +9,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>АРТ Групп</title>
+  <!-- Marks that JS is available, so the scroll-reveal start state (hidden)
+       only applies when there is a script able to reveal it again. -->
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="style.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="https://artgroup.fun/favicon.ico" type="image/x-icon">
 
   <script src="js/gsap.min.js" defer></script>
-  <script src="https://unpkg.com/scrollreveal" defer></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" defer></script>
   <script src="js/lang.js" defer></script>
   <script src="js/app.js" defer></script>
@@ -84,7 +86,7 @@
 
     <section class="home-section" id="home">
       <div class="section-content">
-        <div class="home-details">
+        <div class="home-details reveal reveal--from-top">
           <!-- <h2 class="title">Архитектурно-юридическая компания</h2> -->
           <h2 class="title lng-home-title">АРХИТЕКТУРНО-ЮРИДИЧЕСКАЯ КОМПАНИЯ</h2>
           <h3 class="subtitle"> <span class="multiple-text"></span></h3>
@@ -318,7 +320,7 @@
     <section class="services-1" id="services-1">
       <h2 class="services-1-heading title lng-services-title">Наши услуги</h2>
 
-      <div class="container-services">
+      <div class="container-services reveal">
         <div class="services-box">
           <div class="services-content">
             <h2>01</h2>
@@ -390,7 +392,7 @@
     <section class="services" id="services">
       <h2 class="services-heading title lng-services-2-heading">Почему мы?</h2>
 
-      <div class="services-container">
+      <div class="services-container reveal">
 
         <div class="services-box">
           <img src="img/img-srv-1.png" alt="Эффективность">
@@ -959,7 +961,7 @@
     <section class="directors director1" id="director1">
       <h2 class="directors-heading title lng-directors-heading">Руководители компании:</h2>
 
-      <div class="director-box">
+      <div class="director-box reveal">
         <div class="director-img">
           <img src="img/director-2.jpg" alt="Морозова Елизавета">
         </div>
@@ -1204,7 +1206,7 @@
 
     <section class="directors director2" id="director2">
 
-        <div class="director-box">
+        <div class="director-box reveal">
 
           <div class="director-content">
             <h3 class="directors-subtitle lng-director-2-title">Тюрин Михаил</h3>
@@ -1261,7 +1263,7 @@
     </section>
 
     <section class="contact" id="contact">
-      <div class="contact-content">
+      <div class="contact-content reveal">
         <h2 class="lng-contact-text-1">Остались вопросы?</h2>
         <p class="lng-contact-text-2">
           Задайте их нам, заполнив форму и мы свяжемся с Вами в ближайшее время,
