@@ -42,23 +42,27 @@ function closePopup() {
     unlockPageScroll();
 }
 
-function fillPopupFrom(item) {
-    const h4 = item.querySelector('h4').innerHTML;
-    const readMoreCont = item.querySelector('.read-more-content').innerHTML;
-    popup.querySelector('h3').innerHTML = h4;
-    popup.querySelector('.popup-body').innerHTML = readMoreCont;
+function fillPopupFrom(box) {
+    const title = box.querySelector('h4');
+    const content = box.querySelector('.read-more-content');
+    if (!title || !content) return false;
+
+    popup.querySelector('h3').innerHTML = title.innerHTML;
+    popup.querySelector('.popup-body').innerHTML = content.innerHTML;
+    return true;
 }
 
 portfolioItems.addEventListener('click', function (e) {
-    if (e.target.className == "portfolio-layer") {
-        fillPopupFrom(e.target);
-        openPopup();
-    }
+    // Resolve the click to its tile rather than testing what was hit. The
+    // previous version compared e.target.className against "portfolio-layer",
+    // which only matched clicks landing on bare overlay — clicking the title
+    // or the description made e.target the <h4>/<p> and nothing happened. How
+    // much bare overlay a tile has depends on how long its text is, so the
+    // whole tile was clickable on some and only the button on others.
+    const box = e.target.closest('.portfolio-box');
+    if (!box) return;
 
-    if (e.target.tagName.toLowerCase() == "button") {
-        fillPopupFrom(e.target.parentElement);
-        openPopup();
-    }
+    if (fillPopupFrom(box)) openPopup();
 })
 
 popupCloseIcon.addEventListener('click', closePopup);
