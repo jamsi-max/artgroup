@@ -1044,19 +1044,37 @@ select option span{
        the page behind it. */
     overscroll-behavior: contain;
 
-    /* CLOSING state. Exits are quicker than entrances so dismissing feels
+    /* CLOSING state. Exits stay quicker than entrances so dismissing feels
        responsive. visibility flips only after the fade finishes, otherwise the
        box would vanish instantly and there would be no close animation. */
-    transition: opacity .2s ease-in,
-                visibility 0s linear .2s;
+    transition: opacity .34s cubic-bezier(.4, 0, .2, 1),
+                -webkit-backdrop-filter .34s cubic-bezier(.4, 0, .2, 1),
+                backdrop-filter .34s cubic-bezier(.4, 0, .2, 1),
+                visibility 0s linear .34s;
 }
 .popup-box.open{
     visibility: visible;
     opacity: 1;
 
     /* OPENING state. */
-    transition: opacity .26s ease-out,
+    transition: opacity .45s cubic-bezier(.16, 1, .3, 1),
+                -webkit-backdrop-filter .6s cubic-bezier(.16, 1, .3, 1),
+                backdrop-filter .6s cubic-bezier(.16, 1, .3, 1),
                 visibility 0s linear 0s;
+}
+
+/* The page behind racks out of focus as the panel comes forward. Gated behind
+   @supports because unsupported browsers would otherwise get nothing at all,
+   and dropped entirely under reduced-motion. */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .popup-box {
+        -webkit-backdrop-filter: blur(0px);
+        backdrop-filter: blur(0px);
+    }
+    .popup-box.open {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
 }
 
 /* Scroll lock applied by js/popup.js while the popup is open.
@@ -1078,33 +1096,88 @@ body.popup-open {
     left: 50%;
     /* padding: .5rem; */
 
-    /* CLOSING state: settles back down and shrinks slightly.
-       The translate(-50%, -50%) is what centres the box, so every keyframe of
-       the animation has to carry it. */
-    transform: translate(-50%, calc(-50% + 24px)) scale(.94);
+    /* Keeps text crisp while the panel is mid-rotation. */
+    backface-visibility: hidden;
+
+    /* CLOSING state: tips back, sinks and shrinks away from the viewer.
+       Both states must list the same transform functions in the same order or
+       the browser cannot interpolate between them — and translate(-50%, -50%)
+       is what centres the panel, so every keyframe has to carry it.
+       perspective() must come before rotateX() to apply to it. */
+    transform: translate(-50%, calc(-50% + 30px))
+               perspective(1400px) rotateX(8deg) scale(.94);
     opacity: 0;
-    transition: transform .2s cubic-bezier(.4, 0, 1, 1),
-                opacity .16s ease-in;
+    transition: transform .36s cubic-bezier(.4, 0, .7, 1),
+                opacity .26s ease-in;
 }
 
 .popup-box.open .popup-content{
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%)
+               perspective(1400px) rotateX(0deg) scale(1);
     opacity: 1;
-    /* Opening: a long, decelerating ease so the panel glides into place and
-       settles rather than snapping. Starts 40ms late so the backdrop leads
-       and the panel reads as arriving on top of it.
-       Only opacity and transform animate — both are composited on the GPU, so
-       this costs no layout or repaint work. */
-    transition: transform .42s cubic-bezier(.16, 1, .3, 1) .04s,
-                opacity .3s ease-out .04s;
+    /* Opening: a long decelerating ease, so the panel swings upright and
+       glides forward, then settles rather than snapping. Starts 50ms late so
+       the backdrop leads and the panel reads as arriving on top of it.
+       Only opacity and transform animate — both are composited on the GPU, and
+       the 3D transform gives the panel its own layer, so no frame of this
+       costs layout or repaint work. */
+    transition: transform .62s cubic-bezier(.16, 1, .3, 1) .05s,
+                opacity .4s cubic-bezier(.16, 1, .3, 1) .05s;
 }
 
-/* Users who ask for less motion get a plain fade, no movement or scaling. */
+/* The panel's contents follow it in, one beat behind each other, so the popup
+   assembles instead of arriving all at once. */
+.popup-box .popup-header h3,
+.popup-box .popup-body,
+.popup-box .popup-header .popup-close-icon{
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .18s ease-in, transform .18s ease-in;
+}
+.popup-box .popup-header .popup-close-icon{
+    transform: rotate(-90deg) scale(.6);
+}
+
+.popup-box.open .popup-header h3,
+.popup-box.open .popup-body{
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .45s cubic-bezier(.16, 1, .3, 1) .14s,
+                transform .45s cubic-bezier(.16, 1, .3, 1) .14s;
+}
+.popup-box.open .popup-body{
+    transition-delay: .2s;
+}
+/* Last in, with a light overshoot so it springs into place. */
+.popup-box.open .popup-header .popup-close-icon{
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    transition: opacity .4s cubic-bezier(.16, 1, .3, 1) .26s,
+                transform .4s cubic-bezier(.34, 1.4, .64, 1) .26s;
+}
+
+/* Users who ask for less motion get a plain fade: no movement, rotation,
+   scaling, staggering or blur. */
 @media (prefers-reduced-motion: reduce) {
+    .popup-box,
+    .popup-box.open {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
     .popup-box .popup-content,
     .popup-box.open .popup-content {
         transform: translate(-50%, -50%);
         transition: opacity .2s linear;
+    }
+    .popup-box .popup-header h3,
+    .popup-box .popup-body,
+    .popup-box .popup-header .popup-close-icon,
+    .popup-box.open .popup-header h3,
+    .popup-box.open .popup-body,
+    .popup-box.open .popup-header .popup-close-icon {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }
 
