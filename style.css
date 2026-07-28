@@ -2321,3 +2321,213 @@ footer .text-left p::after{
         font-size: .8rem;
     }
 }
+/* ============================================================
+   ABOUT GALLERY LIGHTBOX
+   Full-screen viewer for the "О компании" slider. Deliberately darker and
+   quieter than the portfolio popup: the photographs carry the section, so the
+   chrome stays out of their way until hovered.
+   ============================================================ */
+
+.mySlides img{
+    cursor: zoom-in;
+}
+
+.lightbox{
+    position: fixed;
+    inset: 0;
+    /* Above the portfolio popup (10000) and the sticky header (9999). */
+    z-index: 12000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(.6rem, 2vh, 1.25rem);
+    padding: clamp(3.75rem, 9vh, 5.5rem) clamp(.75rem, 4vw, 3.5rem) clamp(.75rem, 3vh, 1.75rem);
+
+    background: rgba(16, 13, 12, .96);
+    visibility: hidden;
+    opacity: 0;
+    overscroll-behavior: contain;
+    transition: opacity .28s ease-in,
+                visibility 0s linear .28s;
+}
+.lightbox.is-open{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .4s cubic-bezier(.16, 1, .3, 1),
+                visibility 0s linear 0s;
+}
+
+/* ---- the photograph ---- */
+
+.lightbox__stage{
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lightbox__img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .55);
+}
+
+@keyframes lb-open{
+    from { opacity: 0; transform: scale(.94); }
+    to   { opacity: 1; transform: scale(1); }
+}
+@keyframes lb-from-right{
+    from { opacity: 0; transform: translateX(52px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes lb-from-left{
+    from { opacity: 0; transform: translateX(-52px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.lightbox.is-open .lightbox__img{
+    animation: lb-open .55s cubic-bezier(.16, 1, .3, 1) both;
+}
+/* These follow the rule above so they win at equal specificity: once the user
+   starts paging, the photo should enter from the side it came from. */
+.lightbox__stage.from-right .lightbox__img{
+    animation: lb-from-right .45s cubic-bezier(.16, 1, .3, 1) both;
+}
+.lightbox__stage.from-left .lightbox__img{
+    animation: lb-from-left .45s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+/* ---- chrome ---- */
+
+.lightbox__close,
+.lightbox__nav{
+    position: absolute;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    color: #fff;
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 1;
+    transition: background .25s ease, border-color .25s ease, transform .25s ease;
+}
+.lightbox__close:hover,
+.lightbox__nav:hover{
+    background: var(--main-color);
+    border-color: var(--main-color);
+}
+/* The global reset clears outlines, so keyboard focus needs restating. */
+.lightbox__close:focus-visible,
+.lightbox__nav:focus-visible,
+.lightbox__thumb:focus-visible{
+    outline: 2px solid var(--main-color);
+    outline-offset: 3px;
+}
+
+.lightbox__close{
+    top: clamp(.75rem, 2.5vh, 1.5rem);
+    right: clamp(.75rem, 2.5vw, 1.5rem);
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.lightbox__nav{
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.25rem;
+    height: 3.25rem;
+    font-size: 1.35rem;
+}
+.lightbox__nav:hover{
+    transform: translateY(-50%) scale(1.08);
+}
+.lightbox__nav--prev{ left: clamp(.5rem, 2vw, 2rem); }
+.lightbox__nav--next{ right: clamp(.5rem, 2vw, 2rem); }
+
+.lightbox__counter{
+    position: absolute;
+    top: clamp(.75rem, 2.5vh, 1.5rem);
+    left: clamp(.75rem, 2.5vw, 1.5rem);
+    color: rgba(255, 255, 255, .55);
+    font-size: .95rem;
+    font-weight: 300;
+    letter-spacing: .08em;
+    font-variant-numeric: tabular-nums;
+}
+.lightbox__counter b{
+    color: #fff;
+    font-weight: 500;
+}
+
+/* ---- thumbnail rail ---- */
+
+.lightbox__rail{
+    flex: 0 0 auto;
+    display: flex;
+    gap: .4rem;
+    max-width: 100%;
+    padding: .25rem;
+    overflow-x: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, .25) transparent;
+}
+.lightbox__rail::-webkit-scrollbar{ height: 4px; }
+.lightbox__rail::-webkit-scrollbar-thumb{
+    background: rgba(255, 255, 255, .25);
+    border-radius: 2px;
+}
+
+.lightbox__thumb{
+    flex: 0 0 auto;
+    width: 4.5rem;
+    height: 3rem;
+    padding: 0;
+    overflow: hidden;
+    background: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+    opacity: .4;
+    transition: opacity .25s ease, border-color .25s ease;
+}
+.lightbox__thumb img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.lightbox__thumb:hover{ opacity: .75; }
+.lightbox__thumb.is-active{
+    opacity: 1;
+    border-color: var(--main-color);
+}
+
+@media (max-width: 768px){
+    .lightbox__nav{
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+    .lightbox__thumb{
+        width: 3.25rem;
+        height: 2.25rem;
+    }
+    .lightbox__counter{ font-size: .8rem; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .lightbox.is-open .lightbox__img,
+    .lightbox__stage.from-right .lightbox__img,
+    .lightbox__stage.from-left .lightbox__img{
+        animation: none;
+    }
+    .lightbox__nav:hover{ transform: translateY(-50%); }
+}
+/* END ABOUT GALLERY LIGHTBOX */

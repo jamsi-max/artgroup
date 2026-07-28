@@ -1374,6 +1374,10 @@
 
   <!-- <script src="lib/bodyScrollLock.js"></script> -->
   <script src="js/popup.js"></script>
+  <!-- Deferred so it runs last in document order — after about-slider.js
+       (autoplay control), which is itself deferred, and after popup.js
+       (scroll lock), which is not. -->
+  <script src="js/lightbox.js" defer></script>
 </body>
 
 </html>
