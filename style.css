@@ -2361,17 +2361,27 @@ footer .text-left p::after{
 /* ---- the photograph ---- */
 
 .lightbox__stage{
-    flex: 1 1 auto;
+    position: relative;
+    flex: 1 1 0%;
     min-height: 0;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
+
+/* Absolutely positioned and centred with `margin: auto` rather than laid out
+   as a centred flex item with object-fit.
+   As a flex item the element stretched to the full width of the stage while
+   the picture was letterboxed inside it by object-fit — which made the dark
+   bands either side of the photo part of the <img>, so clicking them hit the
+   image and could not close the viewer. Sized this way the element box is
+   exactly the picture, and everything around it is genuinely backdrop. */
 .lightbox__img{
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: auto;
+    height: auto;
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
     box-shadow: 0 24px 70px rgba(0, 0, 0, .55);
 }
 
