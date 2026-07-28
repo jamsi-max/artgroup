@@ -11,7 +11,6 @@
     text-decoration: none;
     border: none;
     outline: none;
-    scroll-behavior: smooth;
 }
 
 :root {
@@ -64,6 +63,12 @@ html {
     overflow-x: hidden;
     overflow-y: scroll;
     scroll-padding-top: 60px;
+    /* Only the page scrolls smoothly. This used to sit on the universal
+       selector, which also applied it to every nested scroll container — the
+       popup body among them, where it made wheel scrolling feel laggy.
+       js/app.js switches this off for itself and drives anchor jumps directly;
+       it stays as the no-JS fallback. */
+    scroll-behavior: smooth;
 }
 
 body {

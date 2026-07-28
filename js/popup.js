@@ -21,8 +21,9 @@ function unlockPageScroll() {
     document.body.classList.remove('popup-open');
     document.body.style.top = '';
 
-    // Jump straight back to where the user was, without smooth scrolling
-    // (html has scroll-behavior: smooth, which would animate this).
+    // Jump straight back to where the user was, without animating. app.js
+    // normally already forces scroll-behavior to auto; this stands on its own
+    // in case the popup runs without it.
     const html = document.documentElement;
     const previousBehavior = html.style.scrollBehavior;
     html.style.scrollBehavior = 'auto';

@@ -49,6 +49,117 @@ window.addEventListener('scroll', () => {
 updateActiveMenu();
 // END ACTIVE MENU
 
+// SMOOTH ANCHOR NAVIGATION
+// The stylesheet asks for `scroll-behavior: smooth`, but it is declared on the
+// universal selector while html carries `overflow-x: hidden` — the combination
+// browsers are known to ignore, which is why jumps land instantly. Driving the
+// scroll here works regardless, and lets the duration and easing be chosen
+// rather than left to the browser.
+function initSmoothAnchors() {
+    const header = document.querySelector('.header');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // JS owns anchor scrolling from here on, so switch the CSS behaviour off.
+    // Leaving it on would make every window.scrollTo below animate on its own
+    // and fight this tween. It is only disabled once this script runs, so
+    // without JS the stylesheet still provides native smooth scrolling.
+    document.documentElement.style.scrollBehavior = 'auto';
+
+    function destinationFor(target) {
+        // Sit the section just below the sticky header rather than under it.
+        const headerHeight = header ? header.offsetHeight : 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+        const furthest = document.documentElement.scrollHeight - window.innerHeight;
+        return Math.max(0, Math.min(top, furthest));
+    }
+
+    // Leaves quickly, lands gently.
+    function ease(t) {
+        return t < 0.5
+            ? 4 * t * t * t
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    let frame = null;
+
+    function cancel() {
+        if (frame === null) return;
+        cancelAnimationFrame(frame);
+        frame = null;
+    }
+
+    function glideTo(destination) {
+        const from = window.scrollY;
+        const distance = destination - from;
+        if (Math.abs(distance) < 1) return;
+
+        // Long trips get a little more time, but never enough to feel slow.
+        const duration = Math.min(800, Math.max(420, Math.abs(distance) * 0.42));
+        const start = performance.now();
+
+        cancel();
+
+        function step(now) {
+            const progress = Math.min(1, (now - start) / duration);
+            window.scrollTo(0, from + distance * ease(progress));
+            frame = progress < 1 ? requestAnimationFrame(step) : null;
+        }
+
+        frame = requestAnimationFrame(step);
+    }
+
+    // Grabbing the page mid-flight should hand control straight back.
+    ['wheel', 'touchstart', 'keydown'].forEach(type => {
+        window.addEventListener(type, cancel, { passive: true });
+    });
+
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+
+        const hash = link.getAttribute('href');
+        if (hash.length < 2) return; // bare "#", used by the footer logo
+
+        const target = document.getElementById(hash.slice(1));
+        if (!target) return;
+
+        e.preventDefault();
+
+        const destination = destinationFor(target);
+        if (reduceMotion.matches) {
+            window.scrollTo(0, destination);
+        } else {
+            glideTo(destination);
+        }
+
+        // Keep the address bar and the back button in step, without letting the
+        // browser perform its own instant jump to the anchor.
+        if (window.history && history.pushState) {
+            history.pushState(null, '', hash);
+        }
+    });
+
+    // Because the jumps above are pushed manually, the browser no longer
+    // scrolls anywhere on back/forward — so drive that here too.
+    window.addEventListener('popstate', () => {
+        const hash = location.hash;
+        if (hash.length < 2) return;
+
+        const target = document.getElementById(hash.slice(1));
+        if (!target) return;
+
+        const destination = destinationFor(target);
+        if (reduceMotion.matches) {
+            window.scrollTo(0, destination);
+        } else {
+            glideTo(destination);
+        }
+    });
+}
+
+initSmoothAnchors();
+// END SMOOTH ANCHOR NAVIGATION
+
 // SCROLL REVEAL
 // Native IntersectionObserver instead of the ScrollReveal library: the browser
 // recomputes intersections itself, so late-loading images shifting the layout
