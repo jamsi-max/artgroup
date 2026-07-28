@@ -129,9 +129,23 @@
     box.querySelector('.lightbox__nav--prev').addEventListener('click', () => step(-1));
     box.querySelector('.lightbox__nav--next').addEventListener('click', () => step(1));
 
-    // Clicking the empty space around the photo closes, the photo itself does not.
+    // Anywhere dark closes. Stated as "not the photo and not a control" rather
+    // than by listing the backdrop elements, so the padding, the area beside
+    // the photo and the counter all count without having to be enumerated.
+    // The rail counts as a control in full: dragging it to scrub through
+    // thumbnails is a real interaction, and closing on the few pixels of gap
+    // between them would be a nasty surprise mid-scrub.
+    const KEEP_OPEN = '.lightbox__img, .lightbox__close, .lightbox__nav, .lightbox__rail';
+    let swiped = false;
+
     box.addEventListener('click', (e) => {
-        if (e.target === box || e.target === stage) close();
+        // A swipe can be followed by a click; that must not close the viewer.
+        if (swiped) {
+            swiped = false;
+            return;
+        }
+        if (e.target.closest(KEEP_OPEN)) return;
+        close();
     });
 
     document.addEventListener('keydown', (e) => {
@@ -150,6 +164,9 @@
     stage.addEventListener('touchstart', (e) => {
         touchX = e.changedTouches[0].clientX;
         touchY = e.changedTouches[0].clientY;
+        // Start every gesture clean, so a drag that never produced a click
+        // cannot swallow the next genuine tap.
+        swiped = false;
     }, { passive: true });
 
     stage.addEventListener('touchend', (e) => {
@@ -157,6 +174,11 @@
         const dx = e.changedTouches[0].clientX - touchX;
         const dy = e.changedTouches[0].clientY - touchY;
         touchX = null;
+
+        // Any real drag is a gesture, not a tap on the backdrop — flag it so
+        // the click that follows doesn't close the viewer.
+        if (Math.abs(dx) > 10 || Math.abs(dy) > 10) swiped = true;
+
         // Ignore mostly-vertical drags so they don't fight a scroll gesture.
         if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
             step(dx < 0 ? 1 : -1);
