@@ -2,6 +2,7 @@
 const portfolioItems = document.querySelector('.portfolio-container');
 const popup = document.querySelector('.popup-box');
 const popupCloseIcon = popup.querySelector('.popup-close-icon');
+const popupContent = popup.querySelector('.popup-content');
 
 // Scroll position to restore when the popup closes. While the popup is open the
 // body is position: fixed, which otherwise resets the page to the top.
@@ -48,8 +49,18 @@ function fillPopupFrom(box) {
     const content = box.querySelector('.read-more-content');
     if (!title || !content) return false;
 
+    const body = popup.querySelector('.popup-body');
+
     popup.querySelector('h3').innerHTML = title.innerHTML;
-    popup.querySelector('.popup-body').innerHTML = content.innerHTML;
+    body.innerHTML = content.innerHTML;
+
+    // Start every project at its beginning. The panel is reused for all of
+    // them, and replacing the markup does not reset how far the previous
+    // project had been scrolled — so the next one opened part-way down.
+    // Done before the panel is shown, so there is nothing to see.
+    body.scrollTop = 0;
+    popupContent.scrollTop = 0;
+
     return true;
 }
 

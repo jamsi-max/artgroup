@@ -457,7 +457,13 @@ select option span{
     position: relative;
     margin: 0 auto;
     flex: 1 0 45%;
-    height: 100%;
+
+    /* Hug the photo instead of stretching to the height of the text column.
+       The arrows and the "Смотреть" hint are positioned against this box, so
+       if it runs the full height of the text they end up floating below the
+       picture rather than sitting on it. */
+    align-self: flex-start;
+    height: auto;
 }
 .fade{
     animation-name: fade;
@@ -500,6 +506,142 @@ select option span{
     padding: 8px 12px;
     position: absolute;
     top: 0;
+}
+
+/* ---- "the photos open full screen" hint ----
+   A bare hand in the corner of the slider that taps, with rings opening out of
+   the fingertip. The gesture is the message, so there is no wording to read or
+   translate and nothing is drawn behind it — the button box is transparent and
+   exists only to give a thumb something to hit. Contrast over a photograph of
+   any brightness comes from drop shadows on the strokes themselves.
+   It calms down (js/lightbox.js adds .is-used) once the viewer has been
+   opened, so it stops nagging a user who already got the idea. */
+.slider-hint{
+    --hint-size: 3.4rem;
+    /* Where the index fingertip lands inside the button box, as a share of it.
+       The rings are centred here rather than on the box so they read as coming
+       off the finger. Follows from the icon geometry below — change the icon
+       size and these move with it. */
+    --tip-x: 41%;
+    --tip-y: 26%;
+
+    position: absolute;
+    right: clamp(.6rem, 1.6vw, 1.1rem);
+    bottom: clamp(.6rem, 1.6vw, 1.1rem);
+    z-index: 3;
+
+    display: grid;
+    place-items: center;
+    width: var(--hint-size);
+    height: var(--hint-size);
+    padding: 0;
+
+    color: #fff;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    transition: transform .3s cubic-bezier(.16, 1, .3, 1);
+}
+.slider-hint:hover,
+.slider-hint:focus-visible{
+    transform: scale(1.1);
+}
+.slider-hint:focus-visible{
+    outline: 2px solid var(--main-color);
+    outline-offset: 3px;
+    border-radius: 50%;
+}
+
+.slider-hint__hand{
+    grid-area: 1 / 1;
+    width: 1.8rem;
+    height: 1.8rem;
+    display: block;
+    /* Pivot on the fingertip so the press pushes the hand into the screen
+       instead of sliding the whole icon about. Icon-box coordinates, not the
+       button's: the tip sits at (8, 2.5) of the 24-unit viewBox. */
+    transform-origin: 33% 10%;
+    animation: hint-tap 2.6s cubic-bezier(.4, 0, .2, 1) infinite;
+    /* Two shadows: a tight dark outline that holds the white strokes apart
+       from a pale photo, and a wider soft one for depth. */
+    filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, .85))
+            drop-shadow(0 2px 5px rgba(0, 0, 0, .5));
+}
+
+/* Three rings, a third of a cycle apart, opening out of the fingertip. They
+   stay tight around the finger — at their widest they are about the size of
+   the hand, not a halo around it — so the eye reads a fingertip tapping
+   rather than a pulsing badge. Something is always travelling outwards, which
+   is what keeps it looking live. */
+.slider-hint__ring{
+    position: absolute;
+    left: var(--tip-x);
+    top: var(--tip-y);
+    width: calc(var(--hint-size) * .25);
+    height: calc(var(--hint-size) * .25);
+    border: 1.25px solid #fff;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, .7));
+    animation: hint-ring 2.6s cubic-bezier(.16, 1, .3, 1) infinite;
+}
+.slider-hint__ring:nth-of-type(2){
+    animation-delay: .87s;
+}
+.slider-hint__ring:nth-of-type(3){
+    animation-delay: 1.74s;
+}
+
+/* Seen it — keep the affordance, drop the attention-seeking. */
+.slider-hint.is-used .slider-hint__hand,
+.slider-hint.is-used .slider-hint__ring{
+    animation: none;
+}
+
+/* The press, and the rings it throws off, share one 2.6s cycle: the hand dips
+   at 8%, the rings start opening right behind it. */
+@keyframes hint-tap{
+    0%,  4%     { transform: translateY(0) scale(1); }
+    8%          { transform: translateY(1.5px) scale(.88); }
+    18%         { transform: translateY(0) scale(1); }
+    100%        { transform: translateY(0) scale(1); }
+}
+/* Rings keep growing the whole way out and fade late, so the movement stays
+   visible instead of disappearing while it is still small. */
+@keyframes hint-ring{
+    0%   { transform: translate(-50%, -50%) scale(.4); opacity: 0; }
+    10%  { transform: translate(-50%, -50%) scale(.5); opacity: .95; }
+    55%  { opacity: .55; }
+    100% { transform: translate(-50%, -50%) scale(1.7); opacity: 0; }
+}
+
+@media (max-width: 500px){
+    .slider-hint{
+        --hint-size: 3rem;
+    }
+    .slider-hint__hand{
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+}
+
+/* Hover sticks after a tap on a touch screen, so it stays off there. */
+@media (hover: none){
+    .slider-hint:hover{
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .slider-hint__hand,
+    .slider-hint__ring{
+        animation: none;
+    }
+    .slider-hint:hover,
+    .slider-hint:focus-visible{
+        transform: none;
+    }
 }
 
 @keyframes fade{
@@ -1049,20 +1191,22 @@ select option span{
        the page behind it. */
     overscroll-behavior: contain;
 
-    /* CLOSING state. Exits stay quicker than entrances so dismissing feels
-       responsive. visibility flips only after the fade finishes, otherwise the
-       box would vanish instantly and there would be no close animation. */
-    transition: opacity .34s cubic-bezier(.4, 0, .2, 1),
-                -webkit-backdrop-filter .34s cubic-bezier(.4, 0, .2, 1),
-                backdrop-filter .34s cubic-bezier(.4, 0, .2, 1),
-                visibility 0s linear .34s;
+    /* CLOSING state. Exits stay a little quicker than entrances so dismissing
+       feels responsive, but they ease out of the screen rather than being cut
+       short — the backdrop and the panel finish together. visibility flips
+       only after the fade finishes, otherwise the box would vanish instantly
+       and there would be no close animation at all. */
+    transition: opacity .42s cubic-bezier(.33, 0, .2, 1),
+                -webkit-backdrop-filter .42s cubic-bezier(.33, 0, .2, 1),
+                backdrop-filter .42s cubic-bezier(.33, 0, .2, 1),
+                visibility 0s linear .42s;
 }
 .popup-box.open{
     visibility: visible;
     opacity: 1;
 
     /* OPENING state. */
-    transition: opacity .45s cubic-bezier(.16, 1, .3, 1),
+    transition: opacity .5s cubic-bezier(.16, 1, .3, 1),
                 -webkit-backdrop-filter .6s cubic-bezier(.16, 1, .3, 1),
                 backdrop-filter .6s cubic-bezier(.16, 1, .3, 1),
                 visibility 0s linear 0s;
@@ -1101,33 +1245,37 @@ body.popup-open {
     left: 50%;
     /* padding: .5rem; */
 
-    /* Keeps text crisp while the panel is mid-rotation. */
+    /* Keeps text crisp while the panel is mid-rotation, and asks for the layer
+       up front so the first frame of the animation isn't the expensive one. */
     backface-visibility: hidden;
+    will-change: transform, opacity;
 
-    /* CLOSING state: tips back, sinks and shrinks away from the viewer.
+    /* CLOSING state: tips back, sinks and shrinks away from the viewer. The
+       movement is deliberately small — a short travel over a longer duration
+       is what reads as smooth; a big one has to hurry to keep up.
        Both states must list the same transform functions in the same order or
        the browser cannot interpolate between them — and translate(-50%, -50%)
        is what centres the panel, so every keyframe has to carry it.
        perspective() must come before rotateX() to apply to it. */
-    transform: translate(-50%, calc(-50% + 30px))
-               perspective(1400px) rotateX(8deg) scale(.94);
+    transform: translate(-50%, calc(-50% + 18px))
+               perspective(1600px) rotateX(4deg) scale(.965);
     opacity: 0;
-    transition: transform .36s cubic-bezier(.4, 0, .7, 1),
-                opacity .26s ease-in;
+    transition: transform .42s cubic-bezier(.33, 0, .2, 1),
+                opacity .32s cubic-bezier(.33, 0, .2, 1);
 }
 
 .popup-box.open .popup-content{
     transform: translate(-50%, -50%)
-               perspective(1400px) rotateX(0deg) scale(1);
+               perspective(1600px) rotateX(0deg) scale(1);
     opacity: 1;
     /* Opening: a long decelerating ease, so the panel swings upright and
-       glides forward, then settles rather than snapping. Starts 50ms late so
+       glides forward, then settles rather than snapping. Starts a beat late so
        the backdrop leads and the panel reads as arriving on top of it.
        Only opacity and transform animate — both are composited on the GPU, and
        the 3D transform gives the panel its own layer, so no frame of this
        costs layout or repaint work. */
-    transition: transform .62s cubic-bezier(.16, 1, .3, 1) .05s,
-                opacity .4s cubic-bezier(.16, 1, .3, 1) .05s;
+    transition: transform .6s cubic-bezier(.16, 1, .3, 1) .04s,
+                opacity .44s cubic-bezier(.16, 1, .3, 1) .04s;
 }
 
 /* The panel's contents follow it in, one beat behind each other, so the popup
@@ -1136,8 +1284,8 @@ body.popup-open {
 .popup-box .popup-body,
 .popup-box .popup-header .popup-close-icon{
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity .18s ease-in, transform .18s ease-in;
+    transform: translateY(12px);
+    transition: opacity .24s ease, transform .24s ease;
 }
 .popup-box .popup-header .popup-close-icon{
     transform: rotate(-90deg) scale(.6);
@@ -1147,18 +1295,18 @@ body.popup-open {
 .popup-box.open .popup-body{
     opacity: 1;
     transform: translateY(0);
-    transition: opacity .45s cubic-bezier(.16, 1, .3, 1) .14s,
-                transform .45s cubic-bezier(.16, 1, .3, 1) .14s;
+    transition: opacity .45s cubic-bezier(.16, 1, .3, 1) .1s,
+                transform .45s cubic-bezier(.16, 1, .3, 1) .1s;
 }
 .popup-box.open .popup-body{
-    transition-delay: .2s;
+    transition-delay: .16s;
 }
 /* Last in, with a light overshoot so it springs into place. */
 .popup-box.open .popup-header .popup-close-icon{
     opacity: 1;
     transform: rotate(0deg) scale(1);
-    transition: opacity .4s cubic-bezier(.16, 1, .3, 1) .26s,
-                transform .4s cubic-bezier(.34, 1.4, .64, 1) .26s;
+    transition: opacity .4s cubic-bezier(.16, 1, .3, 1) .22s,
+                transform .4s cubic-bezier(.34, 1.4, .64, 1) .22s;
 }
 
 /* Users who ask for less motion get a plain fade: no movement, rotation,
@@ -2338,11 +2486,21 @@ footer .text-left p::after{
     /* Above the portfolio popup (10000) and the sticky header (9999). */
     z-index: 12000;
 
+    /* `inset: 0` already sizes this; 100dvh additionally tracks the mobile
+       browser's collapsing address bar, so the viewer never runs off the
+       bottom of the screen. Browsers without dvh keep the inset sizing. */
+    height: 100dvh;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: clamp(.6rem, 2vh, 1.25rem);
-    padding: clamp(3.75rem, 9vh, 5.5rem) clamp(.75rem, 4vw, 3.5rem) clamp(.75rem, 3vh, 1.75rem);
+    /* Notches and home indicators are kept clear of the chrome. */
+    padding:
+        calc(clamp(3.5rem, 9vh, 5.5rem) + env(safe-area-inset-top, 0px))
+        calc(clamp(.75rem, 4vw, 3.5rem) + env(safe-area-inset-right, 0px))
+        calc(clamp(.75rem, 3vh, 1.75rem) + env(safe-area-inset-bottom, 0px))
+        calc(clamp(.75rem, 4vw, 3.5rem) + env(safe-area-inset-left, 0px));
 
     background: rgba(16, 13, 12, .96);
     visibility: hidden;
@@ -2365,6 +2523,12 @@ footer .text-left p::after{
     flex: 1 1 0%;
     min-height: 0;
     width: 100%;
+
+    /* Its own stacking context, below the chrome. On a phone the photo fills
+       the full width of the stage, and the previous button comes *before* the
+       stage in the markup — without this it painted underneath the picture and
+       could not be tapped at all. */
+    z-index: 0;
 }
 
 /* Absolutely positioned and centred with `margin: auto` rather than laid out
@@ -2415,6 +2579,8 @@ footer .text-left p::after{
 .lightbox__close,
 .lightbox__nav{
     position: absolute;
+    /* Above the photo — see the note on .lightbox__stage. */
+    z-index: 2;
     display: grid;
     place-items: center;
     padding: 0;
@@ -2440,8 +2606,8 @@ footer .text-left p::after{
 }
 
 .lightbox__close{
-    top: clamp(.75rem, 2.5vh, 1.5rem);
-    right: clamp(.75rem, 2.5vw, 1.5rem);
+    top: calc(clamp(.75rem, 2.5vh, 1.5rem) + env(safe-area-inset-top, 0px));
+    right: calc(clamp(.75rem, 2.5vw, 1.5rem) + env(safe-area-inset-right, 0px));
     width: 2.75rem;
     height: 2.75rem;
     font-size: 2rem;
@@ -2458,13 +2624,14 @@ footer .text-left p::after{
 .lightbox__nav:hover{
     transform: translateY(-50%) scale(1.08);
 }
-.lightbox__nav--prev{ left: clamp(.5rem, 2vw, 2rem); }
-.lightbox__nav--next{ right: clamp(.5rem, 2vw, 2rem); }
+.lightbox__nav--prev{ left: calc(clamp(.5rem, 2vw, 2rem) + env(safe-area-inset-left, 0px)); }
+.lightbox__nav--next{ right: calc(clamp(.5rem, 2vw, 2rem) + env(safe-area-inset-right, 0px)); }
 
 .lightbox__counter{
     position: absolute;
-    top: clamp(.75rem, 2.5vh, 1.5rem);
-    left: clamp(.75rem, 2.5vw, 1.5rem);
+    z-index: 2;
+    top: calc(clamp(.75rem, 2.5vh, 1.5rem) + env(safe-area-inset-top, 0px));
+    left: calc(clamp(.75rem, 2.5vw, 1.5rem) + env(safe-area-inset-left, 0px));
     color: rgba(255, 255, 255, .55);
     font-size: .95rem;
     font-weight: 300;
@@ -2519,17 +2686,78 @@ footer .text-left p::after{
     border-color: var(--main-color);
 }
 
+/* On a phone the picture uses the full width, so the controls necessarily sit
+   on top of it. They get a dark, blurred backing to stay readable over any
+   photograph, and keep a 44px touch target — the size a thumb can actually
+   hit. Hover styling is skipped on touch: it sticks after a tap. */
 @media (max-width: 768px){
+    .lightbox__close,
     .lightbox__nav{
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1rem;
+        background: rgba(16, 13, 12, .55);
+        border-color: rgba(255, 255, 255, .3);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+    }
+    .lightbox__nav{
+        width: 2.75rem;
+        height: 2.75rem;
+        font-size: 1.05rem;
     }
     .lightbox__thumb{
         width: 3.25rem;
         height: 2.25rem;
     }
     .lightbox__counter{ font-size: .8rem; }
+}
+
+@media (hover: none){
+    .lightbox__close:hover,
+    .lightbox__nav:hover{
+        background: rgba(16, 13, 12, .55);
+        border-color: rgba(255, 255, 255, .3);
+    }
+    .lightbox__nav:hover{ transform: translateY(-50%); }
+    .lightbox__thumb:hover{ opacity: .4; }
+    .lightbox__thumb.is-active:hover{ opacity: 1; }
+}
+
+/* Narrow phones: pull the side padding in so the photo keeps as much width as
+   it can, and tighten the top band now that the chrome is smaller. */
+@media (max-width: 420px){
+    .lightbox{
+        padding-top: calc(3.25rem + env(safe-area-inset-top, 0px));
+        padding-left: calc(.5rem + env(safe-area-inset-left, 0px));
+        padding-right: calc(.5rem + env(safe-area-inset-right, 0px));
+    }
+    .lightbox__close{
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.75rem;
+    }
+}
+
+/* Landscape on a phone: height is the scarce dimension. Everything shrinks
+   towards the photo rather than the rail being dropped — scrubbing through
+   thumbnails is the fastest way around a 37-photo gallery. */
+@media (max-height: 480px){
+    .lightbox{
+        padding-top: calc(3rem + env(safe-area-inset-top, 0px));
+        padding-bottom: calc(.5rem + env(safe-area-inset-bottom, 0px));
+        gap: .45rem;
+    }
+    .lightbox__thumb{
+        width: 2.75rem;
+        height: 1.9rem;
+    }
+    .lightbox__close{
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1.6rem;
+    }
+    .lightbox__nav{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 }
 
 @media (prefers-reduced-motion: reduce){

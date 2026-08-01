@@ -260,7 +260,22 @@
 
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
-          
+
+          <!-- Tells the user the photos open full screen: a tapping hand with
+               rings pulsing out of the fingertip. Wired up in js/lightbox.js. -->
+          <button class="slider-hint" type="button" aria-label="Открыть фото на весь экран">
+            <span class="slider-hint__ring" aria-hidden="true"></span>
+            <span class="slider-hint__ring" aria-hidden="true"></span>
+            <span class="slider-hint__ring" aria-hidden="true"></span>
+            <svg class="slider-hint__hand" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10 9.5V4a2 2 0 0 0-4 0v10" />
+              <path d="M14 10V9a2 2 0 0 0-4 0v1" />
+              <path d="M18 11v-1a2 2 0 0 0-4 0" />
+              <path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
+            </svg>
+          </button>
+
         </div>
         <!-- END SLIDER  -->
 

@@ -28,6 +28,12 @@ function goToSlide(oneBased) {
     showSlides(slideIndex);
 }
 
+// The slide on screen right now, 1-based. The lightbox opens on it when the
+// viewer is launched from the hint button rather than from a photo.
+function getCurrentSlide() {
+    return slideIndex;
+}
+
 // AUTO SLIDER
 function startSlideshow() {
     if (slideTimer !== null) return;
