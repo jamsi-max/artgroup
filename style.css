@@ -1703,7 +1703,44 @@ body.popup-open {
 .contact-container .contactForm form .inputBox input[type="submit"]:hover{
     background: var(--main-color);
     color: #fff;
-    
+
+}
+.contact-container .contactForm form .inputBox input[type="submit"]:disabled{
+    cursor: not-allowed;
+    opacity: .6;
+}
+
+/* Honeypot: kept in the layout (not display:none) so simple bots that skip
+   invisible fields still fill it in, but placed off-screen for everyone else. */
+.hp-field{
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+/* Feedback message shown in place of the form after submit */
+.contact-container .contactForm .form-send-result{
+    position: relative;
+    z-index: 10;
+    margin-top: 20px;
+    padding: 16px 20px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #fff;
+    background: rgba(0, 0, 0, .4);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .15);
+    border-left: 4px solid var(--main-color);
+}
+.contact-container .contactForm .form-send-result:empty{
+    display: none;
+}
+.contact-container .contactForm .form-send-result.is-success{
+    border-left-color: #3ddc71;
+}
+.contact-container .contactForm .form-send-result.is-error{
+    border-left-color: #e64444;
 }
 /* END CONTACT */
 
@@ -2094,6 +2131,10 @@ footer .text-left p::after{
     .contact-container .contactForm form h2 {
         font-size: 1.5em;
     }
+    .contact-container .contactForm .form-send-result {
+        font-size: .95rem;
+        padding: 14px 18px;
+    }
 }
 
 @media (max-width: 720px) {
@@ -2426,6 +2467,10 @@ footer .text-left p::after{
         font-size: .9rem;
         clip-path: polygon(20% 10%, 75% 10%, 65% 95%, 30% 80%);
         font-weight: 700;
+    }
+    .contact-container .contactForm .form-send-result {
+        font-size: .9rem;
+        padding: 12px 14px;
     }
     /* .footer .count-visit{
         margin: 1rem 0;

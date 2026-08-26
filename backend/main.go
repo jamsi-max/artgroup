@@ -48,6 +48,10 @@ type feedbackRequest struct {
 	Name    string `json:"name"`
 	Phone   string `json:"phone"`
 	Comment string `json:"comment"`
+	// Honeypot: a field real users never see or fill in (hidden off-screen in
+	// the form). Bots that fill in every field trip it; a non-empty value
+	// means silently drop the message instead of forwarding it to Telegram.
+	Honeypot string `json:"hp"`
 }
 
 // Mirrors the maxlength attributes on the form fields in index.html.
@@ -197,10 +201,14 @@ func feedbackHandler(cfg config, limiter *rateLimiter, telegram *telegramClient)
 			return
 		}
 
-		message := "🟢 Заявка с сайта Art group\n" +
-			"Имя: " + req.Name + "\n" +
-			"Телефон: " + req.Phone + "\n" +
-			"Комментарий: " + req.Comment
+		// A filled honeypot means a bot, not a visitor: report success so it
+		// moves on, but never actually forward the message to Telegram.
+		if req.Honeypot != "" {
+			writeJSON(w, http.StatusOK, map[string]any{"ok": true})
+			return
+		}
+
+		message := formatMessage(req.Name, req.Phone, req.Comment)
 
 		if err := telegram.send(r.Context(), message); err != nil {
 			log.Printf("telegram send failed: %v", err)

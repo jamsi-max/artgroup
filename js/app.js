@@ -503,33 +503,42 @@ function changeReadMore3() {
 // never sits in client-side JS where anyone viewing source could read it.
 const FEEDBACK_API = 'https://artgroup-feedback.onrender.com/api/feedback';
 
+// Guards against a double-click or double-tap firing two submits before the
+// first fetch has resolved.
+let feedbackSubmitting = false;
+
 async function sendTelegram(e) {
     e.preventDefault();
+    if (feedbackSubmitting) return;
 
     const form = e.target;
     const formBtn = form.querySelector('.send-btn');
     const formSendResult = document.querySelector('.form-send-result');
     formSendResult.textContent = '';
+    formSendResult.classList.remove('is-success', 'is-error');
 
-    const {phone, name, comment} = Object.fromEntries(new FormData(form).entries());
+    // "website" is a honeypot: hidden off-screen in the markup, so only a
+    // bot filling in every field ever sets it. Real submits send it empty.
+    const {phone, name, comment, website} = Object.fromEntries(new FormData(form).entries());
+
+    feedbackSubmitting = true;
+    formBtn.disabled = true;
 
     try {
-        formBtn.textContent = 'Отправка...';
+        // formBtn is an <input type="submit">, whose visible label comes
+        // from .value, not .textContent.
+        formBtn.value = 'Отправка...';
         const response = await fetch(FEEDBACK_API, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, phone, comment })
+            body: JSON.stringify({ name, phone, comment, hp: website })
         });
 
         if (response.ok) {
             formSendResult.textContent = `${name}! Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время!`;
-            formSendResult.style.position = 'relative';
-            formSendResult.style.zIndex = '100';
-            formSendResult.style.color = 'rgb(26 244 5)';
-            formSendResult.style.fontSize = '1rem';
-            formSendResult.style.fontWeight = '600';
+            formSendResult.classList.add('is-success');
             form.reset();
             form.style.display = 'none';
         } else {
@@ -538,9 +547,11 @@ async function sendTelegram(e) {
     } catch (error) {
         console.error(error);
         formSendResult.textContent = 'Произошла ошибка отправки! Попробуйте еще раз.';
-        formSendResult.style.color = 'red';
+        formSendResult.classList.add('is-error');
     } finally {
-        formBtn.textContent = 'Отправить';
+        feedbackSubmitting = false;
+        formBtn.disabled = false;
+        formBtn.value = currentLng === 'en' ? 'Send' : 'Отправить';
     }
 };
 // END SEND TELEGRAM FORM

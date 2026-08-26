@@ -1292,6 +1292,9 @@
 
           <form class="form" onsubmit="sendTelegram(event)" id="contact-form">
             <h2 class="lng-contact-text-3">Заказать звонок</h2>
+            <!-- Honeypot: hidden from real visitors, only a bot filling every
+                 field will set this. Checked server-side in backend/. -->
+            <input class="hp-field" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="inputBox">
               <input name="phone" type="tel" avtocomplete="off" maxlength="20" required="required">
               <span class="lng-contact-text-4">Телефон</span>
