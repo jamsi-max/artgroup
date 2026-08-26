@@ -1821,6 +1821,47 @@ body.popup-open {
 .contact-container .contactForm .form-send-result.is-error{
     border-left-color: #e64444;
 }
+
+/* PAPER-PLANE SEND ANIMATION
+   On a successful submit the card folds in on itself toward the button,
+   a paper plane launches from roughly that spot, and flies off — a nod to
+   the message actually being relayed through Telegram, instead of the form
+   just vanishing. Plays once, driven by playSendFlight() in js/app.js,
+   which adds/removes these classes; the existing success handling (the
+   message below, form.reset(), hiding the form) runs unchanged right after. */
+.contact-container .contactForm form.is-sending{
+    animation: form-fold .6s cubic-bezier(.56, 0, .78, .38) forwards;
+    transform-origin: 50% 84%;
+    pointer-events: none;
+}
+@keyframes form-fold{
+    0%   { transform: scale(1) rotate(0deg); opacity: 1; filter: blur(0); }
+    55%  { transform: scale(.72) rotate(3deg); opacity: .9; filter: blur(0); }
+    100% { transform: scale(.15) rotate(8deg); opacity: 0; filter: blur(1px); }
+}
+
+.contact-container .contactForm .form-plane{
+    position: absolute;
+    left: 50%;
+    top: 84%;
+    width: 2.6rem;
+    height: 2.6rem;
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 0;
+    color: #fff;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .5));
+    pointer-events: none;
+    z-index: 20;
+}
+.contact-container .contactForm .form-plane.is-flying{
+    animation: plane-fly .85s cubic-bezier(.2, .7, .3, 1) forwards;
+}
+@keyframes plane-fly{
+    0%   { transform: translate(-50%, -50%) scale(.3) rotate(-10deg); opacity: 0; }
+    16%  { transform: translate(-50%, -50%) scale(1) rotate(-6deg); opacity: 1; }
+    100% { transform: translate(60vw, -55vh) scale(.4) rotate(28deg); opacity: 0; }
+}
+
 /* END CONTACT */
 
 /* FOOTER */

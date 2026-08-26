@@ -1350,6 +1350,14 @@
             </div>
           </form>
 
+          <!-- Launches on a successful submit: the form folds toward the
+               button, this glyph appears in its place and flies off.
+               See .form-plane / .is-sending in style.css and
+               playSendFlight() in js/app.js. Purely decorative. -->
+          <svg class="form-plane" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"></path>
+          </svg>
+
           <div class="form-send-result"></div>
         </div>
 
