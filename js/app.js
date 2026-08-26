@@ -197,17 +197,20 @@ function initScrollReveal() {
 initScrollReveal();
 // END SCROLL REVEAL
 
-// HOME IMAGE GEOMETRIC ANIMATION
-function initGeometricAnimation() {
-    const shapes = gsap.utils.toArray('.shape');
-    if (shapes.length === 0) return;
+// GEOMETRIC FIGURE ANIMATION
+// Shared engine behind the home hero image and the three "Why us?" figures:
+// each is a cluster of .shape elements inside its own container that
+// explodes together into place, wiggles idly while settled, and comes apart
+// again as the page scrolls past it.
+function createFigureAnimator(container) {
+    const shapes = gsap.utils.toArray(container.querySelectorAll('.shape'));
+    if (shapes.length === 0) return null;
 
     // Stable base rotations for the architectural "tilted" look
     const baseRotations = shapes.map((_, i) => (Math.sin(i * 1.5) * 15));
     const idleTweens = [];
     let isAssembling = false;
-    let isAtHome = false;
-    let isNavigatingToHome = false;
+    let isSettled = false;
 
     function stopIdle() {
         idleTweens.forEach(t => t.kill());
@@ -215,9 +218,6 @@ function initGeometricAnimation() {
     }
 
     function startIdle() {
-        // Only idle if we are at top and not in transition
-        if (!isAtHome || isAssembling || window.scrollY > 100) return;
-        
         stopIdle();
         shapes.forEach((shape, i) => {
             const t = gsap.to(shape, {
@@ -236,10 +236,10 @@ function initGeometricAnimation() {
 
     function assemble(forceStagger = false) {
         if (isAssembling) return;
-        if (isAtHome && !forceStagger) return;
+        if (isSettled && !forceStagger) return;
 
         isAssembling = true;
-        isAtHome = true;
+        isSettled = true;
 
         stopIdle();
         gsap.killTweensOf(shapes);
@@ -270,44 +270,17 @@ function initGeometricAnimation() {
         });
     }
 
-    // Initial load
-    assemble(true);
+    // progress: 0 = fully assembled/at rest, 1 = fully scattered/invisible.
+    // Recomputed continuously from scroll position so it scrubs smoothly in
+    // both directions instead of playing once.
+    function disassemble(progress) {
+        if (isAssembling) return;
 
-    // Handle "Home" link clicks
-    document.querySelectorAll('a[href="#home"]').forEach(link => {
-        link.addEventListener('click', () => {
-            isNavigatingToHome = true;
-            assemble(true);
-        });
-    });
-
-    // Scroll listener — throttled to one frame. Previously this fired on every
-    // scroll event and spawned 30 fresh GSAP tweens each time.
-    function onShapeScroll() {
-        const scrollY = window.scrollY;
-
-        // If we reach the top, reset navigation flag and reassemble if needed
-        if (scrollY < 50) {
-            isNavigatingToHome = false;
-            if (!isAtHome && !isAssembling) {
-                assemble(false);
-            }
-            return;
-        }
-
-        // Ignore scroll disintegration if we are currently assembling or navigating home
-        if (isAssembling || isNavigatingToHome) return;
-
-        // Away from home
-        if (isAtHome) {
-            isAtHome = false;
+        if (isSettled) {
+            isSettled = false;
             stopIdle();
         }
 
-        // Standard disintegration logic
-        const maxScroll = window.innerHeight * 1.5;
-        const progress = Math.min(scrollY / maxScroll, 1);
-        
         shapes.forEach((shape, i) => {
             const factor = (i % 5 + 1) * 0.8;
             const dx = (i % 2 === 0 ? 1 : -1) * (1 + i * 0.1);
@@ -325,6 +298,53 @@ function initGeometricAnimation() {
         });
     }
 
+    return {
+        assemble,
+        disassemble,
+        get isSettled() { return isSettled; },
+        get isAssembling() { return isAssembling; }
+    };
+}
+
+// The hero figure at the very top of the page — always "at rest" when the
+// page is scrolled to the top, and keyed off the global scroll position
+// since it only ever lives there.
+function initHeroFigure() {
+    const container = document.querySelector('.home-img-container');
+    if (!container) return;
+    const anim = createFigureAnimator(container);
+    if (!anim) return;
+
+    let isNavigatingToHome = false;
+
+    anim.assemble(true);
+
+    document.querySelectorAll('a[href="#home"]').forEach(link => {
+        link.addEventListener('click', () => {
+            isNavigatingToHome = true;
+            anim.assemble(true);
+        });
+    });
+
+    // Scroll listener — throttled to one frame.
+    function onShapeScroll() {
+        const scrollY = window.scrollY;
+
+        if (scrollY < 50) {
+            isNavigatingToHome = false;
+            if (!anim.isSettled && !anim.isAssembling) {
+                anim.assemble(false);
+            }
+            return;
+        }
+
+        if (anim.isAssembling || isNavigatingToHome) return;
+
+        const maxScroll = window.innerHeight * 1.5;
+        const progress = Math.min(scrollY / maxScroll, 1);
+        anim.disassemble(progress);
+    }
+
     let shapeTicking = false;
     window.addEventListener('scroll', () => {
         if (shapeTicking) return;
@@ -336,13 +356,79 @@ function initGeometricAnimation() {
     }, { passive: true });
 }
 
+// The three "Why us?" figures. Unlike the hero they can sit anywhere on the
+// page, so each is keyed off its own position in the viewport rather than
+// the global scroll position: it explodes into place the first time it
+// scrolls into view, holds and wiggles while comfortably on screen, and
+// dissolves again as it scrolls past — in either direction.
+function initWhyUsFigures() {
+    const figures = Array.from(document.querySelectorAll('.figure-canvas'))
+        .map(container => ({ container, anim: createFigureAnimator(container), hasEnteredOnce: false }))
+        .filter(f => f.anim);
+    if (figures.length === 0) return;
+
+    function onFiguresScroll() {
+        const vh = window.innerHeight;
+
+        figures.forEach(fig => {
+            const { anim, container } = fig;
+            if (anim.isAssembling) return;
+
+            const rect = container.getBoundingClientRect();
+
+            if (!fig.hasEnteredOnce) {
+                // Scrolling down brings it up from below — trigger the same
+                // dramatic scatter-in the hero plays on load.
+                if (rect.top < vh * 0.85) {
+                    fig.hasEnteredOnce = true;
+                    anim.assemble(true);
+                }
+                return;
+            }
+
+            const inSettleZone = rect.top < vh * 0.75 && rect.bottom > vh * 0.25;
+
+            if (inSettleZone) {
+                if (!anim.isSettled) anim.assemble(false);
+                return;
+            }
+
+            const exitStart = vh * 0.3;
+            const exitDistance = vh * 0.9;
+            const progress = Math.min(Math.max((exitStart - rect.top) / exitDistance, 0), 1);
+            anim.disassemble(progress);
+        });
+    }
+
+    let figureTicking = false;
+    function requestFiguresTick() {
+        if (figureTicking) return;
+        figureTicking = true;
+        requestAnimationFrame(() => {
+            onFiguresScroll();
+            figureTicking = false;
+        });
+    }
+
+    window.addEventListener('scroll', requestFiguresTick, { passive: true });
+    window.addEventListener('resize', requestFiguresTick);
+
+    // In case a figure already sits in (or near) the viewport on load.
+    onFiguresScroll();
+}
+
+function initGeometricAnimation() {
+    initHeroFigure();
+    initWhyUsFigures();
+}
+
 // Initialize on load
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initGeometricAnimation);
 } else {
     initGeometricAnimation();
 }
-// END HOME IMAGE GEOMETRIC ANIMATION
+// END GEOMETRIC FIGURE ANIMATION
 
 // PRINT TEXT TYPED JS
 const typed = new Typed('.multiple-text', {

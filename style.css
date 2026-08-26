@@ -26,34 +26,61 @@
 }
 
 /* SCROLL REVEAL
-   Replaces the ScrollReveal library. Elements start offset/transparent and are
-   moved to their final state by adding .is-revealed (see js/app.js).
-   Reveal happens once, so a fast scroll can never interrupt a running
-   transition and leave a block stranded mid-way. */
+   Elements start offset/transparent and are moved to their final state by
+   adding .is-revealed (see initScrollReveal in js/app.js — a native
+   IntersectionObserver, no library). Reveal happens once, so a fast scroll
+   can never interrupt a running transition and leave a block stranded
+   mid-way.
+   The look: a short rise with a soft focus-pull (blur clearing) and a hint of
+   scale, on the same signature ease used for the lightbox open (see
+   @keyframes lb-open) — enough to read as a considered entrance without
+   turning into a slide show. Kept deliberately short/subtle; this is a
+   texture, not the main event (the home/why-us geometric figures are). */
 /* Scoped to .js (set by an inline script in <head>) so that with JavaScript
    disabled the content simply stays visible instead of being stuck hidden. */
 .js .reveal {
     opacity: 0;
-    transform: translateY(80px);
-    transition: opacity .8s cubic-bezier(.5, 0, 0, 1),
-                transform .8s cubic-bezier(.5, 0, 0, 1);
-    will-change: opacity, transform;
+    transform: translateY(30px) scale(.975);
+    filter: blur(7px);
+    transition: opacity .9s cubic-bezier(.16, 1, .3, 1),
+                transform .9s cubic-bezier(.16, 1, .3, 1),
+                filter .7s cubic-bezier(.16, 1, .3, 1);
+    will-change: opacity, transform, filter;
 }
 
 .js .reveal--from-top {
-    transform: translateY(-80px);
+    transform: translateY(-30px) scale(.975);
 }
 
 .js .reveal.is-revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
     will-change: auto;
 }
+
+/* Cascade: a handful of siblings inside a .reveal-group reveal a beat apart
+   instead of snapping in together. The delay lives entirely in CSS — each
+   child is still its own independent IntersectionObserver target, the delay
+   just staggers when its (already-triggered) transition visibly starts. The
+   cycle repeats every 4th item so a long grid never accumulates a runaway
+   wait on later rows. Matches both a .reveal that IS the direct child (most
+   sections) and one nested a level deeper inside it (services-1's cards,
+   where the reveal has to sit on an inner wrapper — see below). */
+.js .reveal-group > *:nth-child(4n+1).reveal,
+.js .reveal-group > *:nth-child(4n+1) .reveal { transition-delay: 0ms, 0ms, 0ms; }
+.js .reveal-group > *:nth-child(4n+2).reveal,
+.js .reveal-group > *:nth-child(4n+2) .reveal { transition-delay: 110ms, 110ms, 60ms; }
+.js .reveal-group > *:nth-child(4n+3).reveal,
+.js .reveal-group > *:nth-child(4n+3) .reveal { transition-delay: 220ms, 220ms, 120ms; }
+.js .reveal-group > *:nth-child(4n+4).reveal,
+.js .reveal-group > *:nth-child(4n+4) .reveal { transition-delay: 330ms, 330ms, 180ms; }
 
 @media (prefers-reduced-motion: reduce) {
     .js .reveal {
         opacity: 1;
         transform: none;
+        filter: none;
         transition: none;
     }
 }
@@ -1019,6 +1046,58 @@ select option span{
 .services-container .services-box p{
     font-weight: 100;
     font-size: 1.2rem;
+}
+
+/* "Why us?" figures — three small constructivist compositions built out of
+   the same .shape primitive as the home hero image, driven by the same
+   assemble/wiggle/disassemble behaviour (see js/app.js). Sized as a
+   percentage of the card so it scales with the responsive card width instead
+   of needing its own breakpoints. */
+.figure-canvas{
+    position: relative;
+    width: 55%;
+    max-width: 11.5rem;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+}
+
+/* Figure 1 — "Эффективность" */
+.figure-canvas-1 .f1-s1{ width: 58%; height: 58%; left: 21%; top: 16%; background: #c2c2c2; z-index: 1; }
+.figure-canvas-1 .f1-s2{ width: 16%; height: 48%; left: 44%; top: 10%; background: var(--main-color); z-index: 5; }
+.figure-canvas-1 .f1-s3{ width: 15%; height: 15%; left: 76%; top: 4%; background: var(--main-color); z-index: 6; }
+.figure-canvas-1 .f1-s4{ width: 32%; height: 18%; left: 6%; top: 64%; background: var(--main-color); clip-path: polygon(0% 100%, 0% 0%, 100% 50%); z-index: 4; }
+.figure-canvas-1 .f1-s5{ width: 44%; height: 1%; left: 0%; top: 22%; background: #333; z-index: 3; }
+.figure-canvas-1 .f1-s6{ width: 30%; height: .8%; left: 4%; top: 30%; background: #999; z-index: 3; }
+.figure-canvas-1 .f1-s7{ width: 2%; height: 28%; left: 70%; top: 50%; background: var(--main-color); z-index: 7; }
+.figure-canvas-1 .f1-s8{ width: 8%; height: 10%; left: 53%; top: 45%; background: #222; z-index: 8; }
+.figure-canvas-1 .f1-s9{ width: 38%; height: 38%; left: 31%; top: 29%; border: 2px solid #555; z-index: 2; }
+
+/* Figure 2 — "Творчество" */
+.figure-canvas-2 .f2-s1{ width: 56%; height: 56%; left: 6%; top: 34%; background: #111; border-radius: 50%; z-index: 1; }
+.figure-canvas-2 .f2-s2{ width: 54%; height: 54%; left: 30%; top: 4%; background: var(--main-color); clip-path: polygon(50% 0%, 100% 100%, 0% 100%); z-index: 3; }
+.figure-canvas-2 .f2-s3{ width: 30%; height: 46%; left: 34%; top: 22%; background: #ccc; z-index: 4; }
+.figure-canvas-2 .f2-s4{ width: 11%; height: 56%; left: 40%; top: 10%; background: #1a1a1a; z-index: 5; }
+.figure-canvas-2 .f2-s5{ width: 13%; height: 16%; left: 45%; top: 46%; background: var(--main-color); border-radius: 50%; z-index: 10; }
+.figure-canvas-2 .f2-s6{ width: 46%; height: 1%; left: 2%; top: 78%; background: #ddd; z-index: 6; }
+.figure-canvas-2 .f2-s7{ width: 40%; height: 3%; left: 26%; top: 64%; background: #222; z-index: 6; }
+.figure-canvas-2 .f2-s8{ width: 5%; height: 6%; left: 50%; top: 39%; background: #fff; border-radius: 50%; z-index: 11; }
+
+/* Figure 3 — "Партнерство" */
+.figure-canvas-3 .f3-s1{ width: 50%; height: 50%; left: 2%; top: 28%; background: #111; border-radius: 50%; z-index: 1; }
+.figure-canvas-3 .f3-s2{ width: 9%; height: 70%; left: 24%; top: 10%; background: var(--main-color); z-index: 5; }
+.figure-canvas-3 .f3-s3{ width: 80%; height: 6%; left: 8%; top: 56%; background: var(--main-color); z-index: 6; }
+.figure-canvas-3 .f3-s4{ width: 26%; height: 20%; left: 46%; top: 30%; background: #999; z-index: 4; }
+.figure-canvas-3 .f3-s5{ width: 46%; height: 60%; left: 42%; top: 6%; background: #eee; border: 1px solid #ccc; z-index: 3; }
+.figure-canvas-3 .f3-s6{ width: 4%; height: 20%; left: 76%; top: 10%; background: var(--main-color); z-index: 7; }
+.figure-canvas-3 .f3-s7{ width: 3%; height: 16%; left: 82%; top: 16%; background: var(--main-color); z-index: 7; }
+.figure-canvas-3 .f3-s8{ width: 60%; height: .8%; left: 30%; top: 20%; background: #333; z-index: 8; }
+.figure-canvas-3 .f3-s9{ width: 6%; height: 7%; left: 48%; top: 50%; background: #222; border-radius: 50%; z-index: 9; }
+
+@media (max-width: 500px){
+    .figure-canvas{
+        width: 48%;
+        max-width: 8.5rem;
+    }
 }
 /* END SERVICRS */
 
