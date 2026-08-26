@@ -386,16 +386,25 @@ function initWhyUsFigures() {
                 return;
             }
 
-            const inSettleZone = rect.top < vh * 0.75 && rect.bottom > vh * 0.25;
+            const settleTop = vh * 0.75;
+            const settleBottom = vh * 0.25;
+            const inSettleZone = rect.top < settleTop && rect.bottom > settleBottom;
 
             if (inSettleZone) {
                 if (!anim.isSettled) anim.assemble(false);
                 return;
             }
 
-            const exitStart = vh * 0.3;
+            // Symmetric in both directions: scrolling down pushes it out over
+            // the top edge (rect.bottom sinking below settleBottom), scrolling
+            // up pushes it out over the bottom edge (rect.top rising above
+            // settleTop) — each ramps 0→1 over the same distance, continuous
+            // with the settle zone's own boundary so there is no jump where
+            // the two hand off.
             const exitDistance = vh * 0.9;
-            const progress = Math.min(Math.max((exitStart - rect.top) / exitDistance, 0), 1);
+            const progress = rect.bottom <= settleBottom
+                ? Math.min(Math.max((settleBottom - rect.bottom) / exitDistance, 0), 1)
+                : Math.min(Math.max((rect.top - settleTop) / exitDistance, 0), 1);
             anim.disassemble(progress);
         });
     }
