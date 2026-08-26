@@ -498,9 +498,10 @@ function changeReadMore3() {
 // END READ MORE DIRECTORS
 
 // SEND TELEGRAM FORM
-const TEKLEGRAM_BOT_TOKEN = '7926428166:AAFNtiaRDgs2egDYqaW_mnT6XRA1a1GuA6I';
-const TELEGRAM_CHAT_ID = '-1002266189533';
-const API = `https://api.telegram.org/bot${TEKLEGRAM_BOT_TOKEN}/sendMessage`;
+// The message is forwarded through a small backend (see backend/) instead of
+// calling the Telegram Bot API directly from the browser, so the bot token
+// never sits in client-side JS where anyone viewing source could read it.
+const FEEDBACK_API = 'https://artgroup-feedback.onrender.com/api/feedback';
 
 async function sendTelegram(e) {
     e.preventDefault();
@@ -512,19 +513,14 @@ async function sendTelegram(e) {
 
     const {phone, name, comment} = Object.fromEntries(new FormData(form).entries());
 
-    message = `🟢 Заявка с сайта Art group\nИмя: ${name}\nТелефон: ${phone}\nКомментарий: ${comment}`;
-
     try {
         formBtn.textContent = 'Отправка...';
-        const response = await fetch(API, {
+        const response = await fetch(FEEDBACK_API, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                chat_id: TELEGRAM_CHAT_ID,
-                text: message
-            })
+            body: JSON.stringify({ name, phone, comment })
         });
 
         if (response.ok) {
