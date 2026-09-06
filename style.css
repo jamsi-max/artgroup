@@ -2934,3 +2934,210 @@ footer .text-left p::after{
     .lightbox__nav:hover{ transform: translateY(-50%); }
 }
 /* END ABOUT GALLERY LIGHTBOX */
+
+/* FOOTER LEGAL BAR — thin utility row under the main footer, holding only
+   the cookie-settings link. Kept out of .footer's own .text-left/.text-right
+   columns so it doesn't inherit their decorative red-diamond markers, which
+   are meant for the contact line above, not a legal link. */
+.footer-legal{
+    background: #1a1616;
+    text-align: center;
+    padding: .8rem 9%;
+}
+.footer-legal-link{
+    color: #999;
+    font-size: .95rem;
+    cursor: pointer;
+    transition: color .25s ease;
+}
+.footer-legal-link:hover{
+    color: var(--main-color);
+}
+
+/* COOKIE CONSENT BANNER
+   Required by the 152-FZ amendments in force from 1 Sep 2026. Hidden by
+   default (visibility + translateY) so nothing flashes on load; JS reveals
+   it via .is-visible only when there's no consent decision on file yet, or
+   when the footer link reopens it. See js/cookie-consent.js. */
+.cookie-banner{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9995;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity .4s cubic-bezier(.33, 0, .2, 1),
+                transform .4s cubic-bezier(.33, 0, .2, 1),
+                visibility 0s linear .4s;
+}
+.cookie-banner.is-visible{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .5s cubic-bezier(.16, 1, .3, 1),
+                transform .5s cubic-bezier(.16, 1, .3, 1),
+                visibility 0s linear 0s;
+}
+.cookie-banner-inner{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: 1.2rem 9%;
+    background: #201b1b;
+    color: #fff;
+    border-top: 2px solid var(--main-color);
+}
+.cookie-banner-text{
+    flex: 1 1 320px;
+    font-size: .95rem;
+    line-height: 1.5;
+    color: #ddd;
+}
+.cookie-banner-actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    align-items: center;
+}
+.cookie-banner-more,
+.cookie-banner-decline{
+    color: #bbb;
+    font-size: .9rem;
+    white-space: nowrap;
+    transition: color .25s ease;
+}
+.cookie-banner-more:hover,
+.cookie-banner-decline:hover{
+    color: #fff;
+}
+.cookie-banner-accept{
+    white-space: nowrap;
+    padding: .7rem 1.6rem;
+    color: #fff;
+    background-color: var(--main-color);
+    font-size: .9rem;
+    font-weight: 500;
+    transition: filter .25s ease;
+}
+.cookie-banner-accept:hover{
+    filter: brightness(1.15);
+}
+
+@media (max-width: 500px){
+    .cookie-banner-inner{
+        padding: 1.2rem 5%;
+    }
+    .cookie-banner-actions{
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .cookie-banner{
+        transition: opacity .2s linear, visibility 0s linear;
+        transform: none;
+    }
+    .cookie-banner.is-visible{
+        transition: opacity .2s linear, visibility 0s linear;
+    }
+}
+
+/* COOKIE POLICY MODAL — a separate, self-contained popup so it cannot
+   interfere with the existing portfolio read-more popup (js/popup.js), which
+   looks up its own .popup-box by a plain class selector. Visual language
+   (dark backdrop, centered white panel, red close icon) matches it anyway. */
+.consent-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10001;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    overscroll-behavior: contain;
+    transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.consent-modal.is-open{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .3s ease, visibility 0s linear 0s;
+}
+body.consent-modal-open{
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+}
+.consent-modal-content{
+    background: #fff;
+    width: min(700px, 86%);
+    max-height: 80%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -46%);
+    opacity: 0;
+    transition: transform .35s cubic-bezier(.16, 1, .3, 1),
+                opacity .3s ease;
+}
+.consent-modal.is-open .consent-modal-content{
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+.consent-modal-header{
+    position: relative;
+    padding: 1.2rem 3rem 1rem 1.5rem;
+    flex: 0 0 auto;
+}
+.consent-modal-header h3{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.consent-modal-close{
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    font-size: 2.4rem;
+    font-weight: 300;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--main-color);
+}
+.consent-modal-body{
+    padding: 0 1.5rem 1.5rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    color: var(--text-color);
+}
+.consent-modal-body p{
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: .95rem;
+}
+.consent-modal-body a{
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce){
+    .consent-modal,
+    .consent-modal-content{
+        transition: opacity .2s linear;
+        transform: translate(-50%, -50%);
+    }
+}
+/* END COOKIE CONSENT */

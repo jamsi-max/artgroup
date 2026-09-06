@@ -1260,6 +1260,37 @@ const langList = {
         "ru": "г. Москва",
         "en": "Moscow",
     },
+
+    "footer-legal-link" : {
+        "ru": "Настройки cookie",
+        "en": "Cookie settings",
+    },
+
+    "cookie-banner-text" : {
+        "ru": "Мы используем файлы cookie и сервис Яндекс.Метрика (включая Вебвизор) для анализа посещаемости и улучшения работы сайта.",
+        "en": "We use cookies and Yandex.Metrica (including Webvisor) to analyse site traffic and improve the site.",
+    },
+    "cookie-banner-more" : {
+        "ru": "Подробнее",
+        "en": "Learn more",
+    },
+    "cookie-banner-decline" : {
+        "ru": "Отклонить",
+        "en": "Decline",
+    },
+    "cookie-banner-accept" : {
+        "ru": "Принять",
+        "en": "Accept",
+    },
+
+    "consent-modal-title" : {
+        "ru": "Использование файлов cookie",
+        "en": "Use of cookies",
+    },
+    "consent-modal-body" : {
+        "ru": "<p>Мы используем файлы cookie и аналогичные технологии для обеспечения работы сайта и анализа его посещаемости.</p><p><strong>Яндекс.Метрика.</strong> Сайт использует сервис «Яндекс.Метрика», включая функцию Вебвизор, которая записывает обезличенные сессии посетителей (движения курсора, клики, прокрутку страниц) для анализа удобства использования сайта. Обработку данных, собранных Яндекс.Метрикой, осуществляет ООО «Яндекс» в соответствии со своей политикой конфиденциальности.</p><p><strong>Какие данные собираются.</strong> IP-адрес, тип и версия браузера, операционная система, посещённые страницы, источник перехода и действия на странице. Эти данные не позволяют напрямую установить вашу личность.</p><p><strong>Цель обработки.</strong> Анализ посещаемости, оценка удобства сайта и его дальнейшее улучшение.</p><p><strong>Ваш выбор.</strong> Вы можете принять или отклонить использование аналитики в баннере при первом посещении сайта, а также в любой момент изменить своё решение по ссылке «Настройки cookie» в подвале сайта. При отказе Яндекс.Метрика не загружается и сбор данных не производится.</p><p>По вопросам обработки данных вы можете связаться с нами по адресу <a href='mailto:infoartgroupp@yandex.ru'>infoartgroupp@yandex.ru</a>.</p>",
+        "en": "<p>We use cookies and similar technologies to run the site and analyse how it is used.</p><p><strong>Yandex.Metrica.</strong> The site uses the Yandex.Metrica service, including the Webvisor feature, which records anonymised visitor sessions (cursor movement, clicks, page scrolling) to analyse site usability. Data collected by Yandex.Metrica is processed by Yandex LLC under its own privacy policy.</p><p><strong>Data collected.</strong> IP address, browser type and version, operating system, pages visited, referral source, and on-page actions. This data does not directly identify you.</p><p><strong>Purpose.</strong> Traffic analysis, usability evaluation, and further improvement of the site.</p><p><strong>Your choice.</strong> You can accept or decline analytics in the banner on your first visit, and change your decision at any time via the \"Cookie settings\" link in the footer. If you decline, Yandex.Metrica is not loaded and no data is collected.</p><p>For questions about data processing, contact us at <a href='mailto:infoartgroupp@yandex.ru'>infoartgroupp@yandex.ru</a>.</p>",
+    },
 }
 
 const mainLang = {

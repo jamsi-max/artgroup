@@ -22,22 +22,39 @@
   <script src="js/app.js" defer></script>
   <script src="js/about-slider.js" defer></script>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-  m[i].l=1*new Date();
-  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+<!-- Yandex.Metrika counter — gated behind cookie/analytics consent (152-FZ,
+     amendments in force from 1 Sep 2026). Only ever runs after the visitor
+     accepts via the banner or already did on a previous visit; see
+     js/cookie-consent.js for the banner logic and localStorage key. -->
+<script type="text/javascript">
+  window.__loadYandexMetrika = function () {
+    if (window.__yandexMetrikaLoaded) return;
+    window.__yandexMetrikaLoaded = true;
 
-  ym(99034215, "init", {
-       clickmap:true,
-       trackLinks:true,
-       accurateTrackBounce:true,
-       webvisor:true
-  });
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(99034215, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true,
+         webvisor:true
+    });
+  };
+
+  // Consent from a previous visit: load right away, no need to wait for the
+  // banner script further down the page.
+  try {
+    if (localStorage.getItem('cookieConsent') === 'accepted') {
+      window.__loadYandexMetrika();
+    }
+  } catch (e) {}
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/99034215" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- No <noscript> tracking pixel here on purpose: without JS there is no way
+     to ask for or honor consent, so nothing is loaded for that visitor. -->
 <!-- /Yandex.Metrika counter -->
 
 </head>
@@ -1429,11 +1446,52 @@
     </div>
   </footer>
 
+  <div class="footer-legal">
+    <button type="button" class="footer-legal-link lng-footer-legal-link" id="cookie-settings-reopen">Настройки cookie</button>
+  </div>
+
+  <!-- COOKIE CONSENT BANNER
+       Required by the 152-FZ amendments in force from 1 Sep 2026: visitors
+       must be notified about cookies/analytics (Yandex Metrica + Webvisor)
+       and be able to accept or decline — and change that choice later, via
+       the "Настройки cookie" link in the footer above, which reopens this
+       same banner. Hidden by default in CSS; js/cookie-consent.js decides
+       whether to reveal it. -->
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-banner-inner">
+      <p class="cookie-banner-text lng-cookie-banner-text">
+        Мы используем файлы cookie и сервис Яндекс.Метрика (включая Вебвизор) для анализа посещаемости и улучшения работы сайта.
+      </p>
+      <div class="cookie-banner-actions">
+        <button type="button" class="cookie-banner-more lng-cookie-banner-more" id="cookie-policy-open">Подробнее</button>
+        <button type="button" class="cookie-banner-decline lng-cookie-banner-decline" id="cookie-decline-btn">Отклонить</button>
+        <button type="button" class="cookie-banner-accept lng-cookie-banner-accept" id="cookie-accept-btn">Принять</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COOKIE POLICY MODAL — a separate, self-contained popup (own classes,
+       own scroll lock) so it cannot interfere with the existing portfolio
+       read-more popup in js/popup.js. Scrolls internally if the text runs
+       long. -->
+  <div class="consent-modal" id="consent-modal" aria-hidden="true">
+    <div class="consent-modal-content" role="dialog" aria-modal="true" aria-labelledby="consent-modal-title">
+      <div class="consent-modal-header">
+        <h3 id="consent-modal-title" class="lng-consent-modal-title">Использование файлов cookie</h3>
+        <span class="consent-modal-close" id="consent-modal-close">&times;</span>
+      </div>
+      <div class="consent-modal-body lng-consent-modal-body">
+        <p>Мы используем файлы cookie и аналогичные технологии для обеспечения работы сайта и анализа его посещаемости.</p>
+      </div>
+    </div>
+  </div>
+
   <script src="js/popup.js"></script>
   <!-- Deferred so it runs last in document order — after about-slider.js
        (autoplay control), which is itself deferred, and after popup.js
        (scroll lock), which is not. -->
   <script src="js/lightbox.js" defer></script>
+  <script src="js/cookie-consent.js" defer></script>
 </body>
 
 </html>
