@@ -1,0 +1,9 @@
+# Copy this file to .dev.vars for local development with `wrangler dev`.
+# .dev.vars is gitignored — never commit real secrets.
+
+TELEGRAM_BOT_TOKEN=123456789:AAExampleTokenReplaceMe
+TELEGRAM_CHAT_ID=-1001234567890
+
+# Set to "*" for quick local testing with curl (no browser Origin header).
+# In production, use a real comma-separated allow-list instead.
+ALLOWED_ORIGINS=*

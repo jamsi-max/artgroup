@@ -593,10 +593,10 @@ function changeReadMore3() {
 // END READ MORE DIRECTORS
 
 // SEND TELEGRAM FORM
-// The message is forwarded through a small backend (see backend/) instead of
-// calling the Telegram Bot API directly from the browser, so the bot token
-// never sits in client-side JS where anyone viewing source could read it.
-const FEEDBACK_API = 'https://artgroup-feedback.onrender.com/api/feedback';
+// The message is forwarded through a Cloudflare Worker (see worker/) instead
+// of calling the Telegram Bot API directly from the browser, so the bot
+// token never sits in client-side JS where anyone viewing source could read it.
+const FEEDBACK_API = 'https://contact-form-worker.artgroup.workers.dev/';
 
 // Guards against a double-click or double-tap firing two submits before the
 // first fetch has resolved.
@@ -671,7 +671,7 @@ async function sendTelegram(e) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, phone, comment, hp: website })
+            body: JSON.stringify({ name, phone, message: comment, website })
         });
 
         if (response.ok) {

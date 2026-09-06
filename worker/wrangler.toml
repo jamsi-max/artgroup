@@ -1,0 +1,14 @@
+name = "contact-form-worker"
+main = "src/index.ts"
+compatibility_date = "2024-09-01"
+
+# Non-secret configuration. Safe to commit — it only lists which origins
+# may call this Worker, not the bot token or chat id.
+[vars]
+ALLOWED_ORIGINS = "https://artgroup.fun"
+
+# TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are NOT defined here.
+# They are secrets — set them with:
+#   wrangler secret put TELEGRAM_BOT_TOKEN
+#   wrangler secret put TELEGRAM_CHAT_ID
+# See README.md for details.
