@@ -103,6 +103,17 @@ body {
     background: var(--bg-color);
     background-size: cover;
     color: var(--text-color);
+
+    /* Eases in step with the cookie banner's own slide-in (see
+       js/cookie-consent.js, which sets this to the banner's real height so
+       page content is pushed clear of it rather than sitting underneath it). */
+    transition: padding-bottom .4s cubic-bezier(.16, 1, .3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body {
+        transition: none;
+    }
 }
 
 a {

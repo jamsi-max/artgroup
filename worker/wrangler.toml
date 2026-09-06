@@ -7,6 +7,14 @@ compatibility_date = "2024-09-01"
 [vars]
 ALLOWED_ORIGINS = "https://artgroup.fun"
 
+# Custom domain instead of the shared *.workers.dev one: some ISPs (observed
+# in Russia without a VPN) throttle/block that shared hostname pattern.
+# `custom_domain = true` has Cloudflare create and manage the DNS record and
+# TLS certificate for this automatically.
+[[routes]]
+pattern = "api.artgroup.fun"
+custom_domain = true
+
 # TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are NOT defined here.
 # They are secrets — set them with:
 #   wrangler secret put TELEGRAM_BOT_TOKEN

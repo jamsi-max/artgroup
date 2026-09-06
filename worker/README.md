@@ -89,8 +89,10 @@ npm run deploy
 
 Wrangler prints the deployed URL, e.g.
 `https://contact-form-worker.<your-subdomain>.workers.dev`. Use that as
-the form's submission endpoint (or map it to a custom route/domain in the
-Cloudflare dashboard).
+the form's submission endpoint, or map it to a custom domain (see
+`wrangler.toml`'s `[[routes]]` entry) — recommended, since some ISPs have
+been observed throttling or blocking the shared `*.workers.dev` hostname
+pattern outright.
 
 ## Example HTML form
 
@@ -105,7 +107,7 @@ Cloudflare dashboard).
 <p id="contact-form-status"></p>
 
 <script>
-  const WORKER_URL = "https://contact-form-worker.artgroup.workers.dev";
+  const WORKER_URL = "https://api.artgroup.fun";
   const form = document.getElementById("contact-form");
   const status = document.getElementById("contact-form-status");
 

@@ -31,13 +31,29 @@ function setConsent(value) {
     }
 }
 
+// The banner is position: fixed at the bottom of the viewport, which would
+// otherwise sit on top of (and swallow clicks on) whatever page content
+// happens to be there — the contact form's submit button included, on a
+// short viewport. Pushing the page up by the banner's own real height, read
+// at show time, avoids that regardless of viewport size or text length in
+// either language — a fixed guess in CSS could too easily be wrong.
 function showBanner() {
     cookieBanner.classList.add('is-visible');
+    reserveSpaceForBanner();
 }
 
 function hideBanner() {
     cookieBanner.classList.remove('is-visible');
+    document.body.style.paddingBottom = '';
 }
+
+function reserveSpaceForBanner() {
+    document.body.style.paddingBottom = cookieBanner.offsetHeight + 'px';
+}
+
+window.addEventListener('resize', function () {
+    if (cookieBanner.classList.contains('is-visible')) reserveSpaceForBanner();
+});
 
 // Scroll lock kept separate from js/popup.js's own lock (different class,
 // own saved position) so the two popups can never interfere with each other.

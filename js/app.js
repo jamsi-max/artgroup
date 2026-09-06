@@ -596,7 +596,10 @@ function changeReadMore3() {
 // The message is forwarded through a Cloudflare Worker (see worker/) instead
 // of calling the Telegram Bot API directly from the browser, so the bot
 // token never sits in client-side JS where anyone viewing source could read it.
-const FEEDBACK_API = 'https://contact-form-worker.artgroup.workers.dev/';
+// Uses a custom domain rather than *.workers.dev: that shared hostname
+// pattern has been observed throttled/blocked by some Russian ISPs without
+// a VPN, even though the Worker itself is reachable and healthy.
+const FEEDBACK_API = 'https://api.artgroup.fun/';
 
 // Guards against a double-click or double-tap firing two submits before the
 // first fetch has resolved.
