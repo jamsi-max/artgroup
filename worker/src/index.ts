@@ -38,7 +38,7 @@ class HttpError extends Error {
 }
 
 export default {
-	async fetch(request: Request, env: Env): Promise<Response> {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
 		const origin = request.headers.get('Origin');
 		const allowedOrigins = parseAllowedOrigins(env.ALLOWED_ORIGINS);
 		const corsHeaders = buildCorsHeaders(origin, allowedOrigins);
@@ -65,16 +65,23 @@ export default {
 			// A filled honeypot means a bot, not a visitor: report success so it
 			// moves on, but never actually forward the message to Telegram.
 			if (isHoneypotTriggered(raw)) {
-				return jsonResponse(200, { success: true, message: 'Message sent successfully' }, corsHeaders);
+				return jsonResponse(200, { success: true }, corsHeaders);
 			}
 
 			const fields = normalizeFields(raw);
 			validate(fields);
 
+			// Fire-and-forget: the client only needs to know the message was
+			// accepted, not that Telegram has confirmed delivery. Awaiting that
+			// round trip here is what was causing the response to arrive too
+			// late on slow/unstable links (Russia, mobile, Safari) — the
+			// request would time out client-side even though Telegram had
+			// already received the message. ctx.waitUntil keeps the Worker
+			// alive long enough to finish the send after the response is sent.
 			const text = formatTelegramMessage(fields);
-			await sendToTelegram(env, text);
+			ctx.waitUntil(sendToTelegram(env, text).catch((err) => console.error('Telegram send failed:', err)));
 
-			return jsonResponse(200, { success: true, message: 'Message sent successfully' }, corsHeaders);
+			return jsonResponse(200, { success: true }, corsHeaders);
 		} catch (err) {
 			if (err instanceof HttpError) {
 				return jsonResponse(err.status, { success: false, error: err.message }, corsHeaders);
