@@ -654,6 +654,7 @@ async function sendTelegram(e) {
 
     const form = e.target;
     const formBtn = form.querySelector('.send-btn');
+    const formSpinner = form.querySelector('.form-spinner');
     const formSendResult = document.querySelector('.form-send-result');
     formSendResult.textContent = '';
     formSendResult.classList.remove('is-success', 'is-error');
@@ -667,6 +668,7 @@ async function sendTelegram(e) {
     // formBtn is an <input type="submit">, whose visible label comes
     // from .value, not .textContent.
     formBtn.value = 'Отправка...';
+    formSpinner.classList.add('is-active');
 
     const showSuccess = async () => {
         await playSendFlight(form);
@@ -682,7 +684,7 @@ async function sendTelegram(e) {
         // the message to Telegram, so a request that hangs gets aborted
         // rather than left to time out on its own.
         const controller = new AbortController();
-        const abortTimer = setTimeout(() => controller.abort(), 6000);
+        const abortTimer = setTimeout(() => controller.abort(), 3000);
         let response;
         try {
             response = await fetch(FEEDBACK_API, {
@@ -720,6 +722,7 @@ async function sendTelegram(e) {
         feedbackSubmitting = false;
         formBtn.disabled = false;
         formBtn.value = currentLng === 'en' ? 'Send' : 'Отправить';
+        formSpinner.classList.remove('is-active');
     }
 };
 // END SEND TELEGRAM FORM

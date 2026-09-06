@@ -1362,8 +1362,12 @@
               <span class="lng-contact-text-6">Комментарий</span>
             </div>
 
-            <div class="inputBox">
+            <div class="inputBox submit-box">
               <input type="submit" value="Отправить" class="send-btn">
+              <!-- Shown while the request is in flight (see sendTelegram()
+                   in js/app.js). A separate element, not text inside the
+                   button, since an <input> can't hold child markup. -->
+              <span class="form-spinner" aria-hidden="true"></span>
             </div>
           </form>
 

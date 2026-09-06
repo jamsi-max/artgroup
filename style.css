@@ -1800,6 +1800,49 @@ body.popup-open {
     opacity: .6;
 }
 
+/* Scoped to just the submit button's box (via .submit-box) rather than
+   .inputBox generally, so the phone/name/comment fields' floating-label
+   layout is untouched. */
+.contact-container .contactForm form .inputBox.submit-box{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* Preloader shown while the request is in flight — see sendTelegram() in
+   js/app.js, which toggles .is-active on click and clears it once the
+   outcome (success or error) is known. */
+.form-spinner{
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    border: 3px solid rgba(255, 255, 255, .2);
+    border-top-color: var(--main-color);
+    border-radius: 50%;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .25s ease, visibility 0s linear .25s;
+}
+.form-spinner.is-active{
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .25s ease, visibility 0s linear 0s;
+    animation: form-spinner-spin .8s linear infinite;
+}
+@keyframes form-spinner-spin{
+    to{ transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce){
+    .form-spinner.is-active{
+        animation: none;
+        /* A static ring still reads as "busy" without motion. */
+        border-top-color: rgba(255, 255, 255, .2);
+        border-right-color: var(--main-color);
+    }
+}
+
 /* Honeypot: kept in the layout (not display:none) so simple bots that skip
    invisible fields still fill it in, but placed off-screen for everyone else. */
 .hp-field{
