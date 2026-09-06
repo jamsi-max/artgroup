@@ -676,10 +676,11 @@ async function sendTelegram(e) {
     try {
         // The Worker occasionally fails to deliver its response back over
         // flaky mobile/Safari connections even though it already forwarded
-        // the message to Telegram, so a request that hangs gets aborted
-        // rather than left to time out on its own.
+        // the message to Telegram. A real response normally arrives well
+        // under a second, so a short leash here is what keeps the form from
+        // hanging on those broken connections.
         const controller = new AbortController();
-        const abortTimer = setTimeout(() => controller.abort(), 6000);
+        const abortTimer = setTimeout(() => controller.abort(), 1500);
         let response;
         try {
             response = await fetch(FEEDBACK_API, {
@@ -705,9 +706,8 @@ async function sendTelegram(e) {
         // No response reached us at all (dropped connection or our own
         // timeout, not a real error from the server): the message has
         // almost certainly already reached Telegram, so show success
-        // anyway after a brief pause rather than alarm the user.
+        // instead of alarming the user.
         if (error.name === 'AbortError' || error instanceof TypeError) {
-            await new Promise((resolve) => setTimeout(resolve, 1200));
             await showSuccess();
         } else {
             formSendResult.textContent = 'Произошла ошибка отправки! Попробуйте еще раз.';
