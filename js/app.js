@@ -673,40 +673,51 @@ async function sendTelegram(e) {
         form.style.display = 'none';
     };
 
-    try {
-        // The Worker occasionally fails to deliver its response back over
-        // flaky mobile/Safari connections even though it already forwarded
-        // the message to Telegram. A real response normally arrives well
-        // under a second, so a short leash here is what keeps the form from
-        // hanging on those broken connections.
-        const controller = new AbortController();
-        const abortTimer = setTimeout(() => controller.abort(), 1500);
-        let response;
-        try {
-            response = await fetch(FEEDBACK_API, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name, phone, message: comment, website }),
-                signal: controller.signal
-            });
-        } finally {
-            clearTimeout(abortTimer);
-        }
+    // 20s is a last-resort safety net against a truly dead connection, not
+    // the UI timeout below — it must stay generous. On some connections
+    // (observed without a VPN from Russia) the request itself can take
+    // several seconds to even reach the Worker; aborting it early doesn't
+    // just delay the response, it kills the request before Telegram ever
+    // sees it. Cancelling this was the earlier version's bug.
+    const controller = new AbortController();
+    const abortTimer = setTimeout(() => controller.abort(), 20000);
 
-        if (response.ok) {
+    const sendPromise = fetch(FEEDBACK_API, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, phone, message: comment, website }),
+        signal: controller.signal
+    })
+        .then((response) => {
+            if (!response.ok) throw new Error(response.statusText);
+            return response;
+        })
+        .finally(() => clearTimeout(abortTimer));
+
+    // Deciding what the user sees is separate from the request's own fate:
+    // wait up to 1.5s for a real response, but if none has arrived yet,
+    // show success optimistically anyway and let the request keep running
+    // in the background — over a slow-but-working connection it can still
+    // reach Telegram well after the UI has moved on.
+    const uiTimeout = new Promise((resolve) => setTimeout(() => resolve('timeout'), 1500));
+
+    try {
+        const outcome = await Promise.race([sendPromise.then(() => 'ok'), uiTimeout]);
+
+        if (outcome === 'timeout') {
             await showSuccess();
+            sendPromise.catch((error) => console.error('Delayed delivery failure:', error));
         } else {
-            // A response did come back and it was an error — trust it.
-            throw new Error(response.statusText);
+            await showSuccess();
         }
     } catch (error) {
+        // A real response came back within the window and it was an error —
+        // trust it. A network-level failure (dropped connection, AbortError
+        // from the 20s safety net) gets the benefit of the doubt instead,
+        // since the message may well have still reached Telegram.
         console.error(error);
-        // No response reached us at all (dropped connection or our own
-        // timeout, not a real error from the server): the message has
-        // almost certainly already reached Telegram, so show success
-        // instead of alarming the user.
         if (error.name === 'AbortError' || error instanceof TypeError) {
             await showSuccess();
         } else {
