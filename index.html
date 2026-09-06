@@ -1368,13 +1368,16 @@
                    in js/app.js): the button shrinks away as this grows in
                    over the same spot, so it reads as one morphing into the
                    other. A separate element, not text inside the button,
-                   since an <input> can't hold child markup. The inner span
-                   carries the spin animation on its own transform, kept
-                   apart from the outer span's show/hide transform so the
-                   two never fight over the same property. -->
-              <span class="form-spinner" aria-hidden="true">
-                <span class="form-spinner-ring"></span>
-              </span>
+                   since an <input> can't hold child markup. Deliberately
+                   <div>, not <span> — .inputBox span (below) is styled for
+                   the floating field labels and is specific enough to
+                   override a same-specificity .form-spinner rule. The inner
+                   div carries the spin animation on its own transform, kept
+                   apart from the outer div's show/hide transform so the two
+                   never fight over the same property. -->
+              <div class="form-spinner" aria-hidden="true">
+                <div class="form-spinner-ring"></div>
+              </div>
             </div>
           </form>
 
