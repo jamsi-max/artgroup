@@ -668,6 +668,10 @@ async function sendTelegram(e) {
     // formBtn is an <input type="submit">, whose visible label comes
     // from .value, not .textContent.
     formBtn.value = 'Отправка...';
+    // .is-loading shrinks/fades the button away as the spinner grows in
+    // over the same spot (see style.css), so the button appears to morph
+    // into the preloader rather than a spinner just showing up beside it.
+    formBtn.classList.add('is-loading');
     formSpinner.classList.add('is-active');
 
     const showSuccess = async () => {
@@ -722,6 +726,7 @@ async function sendTelegram(e) {
         feedbackSubmitting = false;
         formBtn.disabled = false;
         formBtn.value = currentLng === 'en' ? 'Send' : 'Отправить';
+        formBtn.classList.remove('is-loading');
         formSpinner.classList.remove('is-active');
     }
 };

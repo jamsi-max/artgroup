@@ -1362,12 +1362,19 @@
               <span class="lng-contact-text-6">Комментарий</span>
             </div>
 
-            <div class="inputBox submit-box">
+            <div class="inputBox">
               <input type="submit" value="Отправить" class="send-btn">
               <!-- Shown while the request is in flight (see sendTelegram()
-                   in js/app.js). A separate element, not text inside the
-                   button, since an <input> can't hold child markup. -->
-              <span class="form-spinner" aria-hidden="true"></span>
+                   in js/app.js): the button shrinks away as this grows in
+                   over the same spot, so it reads as one morphing into the
+                   other. A separate element, not text inside the button,
+                   since an <input> can't hold child markup. The inner span
+                   carries the spin animation on its own transform, kept
+                   apart from the outer span's show/hide transform so the
+                   two never fight over the same property. -->
+              <span class="form-spinner" aria-hidden="true">
+                <span class="form-spinner-ring"></span>
+              </span>
             </div>
           </form>
 

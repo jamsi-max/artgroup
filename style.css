@@ -1800,46 +1800,66 @@ body.popup-open {
     opacity: .6;
 }
 
-/* Scoped to just the submit button's box (via .submit-box) rather than
-   .inputBox generally, so the phone/name/comment fields' floating-label
-   layout is untouched. */
-.contact-container .contactForm form .inputBox.submit-box{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1.2rem;
+/* Loading state: the button shrinks into its own center and fades as
+   .form-spinner grows in over the exact same point (below), so the two
+   read as one morphing into the other rather than a spinner appearing
+   beside an inert button. Uses the button's own existing "transition: .3s
+   ease" (above), which already covers transform/opacity. */
+.contact-container .contactForm form .inputBox input[type="submit"].is-loading{
+    transform: scale(0);
+    opacity: 0;
 }
 
 /* Preloader shown while the request is in flight — see sendTelegram() in
-   js/app.js, which toggles .is-active on click and clears it once the
-   outcome (success or error) is known. */
+   js/app.js, which toggles .is-loading/.is-active on click and clears them
+   once the outcome (success or error) is known. Split into two elements so
+   the "grow in over the button" transform (here) and the continuous spin
+   (.form-spinner-ring) never fight over the same transform property. */
 .form-spinner{
-    flex: 0 0 auto;
-    width: 28px;
-    height: 28px;
-    border: 3px solid rgba(255, 255, 255, .2);
-    border-top-color: var(--main-color);
-    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
     opacity: 0;
-    visibility: hidden;
     pointer-events: none;
-    transition: opacity .25s ease, visibility 0s linear .25s;
+    transform: translate(-50%, -50%) scale(.4);
+    transition: opacity .35s ease, transform .45s cubic-bezier(.34, 1.4, .64, 1);
 }
 .form-spinner.is-active{
     opacity: 1;
-    visibility: visible;
-    transition: opacity .25s ease, visibility 0s linear 0s;
-    animation: form-spinner-spin .8s linear infinite;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* A smooth conic sweep with a fading tail reads as far more fluid than the
+   classic hard-cornered border-ring trick, which tends to look mechanical/
+   jittery at small sizes. The mask cuts the filled disc down to a ring. */
+.form-spinner-ring{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--main-color), transparent 80%);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px));
+}
+.form-spinner.is-active .form-spinner-ring{
+    animation: form-spinner-spin 1s linear infinite;
 }
 @keyframes form-spinner-spin{
     to{ transform: rotate(360deg); }
 }
 @media (prefers-reduced-motion: reduce){
-    .form-spinner.is-active{
+    .contact-container .contactForm form .inputBox input[type="submit"].is-loading{
+        transform: none;
+        opacity: .4;
+    }
+    .form-spinner{
+        transition: opacity .2s linear;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .form-spinner.is-active .form-spinner-ring{
         animation: none;
-        /* A static ring still reads as "busy" without motion. */
-        border-top-color: rgba(255, 255, 255, .2);
-        border-right-color: var(--main-color);
     }
 }
 
