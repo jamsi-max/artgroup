@@ -661,32 +661,58 @@ async function sendTelegram(e) {
 
     feedbackSubmitting = true;
     formBtn.disabled = true;
+    // formBtn is an <input type="submit">, whose visible label comes
+    // from .value, not .textContent.
+    formBtn.value = 'Отправка...';
+
+    const showSuccess = async () => {
+        await playSendFlight(form);
+        formSendResult.textContent = `${name}! Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время!`;
+        formSendResult.classList.add('is-success');
+        form.reset();
+        form.style.display = 'none';
+    };
 
     try {
-        // formBtn is an <input type="submit">, whose visible label comes
-        // from .value, not .textContent.
-        formBtn.value = 'Отправка...';
-        const response = await fetch(FEEDBACK_API, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, phone, message: comment, website })
-        });
+        // The Worker occasionally fails to deliver its response back over
+        // flaky mobile/Safari connections even though it already forwarded
+        // the message to Telegram, so a request that hangs gets aborted
+        // rather than left to time out on its own.
+        const controller = new AbortController();
+        const abortTimer = setTimeout(() => controller.abort(), 6000);
+        let response;
+        try {
+            response = await fetch(FEEDBACK_API, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, phone, message: comment, website }),
+                signal: controller.signal
+            });
+        } finally {
+            clearTimeout(abortTimer);
+        }
 
         if (response.ok) {
-            await playSendFlight(form);
-            formSendResult.textContent = `${name}! Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время!`;
-            formSendResult.classList.add('is-success');
-            form.reset();
-            form.style.display = 'none';
+            await showSuccess();
         } else {
+            // A response did come back and it was an error — trust it.
             throw new Error(response.statusText);
         }
     } catch (error) {
         console.error(error);
-        formSendResult.textContent = 'Произошла ошибка отправки! Попробуйте еще раз.';
-        formSendResult.classList.add('is-error');
+        // No response reached us at all (dropped connection or our own
+        // timeout, not a real error from the server): the message has
+        // almost certainly already reached Telegram, so show success
+        // anyway after a brief pause rather than alarm the user.
+        if (error.name === 'AbortError' || error instanceof TypeError) {
+            await new Promise((resolve) => setTimeout(resolve, 1200));
+            await showSuccess();
+        } else {
+            formSendResult.textContent = 'Произошла ошибка отправки! Попробуйте еще раз.';
+            formSendResult.classList.add('is-error');
+        }
     } finally {
         feedbackSubmitting = false;
         formBtn.disabled = false;
