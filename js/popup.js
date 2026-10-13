@@ -3,6 +3,9 @@ const portfolioItems = document.querySelector('.portfolio-container');
 const popup = document.querySelector('.popup-box');
 const popupCloseIcon = popup.querySelector('.popup-close-icon');
 const popupContent = popup.querySelector('.popup-content');
+const popupHeader = popup.querySelector('.popup-header');
+const popupBody = popup.querySelector('.popup-body');
+let popupReturnFocus = null;
 
 // Scroll position to restore when the popup closes. While the popup is open the
 // body is position: fixed, which otherwise resets the page to the top.
@@ -32,16 +35,25 @@ function unlockPageScroll() {
     html.style.scrollBehavior = previousBehavior;
 }
 
-function openPopup() {
+function openPopup(trigger) {
     if (popup.classList.contains('open')) return;
+    popupReturnFocus = trigger || document.activeElement;
     popup.classList.add('open');
+    popup.setAttribute('aria-hidden', 'false');
     lockPageScroll();
+    popupCloseIcon.focus({ preventScroll: true });
 }
 
-function closePopup() {
+function closePopup(restoreFocus = true) {
     if (!popup.classList.contains('open')) return;
     popup.classList.remove('open');
     unlockPageScroll();
+    if (restoreFocus && popupReturnFocus && popupReturnFocus.isConnected && popupReturnFocus.getClientRects().length) {
+        popupReturnFocus.focus({ preventScroll: true });
+    } else if (popupContent.contains(document.activeElement)) {
+        document.activeElement.blur();
+    }
+    popup.setAttribute('aria-hidden', 'true');
 }
 
 function fillPopupFrom(box) {
@@ -49,16 +61,37 @@ function fillPopupFrom(box) {
     const content = box.querySelector('.read-more-content');
     if (!title || !content) return false;
 
-    const body = popup.querySelector('.popup-body');
+    const body = popupBody;
 
-    popup.querySelector('h3').innerHTML = title.innerHTML;
-    body.innerHTML = content.innerHTML;
+    popup.querySelector('h3').textContent = title.textContent;
+    // Copy only the site's existing project nodes; no external HTML or extra
+    // media fetches are introduced. Lazy-loading attributes survive cloning.
+    const fragment = document.createDocumentFragment();
+    Array.from(content.childNodes).forEach(node => fragment.appendChild(node.cloneNode(true)));
+    body.textContent = '';
+    body.appendChild(fragment);
+
+    const category = box.querySelector('.portfolio-layer > p');
+    const subtitle = popup.querySelector('.popup-subtitle');
+    subtitle.textContent = category && !category.querySelector('br') ? category.textContent : '';
+    subtitle.hidden = !subtitle.textContent.trim();
+    const boxes = Array.from(portfolioItems.querySelectorAll('.portfolio-box'));
+    popup.querySelector('.popup-project-number').textContent =
+        String(boxes.indexOf(box) + 1).padStart(2, '0') + ' / ' + String(boxes.length).padStart(2, '0');
+    popupCloseIcon.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Close project' : 'Закрыть проект');
+
+    body.querySelectorAll('a[target="_blank"]').forEach(link => link.relList.add('noopener'));
+    body.querySelectorAll('a[href="#contact"]').forEach(link => {
+        const paragraph = link.closest('p');
+        if (paragraph) paragraph.classList.add('popup-inquiry');
+    });
 
     // Start every project at its beginning. The panel is reused for all of
     // them, and replacing the markup does not reset how far the previous
     // project had been scrolled — so the next one opened part-way down.
     // Done before the panel is shown, so there is nothing to see.
     body.scrollTop = 0;
+    popupHeader.scrollTop = 0;
     popupContent.scrollTop = 0;
 
     return true;
@@ -74,14 +107,43 @@ portfolioItems.addEventListener('click', function (e) {
     const box = e.target.closest('.portfolio-box');
     if (!box) return;
 
-    if (fillPopupFrom(box)) openPopup();
+    if (fillPopupFrom(box)) openPopup(box.querySelector('button'));
 })
 
-popupCloseIcon.addEventListener('click', closePopup);
+popupCloseIcon.addEventListener('click', () => closePopup());
 
 popup.addEventListener('click', function (e) {
-    if (e.target == popup || e.target.tagName.toLowerCase() === 'a') {
+    if (e.target === popup) {
         closePopup();
+    } else if (e.target.closest('a')) {
+        // Unlock before app.js computes the destination of an anchor link.
+        closePopup(false);
     }
 })
+
+document.addEventListener('keydown', function (e) {
+    if (!popup.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+        e.preventDefault();
+        closePopup();
+    } else if (e.key === 'Tab') {
+        const controls = Array.from(popupContent.querySelectorAll('button, a[href], iframe'))
+            .filter(el => el.getClientRects().length > 0);
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if ((e.shiftKey && document.activeElement === first) ||
+            (!e.shiftKey && document.activeElement === last)) {
+            e.preventDefault();
+            (e.shiftKey ? last : first).focus({ preventScroll: true });
+        }
+    }
+});
+
+// Also catches focus leaving a cross-origin video frame, whose key events
+// cannot bubble into this document.
+document.addEventListener('focusin', function (e) {
+    if (popup.classList.contains('open') && !popupContent.contains(e.target)) {
+        popupCloseIcon.focus({ preventScroll: true });
+    }
+});
 // END POPUP BOX

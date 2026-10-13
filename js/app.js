@@ -211,6 +211,29 @@ function createFigureAnimator(container) {
     const idleTweens = [];
     let isAssembling = false;
     let isSettled = false;
+    let lastProgress = null;
+    let inView = true;
+    let isActive = !document.hidden;
+
+    // Suspend existing tweens rather than restarting them. Offscreen figures
+    // must not keep a ticker or GPU layer busy while the visitor reads below.
+    function syncActivity() {
+        isActive = inView && !document.hidden;
+        gsap.getTweensOf(shapes).forEach(tween => tween.paused(!isActive));
+        shapes.forEach(shape => {
+            shape.style.willChange = isActive ? 'transform, opacity' : 'auto';
+        });
+    }
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(([entry]) => {
+            inView = entry.isIntersecting;
+            syncActivity();
+        });
+        observer.observe(container);
+    }
+    document.addEventListener('visibilitychange', syncActivity);
+    syncActivity();
 
     function stopIdle() {
         idleTweens.forEach(t => t.kill());
@@ -228,6 +251,7 @@ function createFigureAnimator(container) {
                 ease: "sine.inOut",
                 repeat: -1,
                 yoyo: true,
+                paused: !isActive,
                 delay: i * 0.05
             });
             idleTweens.push(t);
@@ -240,6 +264,7 @@ function createFigureAnimator(container) {
 
         isAssembling = true;
         isSettled = true;
+        lastProgress = null;
 
         stopIdle();
         gsap.killTweensOf(shapes);
@@ -262,6 +287,7 @@ function createFigureAnimator(container) {
             scale: 1,
             duration: 1.5,
             ease: "expo.out",
+            paused: !isActive,
             stagger: forceStagger ? { amount: 1.2, from: "random" } : 0,
             onComplete: () => {
                 isAssembling = false;
@@ -274,7 +300,8 @@ function createFigureAnimator(container) {
     // Recomputed continuously from scroll position so it scrubs smoothly in
     // both directions instead of playing once.
     function disassemble(progress) {
-        if (isAssembling) return;
+        if (isAssembling || !isActive || progress === lastProgress) return;
+        lastProgress = progress;
 
         if (isSettled) {
             isSettled = false;
@@ -379,7 +406,7 @@ function initWhyUsFigures() {
             if (!fig.hasEnteredOnce) {
                 // Scrolling down brings it up from below — trigger the same
                 // dramatic scatter-in the hero plays on load.
-                if (rect.top < vh * 0.85) {
+                if (rect.top < vh * 0.85 && rect.bottom > 0) {
                     fig.hasEnteredOnce = true;
                     anim.assemble(true);
                 }

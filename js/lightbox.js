@@ -30,7 +30,7 @@
         '<button class="lightbox__close" type="button" aria-label="Закрыть">&times;</button>' +
         '<span class="lightbox__counter"><b>1</b> / ' + total + '</span>' +
         '<button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Предыдущее фото">&#10094;</button>' +
-        '<div class="lightbox__stage"><img class="lightbox__img" src="" alt=""></div>' +
+        '<div class="lightbox__stage"><img class="lightbox__img" src="" alt="" decoding="async"></div>' +
         '<button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Следующее фото">&#10095;</button>' +
         '<div class="lightbox__rail" role="group" aria-label="Все фотографии"></div>';
     document.body.appendChild(box);
@@ -41,16 +41,28 @@
     const counter = box.querySelector('.lightbox__counter b');
     const closeBtn = box.querySelector('.lightbox__close');
 
-    const thumbs = sources.map((src, i) => {
-        const thumb = document.createElement('button');
-        thumb.type = 'button';
-        thumb.className = 'lightbox__thumb';
-        thumb.setAttribute('aria-label', 'Фото ' + (i + 1));
-        thumb.innerHTML = '<img src="' + src + '" alt="" loading="lazy">';
-        thumb.addEventListener('click', () => show(i));
-        rail.appendChild(thumb);
-        return thumb;
-    });
+    let thumbs = [];
+
+    function createThumbnails() {
+        if (thumbs.length > 0) return;
+        // visibility:hidden still gives the fixed viewer viewport-sized bounds,
+        // so native lazy loading can fetch its photos before it ever opens.
+        thumbs = sources.map((src, i) => {
+            const thumb = document.createElement('button');
+            thumb.type = 'button';
+            thumb.className = 'lightbox__thumb';
+            thumb.setAttribute('aria-label', 'Фото ' + (i + 1));
+            const photo = document.createElement('img');
+            photo.alt = '';
+            photo.loading = 'lazy';
+            photo.decoding = 'async';
+            photo.src = src;
+            thumb.appendChild(photo);
+            thumb.addEventListener('click', () => show(i));
+            rail.appendChild(thumb);
+            return thumb;
+        });
+    }
 
     // ---------- paging ----------
 
@@ -105,6 +117,7 @@
 
     function open(index) {
         lastFocused = document.activeElement;
+        createThumbnails();
 
         // However the viewer was reached, the user now knows the slider opens;
         // calm the hint down.

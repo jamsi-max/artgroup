@@ -1,6 +1,8 @@
 // SLIDER
 let slideIndex = 0;
 let slideTimer = null;
+let slideshowPaused = false;
+let slideshowInView = !('IntersectionObserver' in window);
 
 showSlides(slideIndex);
 
@@ -36,6 +38,16 @@ function getCurrentSlide() {
 
 // AUTO SLIDER
 function startSlideshow() {
+    slideshowPaused = false;
+    syncSlideshow();
+}
+
+function syncSlideshow() {
+    if (slideshowPaused || !slideshowInView || document.hidden) {
+        clearInterval(slideTimer);
+        slideTimer = null;
+        return;
+    }
     if (slideTimer !== null) return;
     slideTimer = setInterval(function () {
         plusSlides(1);
@@ -43,9 +55,19 @@ function startSlideshow() {
 }
 
 function stopSlideshow() {
-    clearInterval(slideTimer);
-    slideTimer = null;
+    slideshowPaused = true;
+    syncSlideshow();
 }
+
+const slideshow = document.querySelector('.slideshow-container');
+if (slideshow && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+        slideshowInView = entry.isIntersecting;
+        syncSlideshow();
+    });
+    observer.observe(slideshow);
+}
+document.addEventListener('visibilitychange', syncSlideshow);
 
 startSlideshow();
 // END SLIDER
