@@ -51,21 +51,57 @@ const langList = {
         "ru": "О компании",
         "en": "About us",
     },
+    "about-eyebrow" : {
+        "ru": "НАША ПРАКТИКА",
+        "en": "OUR PRACTICE",
+    },
+    "about-deck" : {
+        "ru": "Архитектура. Право. Развитие.",
+        "en": "Architecture. Law. Development.",
+    },
+    "about-since" : {
+        "ru": "Работаем с",
+        "en": "In practice since",
+    },
+    "about-project-count" : {
+        "ru": "Реализованных проектов",
+        "en": "Completed projects",
+    },
+    "about-gallery-title" : {
+        "ru": "Люди и практика",
+        "en": "People and practice",
+    },
+    "about-gallery-note" : {
+        "ru": "Фотографии из жизни компании",
+        "en": "Life at A.R.T. Group",
+    },
+    "about-development-title" : {
+        "ru": "Собственные разработки и проекты",
+        "en": "Our technology and projects",
+    },
+    "about-history-title" : {
+        "ru": "История и развитие",
+        "en": "History and development",
+    },
+    "about-view-work" : {
+        "ru": "Наши работы",
+        "en": "View our work",
+    },
     "about-info-1" : {
         "ru": "<b>A.R.T. group</b>  - группа компаний, которая начала свою деятельность в <b>1995</b> году на Московском рынке проектных услуг. В активе имеется более <b>2000</b> реализованных проектов различного назначения, в том числе в регионах и на Международном рынке, включая Европейский.",
         "en": "A.R.T. group is a group of companies that began operations in 1995 in the Moscow design services market. Its portfolio includes over 2,000 completed projects of various types, including regional and international projects, including the European market.",
     },
     "about-info-2" : {
-        "ru": "За период работы Компания не только выполняла работы по проектированию и согласованию, но запатентовала собственную технологию организации подземного пространства в условиях перепада рельефа, что позволяет значительно сэкономить при строительстве. На основании данной технологии был разработан собственный инвестиционный проект «Многофункциональная Набережная Москва-Сити», получивший ряд поддерживающих писем от Правительства Москвы и иных профильных организаций, в том числе ПАО «Сбербанк».",
-        "en": "During its operation, the Company not only performed design and approval work but also patented its own technology for organizing underground space in conditions of varying terrain, allowing for significant savings during construction. Based on this technology, the company developed its own investment project, «Multifunctional Embankment Moscow-City», which received several letters of support from the Moscow Government and other relevant organizations, including Sberbank.",
+        "ru": "<p>За период работы Компания не только выполняла работы по проектированию и согласованию, но запатентовала собственную технологию организации подземного пространства в условиях перепада рельефа, что позволяет значительно сэкономить при строительстве.</p>\n<p>На основании данной технологии был разработан собственный инвестиционный проект «Многофункциональная Набережная Москва-Сити», получивший ряд поддерживающих писем от Правительства Москвы и иных профильных организаций, в том числе ПАО «Сбербанк».</p>",
+        "en": "<p>During its operation, the Company not only performed design and approval work but also patented its own technology for organizing underground space in conditions of varying terrain, allowing for significant savings during construction.</p>\n<p>Based on this technology, the company developed its own investment project, «Multifunctional Embankment Moscow-City», which received several letters of support from the Moscow Government and other relevant organizations, including Sberbank.</p>",
     },
     "about-btn" : {
         "ru": "Подробнее",
         "en": "More details",
     },
     "about-info-3" : {
-        "ru": "В <b>2018-2019</b> г. «АРТ групп» запустила <b>start up</b> и возглавила управляющую компанию Детского технопарка <b>Abstract</b> под эгидой Департамента промышленности. С <b>2020</b> г. Компания взяла за основу разработки новых объектов свой собственный  концептуальный и научно обоснованный с точки зрения нейроурбанистики подход «Счастливый город», создающий новые формы и сценарии развития жилых кварталов. Данный принцип реализован в проекте «Русская Европа» в Калининграде и применяется в жилом квартале в Ярославле, где команда «АРТ групп» является консультантом Застройщика. В настоящий момент также мы запустили собственные проекты жилого квартала в Рязанской области на <b>200</b> тыс. м. кв. и спортивно-реабилитационный комплекс в г. Раменском Московской области. ​В связи с большим количеством опыта и возможности оптимизировать бизнес-процессы, наши цены являются приятными для заказчиков, а результат удовлетворяет необходимое качество. Также, наше кредо – это доведение до конца любого вопроса и отсутствие слова «невозможно» в лексиконе команды.",
-        "en": "In 2018-2019, ART Group launched a start-up and took over the management company of the Abstract Children's Technopark under the auspices of the Department of Industry. Since 2020, the Company has been developing new projects based on its own conceptual and scientifically grounded neurourbanistics approach, «Happy City», which creates new forms and scenarios for the development of residential neighborhoods. This principle was implemented in the «Russian Europe» project in Kaliningrad and is being applied in a residential neighborhood in Yaroslavl, where the ART Group team is consulting for the developer. We have also recently launched our own projects: a 200,000-square-meter residential neighborhood in the Ryazan Region and a sports and rehabilitation complex in Ramenskoye, Moscow Region. Due to our extensive experience and ability to optimize business processes, our prices are competitive for our clients, and the results meet the required quality. Also, our credo is to see any issue through to the end and to avoid the word “impossible” in the team’s vocabulary.",
+        "ru": "<p>В <b>2018-2019</b> г. «АРТ групп» запустила <b>start up</b> и возглавила управляющую компанию Детского технопарка <b>Abstract</b> под эгидой Департамента промышленности.</p>\n<p>С <b>2020</b> г. Компания взяла за основу разработки новых объектов свой собственный  концептуальный и научно обоснованный с точки зрения нейроурбанистики подход «Счастливый город», создающий новые формы и сценарии развития жилых кварталов. Данный принцип реализован в проекте «Русская Европа» в Калининграде и применяется в жилом квартале в Ярославле, где команда «АРТ групп» является консультантом Застройщика.</p>\n<p>В настоящий момент также мы запустили собственные проекты жилого квартала в Рязанской области на <b>200</b> тыс. м. кв. и спортивно-реабилитационный комплекс в г. Раменском Московской области.</p>\n<p>В связи с большим количеством опыта и возможности оптимизировать бизнес-процессы, наши цены являются приятными для заказчиков, а результат удовлетворяет необходимое качество. Также, наше кредо – это доведение до конца любого вопроса и отсутствие слова «невозможно» в лексиконе команды.</p>",
+        "en": "<p>In 2018-2019, ART Group launched a start-up and took over the management company of the Abstract Children's Technopark under the auspices of the Department of Industry.</p>\n<p>Since 2020, the Company has been developing new projects based on its own conceptual and scientifically grounded neurourbanistics approach, «Happy City», which creates new forms and scenarios for the development of residential neighborhoods. This principle was implemented in the «Russian Europe» project in Kaliningrad and is being applied in a residential neighborhood in Yaroslavl, where the ART Group team is consulting for the developer.</p>\n<p>We have also recently launched our own projects: a 200,000-square-meter residential neighborhood in the Ryazan Region and a sports and rehabilitation complex in Ramenskoye, Moscow Region.</p>\n<p>Due to our extensive experience and ability to optimize business processes, our prices are competitive for our clients, and the results meet the required quality. Also, our credo is to see any issue through to the end and to avoid the word “impossible” in the team’s vocabulary.</p>",
     },
 
     // "about-info-4" : {

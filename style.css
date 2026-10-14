@@ -19,6 +19,7 @@
     --text-color: rgba(32, 32, 32, 1);
     --main-color: rgba(146, 28, 18, 1);
     --site-max-width: 1300px;
+    --surface-ivory: #f2eee8;
 }
 
 ::selection {
@@ -174,7 +175,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: var(--surface-ivory);
     z-index: -1;
 }
 
@@ -203,9 +204,33 @@ section {
     align-items: center;
     padding-right: 4%;
 }
-.change-lng{
-    font-size: 1rem;
+.header-select-wrap { position: relative; }
+.header-select-wrap::after {
+    content: '';
+    position: absolute;
+    right: .3rem;
+    top: 50%;
+    width: .375rem;
+    height: .375rem;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: translateY(-70%) rotate(45deg);
+    pointer-events: none;
 }
+.change-lng {
+    -webkit-appearance: none;
+    appearance: none;
+    padding: .25rem 1.1rem .25rem .2rem;
+    border-radius: 0;
+    background-color: var(--surface-ivory);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.4;
+    cursor: pointer;
+}
+.change-lng option { background-color: var(--surface-ivory); color: var(--text-color); }
+.change-lng:focus { outline: 2px solid var(--main-color); outline-offset: 2px; }
 select option span{
     font-size: 3.3rem;
 }
@@ -513,62 +538,216 @@ select option span{
 }
 /* END HOME */
 
-/* ABOUT */
-.about{
+/* ABOUT — a quiet editorial chapter between the hero and the services. */
+.about {
     min-height: 60vh;
-    background-color: rgba(255, 255, 255, 1);
+    padding: clamp(3rem, 6vw, 6rem) 5%;
+    background: var(--surface-ivory);
+    color: #282622;
+    overflow: visible;
+}
+.about-shell {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+}
+.about-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+    padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: 1px solid #d6cec3;
+}
+.about-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .8rem;
+    color: var(--main-color);
+    font-size: .6875rem;
+    font-weight: 600;
+    letter-spacing: .15em;
+}
+.about-eyebrow::before {
+    content: '';
+    width: 1.5rem;
+    height: 2px;
+    background: currentColor;
+}
+.about .about-heading {
+    margin: 0;
+    font-size: clamp(2.25rem, 4.5vw, 4rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -.045em;
+}
+.about-deck {
+    margin-top: .9rem;
+    color: #666057;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.about-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    max-width: 24rem;
+}
+.about-facts > div {
+    padding-left: 1.25rem;
+    border-left: 1px solid #cfc4b5;
+}
+.about-facts dt {
+    min-height: 2.8em;
+    color: #666057;
+    font-size: .75rem;
+    line-height: 1.4;
+}
+.about-facts dd {
+    margin: .35rem 0 0;
+    color: var(--main-color);
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -.055em;
+    font-variant-numeric: tabular-nums;
+}
+.about-facts dd .about-fact-plus { font-size: .7em; }
+.about-count-label,
+.popup-navigation-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
     overflow: hidden;
-    padding: 2% 5%;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
-
-.about h2{
-    margin-bottom: 2%;
-    font-size: 2.5rem;
-    font-weight: 400;
+.about-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr);
+    align-items: start;
+    gap: clamp(2rem, 4.5vw, 4rem);
 }
-
-.about-content{
+.about-gallery {
+    position: sticky;
+    top: 94px;
+    min-width: 0;
+    color: #302c27;
+}
+.gallery-heading {
     display: flex;
     justify-content: space-between;
-    gap: 3rem;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: .85rem;
+    font-size: .8125rem;
+    line-height: 1.5;
 }
-
-.about-content .content-info p{
-    font-size: 1.2rem;
-    font-weight: 100;
-    line-height: 2rem;
+.gallery-heading > :last-child {
+    color: #786e63;
+    font-size: .5625rem;
+    letter-spacing: .12em;
 }
-
-.about-content .content-info p span{
-    font-weight: 300;
+.about-content .content-info {
+    min-width: 0;
+    max-width: 65ch;
 }
-
-#mybox1id{
-    display: none;
-    margin-top: 5%;
+.about-content .content-info p {
+    margin: 0;
+    color: #49443e;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    overflow-wrap: break-word;
 }
-#mybox1id p{ 
-    margin-top: 3%; 
+.about-content .content-info > .lng-about-info-1 {
+    font-size: 1.0625rem;
+    color: #302c27;
 }
-#mybox1id p .mybox1-subtitle{ 
-    font-weight: 800;
-    font-size: 1.3rem;
+.about-content .content-info p + p { margin-top: 1rem; }
+.about-content .content-info b,
+.about-content .content-info strong { color: #282622; font-weight: 600; }
+.about-development,
+#mybox1id {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #d6cec3;
 }
-
-.about-content .content-info .director-link,
-.about-content .content-info .company-link{
-    color: var(--main-color);
+#mybox1id { display: none; }
+.about .about-subheading {
+    margin: 0 0 .85rem;
+    color: #282622;
+    font-size: 1.0625rem;
     font-weight: 600;
-    cursor: pointer;
+    line-height: 1.5;
 }
-.about-content .content-info .director-link:hover,
-.about-content .content-info .company-link:hover{
-    filter: drop-shadow(0 0 10px var(--main-color));
+.about-content .director-link,
+.about-content .company-link { color: var(--main-color); text-decoration: underline; }
+.about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: 1.75rem;
 }
+.about-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 48px;
+    padding: .8rem 1.1rem;
+    border: 1px solid var(--main-color);
+    border-radius: 3px;
+    color: var(--main-color);
+    font-family: inherit;
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: color .2s ease, background-color .2s ease;
+}
+.about-more-icon { flex: 0 0 20px; transition: transform .25s ease; }
+.about-more[aria-expanded="true"] .about-more-icon { transform: rotate(180deg); }
+.about-projects {
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+    min-height: 44px;
+    color: #302c27;
+    font-size: .875rem;
+    font-weight: 500;
+}
+.about-projects > :last-child { color: var(--main-color); font-size: 1.2rem; }
+@media (hover: hover) {
+    .about-more:hover { color: #fff; background: var(--main-color); }
+    .about-projects:hover { color: var(--main-color); }
+}
+.about button:focus,
+.about a:focus { outline: 2px solid var(--main-color); outline-offset: 4px; }
+.about-gallery button:focus { outline-offset: 3px; }
+.about-gallery .gallery-photo:focus { outline-offset: -4px; }
+@media (max-width: 960px) {
+    .about-header { grid-template-columns: minmax(0, 1fr); }
+    .about-content { grid-template-columns: minmax(0, 1fr); }
+    .about-gallery { position: relative; top: auto; max-width: 42rem; width: 100%; }
+    .about-content .content-info { max-width: 70ch; }
+}
+@media (max-width: 500px) {
+    .about { padding-left: 5%; padding-right: 5%; }
+    .about-header { gap: 1.5rem; }
+    .about-facts { gap: 1rem; width: 100%; }
+    .about-facts > div { padding-left: .9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .about-more,
+    .about-more-icon { transition: none; }
+}
+html:not(.js) #mybox1id { display: block; }
+html:not(.js) .about-more { display: none; }
 
-.about-content .about-description{
-    margin-top: 5%;
-}
 
 .button-link{
     clip-path: polygon(0% 0%, 100% 0%, 80% 80%, 15% 90%);
@@ -583,210 +762,95 @@ select option span{
 
 }
 
-/* ------------SLIDER-------------- */
-.slideshow-container{
-    max-width: 100%;
+/* ------------ ABOUT PHOTO GALLERY ------------ */
+.slideshow-container { position: relative; width: 100%; }
+.slider-stage {
     position: relative;
-    margin: 0 auto;
-    flex: 1 0 45%;
-
-    /* Hug the photo instead of stretching to the height of the text column.
-       The arrows and the "Смотреть" hint are positioned against this box, so
-       if it runs the full height of the text they end up floating below the
-       picture rather than sitting on it. */
-    align-self: flex-start;
-    height: auto;
+    height: 0;
+    padding-top: 75%;
+    overflow: hidden;
+    border: 1px solid #d6cec3;
+    border-radius: 4px;
+    background: #e7e0d6;
 }
-.fade{
-    animation-name: fade;
-    animation-duration: 1.5s;
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-}
-.slideshow-container .prev,
-.slideshow-container .next{
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: var(--text-color);
-    font-weight: bold;
-    font-size: 1.5rem;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-.slideshow-container .next{
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-.slideshow-container .prev:hover,
-.slideshow-container .next:hover{
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-}
-.mySlides img{
-    width: 100%;
-    height: 500px;
-    object-fit: contain;
-}
-.numbertext{
-    color: var(--text-color);
-    font-size: 1rem;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-}
-
-/* ---- "the photos open full screen" hint ----
-   A bare hand in the corner of the slider that taps, with rings opening out of
-   the fingertip. The gesture is the message, so there is no wording to read or
-   translate and nothing is drawn behind it — the button box is transparent and
-   exists only to give a thumb something to hit. Contrast over a photograph of
-   any brightness comes from drop shadows on the strokes themselves.
-   It calms down (js/lightbox.js adds .is-used) once the viewer has been
-   opened, so it stops nagging a user who already got the idea. */
-.slider-hint{
-    --hint-size: 3.4rem;
-    /* Where the index fingertip lands inside the button box, as a share of it.
-       The rings are centred here rather than on the box so they read as coming
-       off the finger. Follows from the icon geometry below — change the icon
-       size and these move with it. */
-    --tip-x: 41%;
-    --tip-y: 26%;
-
-    position: absolute;
-    right: clamp(.6rem, 1.6vw, 1.1rem);
-    bottom: clamp(.6rem, 1.6vw, 1.1rem);
-    z-index: 3;
-
-    display: grid;
-    place-items: center;
-    width: var(--hint-size);
-    height: var(--hint-size);
-    padding: 0;
-
-    color: #fff;
-    background: none;
-    border: 0;
-    cursor: pointer;
-    transition: transform .3s cubic-bezier(.16, 1, .3, 1);
-}
-.slider-hint:hover,
-.slider-hint:focus-visible{
-    transform: scale(1.1);
-}
-.slider-hint:focus-visible{
-    outline: 2px solid var(--main-color);
-    outline-offset: 3px;
-    border-radius: 50%;
-}
-
-.slider-hint__hand{
-    grid-area: 1 / 1;
-    width: 1.8rem;
-    height: 1.8rem;
+.mySlides { display: none; position: absolute; inset: 0; }
+.mySlides:last-of-type { display: block; }
+.gallery-photo {
     display: block;
-    /* Pivot on the fingertip so the press pushes the hand into the screen
-       instead of sliding the whole icon about. Icon-box coordinates, not the
-       button's: the tip sits at (8, 2.5) of the 24-unit viewBox. */
-    transform-origin: 33% 10%;
-    animation: hint-tap 2.6s cubic-bezier(.4, 0, .2, 1) infinite;
-    /* Two shadows: a tight dark outline that holds the white strokes apart
-       from a pale photo, and a wider soft one for depth. */
-    filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, .85))
-            drop-shadow(0 2px 5px rgba(0, 0, 0, .5));
+    width: 100%;
+    height: 100%;
+    padding: clamp(.35rem, .8vw, .6rem);
+    background: transparent;
+    cursor: zoom-in;
 }
-
-/* Three rings, a third of a cycle apart, opening out of the fingertip. They
-   stay tight around the finger — at their widest they are about the size of
-   the hand, not a halo around it — so the eye reads a fingertip tapping
-   rather than a pulsing badge. Something is always travelling outwards, which
-   is what keeps it looking live. */
-.slider-hint__ring{
-    position: absolute;
-    left: var(--tip-x);
-    top: var(--tip-y);
-    width: calc(var(--hint-size) * .25);
-    height: calc(var(--hint-size) * .25);
-    border: 1.25px solid #fff;
+.mySlides img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.slideshow-container .fade { animation: gallery-photo-in .4s ease-out; }
+@keyframes gallery-photo-in { from { opacity: .35; } to { opacity: 1; } }
+.gallery-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    padding: .9rem 0;
+    border-bottom: 1px solid #d6cec3;
+}
+.gallery-navigation,
+.gallery-tools { display: flex; align-items: center; gap: .35rem; }
+.gallery-counter {
+    min-width: 3.5rem;
+    text-align: center;
+    white-space: nowrap;
+    font-size: .75rem;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+    color: #786e63;
+}
+.gallery-current { color: var(--main-color); font-weight: 600; }
+.gallery-controls button {
+    display: flex;
+    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #d6cec3;
     border-radius: 50%;
-    opacity: 0;
-    pointer-events: none;
-    filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, .7));
-    animation: hint-ring 2.6s cubic-bezier(.16, 1, .3, 1) infinite;
+    background: transparent;
+    color: #49443e;
+    cursor: pointer;
+    transition: color .2s ease, border-color .2s ease, background-color .2s ease;
 }
-.slider-hint__ring:nth-of-type(2){
-    animation-delay: .87s;
+.gallery-controls svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
-.slider-hint__ring:nth-of-type(3){
-    animation-delay: 1.74s;
-}
-
-/* Seen it — keep the affordance, drop the attention-seeking. */
-.slider-hint.is-used .slider-hint__hand,
-.slider-hint.is-used .slider-hint__ring{
-    animation: none;
-}
-
-/* The press, and the rings it throws off, share one 2.6s cycle: the hand dips
-   at 8%, the rings start opening right behind it. */
-@keyframes hint-tap{
-    0%,  4%     { transform: translateY(0) scale(1); }
-    8%          { transform: translateY(1.5px) scale(.88); }
-    18%         { transform: translateY(0) scale(1); }
-    100%        { transform: translateY(0) scale(1); }
-}
-/* Rings keep growing the whole way out and fade late, so the movement stays
-   visible instead of disappearing while it is still small. */
-@keyframes hint-ring{
-    0%   { transform: translate(-50%, -50%) scale(.4); opacity: 0; }
-    10%  { transform: translate(-50%, -50%) scale(.5); opacity: .95; }
-    55%  { opacity: .55; }
-    100% { transform: translate(-50%, -50%) scale(1.7); opacity: 0; }
-}
-
-@media (max-width: 500px){
-    .slider-hint{
-        --hint-size: 3rem;
-    }
-    .slider-hint__hand{
-        width: 1.6rem;
-        height: 1.6rem;
+.gallery-playback[aria-pressed="true"] { color: var(--main-color); border-color: #bba396; }
+.gallery-playback[aria-pressed="true"] .gallery-play-icon,
+.gallery-playback[aria-pressed="false"] .gallery-pause-icon { display: none; }
+.gallery-note { margin-top: .8rem; color: #786e63; font-size: .75rem; line-height: 1.6; }
+@media (hover: hover) {
+    .gallery-controls button:hover {
+        border-color: var(--main-color);
+        background: var(--main-color);
+        color: #fff;
     }
 }
-
-/* Hover sticks after a tap on a touch screen, so it stays off there. */
-@media (hover: none){
-    .slider-hint:hover{
-        transform: none;
-    }
+@media (max-width: 360px) {
+    .gallery-navigation,
+    .gallery-tools { gap: .15rem; }
+    .gallery-counter { min-width: 3rem; }
 }
-
-@media (prefers-reduced-motion: reduce){
-    .slider-hint__hand,
-    .slider-hint__ring{
-        animation: none;
-    }
-    .slider-hint:hover,
-    .slider-hint:focus-visible{
-        transform: none;
-    }
+@media (prefers-reduced-motion: reduce) {
+    .slideshow-container .fade { animation: none; }
+    .gallery-controls button { transition: none; }
 }
-
-@keyframes fade{
-    from{opacity: .4}
-    to{opacity: 1}
-}
-@-webkit-keyframes fade{
-    from{opacity: .4}
-    to{opacity: 1}
-}
-
-
-/* -------------END SLIDER---------------- */
+html:not(.js) .gallery-controls { display: none; }
 
 /* END ABOUT */
 
@@ -1651,27 +1715,62 @@ body.popup-open {
     }
 }
 
-.popup-box .popup-footer{
-    margin-top: 1rem;
-    text-align: center;
+/* Navigation stays visible while the project details scroll above it. */
+.popup-navigation {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    gap: .75rem;
+    padding: .75rem clamp(1rem, 3.5vw, 3rem);
+    padding-bottom: max(.75rem, env(safe-area-inset-bottom, 0px));
+    padding-left: max(clamp(1rem, 3.5vw, 3rem), env(safe-area-inset-left, 0px));
+    padding-right: max(clamp(1rem, 3.5vw, 3rem), env(safe-area-inset-right, 0px));
+    border-top: 1px solid rgba(255, 255, 255, .13);
+    background: #242321;
 }
-
-.popup-box .popup-footer .btn{
-    margin-top: 1rem;
+.popup-navigation[hidden] { display: none; }
+.popup-navigation button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    min-height: 48px;
+    min-width: 0;
+    padding: .75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--popup-ink);
+    font-family: inherit;
+    font-size: .875rem;
+    line-height: 1.4;
     cursor: pointer;
-    width: 170px;
-    height: 70px;
-    padding-bottom: 1%;
-    text-align: center;
-    color: #fff;
-    clip-path: polygon(0% 0%, 100% 0%, 80% 95%,12% 80%);
-    background-color: var(--main-color);
-    font-size: 1.2rem;
-    transition: .3s ease;
+    transition: border-color .2s ease, background-color .2s ease;
 }
-.popup-box .popup-footer .btn:hover{
-    color: var(--text-color);
-    background-color: rgba(227, 227, 227, 1);
+.popup-navigation button span { overflow-wrap: anywhere; }
+.popup-navigation svg {
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--popup-accent);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+@media (hover: hover) {
+    .popup-navigation button:hover { border-color: var(--popup-accent); background: #322521; }
+}
+@media (max-width: 600px) {
+    .popup-navigation { gap: .5rem; }
+    .popup-navigation button { flex: 1 1 0; gap: .4rem; padding: .65rem .5rem; font-size: .8125rem; }
+}
+@media (max-height: 500px) {
+    .popup-navigation { padding-top: .4rem; padding-bottom: max(.4rem, env(safe-area-inset-bottom, 0px)); }
+    .popup-navigation button { min-height: 44px; padding-top: .5rem; padding-bottom: .5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .popup-navigation button { transition: none; }
 }
 /* END PORTFOLIO */
 
@@ -1679,7 +1778,7 @@ body.popup-open {
 .partners{
     /* margin-top: -250px; */
     min-height: 60vh;
-    background: #fff;
+    background: var(--surface-ivory);
     color: #2d2c2c;
     padding: 2% 0;
 }
@@ -1722,8 +1821,8 @@ body.popup-open {
     left: 0;
     background: linear-gradient(
         to left,
-     rgba(255, 255, 255, 0),
-     #fff  
+     rgba(242, 238, 232, 0),
+     var(--surface-ivory)
     );
 }
 
@@ -1731,8 +1830,8 @@ body.popup-open {
     right: 0;
     background: linear-gradient(
         to left,
-        #fff,
-     rgba(255, 255, 255, 0)
+        var(--surface-ivory),
+     rgba(242, 238, 232, 0)
     );
 }
 
@@ -2209,15 +2308,6 @@ footer .text-left p::after{
     }
 
 
-    .about-content .content-info p{
-        line-height: 1.5rem;
-    }
-    .about-content{
-        gap: 3rem;
-    }
-    .mySlides img{
-        height: 400px;
-    }
 
     .services-1{
         min-height: 50vh;  
@@ -2318,19 +2408,6 @@ footer .text-left p::after{
         height: 80px;
     }
 
-    .about-content{
-        gap: 2rem;
-    }
-    .about h2{
-        font-size: 2rem;
-    }
-    .slideshow-container {
-        flex: 1 0 55%;
-    }
-    .about-content .content-info p {
-        font-size: 1rem;
-        line-height: 1.4rem;
-    }
 
     .content-info .button{
         margin-top: 4%;
@@ -2479,7 +2556,7 @@ footer .text-left p::after{
         left: 0;
         width: 100%;
         height: 0;
-        background: rgba(227, 227, 227, 1);
+        background: var(--surface-ivory);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -2543,30 +2620,6 @@ footer .text-left p::after{
         margin-bottom: 5%;
     }
 
-    .about h2{
-        font-size: 1.6rem;
-    }
-    .about-content{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .mySlides img {
-        height: 280px;
-        object-fit: contain;
-    }
-    .slideshow-container{
-        width: 100%;
-    }
-    .about-content{
-        gap: 2rem;
-    }
-    .about-content .content-info p {
-        line-height: 1.4rem;
-    }
-    .about-content .about-description {
-        margin-top: 2%;
-    }
 
     /* servisec-1 */
     .container-services .services-box{

@@ -5,6 +5,12 @@ const popupCloseIcon = popup.querySelector('.popup-close-icon');
 const popupContent = popup.querySelector('.popup-content');
 const popupHeader = popup.querySelector('.popup-header');
 const popupBody = popup.querySelector('.popup-body');
+const popupNavigation = popup.querySelector('.popup-navigation');
+const popupPrevious = popup.querySelector('.popup-previous');
+const popupNext = popup.querySelector('.popup-next');
+const projectBoxes = Array.from(portfolioItems.querySelectorAll('.portfolio-box'))
+    .filter(box => box.querySelector('h4') && box.querySelector('.read-more-content'));
+let currentProjectIndex = -1;
 let popupReturnFocus = null;
 
 // Scroll position to restore when the popup closes. While the popup is open the
@@ -62,6 +68,7 @@ function fillPopupFrom(box) {
     if (!title || !content) return false;
 
     const body = popupBody;
+    currentProjectIndex = projectBoxes.indexOf(box);
 
     popup.querySelector('h3').textContent = title.textContent;
     // Copy only the site's existing project nodes; no external HTML or extra
@@ -75,10 +82,11 @@ function fillPopupFrom(box) {
     const subtitle = popup.querySelector('.popup-subtitle');
     subtitle.textContent = category && !category.querySelector('br') ? category.textContent : '';
     subtitle.hidden = !subtitle.textContent.trim();
-    const boxes = Array.from(portfolioItems.querySelectorAll('.portfolio-box'));
     popup.querySelector('.popup-project-number').textContent =
-        String(boxes.indexOf(box) + 1).padStart(2, '0') + ' / ' + String(boxes.length).padStart(2, '0');
-    popupCloseIcon.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Close project' : 'Закрыть проект');
+        String(currentProjectIndex + 1).padStart(2, '0') + ' / ' + String(projectBoxes.length).padStart(2, '0');
+    updatePopupNavigation();
+    popup.querySelector('.popup-navigation-status').textContent =
+        (currentProjectIndex + 1) + ' / ' + projectBoxes.length + '. ' + title.textContent;
 
     body.querySelectorAll('a[target="_blank"]').forEach(link => link.relList.add('noopener'));
     body.querySelectorAll('a[href="#contact"]').forEach(link => {
@@ -96,6 +104,35 @@ function fillPopupFrom(box) {
 
     return true;
 }
+
+function updatePopupNavigation() {
+    const en = document.documentElement.lang === 'en';
+    popupCloseIcon.setAttribute('aria-label', en ? 'Close project' : 'Закрыть проект');
+    popupNavigation.setAttribute('aria-label', en ? 'Project navigation' : 'Навигация по проектам');
+    popupPrevious.querySelector('span').textContent = en ? 'Previous project' : 'Предыдущий проект';
+    popupNext.querySelector('span').textContent = en ? 'Next project' : 'Следующий проект';
+    popupNavigation.hidden = projectBoxes.length < 2;
+}
+
+function refreshProjectPopupLanguage() {
+    if (popup.classList.contains('open') && currentProjectIndex >= 0) fillPopupFrom(projectBoxes[currentProjectIndex]);
+    else updatePopupNavigation();
+}
+
+function navigatePopup(delta) {
+    if (!popup.classList.contains('open') || projectBoxes.length < 2) return;
+    // Keep focus in a persistent control if a keyboard user was reading a link
+    // inside the project content that is about to be replaced.
+    if (popupBody.contains(document.activeElement)) {
+        (delta < 0 ? popupPrevious : popupNext).focus({ preventScroll: true });
+    }
+    const index = (currentProjectIndex + delta + projectBoxes.length) % projectBoxes.length;
+    fillPopupFrom(projectBoxes[index]);
+}
+
+popupPrevious.addEventListener('click', () => navigatePopup(-1));
+popupNext.addEventListener('click', () => navigatePopup(1));
+updatePopupNavigation();
 
 portfolioItems.addEventListener('click', function (e) {
     // Resolve the click to its tile rather than testing what was hit. The
@@ -126,6 +163,11 @@ document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         e.preventDefault();
         closePopup();
+    } else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') &&
+        !e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey &&
+        !e.target.matches('input, textarea, select') && !e.target.isContentEditable) {
+        e.preventDefault();
+        navigatePopup(e.key === 'ArrowLeft' ? -1 : 1);
     } else if (e.key === 'Tab') {
         const controls = Array.from(popupContent.querySelectorAll('button, a[href], iframe'))
             .filter(el => el.getClientRects().length > 0);

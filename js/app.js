@@ -197,6 +197,70 @@ function initScrollReveal() {
 initScrollReveal();
 // END SCROLL REVEAL
 
+// Count after the milestones are clearly in view, and replay on a new visit.
+function initAboutCounters() {
+    const group = document.querySelector('.about-facts');
+    if (!group || !('IntersectionObserver' in window)) return;
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const values = Array.from(group.querySelectorAll('[data-count]'), element => ({
+        element, target: Number(element.dataset.count)
+    }));
+    const heading = group.closest('.about-header');
+    const header = document.querySelector('.header');
+    let frame = null;
+    let delay = null;
+    let startedAt = null;
+    let inView = false;
+
+    function finish() {
+        cancelAnimationFrame(frame);
+        clearTimeout(delay);
+        frame = delay = null;
+        values.forEach(({ element, target }) => { element.textContent = String(target); });
+    }
+    function tick(now) {
+        if (startedAt === null) startedAt = now;
+        const progress = Math.min(1, (now - startedAt) / 1400);
+        const eased = 1 - Math.pow(1 - progress, 2);
+        values.forEach(({ element, target }) => { element.textContent = String(Math.floor(target * eased)); });
+        if (progress < 1) frame = requestAnimationFrame(tick);
+        else finish();
+    }
+    function start() {
+        finish();
+        if (motion.matches || document.hidden) return;
+        startedAt = null;
+        values.forEach(({ element }) => { element.textContent = '0'; });
+        // The heading's entrance must not hide the beginning of the count.
+        const revealing = heading && Number(getComputedStyle(heading).opacity) < .98;
+        delay = setTimeout(() => {
+            delay = null;
+            if (inView && !document.hidden) frame = requestAnimationFrame(tick);
+        }, revealing ? 500 : 100);
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) {
+            inView = false;
+            finish();
+        } else if (entry.intersectionRatio >= .6 && !inView) {
+            inView = true;
+            start();
+        }
+    }, {
+        threshold: [0, .6],
+        rootMargin: '-' + ((header ? header.offsetHeight : 0) + 8) + 'px 0px 0px 0px'
+    });
+    observer.observe(group);
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) finish();
+        else if (inView) start();
+    });
+    const onMotionChange = () => { if (motion.matches) finish(); else if (inView) start(); };
+    if (motion.addEventListener) motion.addEventListener('change', onMotionChange);
+    else motion.addListener(onMotionChange);
+}
+initAboutCounters();
+
 // GEOMETRIC FIGURE ANIMATION
 // Shared engine behind the home hero image and the three "Why us?" figures:
 // Each cluster assembles and comes apart as the page scrolls past it.
@@ -719,27 +783,13 @@ function changeReadMore() {
     const mybutton =
         document.getElementById('mybuttonid');
 
-    if (mycontent.style.display === 'none'
-        || mycontent.style.display === '') {
-        mycontent.style.display = 'block';
-        mycontent.style.marginTop = '3%';
-        mycontent.style.fontSize = '1.2rem';
-        mycontent.style.fontFamily = 'Poppins, sans-serif';
-        if (currentLng == 'ru') {
-            mybutton.textContent = 'Свернуть';
-        }
-        if (currentLng == 'en') {
-            mybutton.textContent = 'Collapse';
-        }
-    } else {
-        mycontent.style.display = 'none';
-        if (currentLng == 'ru') {
-            mybutton.textContent = 'Подробнее';
-        }
-        if (currentLng == 'en') {
-            mybutton.textContent = 'More details';
-        }
-    }
+    const expanded = mycontent.style.display !== 'block';
+    mycontent.style.display = expanded ? 'block' : 'none';
+    mybutton.setAttribute('aria-expanded', String(expanded));
+    const label = mybutton.querySelector('.lng-about-btn');
+    label.textContent = expanded
+        ? (currentLng === 'en' ? 'Collapse' : 'Свернуть')
+        : langList['about-btn'][currentLng];
 }
 // END READ MORE ABOUT
 
@@ -967,6 +1017,8 @@ function applyLanguage(lng) {
     }
     sendBtn.value = lng === 'en' ? 'Send' : 'Отправить';
     updateHeroBrand(lng);
+    if (typeof updateAboutGalleryLanguage === 'function') updateAboutGalleryLanguage();
+    if (typeof refreshProjectPopupLanguage === 'function') refreshProjectPopupLanguage();
 
     // Refresh toggle buttons text if sections are expanded
     const sections = [
@@ -979,7 +1031,8 @@ function applyLanguage(lng) {
         const content = document.getElementById(sec.contentId);
         const button = document.getElementById(sec.buttonId);
         if (content && button && content.style.display === 'block') {
-            button.textContent = lng === 'en' ? 'Collapse' : 'Свернуть';
+            const label = button.querySelector('.lng-about-btn') || button;
+            label.textContent = lng === 'en' ? 'Collapse' : 'Свернуть';
         }
     });
 }

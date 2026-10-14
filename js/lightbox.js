@@ -14,7 +14,7 @@
 
     const sources = slideImages.map(img => img.getAttribute('src'));
     const total = sources.length;
-    // The pill in the corner of the slider that advertises the viewer.
+    // Full-screen control in the gallery toolbar.
     const hint = container.querySelector('.slider-hint');
     let current = 0;
     let lastFocused = null;
@@ -73,7 +73,7 @@
         current = next;
 
         image.src = sources[current];
-        image.alt = 'Фотография компании АРТ Групп ' + (current + 1) + ' из ' + total;
+        image.alt = (document.documentElement.lang === 'en' ? 'A.R.T. Group photo ' : 'Фотография компании АРТ Групп ') + (current + 1) + ' / ' + total;
         counter.textContent = String(current + 1);
 
         thumbs.forEach((thumb, i) => {
@@ -105,24 +105,16 @@
 
     // ---------- open / close ----------
 
-    // sessionStorage throws outright in some privacy modes, so every access
-    // goes through here.
-    function store(op) {
-        try {
-            if (op === 'get') return sessionStorage.getItem('aboutGallerySeen');
-            sessionStorage.setItem('aboutGallerySeen', '1');
-        } catch (e) { /* nothing to do: the hint just pulses again next visit */ }
-        return null;
-    }
-
     function open(index) {
         lastFocused = document.activeElement;
         createThumbnails();
-
-        // However the viewer was reached, the user now knows the slider opens;
-        // calm the hint down.
-        if (hint) hint.classList.add('is-used');
-        store('set');
+        const en = document.documentElement.lang === 'en';
+        box.setAttribute('aria-label', en ? 'A.R.T. Group company photographs' : 'Фотографии компании АРТ Групп');
+        closeBtn.setAttribute('aria-label', en ? 'Close gallery' : 'Закрыть галерею');
+        box.querySelector('.lightbox__nav--prev').setAttribute('aria-label', en ? 'Previous photo' : 'Предыдущее фото');
+        box.querySelector('.lightbox__nav--next').setAttribute('aria-label', en ? 'Next photo' : 'Следующее фото');
+        rail.setAttribute('aria-label', en ? 'All photographs' : 'Все фотографии');
+        thumbs.forEach((thumb, i) => thumb.setAttribute('aria-label', (en ? 'Photo ' : 'Фото ') + (i + 1)));
 
         if (typeof stopSlideshow === 'function') stopSlideshow();
         if (typeof lockPageScroll === 'function') lockPageScroll();
@@ -140,8 +132,10 @@
         if (typeof goToSlide === 'function') goToSlide(current + 1);
         if (typeof startSlideshow === 'function') startSlideshow();
 
-        if (lastFocused && typeof lastFocused.focus === 'function') {
-            lastFocused.focus({ preventScroll: true });
+        const returnFocus = lastFocused && lastFocused.getClientRects().length
+            ? lastFocused : (slideImages[current].closest('.gallery-photo') || hint);
+        if (returnFocus && typeof returnFocus.focus === 'function') {
+            returnFocus.focus({ preventScroll: true });
         }
     }
 
@@ -152,13 +146,12 @@
     // ---------- input ----------
 
     slideImages.forEach((img, i) => {
-        img.addEventListener('click', () => open(i));
+        const trigger = img.closest('.gallery-photo') || img;
+        trigger.addEventListener('click', () => open(i));
     });
 
     // The hint opens whichever photo is on screen.
     if (hint) {
-        if (store('get') === '1') hint.classList.add('is-used');
-
         hint.addEventListener('click', () => {
             const shown = typeof getCurrentSlide === 'function' ? getCurrentSlide() : 1;
             open(Math.min(Math.max(shown, 1), total) - 1);
