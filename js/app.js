@@ -199,16 +199,33 @@ initScrollReveal();
 
 // GEOMETRIC FIGURE ANIMATION
 // Shared engine behind the home hero image and the three "Why us?" figures:
-// each is a cluster of .shape elements inside its own container that
-// explodes together into place, wiggles idly while settled, and comes apart
-// again as the page scrolls past it.
+// Each cluster assembles and comes apart as the page scrolls past it.
+// Hero planes continuously transform between a finished building and an old
+// industrial plot. Scrolling takes control of those same parts; other figures
+// retain their independent motion.
 function createFigureAnimator(container) {
     const shapes = gsap.utils.toArray(container.querySelectorAll('.shape'));
     if (shapes.length === 0) return null;
+    const model = container.querySelector('.home-architecture');
+    const architecturalParts = model ? shapes.map(shape => {
+        const attribute = shape.hasAttribute('points') ? 'points' : 'd';
+        const paint = attribute === 'points' ? 'fill' : 'stroke';
+        return {
+            shape, attribute, paint,
+            building: shape.getAttribute(attribute),
+            site: shape.getAttribute('data-site-' + attribute),
+            buildingPaint: getComputedStyle(shape)[paint],
+            sitePaint: shape.getAttribute('data-site-' + paint),
+            siteOpacity: Number(shape.getAttribute('data-site-opacity') || 1)
+        };
+    }) : [];
+    const motion = model ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    const animationTargets = model ? [...shapes, model] : shapes;
 
-    // Stable base rotations for the architectural "tilted" look
-    const baseRotations = shapes.map((_, i) => (Math.sin(i * 1.5) * 15));
+    // The architectural planes meet precisely; other figures keep their tilt.
+    const baseRotations = shapes.map((_, i) => model ? 0 : Math.sin(i * 1.5) * 15);
     const idleTweens = [];
+    let architecturalCycle = null;
     let isAssembling = false;
     let isSettled = false;
     let lastProgress = null;
@@ -219,10 +236,17 @@ function createFigureAnimator(container) {
     // must not keep a ticker or GPU layer busy while the visitor reads below.
     function syncActivity() {
         isActive = inView && !document.hidden;
-        gsap.getTweensOf(shapes).forEach(tween => tween.paused(!isActive));
+        const animate = isActive && !(motion && motion.matches);
+        if (architecturalCycle) {
+            // Pause the parent clock, preserving the timing of future steps.
+            architecturalCycle.paused(!animate);
+        } else {
+            gsap.getTweensOf(animationTargets).forEach(tween => tween.paused(!animate));
+        }
         shapes.forEach(shape => {
-            shape.style.willChange = isActive ? 'transform, opacity' : 'auto';
+            shape.style.willChange = animate && !model ? 'transform, opacity' : 'auto';
         });
+        if (model) model.style.willChange = animate ? 'transform' : 'auto';
     }
 
     if ('IntersectionObserver' in window) {
@@ -238,10 +262,79 @@ function createFigureAnimator(container) {
     function stopIdle() {
         idleTweens.forEach(t => t.kill());
         idleTweens.length = 0;
+        architecturalCycle = null;
+        if (model) gsap.killTweensOf(model);
     }
 
     function startIdle() {
         stopIdle();
+        if (model) {
+            // The low site can use more of a wide phone frame; the tall
+            // building keeps its original scale. No layout dimensions change.
+            const siteScale = () => {
+                const ratio = model.viewBox.baseVal.width / model.viewBox.baseVal.height;
+                const fittedWidth = Math.min(model.clientWidth, model.clientHeight * ratio);
+                return Math.min(1.35, Math.max(1, model.clientWidth * .9 / Math.max(1, fittedWidth)));
+            };
+            const transitionDuration = 6;
+            const loosenDuration = transitionDuration * .35;
+            // Reach peak speed early, then brake smoothly as the destination
+            // forms. The same continuous curve is used in both directions.
+            const accelerationFraction = .1;
+            const brakingFraction = 1 - accelerationFraction;
+            const transitionEase = progress => progress <= accelerationFraction
+                ? progress - accelerationFraction / Math.PI * Math.sin(Math.PI * progress / accelerationFraction)
+                : progress + brakingFraction / Math.PI * Math.sin(Math.PI * (progress - accelerationFraction) / brakingFraction);
+            // The same 30 vector parts become a fenced plot and weathered
+            // hangar, then rise into the finished project. Matching point and
+            // path topology keeps this native: no morphing plugin or video.
+            architecturalCycle = gsap.timeline({
+                repeat: -1,
+                paused: !isActive
+            });
+            architecturalCycle
+                .to(model, {
+                    y: () => -Math.min(150, model.clientHeight * (.25 + (siteScale() - 1) * .25)),
+                    scale: siteScale,
+                    duration: transitionDuration,
+                    ease: transitionEase
+                }, 0)
+                .to(model, { y: 0, scale: 1, duration: transitionDuration, ease: transitionEase }, transitionDuration);
+            [0, transitionDuration].forEach(start => {
+                architecturalCycle.to(shapes, {
+                    x: (i) => Math.sin(i * 2.4) * (12 + i % 5 * 3),
+                    y: (i) => Math.cos(i * 2.4) * (10 + i % 4 * 3),
+                    rotation: (i) => (i % 5 - 2) * 4,
+                    scale: .98,
+                    duration: loosenDuration,
+                    ease: transitionEase
+                }, start)
+                .to(shapes, {
+                    x: 0, y: 0, rotation: 0, scale: 1,
+                    duration: transitionDuration - loosenDuration,
+                    ease: transitionEase
+                }, start + loosenDuration);
+            });
+            architecturalParts.forEach(part => {
+                architecturalCycle
+                    .to(part.shape, {
+                        attr: { [part.attribute]: part.site },
+                        [part.paint]: part.sitePaint,
+                        opacity: part.siteOpacity,
+                        duration: transitionDuration,
+                        ease: transitionEase
+                    }, 0)
+                    .to(part.shape, {
+                        attr: { [part.attribute]: part.building },
+                        [part.paint]: part.buildingPaint,
+                        opacity: 1,
+                        duration: transitionDuration,
+                        ease: transitionEase
+                    }, transitionDuration);
+            });
+            idleTweens.push(architecturalCycle);
+            return;
+        }
         shapes.forEach((shape, i) => {
             const t = gsap.to(shape, {
                 x: "+=" + (Math.sin(i) * 20),
@@ -259,6 +352,10 @@ function createFigureAnimator(container) {
     }
 
     function assemble(forceStagger = false) {
+        if (motion && motion.matches) {
+            showStaticModel();
+            return;
+        }
         if (isAssembling) return;
         if (isSettled && !forceStagger) return;
 
@@ -268,14 +365,15 @@ function createFigureAnimator(container) {
 
         stopIdle();
         gsap.killTweensOf(shapes);
+        restoreBuildingGeometry(forceStagger ? 0 : 1.5);
 
         if (forceStagger) {
             gsap.set(shapes, {
-                x: () => (Math.random() - 0.5) * 1000,
-                y: () => (Math.random() - 0.5) * 1000,
-                rotation: () => (Math.random() - 0.5) * 720,
+                x: (i) => model ? Math.sin(i * 2.4) * (160 + i * 3) : (Math.random() - 0.5) * 1000,
+                y: (i) => model ? Math.cos(i * 2.4) * (130 + i * 2) : (Math.random() - 0.5) * 1000,
+                rotation: (i) => model ? (i % 5 - 2) * 18 : (Math.random() - 0.5) * 720,
                 opacity: 0,
-                scale: 0
+                scale: model ? .65 : 0
             });
         }
 
@@ -288,7 +386,7 @@ function createFigureAnimator(container) {
             duration: 1.5,
             ease: "expo.out",
             paused: !isActive,
-            stagger: forceStagger ? { amount: 1.2, from: "random" } : 0,
+            stagger: forceStagger ? { amount: 1.2, from: model ? 'start' : 'random' } : 0,
             onComplete: () => {
                 isAssembling = false;
                 startIdle();
@@ -300,29 +398,70 @@ function createFigureAnimator(container) {
     // Recomputed continuously from scroll position so it scrubs smoothly in
     // both directions instead of playing once.
     function disassemble(progress) {
+        if (motion && motion.matches) return;
         if (isAssembling || !isActive || progress === lastProgress) return;
         lastProgress = progress;
 
         if (isSettled) {
             isSettled = false;
             stopIdle();
+            restoreBuildingGeometry(.8);
         }
 
         shapes.forEach((shape, i) => {
-            const factor = (i % 5 + 1) * 0.8;
+            const factor = model ? 1 : (i % 5 + 1) * 0.8;
             const dx = (i % 2 === 0 ? 1 : -1) * (1 + i * 0.1);
             const dy = (i % 3 === 0 ? 1 : -1) * (1 + i * 0.1);
 
             gsap.to(shape, {
-                x: dx * progress * 800 * factor,
-                y: dy * progress * 800 * factor,
-                rotation: baseRotations[i] + (progress * 720 * factor),
-                opacity: 1 - progress * 0.9,
+                x: dx * progress * (model ? 90 : 800) * factor,
+                y: dy * progress * (model ? 90 : 800) * factor,
+                rotation: baseRotations[i] + progress * (model ? (i % 2 === 0 ? 24 : -24) : 720 * factor),
+                opacity: 1 - progress * (model ? 1 : .9),
                 duration: 0.8,
                 ease: "power2.out",
                 overwrite: "auto"
             });
         });
+    }
+
+    function showStaticModel() {
+        stopIdle();
+        gsap.killTweensOf(shapes);
+        restoreBuildingGeometry();
+        gsap.set(shapes, { x: 0, y: 0, rotation: 0, opacity: 1, scale: 1 });
+        isAssembling = false;
+        isSettled = true;
+        lastProgress = null;
+        syncActivity();
+    }
+
+    function restoreBuildingGeometry(duration = 0) {
+        if (model) {
+            if (duration) gsap.to(model, { y: 0, scale: 1, duration, ease: 'power2.out', overwrite: 'auto' });
+            else gsap.set(model, { y: 0, scale: 1 });
+        }
+        architecturalParts.forEach(part => {
+            const values = {
+                attr: { [part.attribute]: part.building },
+                [part.paint]: part.buildingPaint
+            };
+            if (duration) gsap.to(part.shape, { ...values, duration, ease: 'power2.out', overwrite: 'auto' });
+            else gsap.set(part.shape, values);
+        });
+    }
+
+    if (motion) {
+        const onMotionChange = () => {
+            if (motion.matches) showStaticModel();
+            else {
+                isSettled = false;
+                assemble(false);
+                syncActivity();
+            }
+        };
+        if (motion.addEventListener) motion.addEventListener('change', onMotionChange);
+        else motion.addListener(onMotionChange);
     }
 
     return {
@@ -333,12 +472,12 @@ function createFigureAnimator(container) {
     };
 }
 
-// The hero figure at the very top of the page — always "at rest" when the
-// page is scrolled to the top, and keyed off the global scroll position
-// since it only ever lives there.
+// Keep the transformation loop near the top, then start scattering while
+// enough of the hero is still visible for the transition to be seen.
 function initHeroFigure() {
     const container = document.querySelector('.home-img-container');
     if (!container) return;
+    const hero = container.closest('.home-section');
     const anim = createFigureAnimator(container);
     if (!anim) return;
 
@@ -356,8 +495,14 @@ function initHeroFigure() {
     // Scroll listener — throttled to one frame.
     function onShapeScroll() {
         const scrollY = window.scrollY;
+        const figureTop = container.getBoundingClientRect().top + scrollY;
+        const scatterStart = Math.min(
+            hero.offsetTop + hero.offsetHeight * .25,
+            figureTop + container.offsetHeight * .25
+        );
+        const remainingHeight = Math.min(hero.offsetHeight * .5, container.offsetHeight * .7);
 
-        if (scrollY < 50) {
+        if (scrollY <= scatterStart) {
             isNavigatingToHome = false;
             if (!anim.isSettled && !anim.isAssembling) {
                 anim.assemble(false);
@@ -367,8 +512,7 @@ function initHeroFigure() {
 
         if (anim.isAssembling || isNavigatingToHome) return;
 
-        const maxScroll = window.innerHeight * 1.5;
-        const progress = Math.min(scrollY / maxScroll, 1);
+        const progress = Math.min((scrollY - scatterStart) / remainingHeight, 1);
         anim.disassemble(progress);
     }
 
