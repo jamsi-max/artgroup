@@ -466,16 +466,56 @@ if (document.readyState === 'loading') {
 }
 // END GEOMETRIC FIGURE ANIMATION
 
-// PRINT TEXT TYPED JS
-const typed = new Typed('.multiple-text', {
-    strings: ['"<span class="first-word">Art</span> group"', '"<span class="first-word">Арт</span> групп"'],
-    typeSpeed: 100,
-    backSpeed: 100,
-    backDelay: 1000,
-    loop: true
-    
-})
-// END PRINT TEXT TYPED JS
+// HERO WORDMARK
+let typed = null;
+let brandInView = true;
+const brandElement = document.querySelector('.multiple-text');
+const brandMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+function syncBrandActivity() {
+    if (!typed) return;
+    if (document.hidden || !brandInView) typed.stop();
+    else typed.start();
+}
+
+function updateHeroBrand(lng) {
+    if (!brandElement) return;
+    if (typed) {
+        typed.destroy();
+        typed = null;
+    }
+    // Only static, site-owned strings enter the animated markup.
+    const ru = '<span class="first-word">Арт</span> групп';
+    const en = '<span class="first-word">Art</span> group';
+    const strings = lng === 'en' ? [en, ru] : [ru, en];
+    brandElement.innerHTML = strings[0];
+    if (brandMotion.matches || typeof Typed === 'undefined') return;
+
+    brandElement.textContent = '';
+    typed = new Typed(brandElement, {
+        strings,
+        typeSpeed: 75,
+        backSpeed: 40,
+        backDelay: 2600,
+        startDelay: 260,
+        loop: true,
+        autoInsertCss: false
+    });
+    syncBrandActivity();
+}
+
+if (brandElement && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+        brandInView = entry.isIntersecting;
+        syncBrandActivity();
+    });
+    observer.observe(brandElement.parentElement);
+}
+document.addEventListener('visibilitychange', syncBrandActivity);
+const updateBrandMotion = () => updateHeroBrand(document.documentElement.lang);
+if (brandMotion.addEventListener) brandMotion.addEventListener('change', updateBrandMotion);
+else brandMotion.addListener(updateBrandMotion);
+// END HERO WORDMARK
 
 // PORTFOLIO LOAD MORE
 let box = document.querySelectorAll('.portfolio-box');
@@ -782,6 +822,7 @@ function applyLanguage(lng) {
         }
     }
     sendBtn.value = lng === 'en' ? 'Send' : 'Отправить';
+    updateHeroBrand(lng);
 
     // Refresh toggle buttons text if sections are expanded
     const sections = [

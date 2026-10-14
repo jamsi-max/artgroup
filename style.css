@@ -312,46 +312,120 @@ select option span{
 }
 
 .home-section .section-content .home-details{
+    flex: 0 0 47%;
+    width: 47%;
+    max-width: 40rem;
+    min-width: 0;
     margin-left: 3%;
 }
 
 .home-section .home-details .title{
-    margin-top: 10%;
-    font-size: 2rem;
-    font-weight: 100;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    margin: 0;
+    color: #cfc3b9;
+    font-size: clamp(.6875rem, .85vw, .875rem);
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+}
+.home-section .home-details .title::before {
+    content: '';
+    flex: 0 0 1.5rem;
+    height: 2px;
+    margin-top: .75em;
+    background: var(--main-color);
 }
 
 .home-section .home-details .subtitle{
-    font-family: "Teko", sans-serif;
-    font-size: 2.8rem;
-    font-weight: 700;
-    line-height: 2.2rem;
-    max-width: 70%;
-    margin-top: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(2.5rem, 5.5vw, 5.25rem);
+    font-weight: 600;
+    line-height: 1.15;
+    min-height: 1.15em;
+    max-width: 100%;
+    margin-top: .875rem;
+    letter-spacing: -.055em;
+    white-space: nowrap;
+    color: #f2eee8;
 }
 .home-section .home-details .subtitle .first-word{
     color: var(--main-color);
 }
-
-.home-section .home-details p.description{
-    font-size: 1.2rem;
-    margin-top: 3%;
+.home-brand-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+.home-section .subtitle .typed-cursor {
+    display: inline-block;
+    width: 2px;
+    height: .72em;
+    margin-left: .12em;
+    vertical-align: -.025em;
+    background: #d9907a;
+    font-size: inherit;
+    letter-spacing: 0;
+    color: transparent;
+    overflow: hidden;
+}
+.home-section .subtitle .typed-cursor--blink {
+    animation: hero-cursor-blink 1.2s step-end infinite;
+}
+@keyframes hero-cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .home-section .subtitle .typed-cursor { display: none; animation: none; }
+}
+@media (forced-colors: active) {
+    .home-section .home-details { background: Canvas; color: CanvasText; }
+    .home-section .home-details .subtitle .first-word { background: none; color: CanvasText; }
+    .home-section .subtitle .typed-cursor { background: CanvasText; }
 }
 
-.home-section .home-details p.description-1{
-    margin-top: 8%;
+.home-copy {
+    max-width: 40rem;
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
 }
-.home-section .home-details p.description-2{
-    /* font-size: 1rem; */
+.home-copy .home-lead {
+    font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: #f2eee8;
+}
+.home-copy .home-lead strong {
     font-weight: 600;
+    color: #fff;
 }
-
-.home-section .home-details .description{
-    font-weight: 100;
-    max-width: 100%;
+.home-copy .home-audience {
+    max-width: 48ch;
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #d0cbc3;
 }
-.home-section .home-details p.description-3{
-    margin-top: 8%;
+.home-copy .home-path {
+    max-width: 48ch;
+    margin-top: 1.25rem;
+    padding-left: 1rem;
+    border-left: 2px solid #b64b3e;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.65;
+    color: #efc6bd;
+}
+.home-section .home-details .button {
+    margin-top: 1.75rem;
 }
 
 .home-section .img-wrapper{
@@ -2120,12 +2194,6 @@ footer .text-left p::after{
     .home-section .home-details{
         margin-top: 8%;
     }
-    .home-section .home-details .title{
-        font-size: 2.5rem;
-    }
-    .home-section .home-details h3.subtitle{
-        font-size: 2.5rem;
-    }
 
 
     .about-content .content-info p{
@@ -2231,15 +2299,6 @@ footer .text-left p::after{
 
     #home{
         padding: 0 2%;
-    }
-    .home-section .home-details .title{
-        font-size: 1.7rem;
-    }
-    .home-section .home-details h3.subtitle{
-        font-size: 2rem;
-    }
-    .home-section .home-details .description{
-        font-size: 1rem;
     }
     .home-section .home-details .button-link{
         width: 220px;
@@ -2445,20 +2504,6 @@ footer .text-left p::after{
     .home-section .home-details {
         margin-top: 0;
     }
-    .home-section .home-details .title {
-        margin-top: 5%;
-    }
-    .home-section .home-details p.description-1{
-        margin-top: 5%;
-    }
-    .home-section .home-details p.description{
-        max-width: 100%;
-        font-size: 1rem;
-        margin-top: 2%;
-    }
-    .home-section .home-details p.description-3{
-        margin-top: 8%;
-    }
     .home-section .section-content{
         flex-direction: column-reverse;
         justify-content: center;
@@ -2466,17 +2511,22 @@ footer .text-left p::after{
     }
     .home-section .img-wrapper {
         margin-top: 5%;
-        width: 30rem;
-        height: 23rem;
+        width: 100%;
+        max-width: 30rem;
+        height: clamp(13rem, 65vw, 23rem);
         margin-right: 0;
     }
     .home-section{
         padding-bottom: 8%;
     }
     .home-section .home-details .subtitle{
-        font-size: 1.6rem;
+        font-size: clamp(2.5rem, 11.5vw, 3.75rem);
     }
     .home-section .section-content .home-details {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 0 .5rem;
+        margin-left: 0;
         margin-bottom: 5%;
     }
 

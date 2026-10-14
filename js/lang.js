@@ -25,35 +25,23 @@ const langList = {
     },
     "home-title" : {
         "ru": "АРХИТЕКТУРНО-ЮРИДИЧЕСКАЯ КОМПАНИЯ",
-        "en": "ARCHITECTURAL AND LEGAL COMPANY",
+        "en": "ARCHITECTURAL AND LEGAL FIRM",
     },
-    "slogan" : {
-        "ru": "Девиз:",
-        "en": "Slogan:",
+    "home-brand" : {
+        "ru": "Арт групп",
+        "en": "Art group",
     },
-    "slogan-text" : {
-        "ru": "«От абстрактного к конкретному»",
-        "en": "«From the abstract to the concrete»",
+    "home-value" : {
+        "ru": "Мы помогаем собственнику превратить земельный участок или существующий объект в <strong>экономически эффективный проект</strong> — от оценки потенциала до реализации",
+        "en": "We help property owners turn a land plot or an existing property into <strong>an economically viable project</strong> — from assessing its potential through to delivery.",
     },
-    "we" : {
-        "ru": "МЫ",
-        "en": "WE",
+    "home-audience" : {
+        "ru": "АРТ групп — архитектурно-юридическая компания для девелоперов и собственников недвижимости.",
+        "en": "ART Group is an architectural and legal firm for developers and property owners.",
     },
-    "home-dsc-1" : {
-        "ru": "Создаем счастливую и эффективную среду",
-        "en": "Creating a happy and efficient environment",
-    },
-    "home-dsc-2" : {
-        "ru": "Решаем Вашу проблему в области проектирования, архитектуры и согласований",
-        "en": "We solve your problem in the field of design, architecture and approvals",
-    },
-    "home-dsc-3" : {
-        "ru": "Помогаем увидеть ценность объектов клиента с точки зрения экономической, юридической и творческой стороны",
-        "en": "We help to see the value of the client's objects from the point of view of the economic, legal and creative side",
-    },
-    "home-dsc-4" : {
-        "ru": "С нами приятно работать, мы улыбаемся!",
-        "en": "It's a pleasure to work with us, we smile!",
+    "home-path" : {
+        "ru": "От участка и идеи — к согласованному проекту и строительству.",
+        "en": "From land and an idea to an approved project and construction.",
     },
     "home-btn" : {
         "ru": "Портфолио",
