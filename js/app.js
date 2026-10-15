@@ -264,23 +264,56 @@ initAboutCounters();
 // GEOMETRIC FIGURE ANIMATION
 // Shared engine behind the home hero image and the three "Why us?" figures:
 // Each cluster assembles and comes apart as the page scrolls past it.
-// Hero planes continuously transform between a finished building and an old
-// industrial plot. Scrolling takes control of those same parts; other figures
-// retain their independent motion.
+// The original building repeatedly breaks into a layered, irregular field of
+// its own parts, floats there, then reassembles. Other figures retain their
+// independent motion.
 function createFigureAnimator(container) {
+    // Use the same eight path segments for every morph. Polygon control
+    // points stay on their edges, so rectangles, triangles and lines stay
+    // straight; only the two filled dots use circular outlines.
+    function straightOutline(vertices) {
+        const corners = [];
+        vertices.forEach((point, i) => {
+            const next = vertices[(i + 1) % vertices.length];
+            const count = Math.floor(8 / vertices.length) + (i < 8 % vertices.length ? 1 : 0);
+            for (let step = 0; step < count; step++) {
+                const progress = step / count;
+                corners.push([
+                    point[0] + (next[0] - point[0]) * progress,
+                    point[1] + (next[1] - point[1]) * progress
+                ]);
+            }
+        });
+        return `M${corners[0]} ${corners.map((point, i) => {
+            const next = corners[(i + 1) % corners.length];
+            return `C${point} ${next} ${next}`;
+        }).join(' ')} Z`;
+    }
+
+    container.querySelectorAll('.home-architecture polygon.shape').forEach(polygon => {
+        const points = polygon.getAttribute('points').trim().split(/[\s,]+/).map(Number);
+        const vertices = [];
+        for (let i = 0; i < points.length; i += 2) vertices.push([points[i], points[i + 1]]);
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        Array.from(polygon.attributes).forEach(attribute => {
+            if (attribute.name !== 'points') path.setAttribute(attribute.name, attribute.value);
+        });
+        path.setAttribute('d', straightOutline(vertices));
+        path.setAttribute('data-building-plane', '');
+        polygon.replaceWith(path);
+    });
     const shapes = gsap.utils.toArray(container.querySelectorAll('.shape'));
     if (shapes.length === 0) return null;
     const model = container.querySelector('.home-architecture');
     const architecturalParts = model ? shapes.map(shape => {
         const attribute = shape.hasAttribute('points') ? 'points' : 'd';
-        const paint = attribute === 'points' ? 'fill' : 'stroke';
+        const paint = shape.hasAttribute('data-building-plane') ? 'fill' : 'stroke';
         return {
             shape, attribute, paint,
             building: shape.getAttribute(attribute),
-            site: shape.getAttribute('data-site-' + attribute),
             buildingPaint: getComputedStyle(shape)[paint],
-            sitePaint: shape.getAttribute('data-site-' + paint),
-            siteOpacity: Number(shape.getAttribute('data-site-opacity') || 1)
+            buildingStrokeOpacity: getComputedStyle(shape).strokeOpacity,
+            buildingStrokeWidth: getComputedStyle(shape).strokeWidth
         };
     }) : [];
     const motion = model ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
@@ -327,74 +360,149 @@ function createFigureAnimator(container) {
         idleTweens.forEach(t => t.kill());
         idleTweens.length = 0;
         architecturalCycle = null;
-        if (model) gsap.killTweensOf(model);
+        if (model) {
+            gsap.killTweensOf(model);
+            shapes.forEach(shape => model.appendChild(shape));
+        }
     }
 
     function startIdle() {
         stopIdle();
         if (model) {
-            // The low site can use more of a wide phone frame; the tall
-            // building keeps its original scale. No layout dimensions change.
-            const siteScale = () => {
-                const ratio = model.viewBox.baseVal.width / model.viewBox.baseVal.height;
-                const fittedWidth = Math.min(model.clientWidth, model.clientHeight * ratio);
-                return Math.min(1.35, Math.max(1, model.clientWidth * .9 / Math.max(1, fittedWidth)));
+            // Match the Why Us vocabulary: skewed rectangles, uneven
+            // triangles, straight lines and solid round dots in varied sizes.
+            // Keep the overall composition asymmetric, layered and open.
+            const circleHandle = 4 / 3 * Math.tan(Math.PI / 16) * .5;
+            const dotOutline = 'M.5,0 ' + Array.from({ length: 8 }, (_, i) => {
+                const angle = -Math.PI / 2 + i * Math.PI / 4;
+                const nextAngle = angle + Math.PI / 4;
+                const x = .5 + Math.cos(angle) * .5;
+                const y = .5 + Math.sin(angle) * .5;
+                const nextX = .5 + Math.cos(nextAngle) * .5;
+                const nextY = .5 + Math.sin(nextAngle) * .5;
+                const values = [
+                    x - Math.sin(angle) * circleHandle,
+                    y + Math.cos(angle) * circleHandle,
+                    nextX + Math.sin(nextAngle) * circleHandle,
+                    nextY - Math.cos(nextAngle) * circleHandle,
+                    nextX, nextY
+                ];
+                return 'C' + values.map(value => value.toFixed(6)).join(',');
+            }).join(' ') + ' Z';
+            const silhouettes = {
+                rectangleWide: straightOutline([[.02, .16], [.96, .02], [.88, .71], [.08, .83]]),
+                rectangleTall: straightOutline([[.12, .02], [.85, .12], [.96, .98], [.02, .86]]),
+                rectangleSmall: straightOutline([[.02, .07], [.98, .02], [.87, .88], [.13, .98]]),
+                triangleLeft: straightOutline([[.02, .92], [.16, .02], [.98, .48]]),
+                triangleTall: straightOutline([[.08, .98], [.43, .02], [.98, .83]]),
+                triangleSmall: straightOutline([[.02, .12], [.98, .02], [.69, .98]]),
+                lineBold: straightOutline([[0, .491], [1, .491], [1, .509], [0, .509]]),
+                lineFine: straightOutline([[0, .4955], [1, .4955], [1, .5045], [0, .5045]]),
+                dot: dotOutline
             };
-            const transitionDuration = 6;
-            const loosenDuration = transitionDuration * .35;
-            // Reach peak speed early, then brake smoothly as the destination
-            // forms. The same continuous curve is used in both directions.
-            const accelerationFraction = .1;
+            // [building part, centre x/y, size, turn, depth, colour, silhouette]
+            const fragments = [
+                [2, 235, 315, 185, -24, -80, '#8c8c8c', 'rectangleWide'],
+                [4, 335, 248, 162, 19, -35, '#eeeeee', 'rectangleTall'],
+                [5, 170, 205, 88, -33, 50, '#921c12', 'triangleLeft'],
+                [8, 282, 323, 240, -18, 60, '#b34031', 'lineBold'],
+                [10, 392, 365, 128, 37, -15, '#b0b0b0', 'rectangleSmall'],
+                [12, 230, 426, 115, 63, 25, '#d0d0d0', 'triangleTall'],
+                [16, 375, 178, 68, 0, 5, '#921c12', 'dot'],
+                [18, 450, 292, 28, 0, 90, '#eeeeee', 'dot'],
+                [20, 163, 396, 145, -52, 75, '#dddddd', 'lineFine'],
+                [25, 338, 487, 64, 44, 40, '#a64a37', 'triangleSmall'],
+                [3, 294, 205, 82, -37, -45, '#b8b8b8', 'rectangleWide'],
+                [7, 390, 415, 76, 22, 45, '#921c12', 'triangleTall'],
+                [11, 203, 360, 36, 31, 100, '#eeeeee', 'rectangleSmall'],
+                [15, 410, 235, 110, 46, -25, '#c8c8c8', 'lineFine'],
+                [22, 303, 467, 20, 0, 110, '#b34031', 'dot']
+            ];
+            const fragmentByPart = new Map(fragments.map(fragment => [fragment[0], fragment]));
+            const buildingHold = 1.8;
+            const transitionDuration = 3.6;
+            const chaosDuration = 3.6;
+            // Build speed early, then brake smoothly through the approach.
+            // Both ends have zero velocity; peak speed arrives at 22% of time.
+            const accelerationFraction = .22;
             const brakingFraction = 1 - accelerationFraction;
-            const transitionEase = progress => progress <= accelerationFraction
+            const breakupEase = progress => progress <= accelerationFraction
                 ? progress - accelerationFraction / Math.PI * Math.sin(Math.PI * progress / accelerationFraction)
                 : progress + brakingFraction / Math.PI * Math.sin(Math.PI * (progress - accelerationFraction) / brakingFraction);
-            // The same 30 vector parts become a fenced plot and weathered
-            // hangar, then rise into the finished project. Matching point and
-            // path topology keeps this native: no morphing plugin or video.
-            architecturalCycle = gsap.timeline({
-                repeat: -1,
-                paused: !isActive
+            const chaosStart = buildingHold + transitionDuration;
+            const rebuildStart = chaosStart + chaosDuration;
+            const scattered = architecturalParts.map((part, i) => {
+                const fragment = fragmentByPart.get(i);
+                // Hidden details converge toward a visible piece so the
+                // transition reads as consolidation rather than more debris.
+                const [, cx, cy, size, rotation, depth, color, silhouette] = fragment || fragments[i % fragments.length];
+                const box = part.shape.getBBox();
+                const centreX = box.x + box.width / 2;
+                const centreY = box.y + box.height / 2;
+                const span = Math.max(1, box.width, box.height);
+                const perspective = 850 / (850 - depth);
+                let coordinate = 0;
+                const chaosOutline = fragment ? silhouettes[silhouette].replace(/-?(?:\d*\.)?\d+/g, value => {
+                    const centre = coordinate++ % 2 === 0 ? centreX : centreY;
+                    return (centre + (Number(value) - .5) * span).toFixed(3);
+                }) : part.building;
+                // Keep the pivot fixed while the outline changes its bounds.
+                gsap.set(part.shape, { svgOrigin: `${centreX} ${centreY}` });
+                return {
+                    ...part, depth, color, chaosOutline,
+                    x: 310 + (cx - 310) * perspective - centreX,
+                    y: 320 + (cy - 320) * perspective - centreY,
+                    scale: fragment ? size / span * perspective : .04,
+                    rotation,
+                    opacity: fragment ? (depth < 0 ? .82 : 1) : 0
+                };
             });
-            architecturalCycle
-                .to(model, {
-                    y: () => -Math.min(150, model.clientHeight * (.25 + (siteScale() - 1) * .25)),
-                    scale: siteScale,
+            architecturalCycle = gsap.timeline({ repeat: -1, repeatRefresh: true, paused: !isActive });
+
+            // SVG draws later elements in front. Reorder the very same planes
+            // while separated, then restore their exact building paint order
+            // before they meet again. Projection adds the corresponding size cue.
+            architecturalCycle.call(() => {
+                [...scattered].sort((a, b) => a.depth - b.depth)
+                    .forEach(part => model.appendChild(part.shape));
+            }, [], buildingHold + transitionDuration * .55);
+            architecturalCycle.call(() => {
+                shapes.forEach(shape => model.appendChild(shape));
+            }, [], rebuildStart + transitionDuration * .45);
+
+            scattered.forEach(part => {
+                architecturalCycle.to(part.shape, {
+                    x: part.x, y: part.y, rotation: part.rotation,
+                    scale: part.scale, opacity: part.opacity,
+                    attr: { [part.attribute]: part.chaosOutline },
+                    [part.paint]: part.color,
+                    strokeOpacity: 1,
                     duration: transitionDuration,
-                    ease: transitionEase
-                }, 0)
-                .to(model, { y: 0, scale: 1, duration: transitionDuration, ease: transitionEase }, transitionDuration);
-            [0, transitionDuration].forEach(start => {
-                architecturalCycle.to(shapes, {
-                    x: (i) => Math.sin(i * 2.4) * (12 + i % 5 * 3),
-                    y: (i) => Math.cos(i * 2.4) * (10 + i % 4 * 3),
-                    rotation: (i) => (i % 5 - 2) * 4,
-                    scale: .98,
-                    duration: loosenDuration,
-                    ease: transitionEase
-                }, start)
-                .to(shapes, {
-                    x: 0, y: 0, rotation: 0, scale: 1,
-                    duration: transitionDuration - loosenDuration,
-                    ease: transitionEase
-                }, start + loosenDuration);
-            });
-            architecturalParts.forEach(part => {
-                architecturalCycle
-                    .to(part.shape, {
-                        attr: { [part.attribute]: part.site },
-                        [part.paint]: part.sitePaint,
-                        opacity: part.siteOpacity,
-                        duration: transitionDuration,
-                        ease: transitionEase
-                    }, 0)
-                    .to(part.shape, {
-                        attr: { [part.attribute]: part.building },
-                        [part.paint]: part.buildingPaint,
-                        opacity: 1,
-                        duration: transitionDuration,
-                        ease: transitionEase
-                    }, transitionDuration);
+                    ease: breakupEase
+                }, buildingHold);
+
+                if (part.opacity > 0) {
+                    // One slow drift spans the whole chaotic phase, avoiding
+                    // frequent reversals. Each element chooses its own small
+                    // displacement and turn, refreshed on the next cycle.
+                    architecturalCycle.to(part.shape, {
+                        x: () => part.x + gsap.utils.random(4, 9) * gsap.utils.random([-1, 1]),
+                        y: () => part.y + gsap.utils.random(4, 9) * gsap.utils.random([-1, 1]),
+                        rotation: () => part.rotation + gsap.utils.random(-2, 2),
+                        duration: chaosDuration,
+                        ease: 'sine.inOut'
+                    }, chaosStart);
+                }
+
+                architecturalCycle.to(part.shape, {
+                    x: 0, y: 0, rotation: 0, scale: 1, opacity: 1,
+                    attr: { [part.attribute]: part.building },
+                    [part.paint]: part.buildingPaint,
+                    strokeOpacity: part.buildingStrokeOpacity,
+                    strokeWidth: part.buildingStrokeWidth,
+                    duration: transitionDuration,
+                    ease: 'power2.inOut'
+                }, rebuildStart);
             });
             idleTweens.push(architecturalCycle);
             return;
@@ -508,7 +616,9 @@ function createFigureAnimator(container) {
         architecturalParts.forEach(part => {
             const values = {
                 attr: { [part.attribute]: part.building },
-                [part.paint]: part.buildingPaint
+                [part.paint]: part.buildingPaint,
+                strokeOpacity: part.buildingStrokeOpacity,
+                strokeWidth: part.buildingStrokeWidth
             };
             if (duration) gsap.to(part.shape, { ...values, duration, ease: 'power2.out', overwrite: 'auto' });
             else gsap.set(part.shape, values);
