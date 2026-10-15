@@ -240,10 +240,54 @@ const langList = {
             of the facility.",
     },
     "services-1-calc" : {
-        "ru": "Сделать расчет стоимости",
-        "en": "Calculate the work",
+        "ru": "Получить предварительную оценку",
+        "en": "Get a Preliminary Estimate",
     },
-
+    "estimate-kicker": {
+        "ru": "A.R.T. GROUP · ПРЕДВАРИТЕЛЬНАЯ ОЦЕНКА",
+        "en": "A.R.T. GROUP · PRELIMINARY ESTIMATE",
+    },
+    "estimate-title": {
+        "ru": "Получите экспресс-оценку потенциала объекта",
+        "en": "Get an express assessment of your property’s potential",
+    },
+    "estimate-intro": {
+        "ru": "От участка и идеи — к первым решениям. Расскажите о задаче, и мы свяжемся с вами, чтобы обсудить возможности.",
+        "en": "From a property and an idea to the first steps. Tell us what you have in mind, and we’ll contact you to discuss the possibilities.",
+    },
+    "estimate-contact": { "ru": "Как с вами связаться", "en": "Your contact details" },
+    "estimate-required": { "ru": "Имя, телефон и комментарий — обязательные поля.", "en": "Name, phone and comment are required." },
+    "estimate-name": { "ru": "Имя *", "en": "Name *" },
+    "estimate-phone": { "ru": "Телефон *", "en": "Phone *" },
+    "estimate-comment": { "ru": "Комментарий *", "en": "Comment *" },
+    "estimate-property": { "ru": "Ваш объект", "en": "Your property" },
+    "estimate-optional": { "ru": "Необязательно", "en": "Optional" },
+    "estimate-have": { "ru": "У вас есть", "en": "You have" },
+    "estimate-multiple": { "ru": "Можно выбрать несколько вариантов.", "en": "Select all that apply." },
+    "estimate-land": { "ru": "Земельный участок", "en": "A plot of land" },
+    "estimate-building": { "ru": "Здание", "en": "A building" },
+    "estimate-unfinished": { "ru": "Объект незавершённого строительства", "en": "An unfinished structure" },
+    "estimate-completed": { "ru": "Готовый проект", "en": "A completed project" },
+    "estimate-investment": { "ru": "Инвестиционный проект", "en": "An investment project" },
+    "estimate-address": { "ru": "Адрес объекта", "en": "Property address" },
+    "estimate-area": { "ru": "Площадь участка, м²", "en": "Plot area, m²" },
+    "estimate-plans": { "ru": "Какие у вас планы?", "en": "What are your plans?" },
+    "estimate-submit": { "ru": "Отправить", "en": "Send" },
+    "estimate-footnote": {
+        "ru": "Обсудим потенциал объекта и возможные следующие шаги.",
+        "en": "We’ll discuss your property’s potential and possible next steps.",
+    },
+    "estimate-sending": { "ru": "Отправляем заявку…", "en": "Sending your request…" },
+    "estimate-error": {
+        "ru": "Не удалось подтвердить отправку. Проверьте подключение и попробуйте ещё раз. Данные сохранены в форме.",
+        "en": "We couldn’t confirm submission. Check your connection and try again. Your details are still in the form.",
+    },
+    "estimate-success-title": { "ru": "Заявка принята", "en": "Request received" },
+    "estimate-success-text": {
+        "ru": "Спасибо за обращение! Мы свяжемся с вами, чтобы обсудить ваш объект и задачу.",
+        "en": "Thank you for getting in touch. We’ll contact you to discuss your property and what you have in mind.",
+    },
+    "estimate-done": { "ru": "Вернуться на сайт", "en": "Back to the site" },
 
     "services-2-heading" : {
         "ru": "Почему мы?",

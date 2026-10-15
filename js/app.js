@@ -262,11 +262,10 @@ function initAboutCounters() {
 initAboutCounters();
 
 // GEOMETRIC FIGURE ANIMATION
-// Shared engine behind the home hero image and the three "Why us?" figures:
-// Each cluster assembles and comes apart as the page scrolls past it.
+// The home hero assembles and comes apart as the page scrolls past it.
 // The original building repeatedly breaks into a layered, irregular field of
-// its own parts, floats there, then reassembles. Other figures retain their
-// independent motion.
+// its own parts, floats there, then reassembles. The Why Us figures have a
+// separate, reversible icon choreography in initWhyUsFigures below.
 function createFigureAnimator(container) {
     // Use the same eight path segments for every morph. Polygon control
     // points stay on their edges, so rectangles, triangles and lines stay
@@ -705,74 +704,263 @@ function initHeroFigure() {
     }, { passive: true });
 }
 
-// The three "Why us?" figures. Unlike the hero they can sit anywhere on the
-// page, so each is keyed off its own position in the viewport rather than
-// the global scroll position: it explodes into place the first time it
-// scrolls into view, holds and wiggles while comfortably on screen, and
-// dissolves again as it scrolls past — in either direction.
+// Keep every original abstract piece, then choreograph it into a readable
+// symbol: a stopwatch, a drafting compass, and three connected expert hubs.
+// Positions stay in percentages so a resize never changes the composition.
 function initWhyUsFigures() {
-    const figures = Array.from(document.querySelectorAll('.figure-canvas'))
-        .map(container => ({ container, anim: createFigureAnimator(container), hasEnteredOnce: false }))
-        .filter(f => f.anim);
-    if (figures.length === 0) return;
+    const containers = Array.from(document.querySelectorAll('.figure-canvas'));
+    if (containers.length === 0) return;
 
-    function onFiguresScroll() {
-        const vh = window.innerHeight;
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const red = getComputedStyle(document.documentElement).getPropertyValue('--main-color').trim();
+    const rectangle = 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)';
+    const pose = (left, top, width, height, extra = {}) => ({
+        left: `${left}%`, top: `${top}%`, width: `${width}%`, height: `${height}%`,
+        rotation: 0, borderRadius: '0%', clipPath: rectangle, ...extra
+    });
+    const icons = [
+        // Efficiency: a precise dial, two hands, crown and side button.
+        [
+            pose(17, 23, 66, 66, { borderRadius: '50%' }),
+            pose(48, 32, 4, 24),
+            pose(43, 9, 14, 8, { borderRadius: '12%' }),
+            pose(48, 38, 4, 18, { rotation: 55, transformOrigin: '50% 100%' }),
+            pose(49.25, 26, 1.5, 5),
+            pose(48.5, 17, 3, 7),
+            pose(77, 26, 8, 4, { rotation: 45 }),
+            pose(47, 53, 6, 6, { borderRadius: '50%' }),
+            pose(23, 29, 54, 54, { borderRadius: '50%' })
+        ],
+        // Creativity: an architect's compass with a silver needle, red pencil,
+        // crossbar and pivot. The original eight fragments all have a role.
+        [
+            pose(40, 10, 20, 20, { borderRadius: '50%', backgroundColor: '#ddd' }),
+            pose(44.5, 24, 11, 56, {
+                rotation: -22, transformOrigin: '50% 0%',
+                clipPath: 'polygon(0% 0%, 100% 0%, 82% 100%, 18% 100%)'
+            }),
+            pose(44.5, 24, 11, 56, {
+                rotation: 22, transformOrigin: '50% 0%',
+                clipPath: 'polygon(0% 0%, 100% 0%, 82% 100%, 18% 100%)'
+            }),
+            pose(35.5, 48, 29, 3, { backgroundColor: '#999' }),
+            pose(46, 16, 8, 8, { borderRadius: '50%' }),
+            pose(25.5, 75.9, 7, 12, {
+                rotation: 22, transformOrigin: '50% 0%',
+                clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%, 50% 100%)'
+            }),
+            pose(67.5, 75.9, 7, 12, {
+                rotation: -22, transformOrigin: '50% 0%', backgroundColor: '#ddd',
+                clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%, 50% 100%)'
+            }),
+            pose(48.75, 18.75, 2.5, 2.5, { borderRadius: '50%' })
+        ],
+        // Partnership: three equal hubs joined into one working network.
+        [
+            pose(38, 8, 24, 24, { borderRadius: '50%', backgroundColor: '#c2c2c2' }),
+            pose(35.5, 28, 3, 34, { rotation: 27.5 }),
+            pose(36, 68.5, 28, 3),
+            pose(12, 58, 24, 24, { borderRadius: '50%' }),
+            pose(64, 58, 24, 24, { borderRadius: '50%', borderWidth: '0px' }),
+            pose(61.5, 28, 3, 34, { rotation: -27.5 }),
+            pose(45, 15, 10, 10, { borderRadius: '50%' }),
+            pose(19, 65, 10, 10, { borderRadius: '50%', backgroundColor: red }),
+            pose(71, 65, 10, 10, { borderRadius: '50%', backgroundColor: red })
+        ]
+    ];
 
-        figures.forEach(fig => {
-            const { anim, container } = fig;
-            if (anim.isAssembling) return;
+    // Equal vertex counts let the two existing triangles morph continuously
+    // into the icon parts. Repeating a vertex preserves their outline.
+    function normalizedClip(clip) {
+        if (clip === 'none') return rectangle;
+        const vertices = clip.slice(clip.indexOf('(') + 1, -1).split(',');
+        if (vertices.length === 3) vertices.push(vertices[2]);
+        return `polygon(${vertices.join(',')})`;
+    }
 
-            const rect = container.getBoundingClientRect();
+    function smoothStep(value) {
+        const progress = Math.min(1, Math.max(0, value));
+        return progress * progress * (3 - 2 * progress);
+    }
 
-            if (!fig.hasEnteredOnce) {
-                // Scrolling down brings it up from below — trigger the same
-                // dramatic scatter-in the hero plays on load.
-                if (rect.top < vh * 0.85 && rect.bottom > 0) {
-                    fig.hasEnteredOnce = true;
-                    anim.assemble(true);
-                }
-                return;
+    const figures = containers.map((container, figureIndex) => {
+        const shapes = Array.from(container.querySelectorAll('.shape'));
+        // The card's reveal animation scales its bounding rectangle. Read
+        // layout dimensions so that entrance motion cannot distort the saved
+        // abstract geometry (including on high-density, fractional layouts).
+        const canvasStyle = getComputedStyle(container);
+        const canvasWidth = parseFloat(canvasStyle.width);
+        const canvasHeight = parseFloat(canvasStyle.height);
+        const initial = shapes.map((shape, i) => {
+            const style = getComputedStyle(shape);
+            return {
+                left: `${parseFloat(style.left) / canvasWidth * 100}%`,
+                top: `${parseFloat(style.top) / canvasHeight * 100}%`,
+                width: `${parseFloat(style.width) / canvasWidth * 100}%`,
+                height: `${parseFloat(style.height) / canvasHeight * 100}%`,
+                backgroundColor: style.backgroundColor,
+                borderWidth: style.borderTopWidth,
+                borderColor: style.borderTopColor,
+                borderRadius: style.borderRadius,
+                clipPath: normalizedClip(style.clipPath),
+                // Preserve the settled tilt of the original abstract figures.
+                rotation: Math.sin(i * 1.5) * 15,
+                transformOrigin: '50% 50%',
+                scale: 1, opacity: 1
+            };
+        });
+        const cycle = gsap.timeline({ paused: true, repeat: -1 });
+        const iconStart = .95 + figureIndex * .14;
+        const abstractStart = iconStart + 1.25 + (shapes.length - 1) * .035 + 1.85;
+        const abstractEnd = abstractStart + 1.15 + (shapes.length - 1) * .025;
+
+        // Scroll transforms live on a separate layer, so entering/leaving the
+        // viewport never fights the icon morph or each piece's gentle drift.
+        // Copy the original stacking order and pivot around each fragment.
+        const fragments = shapes.map((shape, i) => {
+            const fragment = document.createElement('div');
+            fragment.className = 'figure-fragment';
+            fragment.style.zIndex = getComputedStyle(shape).zIndex;
+            container.insertBefore(fragment, shape);
+            fragment.appendChild(shape);
+            gsap.set(fragment, {
+                transformOrigin: `${parseFloat(initial[i].left) + parseFloat(initial[i].width) / 2}% ${parseFloat(initial[i].top) + parseFloat(initial[i].height) / 2}%`
+            });
+            return fragment;
+        });
+        const figure = {
+            container, shapes, fragments, cycle, figureIndex,
+            inView: false, scatter: -1, driftUnit: canvasWidth / 100
+        };
+
+        shapes.forEach((shape, i) => {
+            gsap.set(shape, { ...initial[i], x: 0, y: 0 });
+            cycle.to(shape, {
+                ...initial[i], ...icons[figureIndex][i],
+                duration: 1.25, ease: 'power3.inOut'
+            }, iconStart + i * .035);
+            cycle.to(shape, {
+                ...initial[i], duration: 1.15, ease: 'power2.inOut'
+            }, abstractStart + i * .025);
+        });
+
+        // Give the scattered composition time to breathe. This clock keeps
+        // onUpdate running throughout the abstract hold, with no extra ticker.
+        const clock = { time: 0 };
+        const cycleDuration = abstractEnd + 2.4;
+        cycle.to(clock, { time: cycleDuration, duration: cycleDuration, ease: 'none' }, 0);
+        cycle.eventCallback('onUpdate', () => {
+            const localTime = cycle.time();
+            const elapsed = cycle.totalTime();
+            let freedom = 0;
+            if (localTime < iconStart + .7) {
+                freedom = 1 - smoothStep((localTime - iconStart) / .7);
+            } else if (localTime > abstractEnd) {
+                freedom = smoothStep((localTime - abstractEnd) / .7);
             }
+            // Fade in only on the first entrance. Continuous total time keeps
+            // the drift seamless across repeats, with no reset or random jump.
+            const amplitude = Math.max(freedom, figure.scatter)
+                * smoothStep(elapsed / .75) * figure.driftUnit;
+            shapes.forEach((shape, i) => {
+                const phase = 1 + figureIndex * 11 + i * 3.7;
+                gsap.set(shape, {
+                    x: amplitude * (Math.sin(elapsed * .86 + phase) * 2.1
+                        + Math.sin(elapsed * 1.31 + phase * .7) * .9),
+                    y: amplitude * (Math.cos(elapsed * .71 + phase * .91) * 1.8
+                        + Math.sin(elapsed * 1.17 + phase) * .8)
+                });
+            });
+        });
+        return figure;
+    });
 
-            const settleTop = vh * 0.75;
-            const settleBottom = vh * 0.25;
-            const inSettleZone = rect.top < settleTop && rect.bottom > settleBottom;
-
-            if (inSettleZone) {
-                if (!anim.isSettled) anim.assemble(false);
-                return;
+    function syncActivity() {
+        figures.forEach(({ shapes, cycle, inView }) => {
+            // Reduced motion keeps the original abstract artwork stationary.
+            if (motion.matches) {
+                cycle.pause(0);
+                gsap.set(shapes, { x: 0, y: 0 });
             }
-
-            // Symmetric in both directions: scrolling down pushes it out over
-            // the top edge (rect.bottom sinking below settleBottom), scrolling
-            // up pushes it out over the bottom edge (rect.top rising above
-            // settleTop) — each ramps 0→1 over the same distance, continuous
-            // with the settle zone's own boundary so there is no jump where
-            // the two hand off.
-            const exitDistance = vh * 0.9;
-            const progress = rect.bottom <= settleBottom
-                ? Math.min(Math.max((settleBottom - rect.bottom) / exitDistance, 0), 1)
-                : Math.min(Math.max((rect.top - settleTop) / exitDistance, 0), 1);
-            anim.disassemble(progress);
+            else cycle.paused(!inView || document.hidden);
         });
     }
 
-    let figureTicking = false;
-    function requestFiguresTick() {
-        if (figureTicking) return;
-        figureTicking = true;
+    const header = document.querySelector('header');
+    function updateScrollState() {
+        const viewportHeight = window.innerHeight;
+        const topInset = header
+            ? Math.max(0, Math.min(header.getBoundingClientRect().bottom, viewportHeight * .25))
+            : 0;
+        const usableHeight = Math.max(1, viewportHeight - topInset);
+        const upperBand = topInset + usableHeight * .3;
+        const lowerBand = topInset + usableHeight * .7;
+        const edgeDistance = usableHeight * .3;
+
+        // Read all layout before writing transforms. Each card has its own
+        // viewport position, including when the grid stacks on a phone.
+        const measurements = figures.map(figure => ({
+            figure, rect: figure.container.getBoundingClientRect(),
+            width: figure.container.clientWidth
+        }));
+        measurements.forEach(({ figure, rect, width }) => {
+            figure.inView = rect.top < viewportHeight && rect.bottom > topInset;
+            figure.driftUnit = width / 100;
+            // Symmetric around the reading band: either edge scatters the
+            // pieces, and scrolling back toward the centre reassembles them.
+            const scatter = motion.matches ? 0 : smoothStep(Math.max(
+                (rect.top - lowerBand) / edgeDistance,
+                (upperBand - rect.bottom) / edgeDistance
+            ));
+            if (scatter === figure.scatter) return;
+            figure.scatter = scatter;
+            figure.fragments.forEach((fragment, i) => {
+                const angle = i * 2.399963 + figure.figureIndex * .7;
+                gsap.set(fragment, {
+                    xPercent: Math.cos(angle) * (18 + i % 4 * 8) * scatter,
+                    yPercent: Math.sin(angle) * (24 + i % 3 * 9) * scatter,
+                    rotation: (i % 2 ? -1 : 1) * (20 + i * 6) * scatter,
+                    scale: 1 - scatter * .25,
+                    opacity: 1 - scatter * .85
+                });
+            });
+        });
+        syncActivity();
+    }
+
+    let scrollPending = false;
+    function requestScrollUpdate() {
+        if (scrollPending) return;
+        scrollPending = true;
         requestAnimationFrame(() => {
-            onFiguresScroll();
-            figureTicking = false;
+            scrollPending = false;
+            updateScrollState();
         });
     }
 
-    window.addEventListener('scroll', requestFiguresTick, { passive: true });
-    window.addEventListener('resize', requestFiguresTick);
-
-    // In case a figure already sits in (or near) the viewport on load.
-    onFiguresScroll();
+    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+    window.addEventListener('resize', requestScrollUpdate);
+    window.addEventListener('load', requestScrollUpdate);
+    if (document.fonts) document.fonts.ready.then(requestScrollUpdate);
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', requestScrollUpdate);
+    }
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(requestScrollUpdate);
+        figures.forEach(({ container }) => observer.observe(container));
+    }
+    if ('ResizeObserver' in window) {
+        const observer = new ResizeObserver(requestScrollUpdate);
+        figures.forEach(({ container }) => observer.observe(container));
+        if (header) observer.observe(header);
+    }
+    document.addEventListener('visibilitychange', () => {
+        syncActivity();
+        requestScrollUpdate();
+    });
+    if (motion.addEventListener) motion.addEventListener('change', updateScrollState);
+    else motion.addListener(updateScrollState);
+    updateScrollState();
 }
 
 function initGeometricAnimation() {
@@ -976,6 +1164,28 @@ function changeReadMore3() {
 // a VPN, even though the Worker itself is reachable and healthy.
 const FEEDBACK_API = 'https://api.artgroup.fun/';
 
+// Both forms use the Worker's supported URL-encoded contract. This is a
+// browser-simple request, avoiding the extra JSON CORS preflight round trip.
+// Keep enough time for mobile connections and require a real HTTP response.
+async function postTelegramFeedback(payload) {
+    const controller = new AbortController();
+    const abortTimer = setTimeout(() => controller.abort(), 15000);
+    const body = new URLSearchParams();
+    Object.entries(payload).forEach(([key, value]) => {
+        if (typeof value === 'string') body.append(key, value);
+    });
+    try {
+        return await fetch(FEEDBACK_API, {
+            method: 'POST',
+            body,
+            signal: controller.signal,
+            keepalive: true
+        });
+    } finally {
+        clearTimeout(abortTimer);
+    }
+}
+
 // Guards against a double-click or double-tap firing two submits before the
 // first fetch has resolved.
 let feedbackSubmitting = false;
@@ -1058,25 +1268,7 @@ async function sendTelegram(e) {
     };
 
     try {
-        // The Worker occasionally fails to deliver its response back over
-        // flaky mobile/Safari connections even though it already forwarded
-        // the message to Telegram, so a request that hangs gets aborted
-        // rather than left to time out on its own.
-        const controller = new AbortController();
-        const abortTimer = setTimeout(() => controller.abort(), 3000);
-        let response;
-        try {
-            response = await fetch(FEEDBACK_API, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name, phone, message: comment, website }),
-                signal: controller.signal
-            });
-        } finally {
-            clearTimeout(abortTimer);
-        }
+        const response = await postTelegramFeedback({ name, phone, message: comment, website });
 
         if (response.ok) {
             await showSuccess();
@@ -1086,17 +1278,10 @@ async function sendTelegram(e) {
         }
     } catch (error) {
         console.error(error);
-        // No response reached us at all (dropped connection or our own
-        // timeout, not a real error from the server): the message has
-        // almost certainly already reached Telegram, so show success
-        // anyway after a brief pause rather than alarm the user.
-        if (error.name === 'AbortError' || error instanceof TypeError) {
-            await new Promise((resolve) => setTimeout(resolve, 1200));
-            await showSuccess();
-        } else {
-            formSendResult.textContent = 'Произошла ошибка отправки! Попробуйте еще раз.';
-            formSendResult.classList.add('is-error');
-        }
+        // Network failures cannot establish acceptance. Preserve the form
+        // rather than erasing the visitor's details and claiming success.
+        formSendResult.textContent = langList['estimate-error'][currentLng];
+        formSendResult.classList.add('is-error');
     } finally {
         feedbackSubmitting = false;
         formBtn.disabled = false;
