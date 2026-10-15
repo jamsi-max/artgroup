@@ -652,6 +652,7 @@ function initHeroFigure() {
     const container = document.querySelector('.home-img-container');
     if (!container) return;
     const hero = container.closest('.home-section');
+    const stackedLayout = window.matchMedia('(max-width: 720px)');
     const anim = createFigureAnimator(container);
     if (!anim) return;
 
@@ -670,10 +671,13 @@ function initHeroFigure() {
     function onShapeScroll() {
         const scrollY = window.scrollY;
         const figureTop = container.getBoundingClientRect().top + scrollY;
-        const scatterStart = Math.min(
+        // Start a little sooner in the stacked layout, before the building
+        // reaches the top edge. Keep the existing scatter duration.
+        const scatterLead = stackedLayout.matches ? container.offsetHeight * .15 : 0;
+        const scatterStart = Math.max(0, Math.min(
             hero.offsetTop + hero.offsetHeight * .25,
             figureTop + container.offsetHeight * .25
-        );
+        ) - scatterLead);
         const remainingHeight = Math.min(hero.offsetHeight * .5, container.offsetHeight * .7);
 
         if (scrollY <= scatterStart) {

@@ -483,8 +483,8 @@ select option span{
     /* js/app.js requests animation layers only while the figure is visible. */
 }
 
-/* A native vector maquette: 30 planes and drawing details, no bitmap,
-   expensive lighting effects, or additional graphics runtime. */
+/* A native vector maquette. Every façade detail belongs to the same
+   assembly animation as the main architectural planes. */
 .home-architecture {
     display: block;
     width: 100%;
@@ -524,6 +524,32 @@ select option span{
 .home-architecture .architecture-glazing { stroke: #c8c3b5; stroke-opacity: .45; }
 .home-architecture .architecture-fins { stroke: #92988b; stroke-opacity: .55; }
 .home-architecture .architecture-edges { stroke: #f3eee1; stroke-opacity: .65; }
+
+/* Recessed glazing, ivory frames, and cut stone stay within the original
+   material palette; depth comes from geometry and restrained linework. */
+.home-architecture .architecture-window { fill: #4b514f; }
+.home-architecture .architecture-side-glass { fill: #535753; }
+.home-architecture .architecture-roof-inset { fill: #ded6c6; }
+.home-architecture .architecture-gallery-glass { fill: #4b514f; }
+.home-architecture .architecture-reveal,
+.home-architecture .architecture-mullions,
+.home-architecture .architecture-roofline,
+.home-architecture .architecture-core-edge,
+.home-architecture .architecture-terrace,
+.home-architecture .architecture-gallery-frame,
+.home-architecture .architecture-plinth-edge {
+    fill: none;
+    stroke-width: .8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.home-architecture .architecture-reveal { stroke: #72766c; stroke-opacity: .6; }
+.home-architecture .architecture-mullions { stroke: #92988b; stroke-opacity: .65; }
+.home-architecture .architecture-roofline { stroke: #f3eee1; stroke-opacity: .8; }
+.home-architecture .architecture-core-edge { stroke: #a64232; stroke-opacity: .75; }
+.home-architecture .architecture-terrace { stroke: #ded6c6; stroke-opacity: .65; }
+.home-architecture .architecture-gallery-frame { stroke: #8f978e; stroke-opacity: .7; }
+.home-architecture .architecture-plinth-edge { stroke: #c5baa8; stroke-opacity: .45; }
 
 @keyframes floatImage {
     0%{
@@ -653,21 +679,43 @@ select option span{
 }
 .about-content .content-info {
     min-width: 0;
-    max-width: 65ch;
+    max-width: 60ch;
 }
 .about-content .content-info p {
     margin: 0;
     color: #49443e;
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.8;
+    line-height: 1.7;
     overflow-wrap: break-word;
 }
-.about-content .content-info > .lng-about-info-1 {
-    font-size: 1.0625rem;
-    color: #302c27;
+.about-content .about-introduction .about-brand {
+    margin-bottom: .875rem;
+    color: var(--main-color);
+    font-size: .6875rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: .16em;
 }
-.about-content .content-info p + p { margin-top: 1rem; }
+.about-content .about-introduction .about-lead {
+    margin: 0;
+    color: #302c27;
+    font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -.035em;
+    text-wrap: balance;
+}
+.about-content .about-introduction .about-lead span {
+    display: block;
+    color: var(--main-color);
+}
+.about-content .about-introduction .about-summary {
+    max-width: 48ch;
+    margin-top: 1.25rem;
+    color: #666057;
+}
+.about-content .content-info p + p { margin-top: 1.25rem; }
 .about-content .content-info b,
 .about-content .content-info strong { color: #282622; font-weight: 600; }
 .about-development,
@@ -678,11 +726,32 @@ select option span{
 }
 #mybox1id { display: none; }
 .about .about-subheading {
-    margin: 0 0 .85rem;
-    color: #282622;
-    font-size: 1.0625rem;
-    font-weight: 600;
-    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    margin: 0 0 1.25rem;
+    color: var(--main-color);
+    font-size: clamp(.6875rem, .85vw, .875rem);
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+}
+.about .about-subheading::before {
+    content: '';
+    flex: 0 0 1.5rem;
+    height: 2px;
+    margin-top: .75em;
+    background: currentColor;
+}
+.about-content .content-info .about-principle {
+    margin-top: 1.75rem;
+    padding-left: 1rem;
+    border-left: 2px solid #b64b3e;
+    color: #6e352c;
+    font-weight: 500;
+    line-height: 1.65;
 }
 .about-content .director-link,
 .about-content .company-link { color: var(--main-color); text-decoration: underline; }
@@ -711,19 +780,8 @@ select option span{
 }
 .about-more-icon { flex: 0 0 20px; transition: transform .25s ease; }
 .about-more[aria-expanded="true"] .about-more-icon { transform: rotate(180deg); }
-.about-projects {
-    display: inline-flex;
-    align-items: center;
-    gap: .75rem;
-    min-height: 44px;
-    color: #302c27;
-    font-size: .875rem;
-    font-weight: 500;
-}
-.about-projects > :last-child { color: var(--main-color); font-size: 1.2rem; }
 @media (hover: hover) {
     .about-more:hover { color: #fff; background: var(--main-color); }
-    .about-projects:hover { color: var(--main-color); }
 }
 .about button:focus,
 .about a:focus { outline: 2px solid var(--main-color); outline-offset: 4px; }
@@ -733,7 +791,7 @@ select option span{
     .about-header { grid-template-columns: minmax(0, 1fr); }
     .about-content { grid-template-columns: minmax(0, 1fr); }
     .about-gallery { position: relative; top: auto; max-width: 42rem; width: 100%; }
-    .about-content .content-info { max-width: 70ch; }
+    .about-content .content-info { max-width: 60ch; }
 }
 @media (max-width: 500px) {
     .about { padding-left: 5%; padding-right: 5%; }
@@ -2596,18 +2654,23 @@ footer .text-left p::after{
     }
     .home-section .section-content{
         flex-direction: column-reverse;
-        justify-content: center;
+        /* In a reversed column, flex-end places the building at the top. */
+        justify-content: flex-end;
         align-items: center;
+        min-height: 0;
+        padding: 0;
     }
     .home-section .img-wrapper {
-        margin-top: 5%;
+        margin-top: 0;
         width: 100%;
         max-width: 30rem;
         height: clamp(13rem, 65vw, 23rem);
         margin-right: 0;
     }
-    .home-section{
-        padding-bottom: 8%;
+    #home{
+        /* Let the stacked hero end just below its portfolio button. */
+        min-height: 0;
+        padding-bottom: clamp(1.25rem, 4vw, 2rem);
     }
     .home-section .home-details .subtitle{
         font-size: clamp(2.5rem, 11.5vw, 3.75rem);
@@ -2617,7 +2680,7 @@ footer .text-left p::after{
         width: 100%;
         padding: 0 .5rem;
         margin-left: 0;
-        margin-bottom: 5%;
+        margin-bottom: 0;
     }
 
 
@@ -2833,6 +2896,7 @@ footer .text-left p::after{
         font-size: .8rem;
     }
 }
+
 /* ============================================================
    ABOUT GALLERY LIGHTBOX
    Full-screen viewer for the "О компании" slider. Deliberately darker and
