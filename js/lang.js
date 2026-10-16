@@ -293,29 +293,49 @@ const langList = {
         "ru": "Почему мы?",
         "en": "Why us?",
     },
+    "why-eyebrow" : {
+        "ru": "ПРИНЦИПЫ РАБОТЫ",
+        "en": "OUR PRINCIPLES",
+    },
+    "why-intro" : {
+        "ru": "За каждым проектом — <strong>точный расчёт, выразительная идея и сила команды.</strong> Соединяем эти принципы, чтобы создавать пространства, которые работают для людей.",
+        "en": "Behind every project: <strong>precise thinking, a distinctive idea and a united team.</strong> We bring these principles together to create spaces that work for people.",
+    },
+    "why-label-1" : {
+        "ru": "Процесс",
+        "en": "Process",
+    },
+    "why-label-2" : {
+        "ru": "Идея",
+        "en": "Idea",
+    },
+    "why-label-3" : {
+        "ru": "Команда",
+        "en": "Team",
+    },
     "services-2-title-1" : {
         "ru": "Эффективность",
-        "en": "Effectiveness",
+        "en": "Efficiency",
     },
     "services-2-text-1" : {
-        "ru": "В основе нашей работы - эффективная организация пространства и использование BIM - технологий. 30-летний опыт работы и слаженная команда позволяет добиваться необходимых результатов в сжатые сроки.",
-        "en": "Our work is based on the effective organization of space and the use of BIM technologies. 30 years of experience and a well-coordinated team allows us to achieve the necessary results in a short time.",
+        "ru": "В основе нашей работы — <strong>продуманная организация пространства и BIM-технологии.</strong> Опыт с 1995 года и слаженная команда помогают добиваться нужного результата в сжатые сроки.",
+        "en": "Our work starts with <strong>thoughtful spatial planning and BIM technology.</strong> Experience since 1995 and a coordinated team help us deliver the right result within tight timelines.",
     },
     "services-2-title-2" : {
         "ru": "Творчество",
         "en": "Creativity",
     },
     "services-2-text-2" : {
-        "ru": "Мы считаем, что любой проект, будь технологий жилой комплекс или новый аэропорт, помимо эффективных решений, должен обладать яркими, запоминающимся образом, формипующим лицо города.",
-        "en": "We believe that any project, be it technology a residential complex or a new airport, In addition to effective solutions, it must have bright, memorable in a way that shapes the face of the city.",
+        "ru": "От жилого комплекса до нового аэропорта — каждый проект должен сочетать <strong>эффективные решения и запоминающийся образ.</strong> Мы создаём архитектуру с характером, которая формирует лицо города.",
+        "en": "From a residential neighbourhood to a new airport, every project should combine <strong>effective solutions with a memorable identity.</strong> We create architecture with character that helps shape the city.",
     },
     "services-2-title-3" : {
-        "ru": "Партнерство",
+        "ru": "Партнёрство",
         "en": "Partnership",
     },
     "services-2-text-3" : {
-        "ru": "Кооперация и взаимодействие с различными экспертами и проектными компаниями - конструкторами, дизайнерами, инженерами, экономистами, социологами - позволяет решать одновременно ряд крупных проектных задач.",
-        "en": "Cooperation and interaction with various experts and design companies - designers, designers, engineers, economists, sociologists - allows us to simultaneously solve a number of major design tasks.",
+        "ru": "Объединяем <strong>экспертизу конструкторов, дизайнеров, инженеров, экономистов и социологов.</strong> Сотрудничество с экспертами и проектными компаниями позволяет параллельно решать сложные задачи и видеть проект целиком.",
+        "en": "We bring together <strong>expertise in structures, design, engineering, economics and sociology.</strong> Working with specialists and design practices lets us address complex challenges in parallel and see the project as a whole.",
     },
     "partners-heading" : {
         "ru": "Наши партнеры",
@@ -889,44 +909,76 @@ const langList = {
     },
 
     "directors-heading" : {
-        "ru": "Руководители компании:",
-        "en": "Company executives:",
+        "ru": "Руководители компании",
+        "en": "Company leadership",
+    },
+    "leadership-eyebrow" : {
+        "ru": "ЛЮДИ АРТ ГРУПП",
+        "en": "THE PEOPLE OF ART GROUP",
+    },
+    "leadership-intro" : {
+        "ru": "Архитектурная практика, правовая экспертиза и исследование городской среды — <strong>в основе нашего подхода.</strong>",
+        "en": "Architectural practice, legal expertise and research into urban life — <strong>at the heart of our approach.</strong>",
+    },
+    "leadership-focus-1" : {
+        "ru": "Управление и развитие",
+        "en": "Management and development",
+    },
+    "leadership-focus-2" : {
+        "ru": "Архитектура и творчество",
+        "en": "Architecture and creativity",
+    },
+    "leadership-practice-1" : {
+        "ru": "Практика и образование",
+        "en": "Practice and education",
+    },
+    "leadership-initiatives-1" : {
+        "ru": "Инициативы и исследования",
+        "en": "Initiatives and research",
+    },
+    "leadership-practice-2" : {
+        "ru": "Практика и признание",
+        "en": "Practice and recognition",
+    },
+    "leadership-education-2" : {
+        "ru": "Образование и наследие",
+        "en": "Education and heritage",
     },
     "director-1-subtitle" : {
-        "ru": "Морозова Елизавета",
-        "en": "Morozova Elizabeth",
+        "ru": "Елизавета <span>Морозова</span>",
+        "en": "Elizaveta <span>Morozova</span>",
     },
     "director-1-text-1" : {
-        "ru": "Генеральный директор, Управляющий партнер",
+        "ru": "Генеральный директор, управляющий партнёр",
         "en": "CEO, Managing Partner",
     },
     "director-1-text-2" : {
-        "ru": "Окончила Открытый Университет Великобритании и курс: «Профессиональный Сертификат в области менеджмента».",
-        "en": "She graduated from the Open University of Great Britain and the course: 'Professional Certificate in management'.",
+        "ru": "Окончила Открытый университет Великобритании по программе «Профессиональный сертификат в области менеджмента».",
+        "en": "Completed the Professional Certificate in Management programme at the Open University, UK.",
     },
     "director-1-text-3" : {
-        "ru": "Член союза юристов Москвы, Эсперт по недвижимости.",
-        "en": "Member of the Moscow Lawyers' Union, Real Estate Expert.",
+        "ru": "Член Союза юристов Москвы, <strong>эксперт по недвижимости.</strong>",
+        "en": "Member of the Moscow Lawyers’ Union and <strong>real estate expert.</strong>",
     },
     "director-1-text-4" : {
-        "ru": "Автор социально-архитектурной инициативы «Счастливый город» и «Министр Счастья».",
-        "en": "The author of the social and architectural initiative 'Happy City' and 'Minister of Happiness'.",
+        "ru": "Автор социально-архитектурной инициативы <strong>«Счастливый город»</strong> и «Министр Счастья».",
+        "en": "Creator of the social and architectural initiative <strong>‘Happy City’</strong> and ‘Minister of Happiness’.",
     },
     "director-1-text-5" : {
-        "ru": "Сооснователь образовательной методики детского-юнешеского Технопарка Abstract.",
-        "en": "Co-founder of the educational methodology of the children's and youth Technopark Abstract.",
+        "ru": "Сооснователь образовательной методики детско-юношеского технопарка <strong>Abstract.</strong>",
+        "en": "Co-creator of the educational methodology at <strong>Abstract,</strong> a technopark for children and young people.",
     },
     "director-1-text-6" : {
-        "ru": "Член Ассоциации практикующих психологов и коучей. Автор курсов для взрослых и детей «Уроки счастья»",
-        "en": "Member of the Association of Practicing Psychologists and Coaches. Author of courses for adults and children 'Lessons of happiness'",
+        "ru": "Член Ассоциации практикующих психологов и коучей. Автор курсов для взрослых и детей «Уроки счастья».",
+        "en": "Member of the Association of Practising Psychologists and Coaches. Creator of ‘Lessons of Happiness’ courses for adults and children.",
     },
     "director-1-text-7" : {
-        "ru": "Исследователь счастья. Автор книги «Pro счастье» «Точка Х: прошлое и будущее в моменте»",
-        "en": "A researcher of happiness. Author of the book 'Pro happiness' 'Point X: past and future in the moment'",
+        "ru": "Исследователь счастья. Автор книг «Pro счастье» и «Точка Х: прошлое и будущее в моменте».",
+        "en": "Happiness researcher. Author of ‘Pro Happiness’ and ‘Point X: Past and Future in the Moment’.",
     },
     "director-1-text-8" : {
-        "ru": "Личные достижения:",
-        "en": "Personal achievements:",
+        "ru": "Выступления, публикации и достижения",
+        "en": "Talks, publications and achievements",
     },
     "director-1-text-9" : {
         "ru": "Участник Общегражданского форума РФ 2019 по внедрению понятия Счастья в Россию, как стимул развития страны (2019)",
@@ -1113,49 +1165,49 @@ const langList = {
         "en": "Elizaveta Morozova. Co-founder of the architectural and legal company ART Group. Co-founder of the educational methodology of the children's and youth technopark «Abstract»",
     },
     "director-1-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More details",
+        "ru": "Подробнее о деятельности",
+        "en": "Explore professional work",
     },
 
     "director-2-title" : {
-        "ru": "Тюрин Михаил",
-        "en": "Tyurin Mikhail",
+        "ru": "Михаил <span>Тюрин</span>",
+        "en": "Mikhail <span>Tyurin</span>",
     },
     "director-2-text-1" : {
         "ru": "Архитектор",
         "en": "Architect",
     },
     "director-2-text-2" : {
-        "ru": "Член Союза Архитекторов",
-        "en": "Member of the Union of Architects",
+        "ru": "Член Союза архитекторов.",
+        "en": "Member of the Union of Architects.",
     },
     "director-2-text-3" : {
-        "ru": "Сооснователь компании АРТ групп",
-        "en": "Co-founder of the ART Group company",
+        "ru": "Сооснователь компании <strong>АРТ групп.</strong>",
+        "en": "Co-founder of <strong>ART Group.</strong>",
     },
     "director-2-text-4" : {
-        "ru": "Сооснователь архитектурного технопарка Abstract",
-        "en": "Co-founder of the architectural technopark Abstract",
+        "ru": "Сооснователь архитектурного технопарка <strong>Abstract.</strong>",
+        "en": "Co-founder of the <strong>Abstract</strong> architectural technopark.",
     },
     "director-2-text-5" : {
-        "ru": "Лауреат международных конкурсов по архитектуре и дизайну",
-        "en": "Winner of international architecture and design competitions",
+        "ru": "Лауреат международных конкурсов по архитектуре и дизайну.",
+        "en": "Winner of international architecture and design competitions.",
     },
     "director-2-text-6" : {
-        "ru": "Наследник мультипликационного достояния «Левша»",
-        "en": "The heir to the cartoon heritage 'Lefty'",
+        "ru": "Наследник мультипликационного достояния «Левша».",
+        "en": "Heir to the artistic legacy of the animated film ‘Lefty’.",
     },
     "director-2-text-7" : {
-        "ru": "Выпускник МАРХИ 90 факультет жилищно-общественное строительство МАРХИ 90",
-        "en": "Graduate of MARHI 90 Faculty of Housing and Public Construction of MARHI 90",
+        "ru": "Выпускник <strong>МАРХИ, 1990 год,</strong> факультет жилищно-общественного строительства.",
+        "en": "Graduated from <strong>Moscow Architectural Institute in 1990,</strong> specialising in residential and public buildings.",
     },
     "director-2-text-8" : {
-        "ru": "Выпускник открытого Университета Великобритании по курсу: «Профессиональный Сертификат в области менеджмента»",
-        "en": "Graduate of the Open University of Great Britain in the course: 'Professional Certificate in management'",
+        "ru": "Выпускник Открытого университета Великобритании по программе «Профессиональный сертификат в области менеджмента».",
+        "en": "Completed the Professional Certificate in Management programme at the Open University, UK.",
     },
     "director-2-text-9" : {
-        "ru": "Личные достижения:",
-        "en": "Personal achievements:",
+        "ru": "Творческий путь и достижения",
+        "en": "Creative journey and achievements",
     },
     "director-2-text-10" : {
         "ru": "Родился в семье известного художника-мультипликатора Тюрина Аркадия Георгиевича, создавшего образ «Левши» для одноименного мультфильма по сказу Н. С. Лескова,  а также являющегося первым художником, попавшим на закрытый Космодром Байконур и посвятивший серию работ Космосу.",
@@ -1266,8 +1318,8 @@ const langList = {
         "en": "Working on the concept of 'Happy City' together with Elizaveta Morozova",
     },
     "director-2-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More details",
+        "ru": "Подробнее о деятельности",
+        "en": "Explore professional work",
     },
 
 

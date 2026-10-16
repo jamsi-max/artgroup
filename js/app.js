@@ -785,9 +785,9 @@ function initWhyUsFigures() {
 
     const figures = containers.map((container, figureIndex) => {
         const shapes = Array.from(container.querySelectorAll('.shape'));
-        // The card's reveal animation scales its bounding rectangle. Read
-        // layout dimensions so that entrance motion cannot distort the saved
-        // abstract geometry (including on high-density, fractional layouts).
+        // Save the original CSS geometry before adding animation layers.
+        // Layout dimensions keep the percentage poses accurate on fractional
+        // and high-density responsive layouts.
         const canvasStyle = getComputedStyle(container);
         const canvasWidth = parseFloat(canvasStyle.width);
         const canvasHeight = parseFloat(canvasStyle.height);
@@ -817,20 +817,25 @@ function initWhyUsFigures() {
         // Scroll transforms live on a separate layer, so entering/leaving the
         // viewport never fights the icon morph or each piece's gentle drift.
         // Copy the original stacking order and pivot around each fragment.
+        const driftLayers = [];
         const fragments = shapes.map((shape, i) => {
             const fragment = document.createElement('div');
             fragment.className = 'figure-fragment';
             fragment.style.zIndex = getComputedStyle(shape).zIndex;
+            fragment.style.transformOrigin = `${parseFloat(initial[i].left) + parseFloat(initial[i].width) / 2}% ${parseFloat(initial[i].top) + parseFloat(initial[i].height) / 2}%`;
+            const drift = document.createElement('div');
+            drift.className = 'figure-drift';
             container.insertBefore(fragment, shape);
-            fragment.appendChild(shape);
-            gsap.set(fragment, {
-                transformOrigin: `${parseFloat(initial[i].left) + parseFloat(initial[i].width) / 2}% ${parseFloat(initial[i].top) + parseFloat(initial[i].height) / 2}%`
-            });
+            fragment.appendChild(drift);
+            drift.appendChild(shape);
+            driftLayers.push(drift);
             return fragment;
         });
         const figure = {
-            container, shapes, fragments, cycle, figureIndex,
-            inView: false, scatter: -1, driftUnit: canvasWidth / 100
+            container, fragments, driftLayers, cycle, figureIndex,
+            iconStart, abstractEnd, scatter: 1, drift: 0, elapsed: 0,
+            measured: false, cycling: false, needsReset: false, near: false,
+            layoutTop: 0, width: canvasWidth, height: canvasHeight
         };
 
         shapes.forEach((shape, i) => {
@@ -844,123 +849,187 @@ function initWhyUsFigures() {
             }, abstractStart + i * .025);
         });
 
-        // Give the scattered composition time to breathe. This clock keeps
-        // onUpdate running throughout the abstract hold, with no extra ticker.
+        // Keep a quiet abstract hold at the end of each icon cycle.
         const clock = { time: 0 };
         const cycleDuration = abstractEnd + 2.4;
         cycle.to(clock, { time: cycleDuration, duration: cycleDuration, ease: 'none' }, 0);
-        cycle.eventCallback('onUpdate', () => {
-            const localTime = cycle.time();
-            const elapsed = cycle.totalTime();
-            let freedom = 0;
-            if (localTime < iconStart + .7) {
-                freedom = 1 - smoothStep((localTime - iconStart) / .7);
-            } else if (localTime > abstractEnd) {
-                freedom = smoothStep((localTime - abstractEnd) / .7);
-            }
-            // Fade in only on the first entrance. Continuous total time keeps
-            // the drift seamless across repeats, with no reset or random jump.
-            const amplitude = Math.max(freedom, figure.scatter)
-                * smoothStep(elapsed / .75) * figure.driftUnit;
-            shapes.forEach((shape, i) => {
-                const phase = 1 + figureIndex * 11 + i * 3.7;
-                gsap.set(shape, {
-                    x: amplitude * (Math.sin(elapsed * .86 + phase) * 2.1
-                        + Math.sin(elapsed * 1.31 + phase * .7) * .9),
-                    y: amplitude * (Math.cos(elapsed * .71 + phase * .91) * 1.8
-                        + Math.sin(elapsed * 1.17 + phase) * .8)
-                });
-            });
-        });
         return figure;
     });
 
-    function syncActivity() {
-        figures.forEach(({ shapes, cycle, inView }) => {
-            // Reduced motion keeps the original abstract artwork stationary.
-            if (motion.matches) {
-                cycle.pause(0);
-                gsap.set(shapes, { x: 0, y: 0 });
-            }
-            else cycle.paused(!inView || document.hidden);
+    const section = document.getElementById('services');
+    const header = document.querySelector('.header');
+    const viewportProbe = document.createElement('div');
+    viewportProbe.className = 'why-viewport-probe';
+    viewportProbe.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(viewportProbe);
+    let viewportWidth = 0;
+    let viewportHeight = 0;
+    let topInset = 0;
+    let layoutDirty = true;
+    let running = false;
+
+    function measureLayout() {
+        viewportWidth = document.documentElement.clientWidth;
+        // 100svh stays constant when a mobile browser hides its address bar.
+        // Using innerHeight here caused the scatter targets to jump mid-swipe.
+        viewportHeight = viewportProbe.offsetHeight || window.innerHeight;
+        topInset = header ? Math.min(header.offsetHeight, viewportHeight * .25) : 0;
+        figures.forEach(figure => {
+            // Layout coordinates exclude all reveal/animation transforms.
+            // Read once on reflow, not from moving geometry on every scroll.
+            let top = 0;
+            for (let element = figure.container; element && element !== document.body; element = element.offsetParent) top += element.offsetTop;
+            figure.layoutTop = top;
+            const style = getComputedStyle(figure.container);
+            figure.width = parseFloat(style.width);
+            figure.height = parseFloat(style.height);
         });
+        layoutDirty = false;
     }
 
-    const header = document.querySelector('header');
-    function updateScrollState() {
-        const viewportHeight = window.innerHeight;
-        const topInset = header
-            ? Math.max(0, Math.min(header.getBoundingClientRect().bottom, viewportHeight * .25))
-            : 0;
+    function setCycleActivity(figure, play, reset) {
+        if (reset && figure.needsReset) {
+            figure.cycle.pause(0);
+            figure.cycling = false;
+            figure.needsReset = false;
+        }
+        if (play !== figure.cycling) {
+            figure.cycle.paused(!play);
+            figure.cycling = play;
+        }
+        if (play) figure.needsReset = true;
+    }
+
+    // One clock owns all scroll movement. Geometry, drift and scroll each
+    // have a separate DOM layer; no restarting or competing transform tweens.
+    function renderFrame(_time, deltaMs = 16.67) {
+        if (layoutDirty) measureLayout();
+        const dt = Math.min(.05, Math.max(.001, deltaMs / 1000));
+        const blend = 1 - Math.exp(-dt / .14);
+        const scrollY = window.scrollY;
         const usableHeight = Math.max(1, viewportHeight - topInset);
         const upperBand = topInset + usableHeight * .3;
         const lowerBand = topInset + usableHeight * .7;
         const edgeDistance = usableHeight * .3;
+        const fringe = usableHeight * .15;
+        const readingCenter = topInset + usableHeight * .5;
+        const rowDistances = figures.map(figure => Math.abs(figure.layoutTop + figure.height / 2 - scrollY - readingCenter));
+        const closestRow = Math.min(...rowDistances);
+        let keepRunning = false;
 
-        // Read all layout before writing transforms. Each card has its own
-        // viewport position, including when the grid stacks on a phone.
-        const measurements = figures.map(figure => ({
-            figure, rect: figure.container.getBoundingClientRect(),
-            width: figure.container.clientWidth
-        }));
-        measurements.forEach(({ figure, rect, width }) => {
-            figure.inView = rect.top < viewportHeight && rect.bottom > topInset;
-            figure.driftUnit = width / 100;
-            // Symmetric around the reading band: either edge scatters the
-            // pieces, and scrolling back toward the centre reassembles them.
-            const scatter = motion.matches ? 0 : smoothStep(Math.max(
-                (rect.top - lowerBand) / edgeDistance,
-                (upperBand - rect.bottom) / edgeDistance
+        figures.forEach((figure, figureIndex) => {
+            const top = figure.layoutTop - scrollY;
+            const bottom = top + figure.height;
+            // Fade distant rows completely, preventing the next mobile card
+            // from throwing its fragments through the card being read.
+            const visibility = motion.matches ? 1 : Math.min(
+                smoothStep((bottom - topInset + fringe) / fringe),
+                smoothStep((viewportHeight + fringe - top) / fringe)
+            );
+            const near = visibility > 0 && !document.hidden;
+            // On stacked layouts, distant rows must not project faint flying
+            // fragments over the row being read. The weighting is continuous
+            // across direction changes and equal for figures on the same row.
+            const rowFocus = 1 - smoothStep((rowDistances[figureIndex] - closestRow) / (usableHeight * .25));
+            const target = motion.matches ? 0 : smoothStep(Math.max(
+                (top - lowerBand) / edgeDistance,
+                (upperBand - bottom) / edgeDistance
             ));
-            if (scatter === figure.scatter) return;
-            figure.scatter = scatter;
+            if (!figure.measured || !near || motion.matches) figure.scatter = target;
+            else figure.scatter += (target - figure.scatter) * blend;
+            if (Math.abs(target - figure.scatter) < .0001) figure.scatter = target;
+            figure.measured = true;
+
+            // Hold the current shape while scrolling. Reset only once it is
+            // invisible, so a direction reversal never swaps geometry midair.
+            const play = near && !motion.matches && target === 0 && figure.scatter < .008;
+            setCycleActivity(figure, play, !near || motion.matches);
+            if (near && !motion.matches) {
+                keepRunning = true;
+                figure.elapsed += dt;
+            }
+
+            const localTime = figure.cycle.time();
+            let freedom = 0;
+            if (localTime < figure.iconStart + .7) {
+                freedom = 1 - smoothStep((localTime - figure.iconStart) / .7);
+            } else if (localTime > figure.abstractEnd) {
+                freedom = smoothStep((localTime - figure.abstractEnd) / .7);
+            }
+            const driftTarget = motion.matches ? 0 : Math.max(freedom, figure.scatter);
+            figure.drift += (driftTarget - figure.drift) * blend;
+            const amplitude = motion.matches ? 0 : figure.drift
+                * smoothStep(figure.elapsed / .75) * figure.width / 100;
+
+            const wasNear = figure.near;
+            if (near !== wasNear) {
+                figure.fragments.forEach(fragment => {
+                    fragment.style.willChange = near && !motion.matches ? 'transform, opacity' : 'auto';
+                });
+                figure.near = near;
+            }
+            // Hidden rows need no per-frame style writes on a small screen.
+            if (!near && !wasNear && figure.rendered && !motion.matches) return;
             figure.fragments.forEach((fragment, i) => {
                 const angle = i * 2.399963 + figure.figureIndex * .7;
-                gsap.set(fragment, {
-                    xPercent: Math.cos(angle) * (18 + i % 4 * 8) * scatter,
-                    yPercent: Math.sin(angle) * (24 + i % 3 * 9) * scatter,
-                    rotation: (i % 2 ? -1 : 1) * (20 + i * 6) * scatter,
-                    scale: 1 - scatter * .25,
-                    opacity: 1 - scatter * .85
-                });
+                const travel = .65 + i % 5 * .18;
+                const progress = figure.scatter;
+                const x = Math.cos(angle) * viewportWidth * .65 * travel * progress;
+                const y = Math.sin(angle) * usableHeight * .9 * travel * progress;
+                const rotation = (i % 2 ? -1 : 1) * (180 + i * 45) * progress;
+                fragment.style.transform = `translate3d(${x.toFixed(3)}px, ${y.toFixed(3)}px, 0) rotate(${rotation.toFixed(3)}deg) scale(${1 - progress * .15})`;
+                fragment.style.opacity = visibility * (1 - progress * .9)
+                    * (1 - smoothStep(progress / .25) * (1 - rowFocus));
+                const phase = 1 + figure.figureIndex * 11 + i * 3.7;
+                const dx = amplitude * (Math.sin(figure.elapsed * .86 + phase) * 2.1
+                    + Math.sin(figure.elapsed * 1.31 + phase * .7) * .9);
+                const dy = amplitude * (Math.cos(figure.elapsed * .71 + phase * .91) * 1.8
+                    + Math.sin(figure.elapsed * 1.17 + phase) * .8);
+                figure.driftLayers[i].style.transform = `translate3d(${dx.toFixed(3)}px, ${dy.toFixed(3)}px, 0)`;
             });
+            figure.rendered = true;
         });
-        syncActivity();
+        if (!keepRunning) {
+            gsap.ticker.remove(renderFrame);
+            running = false;
+        }
     }
 
-    let scrollPending = false;
-    function requestScrollUpdate() {
-        if (scrollPending) return;
-        scrollPending = true;
-        requestAnimationFrame(() => {
-            scrollPending = false;
-            updateScrollState();
-        });
+    function suspend() {
+        figures.forEach(figure => setCycleActivity(figure, false, false));
+        gsap.ticker.remove(renderFrame);
+        running = false;
     }
-
-    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
-    window.addEventListener('resize', requestScrollUpdate);
-    window.addEventListener('load', requestScrollUpdate);
-    if (document.fonts) document.fonts.ready.then(requestScrollUpdate);
-    if (window.visualViewport) {
-        window.visualViewport.addEventListener('resize', requestScrollUpdate);
+    function wake(needsLayout = false) {
+        if (needsLayout) layoutDirty = true;
+        if (document.hidden || document.body.matches('.popup-open, .consent-modal-open')) {
+            suspend();
+            return;
+        }
+        if (running) return;
+        running = true;
+        gsap.ticker.add(renderFrame);
     }
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(requestScrollUpdate);
-        figures.forEach(({ container }) => observer.observe(container));
-    }
+    window.addEventListener('scroll', () => wake(), { passive: true });
+    window.addEventListener('resize', () => wake(true));
+    window.addEventListener('load', () => wake(true));
+    if (document.fonts) document.fonts.ready.then(() => wake(true));
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', () => wake(true));
     if ('ResizeObserver' in window) {
-        const observer = new ResizeObserver(requestScrollUpdate);
-        figures.forEach(({ container }) => observer.observe(container));
-        if (header) observer.observe(header);
+        const observer = new ResizeObserver(() => wake(true));
+        [document.body, section, header, ...containers].filter(Boolean).forEach(element => observer.observe(element));
     }
+    const scrollLockObserver = new MutationObserver(() => wake(true));
+    scrollLockObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
     document.addEventListener('visibilitychange', () => {
-        syncActivity();
-        requestScrollUpdate();
+        if (document.hidden) suspend();
+        else wake(true);
     });
-    if (motion.addEventListener) motion.addEventListener('change', updateScrollState);
-    else motion.addListener(updateScrollState);
-    updateScrollState();
+    const updateMotion = () => wake(true);
+    if (motion.addEventListener) motion.addEventListener('change', updateMotion);
+    else motion.addListener(updateMotion);
+    renderFrame(0);
+    wake();
 }
 
 function initGeometricAnimation() {
@@ -1096,62 +1165,23 @@ function changeReadMore() {
 // END READ MORE ABOUT
 
 // READ MORE DIRECTORS
-function changeReadMore2() {
-    const mycontent =
-        document.getElementById('mybox2id');
-    const mybutton =
-        document.getElementById('mybuttonid2');
+function toggleDirectorBiography(contentId, buttonId, labelKey) {
+    const content = document.getElementById(contentId);
+    const button = document.getElementById(buttonId);
+    const expanded = button.getAttribute('aria-expanded') !== 'true';
+    content.style.display = expanded ? 'block' : 'none';
+    button.setAttribute('aria-expanded', String(expanded));
+    button.querySelector('.leadership-more-label').textContent = expanded
+        ? (currentLng === 'en' ? 'Collapse' : 'Свернуть')
+        : langList[labelKey][currentLng];
+}
 
-    if (mycontent.style.display === 'none'
-        || mycontent.style.display === '') {
-        mycontent.style.display = 'block';
-        mycontent.style.marginTop = '3%';
-        mycontent.style.fontSize = '1.2rem';
-        mycontent.style.fontFamily = 'Poppins, sans-serif';
-        if (currentLng == 'ru') {
-            mybutton.textContent = 'Свернуть';
-        }
-        if (currentLng == 'en') {
-            mybutton.textContent = 'Collapse';
-        }
-    } else {
-        mycontent.style.display = 'none';
-        if (currentLng == 'ru') {
-            mybutton.textContent = 'Подробнее';
-        }
-        if (currentLng == 'en') {
-            mybutton.textContent = 'More details';
-        }
-    }
+function changeReadMore2() {
+    toggleDirectorBiography('mybox2id', 'mybuttonid2', 'director-1-btn-more');
 }
 
 function changeReadMore3() {
-    const mycontent =
-        document.getElementById('mybox3id');
-    const mybutton =
-        document.getElementById('mybuttonid3');
-
-    if (mycontent.style.display === 'none'
-        || mycontent.style.display === '') {
-        mycontent.style.display = 'block';
-        mycontent.style.marginTop = '3%';
-        mycontent.style.fontSize = '1.2rem';
-        mycontent.style.fontFamily = 'Poppins, sans-serif';
-        if (currentLng == 'ru') {
-            mybutton.textContent = 'Свернуть';
-        }
-        if (currentLng == 'en') {
-            mybutton.textContent = 'Collapse';
-        }
-    } else {
-        mycontent.style.display = 'none';
-        if (currentLng == 'ru') {
-            mybutton.textContent = 'Подробнее';
-        }
-        if (currentLng == 'en') {
-            mybutton.textContent = 'More details';
-        }
-    }
+    toggleDirectorBiography('mybox3id', 'mybuttonid3', 'director-2-btn-more');
 }
 // END READ MORE DIRECTORS
 
@@ -1330,7 +1360,7 @@ function applyLanguage(lng) {
         const content = document.getElementById(sec.contentId);
         const button = document.getElementById(sec.buttonId);
         if (content && button && content.style.display === 'block') {
-            const label = button.querySelector('.lng-about-btn') || button;
+            const label = button.querySelector('.lng-about-btn, .leadership-more-label') || button;
             label.textContent = lng === 'en' ? 'Collapse' : 'Свернуть';
         }
     });

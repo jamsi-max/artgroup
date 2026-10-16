@@ -12,14 +12,14 @@
   <!-- Marks that JS is available, so the scroll-reveal start state (hidden)
        only applies when there is a script able to reveal it again. -->
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261016-leadership-7">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="https://artgroup.fun/favicon.ico" type="image/x-icon">
 
   <script src="js/gsap.min.js" defer></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" defer></script>
-  <script src="js/lang.js" defer></script>
-  <script src="js/app.js?v=20261015-feedback-2" defer></script>
+  <script src="js/lang.js?v=20261016-leadership-7" defer></script>
+  <script src="js/app.js?v=20261016-leadership-7" defer></script>
   <script src="js/estimate.js?v=20261015-feedback-2" defer></script>
   <script src="js/about-slider.js" defer></script>
 
@@ -512,12 +512,18 @@
       </div>
     </section>
 
-    <section class="services" id="services">
-      <h2 class="services-heading title lng-services-2-heading">Почему мы?</h2>
+    <section class="services" id="services" aria-labelledby="why-heading">
+      <div class="why-header">
+        <div class="why-heading-group">
+          <p class="why-eyebrow lng-why-eyebrow">ПРИНЦИПЫ РАБОТЫ</p>
+          <h2 class="services-heading title lng-services-2-heading" id="why-heading">Почему мы?</h2>
+        </div>
+        <p class="why-intro lng-why-intro">За каждым проектом — <strong>точный расчёт, выразительная идея и сила команды.</strong> Соединяем эти принципы, чтобы создавать пространства, которые работают для людей.</p>
+      </div>
 
       <div class="services-container reveal-group">
 
-        <div class="services-box reveal">
+        <div class="services-box">
           <div class="figure-canvas figure-canvas-1" aria-hidden="true">
             <div class="shape f1-s1"></div>
             <div class="shape f1-s2"></div>
@@ -529,15 +535,14 @@
             <div class="shape f1-s8"></div>
             <div class="shape f1-s9"></div>
           </div>
-          <h3 class="lng-services-2-title-1">Эффективность</h3>
-          <p class="lng-services-2-text-1">В основе нашей работы - эффективная
-            организация пространства и использование
-            BIM - технологий. 30-летний опыт
-            работы и слаженная команда позволяет добиваться
-            необходимых результатов в сжатые сроки.</p>
+          <div class="why-copy">
+            <div class="why-principle"><span class="why-number" aria-hidden="true">01</span><span class="lng-why-label-1">Процесс</span></div>
+            <h3 class="lng-services-2-title-1">Эффективность</h3>
+            <p class="lng-services-2-text-1">В основе нашей работы — <strong>продуманная организация пространства и BIM-технологии.</strong> Опыт с 1995 года и слаженная команда помогают добиваться нужного результата в сжатые сроки.</p>
+          </div>
         </div>
 
-        <div class="services-box reveal">
+        <div class="services-box">
           <div class="figure-canvas figure-canvas-2" aria-hidden="true">
             <div class="shape f2-s1"></div>
             <div class="shape f2-s2"></div>
@@ -548,15 +553,14 @@
             <div class="shape f2-s7"></div>
             <div class="shape f2-s8"></div>
           </div>
-          <h3 class="lng-services-2-title-2">Творчество</h3>
-          <p class="lng-services-2-text-2">Мы считаем, что любой проект, будь технологий
-            жилой комплекс или новый аэропорт,
-            помимо эффективных решений, должен
-            обладать яркими, запоминающимся
-            образом, формипующим лицо города.</p>
+          <div class="why-copy">
+            <div class="why-principle"><span class="why-number" aria-hidden="true">02</span><span class="lng-why-label-2">Идея</span></div>
+            <h3 class="lng-services-2-title-2">Творчество</h3>
+            <p class="lng-services-2-text-2">От жилого комплекса до нового аэропорта — каждый проект должен сочетать <strong>эффективные решения и запоминающийся образ.</strong> Мы создаём архитектуру с характером, которая формирует лицо города.</p>
+          </div>
         </div>
 
-        <div class="services-box reveal">
+        <div class="services-box">
           <div class="figure-canvas figure-canvas-3" aria-hidden="true">
             <div class="shape f3-s1"></div>
             <div class="shape f3-s2"></div>
@@ -568,12 +572,11 @@
             <div class="shape f3-s8"></div>
             <div class="shape f3-s9"></div>
           </div>
-          <h3 class="lng-services-2-title-3">Партнерство</h3>
-          <p class="lng-services-2-text-3">Кооперация и взаимодействие с
-            различными экспертами и проектными
-            компаниями - конструкторами, дизайнерами,
-            инженерами, экономистами, социологами - позволяет
-            решать одновременно ряд крупных проектных задач.</p>
+          <div class="why-copy">
+            <div class="why-principle"><span class="why-number" aria-hidden="true">03</span><span class="lng-why-label-3">Команда</span></div>
+            <h3 class="lng-services-2-title-3">Партнёрство</h3>
+            <p class="lng-services-2-text-3">Объединяем <strong>экспертизу конструкторов, дизайнеров, инженеров, экономистов и социологов.</strong> Сотрудничество с экспертами и проектными компаниями позволяет параллельно решать сложные задачи и видеть проект целиком.</p>
+          </div>
         </div>
 
       </div>
@@ -1122,8 +1125,15 @@
     </div>
     <!-- READ ME MORE POPUP END -->
 
-    <section class="directors director1" id="director1">
-      <h2 class="directors-heading title lng-directors-heading">Руководители компании:</h2>
+    <section class="directors director1" id="director1" aria-labelledby="leadership-heading">
+      <div class="leadership-shell">
+      <div class="leadership-header">
+        <div>
+          <p class="leadership-eyebrow lng-leadership-eyebrow">ЛЮДИ АРТ ГРУПП</p>
+          <h2 class="leadership-heading title lng-directors-heading" id="leadership-heading">Руководители компании</h2>
+        </div>
+        <p class="leadership-intro lng-leadership-intro">Архитектурная практика, правовая экспертиза и исследование городской среды — <strong>в основе нашего подхода.</strong></p>
+      </div>
 
       <div class="director-box reveal-group">
         <div class="director-img reveal">
@@ -1131,17 +1141,24 @@
         </div>
 
         <div class="director-content reveal">
-          <h3 class="directors-subtitle lng-director-1-subtitle">Морозова Елизавета</h3>
-          <p class="description lng-director-1-text-1">Генеральный директор, Управляющий партнер</p>
-          <p class="description lng-director-1-text-2">Окончила Открытый Университет Великобритании и курс: «Профессиональный Сертификат в области менеджмента».</p>
-          <p class="description lng-director-1-text-3">Член союза юристов Москвы, Эсперт по недвижимости.</p>
-          <p class="description lng-director-1-text-4">Автор социально-архитектурной инициативы «Счастливый город» и «Министр Счастья».</p>
-          <p class="description lng-director-1-text-5">Сооснователь образовательной методики детского-юнешеского Технопарка Abstract.</p>
-          <p class="description lng-director-1-text-6">Член Ассоциации практикующих психологов и коучей. Автор курсов для взрослых и детей «Уроки счастья»</p>
-          <p class="description lng-director-1-text-7">Исследователь счастья. Автор книги «Pro счастье» «Точка Х: прошлое и будущее в моменте»</p>
+          <div class="leadership-index"><span aria-hidden="true">01</span><span class="lng-leadership-focus-1">Управление и развитие</span></div>
+          <h3 class="directors-subtitle lng-director-1-subtitle">Елизавета <span>Морозова</span></h3>
+          <p class="leadership-role lng-director-1-text-1">Генеральный директор, управляющий партнёр</p>
+          <div class="leadership-bio-group">
+            <h4 class="leadership-subheading lng-leadership-practice-1">Практика и образование</h4>
+            <p class="description lng-director-1-text-2">Окончила Открытый университет Великобритании по программе «Профессиональный сертификат в области менеджмента».</p>
+            <p class="description lng-director-1-text-3">Член Союза юристов Москвы, <strong>эксперт по недвижимости.</strong></p>
+          </div>
+          <div class="leadership-bio-group">
+            <h4 class="leadership-subheading lng-leadership-initiatives-1">Инициативы и исследования</h4>
+            <p class="description lng-director-1-text-4">Автор социально-архитектурной инициативы <strong>«Счастливый город»</strong> и «Министр Счастья».</p>
+            <p class="description lng-director-1-text-5">Сооснователь образовательной методики детско-юношеского технопарка <strong>Abstract.</strong></p>
+            <p class="description lng-director-1-text-6">Член Ассоциации практикующих психологов и коучей. Автор курсов для взрослых и детей «Уроки счастья».</p>
+            <p class="description lng-director-1-text-7">Исследователь счастья. Автор книг «Pro счастье» и «Точка Х: прошлое и будущее в моменте».</p>
+          </div>
         
           <div class="mybox director-description" id="mybox2id">
-            <p class="lng-director-1-text-8">Личные достижения:</p>
+            <h4 class="leadership-subheading lng-director-1-text-8">Выступления, публикации и достижения</h4>
             <p class="lng-director-1-text-9">Участник Общегражданского форума РФ 2019 по внедрению понятия Счастья в Россию, 
               как стимул развития страны (2019) 
             </p>
@@ -1359,32 +1376,40 @@
             </div>
             
           </div>
-          <div class="button">
-            <button id="mybuttonid2" onclick="changeReadMore2()" class="btn-read-more button-link contact-us lng-director-1-btn-more">Подробнее</button>
+          <div class="leadership-actions">
+            <button id="mybuttonid2" onclick="changeReadMore2()" class="leadership-more" type="button" aria-expanded="false" aria-controls="mybox2id"><span class="leadership-more-label lng-director-1-btn-more">Подробнее о деятельности</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
           </div>
         </div>
 
       </div>
-
+      </div>
     </section>
 
-    <section class="directors director2" id="director2">
+    <section class="directors director2" id="director2" aria-labelledby="leadership-name-2">
+      <div class="leadership-shell">
 
         <div class="director-box reveal-group">
 
           <div class="director-content reveal">
-            <h3 class="directors-subtitle lng-director-2-title">Тюрин Михаил</h3>
-            <p class="description lng-director-2-text-1">Архитектор</p>
-            <p class="description lng-director-2-text-2">Член Союза Архитекторов</p>
-            <p class="description lng-director-2-text-3">Сооснователь компании АРТ групп</p>
-            <p class="description lng-director-2-text-4">Сооснователь архитектурного технопарка Abstract</p>
-            <p class="description lng-director-2-text-5">Лауреат международных конкурсов по архитектуре и дизайну</p>
-            <p class="description lng-director-2-text-6">Наследник мультипликационного достояния «Левша»</p>
-            <p class="description lng-director-2-text-7">Выпускник МАРХИ 90 факультет жилищно-общественное строительство МАРХИ 90</p>
-            <p class="description lng-director-2-text-8">Выпускник открытого Университета Великобритании по курсу: «Профессиональный Сертификат в области менеджмента»</p>
+            <div class="leadership-index"><span aria-hidden="true">02</span><span class="lng-leadership-focus-2">Архитектура и творчество</span></div>
+            <h3 class="directors-subtitle lng-director-2-title" id="leadership-name-2">Михаил <span>Тюрин</span></h3>
+            <p class="leadership-role lng-director-2-text-1">Архитектор</p>
+            <div class="leadership-bio-group">
+              <h4 class="leadership-subheading lng-leadership-practice-2">Практика и признание</h4>
+              <p class="description lng-director-2-text-2">Член Союза архитекторов.</p>
+              <p class="description lng-director-2-text-3">Сооснователь компании <strong>АРТ групп.</strong></p>
+              <p class="description lng-director-2-text-4">Сооснователь архитектурного технопарка <strong>Abstract.</strong></p>
+              <p class="description lng-director-2-text-5">Лауреат международных конкурсов по архитектуре и дизайну.</p>
+            </div>
+            <div class="leadership-bio-group">
+              <h4 class="leadership-subheading lng-leadership-education-2">Образование и наследие</h4>
+              <p class="description lng-director-2-text-6">Наследник мультипликационного достояния «Левша».</p>
+              <p class="description lng-director-2-text-7">Выпускник <strong>МАРХИ, 1990 год,</strong> факультет жилищно-общественного строительства.</p>
+              <p class="description lng-director-2-text-8">Выпускник Открытого университета Великобритании по программе «Профессиональный сертификат в области менеджмента».</p>
+            </div>
           
             <div class="mybox director-description" id="mybox3id">
-              <p class="lng-director-2-text-9">Личные достижения:</p>
+              <h4 class="leadership-subheading lng-director-2-text-9">Творческий путь и достижения</h4>
               <p class="lng-director-2-text-10">Родился в семье известного художника-мультипликатора Тюрина Аркадия Георгиевича, создавшего образ «Левши» для одноименного мультфильма по сказу Н. С. Лескова,  а также являющегося первым художником, попавшим на закрытый Космодром Байконур и посвятивший серию работ Космосу.</p>
               <p class="lng-director-2-text-11">МАРХИ – работа в мастерской профессора Б.Г. Бархина.</p>
               <p class="lng-director-2-text-12">Разработка макета для конкурса горнолыжного комплекса «Бакуриани» под руководством Некрасов</p>
@@ -1413,8 +1438,8 @@
               <p class="lng-director-2-text-35">Участие в запуске стартапа Детский технопарк Abstract под эгидой Правительства Москвы</p>
               <p class="lng-director-2-text-36">Работа над концепцией «Счастливый город» совместно с Елизаветой Морозовой</p>
             </div>
-            <div class="button">
-              <button id="mybuttonid3" onclick="changeReadMore3()" class="btn-read-more button-link contact-us lng-director-2-btn-more">Подробнее</button>
+            <div class="leadership-actions">
+              <button id="mybuttonid3" onclick="changeReadMore3()" class="leadership-more" type="button" aria-expanded="false" aria-controls="mybox3id"><span class="leadership-more-label lng-director-2-btn-more">Подробнее о деятельности</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
             </div>
           </div>
 
@@ -1423,7 +1448,7 @@
           </div>
 
         </div>
-
+      </div>
     </section>
 
     <section class="contact reveal-group" id="contact">
