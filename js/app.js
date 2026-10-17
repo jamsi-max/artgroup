@@ -197,6 +197,48 @@ function initScrollReveal() {
 initScrollReveal();
 // END SCROLL REVEAL
 
+// Services: CSS handles the explanatory stories. One observer pauses offscreen work;
+// reduced motion, background tabs and each figure's pause control also stop it.
+// Without setup, every drawing is complete and static.
+function initAdvisoryFigures() {
+    const figures = document.querySelectorAll('#services-1 .advisory-figure');
+    if (!figures.length || !('IntersectionObserver' in window)) return;
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const visible = new Set();
+
+    function sync() {
+        figures.forEach(figure => {
+            const button = figure.querySelector('.advisory-motion');
+            button.hidden = motion.matches;
+            figure.classList.toggle('is-playing', visible.has(figure)
+                && !document.hidden && !motion.matches
+                && button.getAttribute('aria-pressed') !== 'true');
+        });
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) visible.add(entry.target);
+            else visible.delete(entry.target);
+        });
+        sync();
+    }, { threshold: .15 });
+    figures.forEach(figure => {
+        observer.observe(figure);
+        figure.classList.add('is-motion-ready');
+        figure.querySelector('.advisory-motion').addEventListener('click', event => {
+            const button = event.currentTarget;
+            button.setAttribute('aria-pressed', button.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+            sync();
+        });
+    });
+    document.addEventListener('visibilitychange', sync);
+    if (typeof motion.addEventListener === 'function') motion.addEventListener('change', sync);
+    else if (typeof motion.addListener === 'function') motion.addListener(sync);
+    sync();
+}
+initAdvisoryFigures();
+
 // Count after the milestones are clearly in view, and replay on a new visit.
 function initAboutCounters() {
     const group = document.querySelector('.about-facts');

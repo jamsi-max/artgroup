@@ -175,73 +175,233 @@ const langList = {
     //     "en": "Learn more about the organization's services",
     // },
 
-    "services-title" : {
+    "services-eyebrow": {
+        "ru": "АРХИТЕКТУРА · ЭКОНОМИКА · ПРАВО",
+        "en": "ARCHITECTURE · ECONOMICS · LAW"
+    },
+    "services-title": {
         "ru": "Наши услуги",
-        "en": "Our services",
+        "en": "Our services"
     },
-    "services-1-title" : {
-        "ru": "КОНЦЕПЦИЯ (ПРЕДПРОЕКТ)",
-        "en": "CONCEPT (PERDPROJECT)",
+    "services-deck": {
+        "ru": "Понять возможности. Оценить риски. Выбрать решение.",
+        "en": "Understand the potential. Assess the risks. Choose a solution."
     },
-    "services-1-text" : {
-        "ru": "Концепция (буклет с предпроектными наработками) разрабатывается для формирования\
-        архитектурного облика объекта, расчета ТЭП (Технико-экономических показателей),\
-        разработки планировок. Концепция необходима:<br>1. Для понимания инвестором\
-         собственником вариантов развития территории /объектов<br>2. На стадиях прохождения ГЗК\
-          (Градостроительно-земельной комиссии)<br>3. Для получения АГР (Свидетельство об \
-          архитектурно-градостроительном решении), что является обязательным документом для\
-           прохождения Экспертизы.",
-        "en": "The concept (booklet with pre-design developments) is being developed to form\
-        the architectural appearance of the object, the calculation of the TEP (Technical and economic\
-         indicators), the development of layouts. The concept is necessary:<br>1. for understanding\
-          by the investor the owner of the options for the development of the territory\
-           facilities<br>2. at the stages of passing the GPC (Urban Planning and Land Commission)3. to\
-            obtain an AGR (Certificate of architectural and urban planning decision), which is a\
-             mandatory document for passing the Examination",
+    "services-intro": {
+        "ru": "Помогаем инвесторам, девелоперам и собственникам принимать обоснованные решения о недвижимости — перед покупкой объекта, при оценке готового проекта и при выборе сценария развития участка.",
+        "en": "We help investors, developers and property owners make informed real estate decisions — before a purchase, when reviewing an existing project, or when choosing how to develop a site."
     },
-    "services-2-title" : {
-        "ru": "ПРОЕКТНАЯ ДОКУМЕНТАЦИЯ",
-        "en": "PROJECT DOCUMENTATION",
+    "services-1-audience": {
+        "ru": "Инвесторам и покупателям недвижимости",
+        "en": "For investors and property buyers"
     },
-    "services-2-text" : {
-        "ru": "Разработка проектной документации согласно Постановлению Правительства РФ от 16.02.2008\
-         N 87 (ред. от 06.05.2024) «О составе разделов проектной документации и требованиях к их \
-         содержанию»<br>Прохождение государственной или не государственной экспертизы входит в данный\
-          вид услуги.",
-        "en": "Development of project documentation in accordance with the Decree of the Government of\
-         the Russian Federation dated 02/16/2008 N 87 (as amended on 05/06/2024) «On the composition of\
-          sections of project documentation and requirements for their content»<br>Passing a State or\
-           non-state examination is included in this type of service.",
+    "services-1-title": {
+        "ru": "Архитектурный Due Diligence",
+        "en": "Architectural Due Diligence"
     },
-    "services-3-title" : {
-        "ru": "РАБОЧАЯ ДОКУМЕНТАЦИЯ",
-        "en": "WORKING DOCUMENTATION",
+    "services-1-benefit": {
+        "ru": "Понять возможности объекта до покупки.",
+        "en": "Understand a property’s potential before you buy."
     },
-    "services-3-text" : {
-        "ru": "Расширенная документация с учетом всех спецификаций, объемов материалов. Проект,\
-         готовый для выхода на площадку для проведения строительно-монтажных работ.",
-        "en": "Extended documentation taking into account all specifications and volumes of\
-         materials. The project is ready to enter the site for construction and installation work.",
+    "services-1-description": {
+        "ru": "Оцениваете участок, недострой, коммерческую недвижимость, объект под реконструкцию или проект девелопера? Проверим архитектурно-градостроительные возможности и ограничения, чтобы вы понимали, что можно реализовать и какие вопросы важно решить до сделки.",
+        "en": "Considering a site, an unfinished building, commercial property, a property for redevelopment or a developer’s project? We assess the architectural and urban-planning possibilities and constraints, so you understand what could be achieved and which questions need to be resolved before committing."
     },
-    "services-4-title" : {
-        "ru": "СОГЛАСОВАНИЯ ПРОЕКТА",
-        "en": "PROJECT APPROVAL",
+    "services-1-scope": {
+        "ru": "Что анализируем",
+        "en": "What we analyse"
     },
-    "services-4-text" : {
-        "ru": "Сопровождение Заказчика на этапе земельно-правовых отношений, получения ГПЗУ\
-         (Градостроительного плана земельного участка), внесения изменений в ПЗЗ (Правила землепользования\
-          и застройки), получения Технических условий, получения АГР (Свидетельство об \
-          архитектурно-градостроительном решении) и иных документов, необходимых для проектирования и \
-          ввода объекта в эксплуатацию.",
-        "en": "Support of the Customer at the stage of land and legal relations, obtaining a GPP\
-         (Urban planning plan of a land plot), making changes to the GPP (Rules of land use and\
-          development), obtaining Technical Specifications, obtaining an AGR (Certificate of architectural\
-           and urban planning decision) and other documents necessary for the design and commissioning\
-            of the facility.",
+    "services-1-item-1": {
+        "ru": "Исходные данные об объекте и предполагаемый сценарий его использования.",
+        "en": "Available property information and its intended use."
     },
-    "services-1-calc" : {
+    "services-1-item-2": {
+        "ru": "Архитектурные и градостроительные возможности, ограничения и риски.",
+        "en": "Architectural and urban-planning possibilities, constraints and risks."
+    },
+    "services-1-item-3": {
+        "ru": "Вопросы, требующие дополнительной проверки перед покупкой или инвестированием.",
+        "en": "Questions requiring further investigation before a purchase or investment."
+    },
+    "services-1-result-label": {
+        "ru": "Что получаете",
+        "en": "What you receive"
+    },
+    "services-1-result": {
+        "ru": "Аналитическое заключение о возможностях и ограничениях объекта с выводами для принятия инвестиционного решения.",
+        "en": "An analytical report on the property’s possibilities and constraints, with conclusions to inform your investment decision."
+    },
+    "services-1-caption": {
+        "ru": "Возможности и ограничения до сделки",
+        "en": "Possibilities and constraints before purchase"
+    },
+    "services-2-audience": {
+        "ru": "Девелоперам с готовой концепцией или проектом",
+        "en": "For developers with an existing concept or design"
+    },
+    "services-2-title": {
+        "ru": "Проектный аудит девелоперского проекта",
+        "en": "Development project audit"
+    },
+    "services-2-benefit": {
+        "ru": "Найти решения, из-за которых проект теряет эффективность.",
+        "en": "Find the design decisions holding your project back."
+    },
+    "services-2-description": {
+        "ru": "Экономика проекта вызывает вопросы, планировки неэффективны или согласования тормозят движение? Проанализируем существующие решения, выявим риски и предложим варианты оптимизации.",
+        "en": "Are the project economics raising questions, layouts inefficient, or approvals slowing progress? We analyse the existing design decisions, identify risks and propose options for optimisation."
+    },
+    "services-2-scope": {
+        "ru": "Что анализируем",
+        "en": "What we analyse"
+    },
+    "services-2-item-1": {
+        "ru": "Архитектурные решения и градостроительные параметры проекта.",
+        "en": "The project’s architectural design and urban-planning parameters."
+    },
+    "services-2-item-2": {
+        "ru": "Технико-экономические показатели (ТЭП), площади и эффективность планировок.",
+        "en": "Technical and economic indicators (TEP), floor areas and layout efficiency."
+    },
+    "services-2-item-3": {
+        "ru": "Состояние согласований и ограничения, которые могут влиять на реализацию.",
+        "en": "Approval status and constraints that may affect delivery."
+    },
+    "services-2-item-4": {
+        "ru": "Проектные решения, которые могут увеличивать затраты, затягивать сроки или ограничивать потенциал объекта.",
+        "en": "Design decisions that may increase costs, cause delays or limit the property’s potential."
+    },
+    "services-2-result-label": {
+        "ru": "Что получаете",
+        "en": "What you receive"
+    },
+    "services-2-result": {
+        "ru": "Отчёт с выявленными рисками, рекомендациями и вариантами оптимизации — основу для решения, что сохранить, переработать или проверить дополнительно.",
+        "en": "A report setting out identified risks, recommendations and optimisation options — a basis for deciding what to retain, rework or investigate further."
+    },
+    "services-2-caption": {
+        "ru": "Зона внимания → варианты оптимизации",
+        "en": "Area to review → optimisation options"
+    },
+    "services-3-audience": {
+        "ru": "Собственникам участков и территорий под развитие",
+        "en": "For owners of land and sites for development"
+    },
+    "services-3-title": {
+        "ru": "Девелоперский потенциал участка",
+        "en": "Site development potential"
+    },
+    "services-3-benefit": {
+        "ru": "Определить, что строить и как развивать участок.",
+        "en": "Decide what to build and how to develop your site."
+    },
+    "services-3-description": {
+        "ru": "У вас есть земля, но пока нет ясного сценария её использования? Сопоставим возможности участка, градостроительные ограничения и предварительную экономику, чтобы помочь выбрать направление развития.",
+        "en": "Own land but have no clear plan for its use? We compare the site’s potential, urban-planning constraints and preliminary economics to help you choose a development direction."
+    },
+    "services-3-scope": {
+        "ru": "Что прорабатываем",
+        "en": "What we explore"
+    },
+    "services-3-item-1": {
+        "ru": "Характеристики участка, ограничения и градостроительные параметры.",
+        "en": "Site characteristics, constraints and urban-planning parameters."
+    },
+    "services-3-item-2": {
+        "ru": "Варианты использования и функционального зонирования территории.",
+        "en": "Options for land use and functional zoning."
+    },
+    "services-3-item-3": {
+        "ru": "Несколько концептуальных вариантов с технико-экономическими показателями (ТЭП).",
+        "en": "Alternative concepts with technical and economic indicators (TEP)."
+    },
+    "services-3-item-4": {
+        "ru": "Предварительную экономику и риски рассматриваемых сценариев.",
+        "en": "Preliminary economics and risks for the scenarios under consideration."
+    },
+    "services-3-item-5": {
+        "ru": "Дорожную карту реализации выбранного направления.",
+        "en": "A roadmap for implementing the chosen direction."
+    },
+    "services-3-result-label": {
+        "ru": "Что получаете",
+        "en": "What you receive"
+    },
+    "services-3-result": {
+        "ru": "Сравнение вариантов развития участка, концептуальные решения, предварительные экономические ориентиры и дорожную карту — для выбора дальнейших действий.",
+        "en": "A comparison of site development scenarios, conceptual designs, preliminary economic benchmarks and a roadmap — to help you decide your next steps."
+    },
+    "services-3-caption": {
+        "ru": "<span class=\"advisory-caption-group\">ТЭП · Экономика · Риски</span> <span class=\"advisory-caption-group\">Дорожная карта</span>",
+        "en": "<span class=\"advisory-caption-group\">TEP · Economics · Risks</span> <span class=\"advisory-caption-group\">Roadmap</span>"
+    },
+    "services-cta-title": {
+        "ru": "Какое решение нужно вашему объекту?",
+        "en": "What does your property need?"
+    },
+    "services-cta-text": {
+        "ru": "Расскажите об участке, здании или готовом проекте. Обсудим задачу и поможем определить подходящий формат работы.",
+        "en": "Tell us about your site, building or existing project. We will discuss your goals and help identify the right service for your needs."
+    },
+    "services-1-calc": {
         "ru": "Получить предварительную оценку",
-        "en": "Get a Preliminary Estimate",
+        "en": "Request a preliminary assessment"
+    },
+    "services-cta-note": {
+        "ru": "Предварительная оценка помогает определить следующий шаг. Состав исследования, сроки и стоимость обсуждаются индивидуально.",
+        "en": "A preliminary assessment helps define the next step. The scope, timing and cost of the study are agreed individually."
+    },
+    "services-1-visual-title": {
+        "ru": "Объект перед сделкой",
+        "en": "Property before purchase"
+    },
+    "services-1-visual-potential": {
+        "ru": "Возможности",
+        "en": "Potential"
+    },
+    "services-1-visual-constraints": {
+        "ru": "Ограничения",
+        "en": "Constraints"
+    },
+    "services-2-visual-current": {
+        "ru": "Готовый проект",
+        "en": "Existing design"
+    },
+    "services-3-visual-title": {
+        "ru": "Один участок — разные сценарии",
+        "en": "One site — different scenarios"
+    },
+    "services-3-visual-a": {
+        "ru": "Сценарий A",
+        "en": "Scenario A"
+    },
+    "services-3-visual-b": {
+        "ru": "Сценарий B",
+        "en": "Scenario B"
+    },
+    "services-3-visual-c": {
+        "ru": "Сценарий C",
+        "en": "Scenario C"
+    },
+    "services-1-motion-pause": {
+        "ru": "Пауза анимации",
+        "en": "Pause animation"
+    },
+    "services-2-motion-pause": {
+        "ru": "Пауза анимации",
+        "en": "Pause animation"
+    },
+    "services-3-motion-pause": {
+        "ru": "Пауза анимации",
+        "en": "Pause animation"
+    },
+    "services-2-visual-option-a": {
+        "ru": "Вариант A",
+        "en": "Option A"
+    },
+    "services-2-visual-option-b": {
+        "ru": "Вариант B",
+        "en": "Option B"
     },
     "estimate-kicker": {
         "ru": "A.R.T. GROUP · ПРЕДВАРИТЕЛЬНАЯ ОЦЕНКА",
