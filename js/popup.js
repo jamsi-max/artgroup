@@ -9,7 +9,7 @@ const popupNavigation = popup.querySelector('.popup-navigation');
 const popupPrevious = popup.querySelector('.popup-previous');
 const popupNext = popup.querySelector('.popup-next');
 const projectBoxes = Array.from(portfolioItems.querySelectorAll('.portfolio-box'))
-    .filter(box => box.querySelector('h4') && box.querySelector('.read-more-content'));
+    .filter(box => box.dataset.project && box.querySelector('.project-title') && box.querySelector('.project-story'));
 let currentProjectIndex = -1;
 let popupReturnFocus = null;
 
@@ -60,17 +60,20 @@ function closePopup(restoreFocus = true) {
         document.activeElement.blur();
     }
     popup.setAttribute('aria-hidden', 'true');
+    // Stop the embedded player when the panel closes. Its original URL stays
+    // in the source story and is cloned again the next time this case opens.
+    popupBody.querySelectorAll('iframe').forEach(frame => frame.src = 'about:blank');
 }
 
 function fillPopupFrom(box) {
-    const title = box.querySelector('h4');
-    const content = box.querySelector('.read-more-content');
+    const title = box.querySelector('.project-title');
+    const content = box.querySelector('.project-story');
     if (!title || !content) return false;
 
     const body = popupBody;
     currentProjectIndex = projectBoxes.indexOf(box);
 
-    popup.querySelector('h3').textContent = title.textContent;
+    popup.querySelector('#popup-project-title').textContent = title.textContent;
     // Copy only the site's existing project nodes; no external HTML or extra
     // media fetches are introduced. Lazy-loading attributes survive cloning.
     const fragment = document.createDocumentFragment();
@@ -78,7 +81,7 @@ function fillPopupFrom(box) {
     body.textContent = '';
     body.appendChild(fragment);
 
-    const category = box.querySelector('.portfolio-layer > p');
+    const category = box.querySelector('.project-category');
     const subtitle = popup.querySelector('.popup-subtitle');
     subtitle.textContent = category && !category.querySelector('br') ? category.textContent : '';
     subtitle.hidden = !subtitle.textContent.trim();
@@ -89,11 +92,6 @@ function fillPopupFrom(box) {
         (currentProjectIndex + 1) + ' / ' + projectBoxes.length + '. ' + title.textContent;
 
     body.querySelectorAll('a[target="_blank"]').forEach(link => link.relList.add('noopener'));
-    body.querySelectorAll('a[href="#contact"]').forEach(link => {
-        const paragraph = link.closest('p');
-        if (paragraph) paragraph.classList.add('popup-inquiry');
-    });
-
     // Start every project at its beginning. The panel is reused for all of
     // them, and replacing the markup does not reset how far the previous
     // project had been scrolled — so the next one opened part-way down.
@@ -135,16 +133,14 @@ popupNext.addEventListener('click', () => navigatePopup(1));
 updatePopupNavigation();
 
 portfolioItems.addEventListener('click', function (e) {
-    // Resolve the click to its tile rather than testing what was hit. The
-    // previous version compared e.target.className against "portfolio-layer",
-    // which only matched clicks landing on bare overlay — clicking the title
-    // or the description made e.target the <h4>/<p> and nothing happened. How
-    // much bare overlay a tile has depends on how long its text is, so the
-    // whole tile was clickable on some and only the button on others.
-    const box = e.target.closest('.portfolio-box');
+    // Keep the larger tile target as well as a real keyboard-operable button.
+    // Text selection, native summaries and source links retain their behaviour.
+    if (e.target.closest('a, details') || !window.getSelection().isCollapsed) return;
+    const box = e.target.closest('[data-project]');
     if (!box) return;
+    const trigger = box.querySelector('.project-open');
 
-    if (fillPopupFrom(box)) openPopup(box.querySelector('button'));
+    if (fillPopupFrom(box)) openPopup(trigger);
 })
 
 popupCloseIcon.addEventListener('click', () => closePopup());
@@ -188,4 +184,6 @@ document.addEventListener('focusin', function (e) {
         popupCloseIcon.focus({ preventScroll: true });
     }
 });
+// Hide native inline stories only after the dialog bindings are installed.
+portfolioItems.closest('.portfolio').classList.add('portfolio-enhanced');
 // END POPUP BOX

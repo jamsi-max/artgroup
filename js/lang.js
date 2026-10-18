@@ -1,4 +1,1130 @@
 const langList = {
+    // Portfolio: translate leaf nodes so semantic wrappers survive cloning.
+    "work-status": {
+        "ru": "Показано {visible} из {total} проектов",
+        "en": "Showing {visible} of {total} projects"
+    },
+    "work-embankment-lead": {
+        "ru": "Концепция многоуровневой набережной объединяет прогулочные маршруты, общественные функции и подземную инфраструктуру. ART Group выступила инициатором и разработчиком проекта, предложив использовать пространство в границах существующей набережной.",
+        "en": "A multilevel waterfront concept connects walking routes, public uses and underground infrastructure. As initiator and developer, ART Group proposed making use of space within the existing embankment."
+    },
+    "work-embankment-fact-0-label": {
+        "ru": "Место",
+        "en": "Location"
+    },
+    "work-embankment-fact-0": {
+        "ru": "Москва, Краснопресненская набережная, участок 1",
+        "en": "Moscow, Krasnopresnenskaya Embankment, plot 1"
+    },
+    "work-embankment-fact-1-label": {
+        "ru": "Стадия",
+        "en": "Stage"
+    },
+    "work-embankment-fact-1": {
+        "ru": "Концепция развития общественного пространства",
+        "en": "Public-space development concept"
+    },
+    "work-embankment-fact-2-label": {
+        "ru": "Роль ART Group",
+        "en": "ART Group’s role"
+    },
+    "work-embankment-fact-2": {
+        "ru": "Инициатор и разработчик",
+        "en": "Initiator and developer"
+    },
+    "work-embankment-fact-3-label": {
+        "ru": "Разработка",
+        "en": "Design reference"
+    },
+    "work-embankment-fact-3": {
+        "ru": "Пространственно-конструктивная схема, патент № 110766",
+        "en": "Spatial and structural scheme, patent no. 110766"
+    },
+    "work-embankment-image-1": {
+        "ru": "Общий вид многоуровневой набережной со стороны Москвы-реки — концепция",
+        "en": "Multilevel waterfront seen from the Moskva River — concept render"
+    },
+    "work-embankment-scope": {
+        "ru": "Инициативный проект «Многофункциональная общественная зона в границах Набережной Москва-Сити» исследует возможность развивать прибрежную территорию без занятия дополнительной площади и в связи с существующей застройкой.",
+        "en": "The initiative, “Multifunctional public area within the Moscow-City embankment”, explores development within the existing waterfront footprint and in relation to the surrounding buildings."
+    },
+    "work-embankment-solutions-title": {
+        "ru": "Что предусматривает проект",
+        "en": "What the project proposes"
+    },
+    "work-embankment-solutions": {
+        "ru": "<li>Естественное освещение подземных уровней через боковые проёмы в набережной.</li><li>Гостиничные номера, социальную инфраструктуру, кафе и подземный паркинг с возможностью связи с офисными центрами ММДЦ.</li><li>Транспортно-пересадочный узел у водного транспорта и мини-марину.</li><li>Озеленённую прогулочную зону на нижней набережной, объединяющую две парковые территории.</li>",
+        "en": "<li>Daylight for underground levels through openings along the embankment.</li><li>Hotel rooms, social infrastructure, cafés and underground parking with potential connections to the business district’s office centres.</li><li>A transport interchange serving water transport and a small marina.</li><li>A planted lower promenade connecting two park areas.</li>"
+    },
+    "work-embankment-image-2": {
+        "ru": "Кафе и естественное освещение подземного пространства — концепция",
+        "en": "Café and daylight in the underground space — concept render"
+    },
+    "work-embankment-technology": {
+        "ru": "Пространственно-конструктивная схема опирается на патент № 110766. В проекте предусмотрены строительство с воды, сохранение целостности грунта и естественное освещение подземных уровней. Предложенная технология рассчитана на работу без перекладки инженерных сетей и остановки наземного транспорта.",
+        "en": "The spatial and structural scheme is based on patent no. 110766. It provides for construction from the water, preservation of ground integrity and daylight for underground levels. The proposed technology is designed to work without relocating utilities or stopping surface traffic."
+    },
+    "work-embankment-image-3": {
+        "ru": "Внутреннее озеленённое пространство набережной — концепция",
+        "en": "Planted interior space of the waterfront — concept render"
+    },
+    "work-embankment-status-title": {
+        "ru": "Статус проекта",
+        "en": "Project status"
+    },
+    "work-embankment-status": {
+        "ru": "По материалам проекта, в ходе его проработки были получены одобрения на уровне Правительства Москвы и экспертные мнения, а также письмо ПАО «Сбербанк» о готовности частично финансировать проект. Это историческая переписка: она не подтверждает текущее финансирование или реализацию концепции.",
+        "en": "According to the project materials, its development received approvals at Moscow Government level and expert opinions, along with a letter from Sberbank expressing willingness to provide partial financing. This historical correspondence does not establish current financing or implementation of the concept."
+    },
+    "work-embankment-image-4": {
+        "ru": "Общественное пространство с озеленением на нижнем уровне — концепция",
+        "en": "Planted public space at the lower level — concept render"
+    },
+    "work-embankment-contact": {
+        "ru": "Обсудим задачу вашего объекта. <a href=\"#contact\" class=\"popup-link-contact\">Связаться с командой</a>",
+        "en": "Let’s discuss your project. <a href=\"#contact\" class=\"popup-link-contact\">Contact the team</a>"
+    },
+    "work-embankment-press-title": {
+        "ru": "Проект в публикациях",
+        "en": "The project in the press"
+    },
+    "work-embankment-press-note": {
+        "ru": "Публикации отражают обсуждение проекта в тот период; оценки стоимости и инвестиционные заявления относятся к контексту источников.",
+        "en": "These publications reflect discussion at the time. Cost estimates and investment statements belong to the context of their original sources."
+    },
+    "work-imperial-lead": {
+        "ru": "Крыша деловой башни становится темой нового общественного пространства. Концепция предлагает два образных решения для отдыха, деловых встреч и развлечений — с общей для обоих вариантов обзорной площадкой.",
+        "en": "The roof of an office tower is explored as a new public space. The concept offers two design approaches for relaxation, business meetings and leisure, with an observation deck shared by both."
+    },
+    "work-imperial-fact-0-label": {
+        "ru": "Место",
+        "en": "Location"
+    },
+    "work-imperial-fact-0": {
+        "ru": "Москва, ММДЦ «Москва-Сити», башня «Империя»",
+        "en": "Moscow, Moscow-City business district, Imperia Tower"
+    },
+    "work-imperial-fact-1-label": {
+        "ru": "Стадия",
+        "en": "Stage"
+    },
+    "work-imperial-fact-1": {
+        "ru": "Концепция приспособления крыши",
+        "en": "Rooftop adaptation concept"
+    },
+    "work-imperial-fact-2-label": {
+        "ru": "Заказчик",
+        "en": "Client"
+    },
+    "work-imperial-fact-2": {
+        "ru": "ПАО «Сити»",
+        "en": "PJSC City"
+    },
+    "work-imperial-fact-3-label": {
+        "ru": "Формат",
+        "en": "Programme"
+    },
+    "work-imperial-fact-3": {
+        "ru": "Архитектурные практики «Территориум»",
+        "en": "Territorium architectural programme"
+    },
+    "work-imperial-image-1": {
+        "ru": "Поисковые эскизы приспособления крыши башни «Империя»",
+        "en": "Exploratory sketches for the Imperia Tower rooftop"
+    },
+    "work-imperial-task-title": {
+        "ru": "Задача",
+        "en": "Brief"
+    },
+    "work-imperial-task": {
+        "ru": "По заказу ПАО «Сити» ART Group разработала в рамках архитектурных практик «Территориум» концепцию функционального использования крыши башни «Империя». Предложение добавляет к деловой среде сценарии отдыха, встреч и развлечений.",
+        "en": "Commissioned by PJSC City, ART Group developed a rooftop adaptation concept for Imperia Tower as part of the Territorium architectural programme. It adds possibilities for relaxation, meetings and leisure to the business setting."
+    },
+    "work-imperial-image-2": {
+        "ru": "Схемы функционального зонирования крыши башни",
+        "en": "Rooftop functional zoning diagrams"
+    },
+    "work-imperial-options-title": {
+        "ru": "Два решения и общая площадка",
+        "en": "Two approaches and a shared deck"
+    },
+    "work-imperial-options": {
+        "ru": "<li><strong>Imperial crown</strong> — спокойное, уютное пространство в тёплых оттенках.</li><li><strong>Water in the sky</strong> — яркий, динамичный образ и сценарий использования.</li><li>Общая обзорная площадка предусмотрена для обоих вариантов.</li>",
+        "en": "<li><strong>Imperial crown</strong> — a calm, intimate setting in warm tones.</li><li><strong>Water in the sky</strong> — a vivid, dynamic architectural image and visitor experience.</li><li>A shared observation deck is proposed for both approaches.</li>"
+    },
+    "work-imperial-image-3": {
+        "ru": "Концепция спортивных пространств на крыше башни",
+        "en": "Concept for sports spaces on the tower roof"
+    },
+    "work-imperial-image-4": {
+        "ru": "Письмо ПАО «Сити» о концепции приспособления крыши",
+        "en": "PJSC City letter about the rooftop adaptation concept"
+    },
+    "work-imperial-contact": {
+        "ru": "Хотите подробнее рассмотреть решения? <a href=\"#contact\" class=\"popup-link-contact\">Запросить полную концепцию</a>",
+        "en": "Would you like to explore the proposals in detail? <a href=\"#contact\" class=\"popup-link-contact\">Request the full concept</a>"
+    },
+    "work-khamovniki-lead": {
+        "ru": "Паркинг рассматривается как часть городской среды. Концепция оставляет автомобили на четырёх верхних уровнях, а 80% площади первого этажа предлагает отдать пешеходам — связать со сквером и наполнить общественными функциями.",
+        "en": "The parking structure is considered as part of the urban fabric. The concept places cars on four upper levels and proposes dedicating 80% of the ground-floor area to pedestrians, linking it to a green square and public uses."
+    },
+    "work-khamovniki-fact-0-label": {
+        "ru": "Место",
+        "en": "Location"
+    },
+    "work-khamovniki-fact-0": {
+        "ru": "Москва, Хамовники, квартал у улиц Хамовнический Вал, Усачёва и Савельева",
+        "en": "Moscow, Khamovniki, the block by Khamovnichesky Val, Usacheva and Savelyeva streets"
+    },
+    "work-khamovniki-fact-1-label": {
+        "ru": "Стадия",
+        "en": "Stage"
+    },
+    "work-khamovniki-fact-1": {
+        "ru": "Архитектурная концепция",
+        "en": "Architectural concept"
+    },
+    "work-khamovniki-context-title": {
+        "ru": "Городской контекст",
+        "en": "Urban context"
+    },
+    "work-khamovniki-context": {
+        "ru": "На этапе проектирования команда рассматривала квартал у комплекса МНПО «Спектр», гостиницы «Юность», метро «Спортивная» и строившегося ТПУ «Лужники». Тогда увеличение пешеходного потока оценивалось до 3000 человек в час пик — это проектный прогноз того периода, а не замер текущей посещаемости.",
+        "en": "At the design stage, the team studied the block by the Spektr complex, Yunost Hotel, Sportivnaya metro station and the Luzhniki transport interchange then under construction. Peak pedestrian flow was estimated at up to 3,000 people per hour: a forecast from that period, not a measurement of current footfall."
+    },
+    "work-khamovniki-image-1": {
+        "ru": "Фасад и разрез многоуровневого паркинга — проектный чертёж",
+        "en": "Parking structure elevation and section — design drawing"
+    },
+    "work-khamovniki-solutions-title": {
+        "ru": "Идея и решения",
+        "en": "Design ideas"
+    },
+    "work-khamovniki-solutions": {
+        "ru": "Первый этаж предложен как площадь с экологической тематикой: с информационными панелями об энергопотреблении здания и экологических событиях. Связь со сквером даёт возможность предусмотреть детскую игровую комнату для семей сотрудников соседних зданий.",
+        "en": "The ground floor is proposed as a public space with an environmental theme, including information panels on building energy use and environmental events. Its connection to the green square offers scope for a supervised children’s playroom serving families working nearby."
+    },
+    "work-khamovniki-image-2": {
+        "ru": "Схема участка паркинга и прилегающего квартала",
+        "en": "Site plan of the parking structure and surrounding block"
+    },
+    "work-khamovniki-landscape": {
+        "ru": "Концепция рассматривает влияние здания на городскую среду, озеленение фасадов и возможность использования альтернативных источников энергии. В подборе растений предложены можжевельник, кизильник и бересклет. Озеленение становится частью архитектурного образа и экологического замысла здания.",
+        "en": "The concept considers the building’s relationship with the city, planted facades and the potential use of alternative energy sources. The proposed planting includes juniper, cotoneaster and euonymus. Greenery becomes part of the building’s architectural identity and environmental intent."
+    },
+    "work-khamovniki-contact": {
+        "ru": "Хотите подробнее рассмотреть решения? <a href=\"#contact\" class=\"popup-link-contact\">Запросить полную концепцию</a>",
+        "en": "Would you like to explore the proposals in detail? <a href=\"#contact\" class=\"popup-link-contact\">Request the full concept</a>"
+    },
+    "work-khamovniki-source-title": {
+        "ru": "Рассмотрение Архсовета",
+        "en": "Architectural Council review"
+    },
+    "work-khamovniki-source": {
+        "ru": "Обсуждение проекта представлено в публикации Архсовета Москвы.",
+        "en": "The project’s review is covered in this Moscow Architectural Council publication."
+    },
+    "work-teatralnaya-lead": {
+        "ru": "Проект связывает пешеходные маршруты исторического центра с благоустройством двора Заиконоспасского монастыря. Архитектурное решение направлено на раскрытие пространства перед храмом и восстановление исторического объёма.",
+        "en": "The project connects pedestrian routes through the historic centre with improvements to the Zaikonospassky Monastery courtyard. It aims to open up the space in front of the church and recreate a historic building volume."
+    },
+    "work-teatralnaya-fact-0-label": {
+        "ru": "Место",
+        "en": "Location"
+    },
+    "work-teatralnaya-fact-0": {
+        "ru": "Москва, Театральная площадь — Никольская улица — ГУМ",
+        "en": "Moscow, Teatralnaya Square — Nikolskaya Street — GUM"
+    },
+    "work-teatralnaya-fact-1-label": {
+        "ru": "Работа",
+        "en": "Scope"
+    },
+    "work-teatralnaya-fact-1": {
+        "ru": "Проект реконструкции перехода и регенерации квартала",
+        "en": "Passage reconstruction and urban-block regeneration design"
+    },
+    "work-teatralnaya-fact-2-label": {
+        "ru": "Год разработки",
+        "en": "Design year"
+    },
+    "work-teatralnaya-fact-2": {
+        "ru": "1995",
+        "en": "1995"
+    },
+    "work-teatralnaya-fact-3-label": {
+        "ru": "Заказчик на момент разработки",
+        "en": "Client at the time of design"
+    },
+    "work-teatralnaya-fact-3": {
+        "ru": "Компания «Старград»",
+        "en": "Stargrad"
+    },
+    "work-teatralnaya-fact-4-label": {
+        "ru": "Соавтор",
+        "en": "Coauthor"
+    },
+    "work-teatralnaya-fact-4": {
+        "ru": "Л. Л. Павлов, «Моспроект-2»",
+        "en": "L. L. Pavlov, Mosproekt-2"
+    },
+    "work-teatralnaya-image-1": {
+        "ru": "План перехода и двора Заиконоспасского монастыря",
+        "en": "Plan of the passage and Zaikonospassky Monastery courtyard"
+    },
+    "work-teatralnaya-task-title": {
+        "ru": "Задача",
+        "en": "Brief"
+    },
+    "work-teatralnaya-task": {
+        "ru": "Проект разработан ART Group совместно с Л. Л. Павловым из «Моспроекта-2» в 1995 году. Заказчиком была компания «Старград», на тот момент правообладатель двора. Требовалось связать Театральную площадь и метро с Никольской улицей, ГУМом и Красной площадью, учитывая перепад высот более 5 м и пешеходные потоки, изученные при проектировании.",
+        "en": "ART Group developed the design with L. L. Pavlov of Mosproekt-2 in 1995. The client was Stargrad, which held rights to the courtyard at that time. The brief connected Teatralnaya Square and the metro with Nikolskaya Street, GUM and Red Square, addressing a level difference of over 5 m and pedestrian flows studied during design."
+    },
+    "work-teatralnaya-image-2": {
+        "ru": "Схема пешеходных связей исторического квартала",
+        "en": "Pedestrian connections through the historic block"
+    },
+    "work-teatralnaya-solutions-title": {
+        "ru": "Архитектурное решение",
+        "en": "Architectural response"
+    },
+    "work-teatralnaya-solutions": {
+        "ru": "Для раскрытия пространства перед Спасским собором предложили перенести вентиляционный киоск на 25 м в сторону Монетного двора — к месту утраченного здания Бурсы у строения № 4. Решение совмещало воссоздание исторического объёма с освобождением парадного двора и дополнительным входом со стороны монастыря.",
+        "en": "To open the space in front of the cathedral, the team proposed moving the ventilation kiosk 25 m towards the Mint, to the site of the lost Bursa building near building no. 4. The proposal combined recreation of a historic volume with a clearer forecourt and an additional entrance from the monastery side."
+    },
+    "work-teatralnaya-uses": {
+        "ru": "Освобождённое пространство рассматривалось для церковных и общественных функций, включая торговлю церковной утварью и выставочно-конгрессную площадку. Это варианты использования в рамках предложения, а не сведения о действующих объектах.",
+        "en": "The released space was considered for church-related and public uses, including religious-goods retail and an exhibition and conference venue. These are proposed uses, not descriptions of operating facilities."
+    },
+    "work-teatralnaya-image-3": {
+        "ru": "Разрез перехода между Театральной площадью и Никольской улицей",
+        "en": "Section through the passage between Teatralnaya Square and Nikolskaya Street"
+    },
+    "work-teatralnaya-status-title": {
+        "ru": "Проект и последующая реализация",
+        "en": "Design and subsequent implementation"
+    },
+    "work-teatralnaya-status": {
+        "ru": "В исходных материалах указано, что в 2002 году проект прошёл государственную экспертизу и был согласован Архитектурным и Общественным советами. Позднейшие решения при реализации отличались от согласованного проекта; представленные здесь материалы показывают авторское предложение.",
+        "en": "The source materials state that the design passed state expert review in 2002 and was approved by the Architectural and Public Councils. Later implementation decisions differed from the approved design; the materials shown here present the authors’ proposal."
+    },
+    "work-teatralnaya-image-4": {
+        "ru": "План квартала с предлагаемыми пешеходными связями",
+        "en": "Block plan showing proposed pedestrian connections"
+    },
+    "work-teatralnaya-routes-title": {
+        "ru": "Связи исторического квартала",
+        "en": "Connections through the historic block"
+    },
+    "work-teatralnaya-routes": {
+        "ru": "Концепция 1995 года также рассматривала регенерацию части квартала в зоне утраченного при строительстве метро участка Китайгородской стены — около 100 м, по исходным материалам. Пешеходно-туристические маршруты предполагалось связать с дворами от Казанского собора до Лубянки и с направлением к Иверским воротам.",
+        "en": "The 1995 concept also considered regeneration of part of the block around a section of the Kitay-gorod wall lost during metro construction, approximately 100 m according to the source materials. Proposed walking and visitor routes connected courtyards from Kazan Cathedral to Lubyanka and towards the Iversky Gates."
+    },
+    "work-teatralnaya-quarter": {
+        "ru": "В маршрут включались Монетный двор, РГГУ, Николо-Греческий монастырь, «Никольская, 17», театр Покровского, бывший «Славянский базар» и Третьяковский проезд. Предполагалась реновация домовладений 7–9 и школы Осипа Бове. Эти названия описывают контекст проекта того времени.",
+        "en": "The route included the Mint, the Russian State University for the Humanities, the Nikolo-Greek Monastery, Nikolskaya 17, the Pokrovsky Theatre, the former Slavyansky Bazar and Tretyakovsky Passage. Renovation of properties 7–9 and Osip Bove’s school was proposed. These names describe the project’s historical context."
+    },
+    "work-teatralnaya-contact": {
+        "ru": "Хотите подробнее рассмотреть решения? <a href=\"#contact\" class=\"popup-link-contact\">Запросить полную концепцию</a>",
+        "en": "Would you like to explore the proposals in detail? <a href=\"#contact\" class=\"popup-link-contact\">Request the full concept</a>"
+    },
+    "work-happy-lead": {
+        "ru": "Жилой квартал спроектирован с вниманием к повседневной жизни и отношениям между соседями. Концепция объединяет архитектуру и сценарии развития местного сообщества на основе подхода «Счастливый город».",
+        "en": "The residential quarter is designed around everyday life and relationships between neighbours. Its concept combines architecture with ways to support a local community, informed by the Happy City approach."
+    },
+    "work-happy-fact-0-label": {
+        "ru": "Место",
+        "en": "Location"
+    },
+    "work-happy-fact-0": {
+        "ru": "Ярославль",
+        "en": "Yaroslavl"
+    },
+    "work-happy-fact-1-label": {
+        "ru": "Стадия",
+        "en": "Stage"
+    },
+    "work-happy-fact-1": {
+        "ru": "Концепция жилого квартала",
+        "en": "Residential-quarter concept"
+    },
+    "work-happy-fact-2-label": {
+        "ru": "Заказчик",
+        "en": "Client"
+    },
+    "work-happy-fact-2": {
+        "ru": "ИК «Альтернатива»",
+        "en": "Investment company Alternativa"
+    },
+    "work-happy-fact-3-label": {
+        "ru": "Автор подхода «Счастливый город»",
+        "en": "Author of the Happy City approach"
+    },
+    "work-happy-fact-3": {
+        "ru": "Елизавета Морозова",
+        "en": "Elizaveta Morozova"
+    },
+    "work-happy-image-1": {
+        "ru": "Вечернее общественное пространство ЖК «Будь счастлив!» — концепция",
+        "en": "Evening public space in Be Happy! quarter — concept render"
+    },
+    "work-happy-approach-title": {
+        "ru": "Архитектура и сообщество",
+        "en": "Architecture and community"
+    },
+    "work-happy-approach": {
+        "ru": "Концепция учитывает авторский подход <a href=\"#director1\" class=\"popup-link-contact\">Елизаветы Морозовой</a> «Счастливый город», изложенный в книге «PRO счастье». Собранные в ней исследования и примеры жилых кварталов служат основой для размышления о повседневном опыте жителей.",
+        "en": "The concept draws on <a href=\"#director1\" class=\"popup-link-contact\">Elizaveta Morozova’s</a> Happy City approach, described in her book PRO Happiness. Its collected research and examples of residential quarters inform thinking about residents’ everyday experience."
+    },
+    "work-happy-image-2": {
+        "ru": "Зелёные балконы и двор жилого квартала — концепция",
+        "en": "Green balconies and residential courtyard — concept render"
+    },
+    "work-happy-community": {
+        "ru": "Помимо архитектурного образа, команда прорабатывает сценарии развития сообщества внутри квартала: как люди знакомятся, общаются и находят занятия по интересам. Пространство рассматривается через потребности людей, которые будут здесь жить, работать, растить детей и отдыхать.",
+        "en": "Alongside the architectural identity, the team explores how a community can develop within the quarter: how people meet, communicate and find shared interests. Space is considered through the needs of people who will live, work, raise children and relax here."
+    },
+    "work-happy-image-3": {
+        "ru": "Ландшафт и скульптурная форма во дворе — концепция",
+        "en": "Landscape and sculptural form in the courtyard — concept render"
+    },
+    "work-happy-task-title": {
+        "ru": "Повседневная жизнь квартала",
+        "en": "Everyday life in the quarter"
+    },
+    "work-happy-task": {
+        "ru": "При переезде в новый квартал жителям нужны понятные способы общения, совместные занятия и возможность участвовать в жизни своего дома. Концепция уделяет внимание этим потребностям, чтобы поддержать добрососедские отношения и конструктивное взаимодействие.",
+        "en": "People moving into a new quarter need clear ways to communicate, shared activities and opportunities to take part in their building’s life. The concept addresses these needs to support neighbourly relationships and constructive interaction."
+    },
+    "work-happy-image-4": {
+        "ru": "Скульптурная композиция среди жилых корпусов — концепция",
+        "en": "Sculptural composition among residential buildings — concept render"
+    },
+    "work-happy-people": {
+        "ru": "«Счастливый город» соединяет общие социально-архитектурные принципы с индивидуальными потребностями и интересами местных сообществ. В проекте этот подход служит ориентиром для пространственных решений и сценариев общения между соседями.",
+        "en": "Happy City connects social and architectural principles with individual needs and the interests of local communities. In this project, the approach guides spatial design and ways for neighbours to interact."
+    },
+    "work-happy-image-5": {
+        "ru": "Пешеходное пространство с озеленением и подсветкой — концепция",
+        "en": "Planted and illuminated pedestrian space — concept render"
+    },
+    "work-happy-image-6": {
+        "ru": "Вечерний двор жилого квартала — концепция",
+        "en": "Residential courtyard at night — concept render"
+    },
+    "work-happy-image-original-cover": {
+        "ru": "ЖК «Будь счастлив!»",
+        "en": "Be Happy! residential quarter"
+    },
+    "work-happy-contact": {
+        "ru": "Хотите подробнее рассмотреть решения? <a href=\"#contact\" class=\"popup-link-contact\">Запросить полную концепцию</a>",
+        "en": "Would you like to explore the proposals in detail? <a href=\"#contact\" class=\"popup-link-contact\">Request the full concept</a>"
+    },
+    "work-cube-lead": {
+        "ru": "Конкурсная концепция пространства для размышления о себе. Зеркальные, преломляющиеся поверхности превращают движение внутри куба в личный опыт восприятия.",
+        "en": "A competition proposal for a space of self-reflection. Mirrored, refracting surfaces turn movement through the cube into a personal experience of perception."
+    },
+    "work-cube-fact-0-label": {
+        "ru": "Место",
+        "en": "Location"
+    },
+    "work-cube-fact-0": {
+        "ru": "Рим, площадь перед музеем современного искусства",
+        "en": "Rome, square in front of a contemporary art museum"
+    },
+    "work-cube-fact-1-label": {
+        "ru": "Стадия",
+        "en": "Stage"
+    },
+    "work-cube-fact-1": {
+        "ru": "Конкурсное предложение по благоустройству",
+        "en": "Public-space competition proposal"
+    },
+    "work-cube-image-1": {
+        "ru": "Конкурсный планшет «Психологического куба»: идея и интерьер",
+        "en": "Psychological Cube competition board: idea and interior"
+    },
+    "work-cube-idea-title": {
+        "ru": "Идея и восприятие",
+        "en": "Idea and perception"
+    },
+    "work-cube-idea": {
+        "ru": "Предложение разработано для конкурса по благоустройству площади перед музеем современного искусства в Риме. Внутрь куба можно войти: зеркальные стены и преломления становятся метафорой многогранности внутреннего мира человека.",
+        "en": "The proposal was developed for a competition to improve the square in front of a contemporary art museum in Rome. Visitors can enter the cube, where mirrored walls and refractions become a metaphor for the many facets of a person’s inner world."
+    },
+    "work-cube-image-2": {
+        "ru": "Конкурсный планшет «Психологического куба»: формы и виды",
+        "en": "Psychological Cube competition board: forms and views"
+    },
+    "work-cube-contact": {
+        "ru": "Хотите подробнее рассмотреть решения? <a href=\"#contact\" class=\"popup-link-contact\">Запросить полную концепцию</a>",
+        "en": "Would you like to explore the proposals in detail? <a href=\"#contact\" class=\"popup-link-contact\">Request the full concept</a>"
+    },
+    "work-magadan-lead": {
+        "ru": "Проектная документация для реконструкции родильного дома под гинекологическое отделение на 50 коек и строительства акушерского корпуса на 100 коек.",
+        "en": "Design documentation for converting a maternity hospital into a 50-bed gynaecology department and constructing a 100-bed obstetrics building."
+    },
+    "work-magadan-fact-0-label": {
+        "ru": "Место",
+        "en": "Location"
+    },
+    "work-magadan-fact-0": {
+        "ru": "Магадан, ул. Наровчатого, д. 1",
+        "en": "1 Narovchatogo Street, Magadan"
+    },
+    "work-magadan-fact-1-label": {
+        "ru": "Вид работ",
+        "en": "Scope"
+    },
+    "work-magadan-fact-1": {
+        "ru": "Проектная документация",
+        "en": "Design documentation"
+    },
+    "work-magadan-fact-2-label": {
+        "ru": "Заказчик",
+        "en": "Client"
+    },
+    "work-magadan-fact-2": {
+        "ru": "ЗАО «Медторгсервис»",
+        "en": "CJSC Medtorgservice"
+    },
+    "work-magadan-image-1": {
+        "ru": "Проект акушерского корпуса в Магадане — вид фасада",
+        "en": "Proposed obstetrics building in Magadan — facade view"
+    },
+    "work-magadan-image-2": {
+        "ru": "Протяжённый фасад медицинского корпуса — проект",
+        "en": "Long elevation of the healthcare building — proposal"
+    },
+    "work-magadan-image-3": {
+        "ru": "Общий вид родильного дома в Магадане — проект",
+        "en": "Overall view of the maternity hospital in Magadan — proposal"
+    },
+    "work-magadan-contact": {
+        "ru": "Обсудим задачу вашего объекта. <a href=\"#contact\" class=\"popup-link-contact\">Связаться с командой</a>",
+        "en": "Let’s discuss your project. <a href=\"#contact\" class=\"popup-link-contact\">Contact the team</a>"
+    },
+    "work-rublevskoe-lead": {
+        "ru": "Концепция многофункционального комплекса с физкультурно-оздоровительным центром — выразительный архитектурный акцент на въезде в Москву. Вертикальный ритм фасадов и складчатая поверхность формируют узнаваемый силуэт.",
+        "en": "A concept for a mixed-use complex with a sports and wellness centre creates an architectural marker at Moscow’s entrance. Vertical facade rhythms and a folded surface shape its distinctive silhouette."
+    },
+    "work-rublevskoe-fact-0-label": {
+        "ru": "Место",
+        "en": "Location"
+    },
+    "work-rublevskoe-fact-0": {
+        "ru": "Москва, Рублёвское шоссе, вл. 68–70",
+        "en": "Moscow, Rublevskoye Highway, property 68–70"
+    },
+    "work-rublevskoe-fact-1-label": {
+        "ru": "Стадия",
+        "en": "Stage"
+    },
+    "work-rublevskoe-fact-1": {
+        "ru": "Архитектурная концепция",
+        "en": "Architectural concept"
+    },
+    "work-rublevskoe-fact-2-label": {
+        "ru": "Заказчик",
+        "en": "Client"
+    },
+    "work-rublevskoe-fact-2": {
+        "ru": "ООО «СтройВест»",
+        "en": "StroyVest LLC"
+    },
+    "work-rublevskoe-fact-3-label": {
+        "ru": "Соавторы",
+        "en": "Coauthors"
+    },
+    "work-rublevskoe-fact-3": {
+        "ru": "ART Group и архитектурное бюро Асадовых",
+        "en": "ART Group and Asadov Architectural Bureau"
+    },
+    "work-rublevskoe-image-1": {
+        "ru": "Многофункциональный комплекс на Рублёвском шоссе — вид сверху",
+        "en": "Mixed-use complex on Rublevskoye Highway — aerial render"
+    },
+    "work-rublevskoe-idea-title": {
+        "ru": "Архитектурное решение",
+        "en": "Architectural response"
+    },
+    "work-rublevskoe-idea": {
+        "ru": "Задача концепции — создать заметный ориентир на въезде в столицу с Рублёвского шоссе. Проект разработан совместно с архитектурным бюро Асадовых.",
+        "en": "The concept seeks to create a visible landmark at Moscow’s entrance from Rublevskoye Highway. It was developed jointly with Asadov Architectural Bureau."
+    },
+    "work-rublevskoe-image-2": {
+        "ru": "Пешеходное пространство у фасада комплекса — концепция",
+        "en": "Pedestrian space along the complex facade — concept render"
+    },
+    "work-rublevskoe-facade": {
+        "ru": "Панорамное остекление сочетается с вытянутым вертикальным ритмом облицовки оттенков слоновой кости и золотистого металла. Складка главного фасада добавляет динамику и формирует в верхней части объёмный М-образный силуэт — архитектурный знак въезда в Москву.",
+        "en": "Panoramic glazing is combined with elongated vertical cladding rhythms in ivory and golden-metal tones. A fold in the main facade adds movement and forms an M-shaped upper silhouette, conceived as an architectural marker of the entrance to Moscow."
+    },
+    "work-rublevskoe-image-3": {
+        "ru": "Складчатый фасад и силуэт комплекса — концепция",
+        "en": "Folded facade and silhouette of the complex — concept render"
+    },
+    "work-rublevskoe-contact": {
+        "ru": "Хотите подробнее рассмотреть решения? <a href=\"#contact\" class=\"popup-link-contact\">Запросить полную концепцию</a>",
+        "en": "Would you like to explore the proposals in detail? <a href=\"#contact\" class=\"popup-link-contact\">Request the full concept</a>"
+    },
+    "work-ear-eye-lead": {
+        "ru": "Архитектурная инсталляция посвящена опыту людей с одновременным нарушением слуха и зрения. Контраст внешней формы и наполненного светом интерьера помогает привлечь внимание к теме восприятия и доступности.",
+        "en": "An architectural installation explores the experience of people with combined hearing and sight loss. The contrast between its exterior form and light-filled interior draws attention to perception and accessibility."
+    },
+    "work-ear-eye-fact-0-label": {
+        "ru": "Площадка",
+        "en": "Venue"
+    },
+    "work-ear-eye-fact-0": {
+        "ru": "Garden Fest, внутренний двор ЦДХ, Москва",
+        "en": "Garden Fest, Central House of Artists courtyard, Moscow"
+    },
+    "work-ear-eye-fact-1-label": {
+        "ru": "Формат",
+        "en": "Format"
+    },
+    "work-ear-eye-fact-1": {
+        "ru": "Экспозиция Международной выставки архитектуры и дизайна, 27–31 мая",
+        "en": "Exhibit at the International Architecture and Design Exhibition, 27–31 May"
+    },
+    "work-ear-eye-fact-2-label": {
+        "ru": "Заказчик",
+        "en": "Client"
+    },
+    "work-ear-eye-fact-2": {
+        "ru": "Президентский Фонд поддержки слепоглухих «Со-единение»",
+        "en": "Presidential Foundation for the Support of the Deafblind, So-edinenie"
+    },
+    "work-ear-eye-fact-3-label": {
+        "ru": "Участники",
+        "en": "Contributors"
+    },
+    "work-ear-eye-fact-3": {
+        "ru": "A.R.T. group — Елизавета Морозова; архитектурная лаборатория «Абстракт студио» — Михаил Тюрин; фонд «Со-единение»",
+        "en": "A.R.T. group — Elizaveta Morozova; Abstract Studio architectural laboratory — Mikhail Tyurin; So-edinenie Foundation"
+    },
+    "work-ear-eye-image-1": {
+        "ru": "Скульптурные изображения уха, глаза и мозга в инсталляции",
+        "en": "Sculptural ear, eye and brain in the installation"
+    },
+    "work-ear-eye-exhibition-title": {
+        "ru": "Выставка и участники",
+        "en": "Exhibition and contributors"
+    },
+    "work-ear-eye-exhibition": {
+        "ru": "Инсталляцию представили 27–31 мая на Международной выставке архитектуры и дизайна, на площадке Garden Fest во внутреннем дворе ЦДХ. Организаторами стали A.R.T. group под руководством Елизаветы Морозовой, фонд «Со-единение» и архитектурная лаборатория «Абстракт студио» под руководством Михаила Тюрина.",
+        "en": "The installation was presented on 27–31 May at the International Architecture and Design Exhibition, at Garden Fest in the Central House of Artists courtyard. Organisers were A.R.T. group led by Elizaveta Morozova, the So-edinenie Foundation and the Abstract Studio architectural laboratory led by Mikhail Tyurin."
+    },
+    "work-ear-eye-metaphor": {
+        "ru": "Внешний образ объединяет тёмный куб и крупные изображения мозга, глаза и уха. Авторы обращаются к художественным ассоциациям с «Чёрным квадратом» Малевича и образами Дали, чтобы вызвать интерес к теме восприятия.",
+        "en": "The exterior brings together a dark cube and large representations of a brain, an eye and an ear. The authors draw on artistic associations with Malevich’s Black Square and Dalí’s imagery to engage visitors with perception."
+    },
+    "work-ear-eye-image-2": {
+        "ru": "Павильон «Ухоглаз» на выставке — вид снаружи",
+        "en": "Ear-Eye pavilion at the exhibition — exterior view"
+    },
+    "work-ear-eye-interior-title": {
+        "ru": "Внутреннее пространство",
+        "en": "Interior experience"
+    },
+    "work-ear-eye-interior": {
+        "ru": "Светлый интерьер, яркие изображения и голография контрастируют с внешней формой. Для авторов стекло и свет — художественная метафора богатства внутреннего мира человека и приглашение внимательнее отнестись к разным способам восприятия.",
+        "en": "A bright interior, vivid imagery and holography contrast with the exterior. For the authors, glass and light are an artistic metaphor for the richness of a person’s inner world and an invitation to consider different ways of perceiving."
+    },
+    "work-ear-eye-equipment": {
+        "ru": "В экспозицию вошли специализированные технические средства для людей с нарушениями слуха и зрения, в том числе для тех, кто живёт с этими особенностями с рождения или приобрёл их позднее. Оборудование дополняло художественную часть практической темой доступности.",
+        "en": "The exhibition included specialist assistive equipment for people with hearing and sight loss, whether present from birth or acquired later. The equipment complemented the artistic presentation with practical questions of accessibility."
+    },
+    "work-ear-eye-image-3": {
+        "ru": "Вход в выставочный павильон «Ухоглаз»",
+        "en": "Entrance to the Ear-Eye exhibition pavilion"
+    },
+    "work-ear-eye-plans-title": {
+        "ru": "Дальнейшие намерения",
+        "en": "Further intentions"
+    },
+    "work-ear-eye-plans": {
+        "ru": "Организаторы заявляли намерение создать рабочую группу для разработки и внедрения стандартов, учитывающих потребности людей с одновременным нарушением слуха и зрения. В материалах проекта это обозначено как план, без подтверждения его последующей реализации.",
+        "en": "The organisers expressed an intention to establish a working group to develop and introduce standards addressing the needs of people with combined hearing and sight loss. The project materials describe this as a plan and do not confirm its subsequent implementation."
+    },
+    "work-ear-eye-image-4": {
+        "ru": "Светлый интерьер павильона и экспозиция фонда «Со-единение»",
+        "en": "Light-filled pavilion interior and So-edinenie exhibition"
+    },
+    "work-ear-eye-contact": {
+        "ru": "Обсудим задачу вашего объекта. <a href=\"#contact\" class=\"popup-link-contact\">Связаться с командой</a>",
+        "en": "Let’s discuss your project. <a href=\"#contact\" class=\"popup-link-contact\">Contact the team</a>"
+    },
+    "work-iksha-lead": {
+        "ru": "Ландшафтная концепция зоны климатотерапии объединяет места отдыха, прогулок и семейного досуга в существующем рельефе. Плавные формы, тёплый свет и озеленение поддерживают спокойный характер пространства.",
+        "en": "A landscape concept for a climatotherapy area places relaxation, walking and family leisure spaces within the existing terrain. Flowing forms, warm light and planting support a calm atmosphere."
+    },
+    "work-iksha-fact-0-label": {
+        "ru": "Место",
+        "en": "Location"
+    },
+    "work-iksha-fact-0": {
+        "ru": "Московская область, г. п. Мытищи, деревня Большая Чёрная, ул. Онежская, вл. 1/33",
+        "en": "Moscow Region, Mytishchi urban settlement, Bolshaya Chyornaya village, Onezhskaya Street, property 1/33"
+    },
+    "work-iksha-fact-1-label": {
+        "ru": "Стадия",
+        "en": "Stage"
+    },
+    "work-iksha-fact-1": {
+        "ru": "Концепция ландшафтного планирования",
+        "en": "Landscape planning concept"
+    },
+    "work-iksha-fact-2-label": {
+        "ru": "Объект",
+        "en": "Facility"
+    },
+    "work-iksha-fact-2": {
+        "ru": "Зона климатотерапии филиала — учебно-оздоровительного центра «Икша»",
+        "en": "Climatotherapy area at the Iksha training and wellness centre branch"
+    },
+    "work-iksha-fact-3-label": {
+        "ru": "Заказчик",
+        "en": "Client"
+    },
+    "work-iksha-fact-3": {
+        "ru": "ФГБУ «МФК Минфина России»",
+        "en": "ФГБУ «МФК Минфина России» (Russian Ministry of Finance multifunctional complex)"
+    },
+    "work-iksha-image-1": {
+        "ru": "Беседка зоны отдыха «Икша» — ландшафтная концепция",
+        "en": "Gazebo in the Iksha relaxation area — landscape concept"
+    },
+    "work-iksha-landscape-title": {
+        "ru": "Архитектура ландшафта",
+        "en": "Landscape approach"
+    },
+    "work-iksha-landscape": {
+        "ru": "Минималистичные элементы и плавные линии повторяют изгибы водного пространства. Концепция использует существующий рельеф и зелёные насаждения, чтобы вписать новые места отдыха в природное окружение.",
+        "en": "Minimal elements and flowing lines echo the water’s contours. The concept uses the existing terrain and planting to integrate new relaxation spaces into the natural setting."
+    },
+    "work-iksha-image-2": {
+        "ru": "Декинг-патио и места отдыха у воды — концепция",
+        "en": "Deck patio and relaxation spaces by the water — concept"
+    },
+    "work-iksha-zones-title": {
+        "ru": "Что предусмотрено проектом",
+        "en": "What the project proposes"
+    },
+    "work-iksha-zones": {
+        "ru": "<li>Декинг-патио с группами шезлонгов для солнечных ванн и точечными светильниками тёплого света.</li><li>Зону BBQ с тремя беседками в естественной низине юго-восточной части участка, среди существующих насаждений.</li><li>Детскую площадку в верхней части участка: пространство под навесом и многоуровневую песочницу с малыми архитектурными формами.</li><li>Ограждение вдоль береговой линии с озеленением.</li>",
+        "en": "<li>Deck patios with groups of sun loungers and warm accent lighting.</li><li>A BBQ area with three gazebos in a natural hollow in the southeast of the site, among existing planting.</li><li>A children’s area on the upper part of the site, with a sheltered space and a multilevel sandpit with small play structures.</li><li>A planted fence following the shoreline.</li>"
+    },
+    "work-iksha-image-3": {
+        "ru": "Прогулочные зоны и озеленение «Икши» — концепция",
+        "en": "Walking areas and planting at Iksha — concept"
+    },
+    "work-iksha-intent": {
+        "ru": "Расположение зон призвано поддержать спокойный семейный отдых у воды. Ограждение следует изгибам береговой линии, а озеленение помогает вписать его в ландшафт.",
+        "en": "The arrangement of the areas is intended to support calm family recreation by the water. The fence follows the shoreline’s curves, with planting helping it sit within the landscape."
+    },
+    "work-iksha-contact": {
+        "ru": "Хотите подробнее рассмотреть решения? <a href=\"#contact\" class=\"popup-link-contact\">Запросить полную концепцию</a>",
+        "en": "Would you like to explore the proposals in detail? <a href=\"#contact\" class=\"popup-link-contact\">Request the full concept</a>"
+    },
+    "work-zhukovka-lead": {
+        "ru": "Общественно-деловой центр сочетает дерево, натуральный камень и стекло в авторской трактовке «Hi-tech country». Ступенчатый силуэт сохраняет трёхэтажный масштаб уличного фасада, а четвёртый этаж связан с эксплуатируемой кровлей.",
+        "en": "The public and business centre combines wood, natural stone and glass in the authors’ Hi-tech country approach. Its stepped silhouette keeps a three-storey scale along the street, with a fourth floor opening onto a usable roof terrace."
+    },
+    "work-zhukovka-fact-0-label": {
+        "ru": "Место",
+        "en": "Location"
+    },
+    "work-zhukovka-fact-0": {
+        "ru": "Жуковка, Рублёвское шоссе",
+        "en": "Zhukovka, Rublevskoye Highway"
+    },
+    "work-zhukovka-fact-1-label": {
+        "ru": "Статус",
+        "en": "Status"
+    },
+    "work-zhukovka-fact-1": {
+        "ru": "Реализован",
+        "en": "Completed"
+    },
+    "work-zhukovka-fact-2-label": {
+        "ru": "Год реализации",
+        "en": "Completion year"
+    },
+    "work-zhukovka-fact-2": {
+        "ru": "2006",
+        "en": "2006"
+    },
+    "work-zhukovka-image-1": {
+        "ru": "Вход и отделка фасада центра в Жуковке — фотография",
+        "en": "Entrance and facade materials of the Zhukovka centre — photograph"
+    },
+    "work-zhukovka-access-title": {
+        "ru": "Место и доступ",
+        "en": "Setting and access"
+    },
+    "work-zhukovka-access": {
+        "ru": "Центр расположен в Жуковке, с левой стороны Рублёвского шоссе, и выходит на площадь. Доступ организован с двух сторон, включая подъезд с объездной дороги; перед входом предусмотрена парковка. В исходном описании соседями названы ресторан «Дача» и автосалон — это контекст на момент создания проекта.",
+        "en": "The centre stands on the left side of Rublevskoye Highway in Zhukovka, facing a square. Access is provided from two sides, including the bypass road, with parking in front. The source description names the Dacha restaurant and a car showroom as neighbours; this reflects the setting at the time of the project."
+    },
+    "work-zhukovka-image-2": {
+        "ru": "Уличный фасад центра в Жуковке — фотография",
+        "en": "Street facade of the Zhukovka centre — photograph"
+    },
+    "work-zhukovka-design-title": {
+        "ru": "«Hi-tech country»",
+        "en": "Hi-tech country"
+    },
+    "work-zhukovka-design": {
+        "ru": "Дерево, натуральный камень и стекло связывают общественно-деловую функцию с загородным окружением. Входной проход с дизайнерской перголой и стеклянным козырьком создаёт переход от площади к интерьеру.",
+        "en": "Wood, natural stone and glass connect the public and business programme with its country setting. An entrance passage with a designed pergola and glass canopy creates a transition from the square to the interior."
+    },
+    "work-zhukovka-section": {
+        "ru": "Ступенчатая композиция сохраняет трёхэтажный уличный фасад; четвёртый этаж выходит на эксплуатируемую кровлю. Интерьеры раскрываются через остекление на всю высоту, а центром композиции служит треугольная лестница с верхним световым фонарём.",
+        "en": "The stepped composition maintains a three-storey street facade, while the fourth floor opens onto a usable roof. Full-height glazing brings light into the interiors, and a triangular staircase with a skylight forms the compositional centre."
+    },
+    "work-zhukovka-image-3": {
+        "ru": "Остекление и лестница центра в Жуковке — фотография",
+        "en": "Glazing and staircase at the Zhukovka centre — photograph"
+    },
+    "work-zhukovka-completion-title": {
+        "ru": "Реализация",
+        "en": "Completion"
+    },
+    "work-zhukovka-completion": {
+        "ru": "Объект реализован в 2006 году. Исходные материалы описывают комплекс общественных и деловых функций, в том числе банк; это сведения о проекте, а не перечень действующих сегодня арендаторов.",
+        "en": "The building was completed in 2006. The source materials describe public and business uses, including a bank; this is project information rather than a list of current tenants."
+    },
+    "work-zhukovka-contact": {
+        "ru": "Обсудим задачу вашего объекта. <a href=\"#contact\" class=\"popup-link-contact\">Связаться с командой</a>",
+        "en": "Let’s discuss your project. <a href=\"#contact\" class=\"popup-link-contact\">Contact the team</a>"
+    },
+    "work-eyebrow": {
+        "ru": "ПРОЕКТЫ И КОНЦЕПЦИИ",
+        "en": "PROJECTS &amp; CONCEPTS"
+    },
+    "portfolio-heading": {
+        "ru": "Наши работы",
+        "en": "Our work"
+    },
+    "work-intro": {
+        "ru": "От городских пространств до отдельных зданий — проекты, в которых архитектурная идея отвечает задачам места и людей.",
+        "en": "From urban spaces to individual buildings: projects that connect architectural ideas with the needs of places and people."
+    },
+    "work-embankment-open-label": {
+        "ru": "Смотреть проект: Многофункциональная набережная «Москва-Сити»",
+        "en": "View project: Moscow-City multifunctional embankment"
+    },
+    "work-embankment-image-cover": {
+        "ru": "Многофункциональная набережная «Москва-Сити»",
+        "en": "Moscow-City multifunctional embankment"
+    },
+    "work-embankment-category": {
+        "ru": "Городское пространство · Москва",
+        "en": "Urban space · Moscow"
+    },
+    "work-embankment-title": {
+        "ru": "Многофункциональная набережная «Москва-Сити»",
+        "en": "Moscow-City multifunctional embankment"
+    },
+    "work-embankment-summary": {
+        "ru": "Многоуровневая набережная объединяет прогулочные маршруты, общественные функции и подземную инфраструктуру в границах существующего пространства.",
+        "en": "A multilevel embankment brings walking routes, public uses and underground infrastructure into the existing waterfront footprint."
+    },
+    "work-embankment-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-embankment-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-imperial-open-label": {
+        "ru": "Смотреть проект: «Территориум» — башня «Империя»",
+        "en": "View project: Territorium — Imperia Tower"
+    },
+    "work-imperial-image-cover": {
+        "ru": "«Территориум» — башня «Империя»",
+        "en": "Territorium — Imperia Tower"
+    },
+    "work-imperial-category": {
+        "ru": "Общественное пространство · Москва",
+        "en": "Public space · Moscow"
+    },
+    "work-imperial-title": {
+        "ru": "«Территориум» — башня «Империя»",
+        "en": "Territorium — Imperia Tower"
+    },
+    "work-imperial-summary": {
+        "ru": "Крыша деловой башни как пространство для отдыха, встреч и новых городских впечатлений.",
+        "en": "The roof of an office tower reimagined as a place to relax, meet and experience the city."
+    },
+    "work-imperial-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-imperial-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-khamovniki-open-label": {
+        "ru": "Смотреть проект: Многоуровневый паркинг в Хамовниках",
+        "en": "View project: Multilevel parking in Khamovniki"
+    },
+    "work-khamovniki-image-cover": {
+        "ru": "Многоуровневый паркинг в Хамовниках",
+        "en": "Multilevel parking in Khamovniki"
+    },
+    "work-khamovniki-category": {
+        "ru": "Городская инфраструктура · Москва",
+        "en": "Urban infrastructure · Moscow"
+    },
+    "work-khamovniki-title": {
+        "ru": "Многоуровневый паркинг в Хамовниках",
+        "en": "Multilevel parking in Khamovniki"
+    },
+    "work-khamovniki-summary": {
+        "ru": "Четыре верхних уровня для автомобилей и общественное пространство на первом этаже, связанное со сквером и пешеходными маршрутами.",
+        "en": "Four upper parking levels and a public ground floor connected to a green square and pedestrian routes."
+    },
+    "work-khamovniki-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-khamovniki-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-teatralnaya-open-label": {
+        "ru": "Смотреть проект: Переход от «Театральной» к ГУМу",
+        "en": "View project: Passage from Teatralnaya to GUM"
+    },
+    "work-teatralnaya-image-cover": {
+        "ru": "Переход от «Театральной» к ГУМу",
+        "en": "Passage from Teatralnaya to GUM"
+    },
+    "work-teatralnaya-category": {
+        "ru": "Историческая среда · Москва",
+        "en": "Historic setting · Moscow"
+    },
+    "work-teatralnaya-title": {
+        "ru": "Переход от «Театральной» к ГУМу",
+        "en": "Passage from Teatralnaya to GUM"
+    },
+    "work-teatralnaya-summary": {
+        "ru": "Пешеходные маршруты исторического центра и благоустройство двора Заиконоспасского монастыря — в одном архитектурном решении.",
+        "en": "An architectural proposal connecting historic-centre pedestrian routes with improvements to the Zaikonospassky Monastery courtyard."
+    },
+    "work-teatralnaya-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-teatralnaya-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-happy-open-label": {
+        "ru": "Смотреть проект: ЖК «Будь счастлив!»",
+        "en": "View project: Be Happy! residential quarter"
+    },
+    "work-happy-image-cover": {
+        "ru": "ЖК «Будь счастлив!»",
+        "en": "Be Happy! residential quarter"
+    },
+    "work-happy-category": {
+        "ru": "Жилая среда · Ярославль",
+        "en": "Residential environment · Yaroslavl"
+    },
+    "work-happy-title": {
+        "ru": "ЖК «Будь счастлив!»",
+        "en": "Be Happy! residential quarter"
+    },
+    "work-happy-summary": {
+        "ru": "Жилой квартал с вниманием к повседневной жизни: архитектура и сценарии развития местного сообщества.",
+        "en": "A residential quarter shaped around everyday life, combining architecture with ways to support a local community."
+    },
+    "work-happy-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-happy-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-cube-open-label": {
+        "ru": "Смотреть проект: «Психологический куб»",
+        "en": "View project: Psychological Cube"
+    },
+    "work-cube-image-cover": {
+        "ru": "«Психологический куб»",
+        "en": "Psychological Cube"
+    },
+    "work-cube-category": {
+        "ru": "Конкурсная концепция · Рим",
+        "en": "Competition proposal · Rome"
+    },
+    "work-cube-title": {
+        "ru": "«Психологический куб»",
+        "en": "Psychological Cube"
+    },
+    "work-cube-summary": {
+        "ru": "Пространство для размышления о себе: зеркальные поверхности превращают движение внутри куба в личный опыт восприятия.",
+        "en": "A space for self-reflection, where mirrored surfaces turn movement through the cube into a personal experience of perception."
+    },
+    "work-cube-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-cube-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-magadan-open-label": {
+        "ru": "Смотреть проект: Родильный дом в Магадане",
+        "en": "View project: Maternity hospital in Magadan"
+    },
+    "work-magadan-image-cover": {
+        "ru": "Родильный дом в Магадане",
+        "en": "Maternity hospital in Magadan"
+    },
+    "work-magadan-category": {
+        "ru": "Медицинская архитектура · Магадан",
+        "en": "Healthcare architecture · Magadan"
+    },
+    "work-magadan-title": {
+        "ru": "Родильный дом в Магадане",
+        "en": "Maternity hospital in Magadan"
+    },
+    "work-magadan-summary": {
+        "ru": "Проектная документация для реконструкции под гинекологическое отделение на 50 коек и строительства акушерского корпуса на 100 коек.",
+        "en": "Design documentation for conversion to a 50-bed gynaecology department and construction of a 100-bed obstetrics building."
+    },
+    "work-magadan-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-magadan-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-rublevskoe-open-label": {
+        "ru": "Смотреть проект: МФК на Рублёвском шоссе",
+        "en": "View project: Mixed-use complex on Rublevskoye Highway"
+    },
+    "work-rublevskoe-image-cover": {
+        "ru": "МФК на Рублёвском шоссе",
+        "en": "Mixed-use complex on Rublevskoye Highway"
+    },
+    "work-rublevskoe-category": {
+        "ru": "Многофункциональный комплекс · Москва",
+        "en": "Mixed-use development · Moscow"
+    },
+    "work-rublevskoe-title": {
+        "ru": "МФК на Рублёвском шоссе",
+        "en": "Mixed-use complex on Rublevskoye Highway"
+    },
+    "work-rublevskoe-summary": {
+        "ru": "Архитектурный акцент на въезде в Москву: вертикальный ритм фасадов и складчатая поверхность формируют узнаваемый силуэт.",
+        "en": "An architectural marker at Moscow’s entrance, with vertical facade rhythms and a folded surface shaping a distinctive silhouette."
+    },
+    "work-rublevskoe-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-rublevskoe-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-ear-eye-open-label": {
+        "ru": "Смотреть проект: Инсталляция «Ухоглаз»",
+        "en": "View project: Ear-Eye installation"
+    },
+    "work-ear-eye-image-cover": {
+        "ru": "Инсталляция «Ухоглаз»",
+        "en": "Ear-Eye installation"
+    },
+    "work-ear-eye-category": {
+        "ru": "Архитектурная инсталляция · Москва",
+        "en": "Architectural installation · Moscow"
+    },
+    "work-ear-eye-title": {
+        "ru": "Инсталляция «Ухоглаз»",
+        "en": "Ear-Eye installation"
+    },
+    "work-ear-eye-summary": {
+        "ru": "Контраст внешней формы и наполненного светом интерьера привлекает внимание к опыту людей с одновременным нарушением слуха и зрения.",
+        "en": "A contrast between exterior form and a light-filled interior draws attention to the experience of people with combined hearing and sight loss."
+    },
+    "work-ear-eye-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-ear-eye-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-iksha-open-label": {
+        "ru": "Смотреть проект: Учебно-оздоровительный центр «Икша»",
+        "en": "View project: Iksha training and wellness centre"
+    },
+    "work-iksha-image-cover": {
+        "ru": "Учебно-оздоровительный центр «Икша»",
+        "en": "Iksha training and wellness centre"
+    },
+    "work-iksha-category": {
+        "ru": "Ландшафтная концепция · Подмосковье",
+        "en": "Landscape concept · Moscow Region"
+    },
+    "work-iksha-title": {
+        "ru": "Учебно-оздоровительный центр «Икша»",
+        "en": "Iksha training and wellness centre"
+    },
+    "work-iksha-summary": {
+        "ru": "Места отдыха, прогулок и семейного досуга вписаны в существующий рельеф зоны климатотерапии.",
+        "en": "Spaces for relaxation, walks and family leisure follow the existing terrain of a climatotherapy area."
+    },
+    "work-iksha-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-iksha-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-zhukovka-open-label": {
+        "ru": "Смотреть проект: Общественно-деловой центр в Жуковке",
+        "en": "View project: Public and business centre in Zhukovka"
+    },
+    "work-zhukovka-image-cover": {
+        "ru": "Общественно-деловой центр в Жуковке",
+        "en": "Public and business centre in Zhukovka"
+    },
+    "work-zhukovka-category": {
+        "ru": "Общественно-деловой центр · Жуковка",
+        "en": "Public and business centre · Zhukovka"
+    },
+    "work-zhukovka-title": {
+        "ru": "Общественно-деловой центр в Жуковке",
+        "en": "Public and business centre in Zhukovka"
+    },
+    "work-zhukovka-summary": {
+        "ru": "Дерево, натуральный камень и стекло в авторской трактовке «Hi-tech country». Реализован в 2006 году.",
+        "en": "Wood, natural stone and glass in the authors’ Hi-tech country approach. Completed in 2006."
+    },
+    "work-zhukovka-open": {
+        "ru": "Смотреть проект",
+        "en": "View project"
+    },
+    "work-zhukovka-fallback": {
+        "ru": "Подробнее о проекте",
+        "en": "Read the project"
+    },
+    "work-more": {
+        "ru": "Ещё работы",
+        "en": "More projects"
+    },
+
     "nav-menu-1" : {
         "ru": "главная",
         "en": "home",
@@ -505,110 +1631,10 @@ const langList = {
         "ru": "Наши партнёры",
         "en": "Our partners",
     },
-    "portfolio-heading" : {
-        "ru": "Наши работы",
-        "en": "Portfolio",
-    },
-    "load-more-btn" : {
-        "ru": "Ещё работы",
-        "en": "More work",
-    },
 
 
-    "portfolio-1-title" : {
-        "ru": "Концепция ЖК «Будь счастлив!»",
-        "en": "The concept of the complex «Be happy!»",
-    },
-    "portfolio-1-text-1" : {
-        "ru": "Проект жилого комплекса",
-        "en": "Residential complex project",
-    },
-    "portfolio-1-text-2" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-1-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-1-subtext-1" : {
-        "ru": "<b>Концепция ЖК «Будь счастлив!»</b>",
-        "en": "<b>The concept of the residential complex «Be happy!»</b>",
-    },
-    "portfolio-1-subtext-2" : {
-        "ru": "<b>Адрес объекта:</b> г. Ярославль",
-        "en": "<b>The address of the object:</b> Yaroslavl",
-    },
-    "portfolio-1-subtext-3" : {
-        "ru": "<b>Заказчик: ИК «Альтернатива»</b>",
-        "en": "<b>Customer: «Alternative»</b>",
-    },
-    "portfolio-1-subtext-4" : {
-        "ru": "Концепция разработана с учетом авторской методики генерального директора ООО «АРТ групп» <b><a href='#director1' class='popup-link-contact'>Елизаветы Морозовой</a></b> «Счастливый город», основанный на книге «PRO счастье», в которой собрано множество научных данных, исследований и подходов мировых аналогов по строительству жилых кварталах, в которых люди чувствуют себя более счастливыми и реализованными.",
-        "en": "The concept was developed taking into account the author's methodology of the General Director of ART Group LLC <b><a href='#director1' class='popup-link-contact'>Elizaveta Morozova</a></b> «Happy City», based on the book «PRO happiness», which contains There is a lot of scientific data, research and approaches of world analogues for the construction of residential neighborhoods in which people feel happier and more fulfilled.",
-    },
-    "portfolio-1-subtext-5" : {
-        "ru": "Наш подход базируется не только на создании качественной и элегантной архитектуры, но и на сценариях развития сообщества внутри квартала, что, на наш взгляд может стать на первое место в иерархии комфортного проживания людей",
-        "en": "Our approach is based not only on creating high-quality and elegant architecture, but also on scenarios for the development of a community within a quarter, which, in our opinion, can take the first place in the hierarchy of comfortable living for people",
-    },
-    "portfolio-1-subtext-6" : {
-        "ru": "Одна из основных проблем любого жилого квартала, как старой , так и новой формации, сталкивается с одними и теми же проблемами: люди, переезжая в свои квартиры, вечно чем-то недовольны, в чатах жителей наблюдается множество негатива, несмотря на то, что архитектура зданий, красиво создает градостроительный образ, словно повторяя 3 модель, нарисованную в концепции",
-        "en": "One of the main problems of any residential quarter, both old and new formations, faces the same problems: people moving into their apartments are always dissatisfied with something, there is a lot of negativity in residents' chats, despite the fact that the architecture of buildings beautifully creates an urban image, as if repeating 3 the model drawn in the concept",
-    },
-    "portfolio-1-subtext-7" : {
-        "ru": "Но мы говорим, в первую очередь о людях, которые будут в этой архитектуре жить, любить, воспитывать людей, создавать бизнесы, гулять , наслаждаться жизнью. Для нас важно минимизировать отрицательный результат межличностного взаимодействия, который может появиться в процессе эксплуатации объекта",
-        "en": "But we are talking, first of all, about people who will live in this architecture, love, educate people, create businesses, walk, enjoy life. It is important for us to minimize the negative result of interpersonal interaction that may occur during the operation of the facility",
-    },
-    "portfolio-1-subtext-8" : {
-        "ru": "Концепция «Счастливый город» базируется как на общих, собранных нами, принципах социально-архитектурного кода, а также и частных потребностей человека, являющегося создателем и созидателем общества в целом и местных комьюнити, формирующимися согласно интересам отдельных групп",
-        "en": "The concept of a «Happy City» is based both on the general principles of the socio-architectural code that we have collected, as well as on the particular needs of a person who is the creator and creator of society as a whole and local communities that are formed according to the interests of individual groups",
-    },
-    "portfolio-1-subtext-9" : {
-        "ru": "<b>При желании ознакомиться с полной концепцией, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you want to get acquainted with the full concept, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
 
 
-    "portfolio-2-title" : {
-        "ru": "Многофунцкиональная набережная «Москва-Сити»",
-        "en": "Multi-functional embankment «Moscow City»",
-    },
-    "portfolio-2-text" : {
-        "ru": "Проект реконструкции",
-        "en": "Reconstruction project",
-    },
-    "portfolio-2-subtext" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-2-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-2-subtext-1" : {
-        "ru": "Компания «АРТ групп» является инициатором и разработчиком проекта «Многофункциональная общественная зона в границах Набережной Москва-Сити» по адресу г. Москва Краснопресненская набережная уч. 1",
-        "en": "The ART Group company is the initiator and developer of the project «Multifunctional public zone within the boundaries of the Moscow City Embankment» at the address Krasnopresnenskaya 1, Moscow",
-    },
-    "portfolio-2-subtext-2" : {
-        "ru": "Концепция организации подземного многоуровневого пространства в габаритах Набережной не занимает дополнительной площади, вписывается в существующую архитектурную застройку. В предложении разработана оптимальная пространственно-конструктивная схема (патент № 110766), не нарушающая целостности грунта, предусматривающая естественное освещение за счет боковых проемов в набережной, на которой расположены площади для размещения гостиничных номеров, социальной инфраструктуры, ТПУ в районе водного транспорта, мини-мариной, площади для размещения кафе подземного паркинга с возможностью соединения с существующим подземным пространством офисных центров ММДЦ «Москва-Сити». Проект предусматривает также объединение двух парковых зон за счет создания озелененной прогулочной зоны на нижней набережно",
-        "en": "The concept of organizing an underground multi-level space in the dimensions of the Embankment does not take up additional space, fits into the existing architectural development. The proposal has developed an optimal spatial and structural scheme (patent No. 110766) that does not violate the integrity of the soil, providing natural lighting due to side openings in the embankment, on which there are areas for hotel rooms, social infrastructure, TPU in the area of water transport, a mini-marina, an area for underground parking cafes with the possibility of connection with the existing underground space of the Moscow-City MMDC office centers. The project also provides for the unification of two park areas by creating a green walking area on the lower embankment",
-    },
-    "portfolio-2-subtext-3" : {
-        "ru": "Запатентованная технология строительства с воды не требуют перекладки инженерных сетей, а также остановки транспорта наземной части.",
-        "en": "The patented technology of construction from the water does not require the re-laying of engineering networks, as well as stopping the transport of the land part.",
-    },
-    "portfolio-2-subtext-4" : {
-        "ru": "Проект получил ряд одобрений на уровне Правительства Москвы и экспертного мнения, получено письмо от ПАО «Сбербанк» о готовности частичного финансирования проекта.",
-        "en": "The project has received a number of approvals at the level of the Moscow Government and expert opinion, and a letter has been received from Sberbank PJSC on the readiness of partial financing of the project.",
-    },
-    "portfolio-2-subtext-5" : {
-        "ru": "<b>Если Вы хотите более подробно ознакомиться с проектом или принять в нем участие, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you want to learn more about the project or take part in it, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
-    "portfolio-2-subtext-6" : {
-        "ru": "О проекте в средствах массовой информации",
-        "en": "About the project in the media",
-    },
     "portfolio-2-subtext-7" : {
         "ru": "Какой может стать набережная ММДЦ «Москва-Сити»",
         "en": "What can the embankment of the MIBC «Moscow City» become?",
@@ -642,112 +1668,8 @@ const langList = {
         "en": "This is an initiative project of the company's creator and architect Mikhail Tyurin, all initial investments are being made by ART Group – we have already invested three million dollars",
     },
 
-    "portfolio-3-title" : {
-        "ru": "Проект «Территориум» башня «Империя»",
-        "en": "The «Territorium» project «Empire Tower»",
-    },
-    "portfolio-3-subtext" : {
-        "ru": "Концепция приспособления крыши",
-        "en": "Roof fitting concept",
-    },
-    "portfolio-3-subtext-1" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-3-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-3-subtext-2" : {
-        "ru": "ООО «АРТ групп» по заказу ПАО «Сити» разработало в рамках архитектурных практик «Территориум» концепцию приспособления крыши башни «Империя» в ММДЦ «Сити» с целью для функционального использования под рекреацию, деловые встречи, развлечения",
-        "en": "ART Group LLC, commissioned by PJSC City, has developed, within the framework of architectural practices of «Territorium», the concept of adapting the roof of the «Empire» Tower to the MMDC «City» in order for functional use for recreation, business meetings, entertainment",
-    },
-    "portfolio-3-subtext-3" : {
-        "ru": "Концепция предусматривает 3 варианта развития площадки:",
-        "en": "The concept provides for 3 options for the development of the site:",
-    },
-    "portfolio-3-subtext-4" : {
-        "ru": "&#8226; Вариант 1: «Imperial crown» - спокойный, уютный формат в теплых оттенках",
-        "en": "&#8226; Option 1: «Imperial crown» - a calm, cozy format in warm shades",
-    },
-    "portfolio-3-subtext-5" : {
-        "ru": "&#8226; Вариант 2: «Water in the sky» - яркий динамичный, как с точки зрения конечного потребителя, так и архитектуры",
-        "en": "&#8226; Option 2: «Water in the sky» is bright and dynamic, both from the point of view of the end user and architecture",
-    },
-    "portfolio-3-subtext-6" : {
-        "ru": "&#8226; Общая обзорная площадка для обоих вариантов",
-        "en": "&#8226; A common observation deck for both options",
-    },
-    "portfolio-3-subtext-7" : {
-        "ru": "<b>При желании ознакомиться с полной концепцией, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you want to get acquainted with the full concept, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
 
-    "portfolio-4-title" : {
-        "ru": "Конкурсный проект в Риме",
-        "en": "Competition project in Rome",
-    },
-    "portfolio-4-subtext" : {
-        "ru": "«Психологический куб»",
-        "en": "The Psychological Cube",
-    },
-    "portfolio-4-subtext-1" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-4-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-4-subtext-2" : {
-        "ru": "Конкурс Захи Хаддид на благоустройство площади музея современного искусства в Риме.",
-        "en": "Zaha Haddid's competition for the landscaping of the square of the Museum of Modern Art in Rome.",
-    },
-    "portfolio-4-subtext-3" : {
-        "ru": "Основная идея проекта – дать возможность человеку поразмышлять, а кто он на самом деле.<br>В Куб можно зайти и оказаться среди зеркальных, преломляющихся стен , словно грани души.",
-        "en": "The main idea of the project is to give a person the opportunity to reflect on who he really is.<br>You can enter the Cube and find yourself among the mirrored, refracting walls, like the facets of the soul.",
-    },
-    "portfolio-4-subtext-4" : {
-        "ru": "<b>При желании ознакомиться с полной концепцией, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you want to get acquainted with the full concept, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
 
-    "portfolio-5-title" : {
-        "ru": "Проект родильного дома в г. Магадане",
-        "en": "The project of the maternity hospital in Magadan",
-    },
-    "portfolio-5-subtext" : {
-        "ru": "Реконструкция объекта",
-        "en": "Reconstruction of the facility",
-    },
-    "portfolio-5-subtext-1" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-5-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-5-subtext-2" : {
-        "ru": "Реконструкция родильного дома в г. Магадане под гинекологическое отделение на 50 коек со строительством акушерского корпуса на 100 коек",
-        "en": "Reconstruction of a maternity hospital in Magadan for a gynecological department with 50 beds with the construction of an obstetric building with 100 beds",
-    },
-    "portfolio-5-subtext-3" : {
-        "ru": "<b>Адрес:</b> г. Магадан, ул. Наровчатого, д.1",
-        "en": "<b>Address:</b> Magadan, Narovchatogo str., 1",
-    },
-    "portfolio-5-subtext-4" : {
-        "ru": "<b>Вид работ:</b> Проектная документация.",
-        "en": "<b>Type of work:</b> Project documentation.",
-    },
-    "portfolio-5-subtext-5" : {
-        "ru": "<b>Заказчик:</b> ЗАО «Медторгсервис»",
-        "en": "<b>Customer:</b>Medtorgservice",
-    },
-    "portfolio-5-subtext-6" : {
-        "ru": "<b>Если вы хотите подробнее узнать о проекте, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you want to learn more about the project, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
 
     // "portfolio-6-title" : {
     //     "ru": "МФУ в Строгино",
@@ -778,233 +1700,10 @@ const langList = {
     //     "en": "<b>If you want to learn more about the project, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
     // },
 
-    "portfolio-7-title" : {
-        "ru": "МФК на Рублевском шоссе",
-        "en": "IFC on Rublevskoye highway",
-    },
-    "portfolio-7-subtext" : {
-        "ru": "Мультифункциональный жилой комплекс",
-        "en": "Multifunctional residential complex",
-    },
-    "portfolio-7-subtext-1" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-7-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-7-subtext-2" : {
-        "ru": "<b>Концепция Многофункционального комплекса с ФОК по адресу: г. Москва, Рублевское ш., вл. 68-70</b>",
-        "en": "<b>The concept of a multifunctional complex with a FOK at the address: Moscow, Rublevskoe sh., vl. 68-70</b>",
-    },
-    "portfolio-7-subtext-3" : {
-        "ru": "<b>Заказчик: ООО «СтройВест»</b>",
-        "en": "<b>Customer: StroyVest LLC</b>",
-    },
-    "portfolio-7-subtext-4" : {
-        "ru": "Главной идеей архитектурных решений многофункционального комплекса становится создание яркого акцентного здания, маркирующего въезд в столицу с Рублёвского шоссе.",
-        "en": "The main idea of the architectural solutions of the multifunctional complex is the creation of a bright accent building marking the entrance to the capital from Rublevsky highway.",
-    },
-    "portfolio-7-subtext-5" : {
-        "ru": "Сочетание в отделке фасадов панорамного остекления с вытянутыми вертикальными ритмами облицовки оттенков слоновой кости и золотистого металла, создают образ легкого современного здания. “Складка” поверхности главного фасада добавляет зданию динамику и формирует в верхней части объемный силуэт, напоминающий букву «М», — таким образом, все здание работает как хорошо заметный въездной знак в Москву",
-        "en": "The combination of panoramic glazing in the facades with elongated vertical rhythms of ivory and golden metal cladding creates the image of a light modern building. The 'fold' of the surface of the main facade adds dynamics to the building and forms a three—dimensional silhouette resembling the letter 'M' in the upper part - thus, the entire building works as a well-visible entrance sign to Moscow",
-    },
-    "portfolio-7-subtext-6" : {
-        "ru": "Концепция разработана совместно с архитектурным бюро Асадовых",
-        "en": "The concept was developed jointly with the Asadov Architectural Bureau",
-    },
-    "portfolio-7-subtext-7" : {
-        "ru": "<b>При желании ознакомиться с полной концепцией, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you want to get acquainted with the full concept, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
 
-    "portfolio-8-title" : {
-        "ru": "Архитектурная инсталляция «Ухоглаз»",
-        "en": "Architectural installation «Ukhoglaz»",
-    },
-    "portfolio-8-subtext" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-8-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-8-subtext-2" : {
-        "ru": "<b>Архитектурная инсталляция «Ухоглаз»</b>",
-        "en": "<b>Architectural installation «Ukhoglaz»</b>",
-    },
-    "portfolio-8-subtext-3" : {
-        "ru": "<b>Заказчик: Президентский Фонд поддержки слепоглухих «Со-единение»</b>",
-        "en": "<b>Customer: The Presidential Foundation for the Support of the Deafblind «So-unity»</b>",
-    },
-    "portfolio-8-subtext-4" : {
-        "ru": "Актуальную в наше время проблему слепоглухоты рассмотрели и представили для общественности в рамках Международной выставки архитектуры и дизайна, которая проходила с 27 по 31 мая. Выставка состоялась на площадке Garden Fest во внутреннем дворе ЦДХ, ее организаторами стали Управляющая компания «A.R.T. group», под руководством Елизаветы Морозовой, Фонд поддержки слепоглухих «Со-единение»,, а также Архитектурная лаборатория «Абстракт студио» под руководством Михаила Тюрина.",
-        "en": "The current problem of deafblindness was considered and presented to the public within the framework of the International Exhibition of Architecture and Design, which took place from May 27 to 31. The exhibition took place at the Garden Fest site in the courtyard of the Central House of Artists, it was organized by the Management Company A.R.T. group, led by Elizaveta Morozova, the Foundation for the Support of the Deaf-Blind «So-unity», as well as the Architectural Laboratory «Abstract Studio» under the leadership of Mikhail Tyurin.",
-    },
-    "portfolio-8-subtext-5" : {
-        "ru": "Новая инсталляция представляла собой объединение архитектурных, дизайнерских и художественных начал в современной обработке. Визуально образом выставочного павильона представил собой необычный контраст специфического и даже пугающего облика с весьма гармоничной средой интерьера. На первый взгляд этот павильон очень напоминает «Черный квадрат» Малевича, выполненный в трехмерном пространстве. Сверху он дополнен внушительных размеров изображениями мозга, глаза и уха – словно с картин Дали",
-        "en": "The new installation was a combination of architectural, design and artistic principles in modern processing. Visually, the image of the exhibition pavilion presented an unusual contrast of a specific and even frightening appearance with a very harmonious interior environment. At first glance, this pavilion is very similar to Malevich's «Black Square», made in three-dimensional space. From above, it is complemented by impressive images of the brain, eye and ear – as if from paintings Given",
-    },
-    "portfolio-8-subtext-6" : {
-        "ru": "Таким нестандартным решением архитекторы попытались привлечь внимание граждан к проблеме, которая касается очень многих, и заодно постарались продумать пути решения этой проблемы. Внутренняя часть павильона оказывается абсолютно иной – это яркие изображения, большое количество света и обилие голографии. Это словно наглядно демонстрирует, что слепоглухие люди непреодолимым образом отделены от внешней среды и заключены в свой внутренний мир. В состав экспозиции также вошли различные изделия из сферы специализированного оборудования для лиц с ограниченными физическими возможностями",
-        "en": "With such a non-standard solution, the architects tried to draw the attention of citizens to a problem that concerns a lot of people, and at the same time tried to think of ways to solve this problem. The interior of the pavilion turns out to be completely different – these are bright images, a lot of light and an abundance of holography. It seems to clearly demonstrate that deafblind people are irresistibly separated from the external environment and enclosed in their inner world. The exposition also includes various products from the field of specialized equipment for people with disabilities",
-    },
-    "portfolio-8-subtext-7" : {
-        "ru": "Подобные технологические изделия делают жизни слепоглухих более простой и комфортной. Пользоваться ими могут как те, что не видит и не слышит с самого рождения, так и люди, потерявшие зрение и слух по разным обстоятельства",
-        "en": "Such technological products make life easier and more comfortable for the deafblind. They can be used by those who do not see or hear from birth, as well as people who have lost their sight and hearing due to various circumstances",
-    },
-    "portfolio-8-subtext-8" : {
-        "ru": "Слепоглухота тесным образом связана с мозгом, поскольку ядра зрительного нерва находятся в затылочной доле мозга. Ухо и глаз являются своеобразными средствами для восприятия сознания, поэтому в проекте они играют весьма большую роль. Сам куб, выполненный из стекла, обозначает собой легкость и свет – наличие у человека духа и души, вне зависимости от его ограниченных физических возможностей. Внутри куба находится большой и сокрытый душевный мир, более глубокий, чем внешняя среда. С помощью такого проекта организаторы намерены создать рабочую группу, которая займется разработкой стандартов для слепоглухих и их внедрению в жизнь. Также эти стандарты будут полезны и для зрячеслышащих людей, уверены организаторы данной выставки",
-        "en": "Deafblindness is closely related to the brain, since the nuclei of the optic nerve are located in the occipital lobe of the brain. The ear and eye are a kind of means for perceiving consciousness, so they play a very important role in the project. The cube itself, made of glass, stands for lightness and light – the presence of a person's spirit and soul, regardless of his limited physical abilities. Inside the cube there is a large and hidden spiritual world, deeper than the external environment. With the help of such a project, the organizers intend to create a working group that will develop standards for the deafblind and their implementation. These standards will also be useful for sighted people, the organizers of this exhibition are sure",
-    },
-    "portfolio-8-subtext-9" : {
-        "ru": "Любимый слоган компании «АРТ групп» - «от абстрактного к конкретному» как обозначает Ильенков в своем одноименном труде, что это является идеальной моделью творения. Один из крупных исследователей в области метапсихологии Рише писал, что мысли одного человека самым неведомым образом передаются мыслям других случайных людей. Это доказывает наличие невидимой связи между всеми нами. И именно в этом лаборатория видит максимально положительные моменты развития современной архитектуры в мире – направляемые и формируемые студией мысленные и энергетические потоки другие случайные люди смогут воспринимать как своеобразный сигнал, понятный и доступный исключительно им одним. Поэтому достаточно часто лаборатория становится своеобразным “законодателем мод”, архитектурных тенденций и новых направлений, которые начинаются с обычных идей",
-        "en": "The favorite slogan of the ART Group company is «from the abstract to the concrete», as Ilyenkov means in his work of the same name, that this is an ideal model of creation. One of the major researchers in the field of metapsychology, Richet, wrote that the thoughts of one person are transmitted in the most unknown way to the thoughts of other random people. This proves that there is an invisible connection between all of us. And it is in this that the laboratory sees the most positive aspects of the development of modern architecture in the world – other random people will be able to perceive the mental and energy flows directed and formed by the studio as a kind of signal, understandable and accessible only to them. Therefore, quite often the laboratory becomes a kind of “trendsetter”, architectural trends and new directions that begin with ordinary ideas",
-    },
-    "portfolio-8-subtext-10" : {
-        "ru": "<b>При желании Вы можете узнать больше о деятельности нашей компании, написав нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you wish, you can learn more about our company's activities by writing to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
 
-    "portfolio-9-title" : {
-        "ru": "Учебно-оздоровительный центр «Икша»",
-        "en": "Educational and wellness center «Iksha»",
-    },
-    "portfolio-9-subtext" : {
-        "ru": "Концепция по ландшафтному планированию",
-        "en": "The concept of landscape planning",
-    },
-    "portfolio-9-subtext-2" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-9-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-9-subtext-3" : {
-        "ru": "<b>Концепция по ландшафтному планированию зоны климат-терапии филиала Учебно-оздоровительного центра «Икша» ФГБУ 'МФК Минфина России'</b>",
-        "en": "<b>The concept of landscape planning of the climate therapy zone of the branch of the Educational and Wellness Center «Iksha» of the Federal State Budgetary Institution 'IFC of the Ministry of Finance of the Russian Federation'</b>",
-    },
-    "portfolio-9-subtext-4" : {
-        "ru": "<b>Адрес:</b> Московская область г.п. Мытищи деревня Большая Чёрная ул. Онежская вл. 1/33.",
-        "en": "<b>Address:</b> Moscow region, Mytishchi village, Bolshaya Chernaya str., Onezhskaya vl. 1/33.",
-    },
-    "portfolio-9-subtext-5" : {
-        "ru": "<b>Заказчик:</b> ФГБУ 'МФК Минфина России'",
-        "en": "<b>Customer:</b> FSBI 'IFC of the Ministry of Finance of the Russian Federation'",
-    },
-    "portfolio-9-subtext-6" : {
-        "ru": "Стилистические решения соответствуют стилю минимализма, а формообразование - плавным изгибам водного пространства, что в совокупности представляет собой легкую архитектуру, являющуюся продолжением природы, призванную создать максимально благоприятный эффект климат –терапии",
-        "en": "The stylistic solutions correspond to the style of minimalism, and the shaping corresponds to the smooth curves of the water space, which together represents a light architecture that is an extension of nature, designed to create the most favorable effect of climate therapy",
-    },
-    "portfolio-9-subtext-7" : {
-        "ru": "На территории предлагается разместить зоны для приема солнечных ванн , где планируется расположить декинг-патио с группами шезлонгов на комфортном расстоянии друг от друга. В вечернее время элементы декинг-патио подсвечиваются точечными светильниками теплого света. В естественной низине юго –восточной части участка предусмотрена зона BBQ с тремя беседками, компактно расположенными друг от друга в обрамлении существующих зеленых насаждений . В верхней части участка предлагается установить небольшую детскую площадку, условно разделенную на две зоны – первую под навесом, где дети смогут спрятаться от солнца или играть в непогоду, вторую - многоуровневую песочницу с малыми архитектурными формами",
-        "en": "It is proposed to place sunbathing areas on the territory, where it is planned to place a decking patio with groups of sun loungers at a comfortable distance from each other. In the evening, the elements of the decking patio are illuminated with spotlights of warm light. In the natural lowland of the southeastern part of the site, there is a BBQ area with three gazebos compactly located from each other framed by existing green spaces. In the upper part of the site, it is proposed to install a small playground, conditionally divided into two zones – the first under a canopy where children can hide from the sun or play in bad weather, the second - a multi-level sandbox with small architectural forms",
-    },
-    "portfolio-9-subtext-8" : {
-        "ru": "Существующий ландшафт дает возможность гармонично сформировать несколько зон климат-терапии, обеспечивающих создание приятной атмосферы, окунающей посетителей в идиллию природы. Территория обеспечивает безопасность нахождения детей, для чего предусмотрена установка ограждения, повторяющего береговую линию с оформлением их зелеными насаждениями",
-        "en": "The existing landscape makes it possible to harmoniously form several climate therapy zones, ensuring the creation of a pleasant atmosphere that immerses visitors in the idyll of nature. The territory ensures the safety of children, for which it is planned to install a fence that repeats the coastline with the decoration of their green spaces",
-    },
-    "portfolio-9-subtext-9" : {
-        "ru": "<b>При желании ознакомиться с полной концепцией, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you want to get acquainted with the full concept, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
     
-    "portfolio-10-title" : {
-        "ru": "Общественно-деловой центр в Жуковке на Рублевском шоссе",
-        "en": "Public and business center in Zhukovka on Rublevsky highway",
-    },
-    "portfolio-10-subtext" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-10-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-10-subtext-2" : {
-        "ru": "<b>Общественно-деловой центр в Жуковке на Рублевском шоссе</b>",
-        "en": "<b>Public and business center in Zhukovka on Rublevsky highway</b>",
-    },
-    "portfolio-10-subtext-3" : {
-        "ru": "Знаковый объект в знаковом месте. Находится в центре Жуковки по левой стороне Рублевского шоссе, выходит на площадь элитного района, где располагаются несколько lounge зон, излюбленных для посещения политиков и знаменитостей. Перед входом в деловой центр размещается парковка. Слева располагается культовый ресторан «Дача». Справа - автосалон премиум класса. На объект можно попасть с двух сторон, есть подъезд с объездной дороги. Проход организован уютным коридором (мимо «Дачи») с дизайнерской перголой и стеклянным козырьком-навесом над входом которые создают lounge эффект. В этом смысле достигнут эффект интеграции делового центра в элитную дачную среду",
-        "en": "A landmark object in a landmark location. It is located in the center of Zhukovka on the left side of Rublevsky highway, overlooking the square of the elite district, where several lounge areas are located, favorite for visiting politicians and celebrities. There is a parking lot in front of the entrance to the business center. On the left is the iconic restaurant «Cottage». On the right is a premium car dealership. The object can be accessed from two sides, there is an entrance from the bypass road. The passage is organized by a cozy corridor (past the «Cottage») with a designer pergola and a glass canopy over the entrance that create a lounge effect. In this sense, the effect of integrating the business center into an elite suburban environment has been achieved",
-    },
-    "portfolio-10-subtext-4" : {
-        "ru": "При создании образа ставилась задача изобрести новый стиль. В архитектуре фасадов гармонично сочетаются дерево, натуральный камень и стекло. Название стиля авторы сформулировали как «Hi -tech country». Этот стиль вполне вписывается в атмосферу рублевских построек. Дизайн интерьеров основан на сплошном витражном остеклении на всю высоту зданий. Также центром композиции была запроектирована треугольная лестница с верхним фонарем. Силуэт имеет ступенчатую форму, что позволяет сохранить 3-х этажную фасадную часть улицы. При этом имеется 4 этаж с выходом на эксплуатируемую кровлю",
-        "en": "When creating the image, the task was to invent a new style. The architecture of the facades harmoniously combines wood, natural stone and glass. The authors formulated the name of the style as 'Hi-tech country'. This style fits perfectly into the atmosphere of Rublevsky buildings. The interior design is based on solid stained glass for the entire height of the buildings. A triangular staircase with an overhead lantern was also designed as the center of the composition. The silhouette has a stepped shape, which allows you to save the 3-storey facade of the street. At the same time, there is a 4th floor with access to the exploited roof",
-    },"portfolio-10-subtext-5" : {
-        "ru": "Объект насыщен полным спектром услуг для обеспечения нужд общественно -делового функционала, в том числе банк",
-        "en": "The facility is equipped with a full range of services to meet the needs of public and business functions, including a bank",
-    },
-    "portfolio-10-subtext-6" : {
-        "ru": "Объект реализован в 2006 г.",
-        "en": "The object was implemented in 2006.",
-    },
-    "portfolio-10-subtext-7" : {
-        "ru": "<b>При желании ознакомиться с деятельностью компании, Вы можете написать нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you want to get acquainted with the company's activities, you can write to us using the <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
 
-    "portfolio-11-title" : {
-        "ru": "Проект многоуровневого паркинга",
-        "en": "Multi-level parking project",
-    },
-    "portfolio-11-subtext-1" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-11-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-11-subtext-2" : {
-        "ru": "За единицу измерения ситуации, наша группа определила квартал, ограниченный улицами Хамовнический вал, вдоль которого идет зеленая полоса , ул. Усачева, Савельева, комплексом зданий ЗАО МНПО «Спектр», гостиницей «Юность», метро «Спортивная» и строящемуся ТПУ «Лужники», который после ввода в эксплуатацию увеличит количество людей до 3000 человек в час пик.",
-        "en": "As a unit of measurement of the situation, our group identified a block bounded by Khamovnichesky Val streets, along which there is a green strip, Usacheva St., Savelyev St., the complex of buildings of JSC MNPO Spectrum, the Yunost hotel, Sportivnaya metro station and the Luzhniki TPU under construction, which after commissioning will increase the number of people to 3,000 a man in rush hour.",
-    },
-    "portfolio-11-subtext-3" : {
-        "ru": "Это во многом определило основной подход к общей концепции проекта, согласно которой предлагается оставить паркинг на четырех верхних уровнях, в то время как 80% от площади 1 этажа предоставить пешеходам в качестве площади с экологической тематикой, организовав информационные панели о потреблении энергии здания в режиме реального времени, а также общую информацию о событиях в области экологии",
-        "en": "This largely determined the main approach to the overall concept of the project, according to which it is proposed to leave parking on the four upper levels, while 80% of the 1st floor area should be provided to pedestrians as an area with an environmental theme, organizing information panels on the energy consumption of the building in real time, as well as general information about events in the area ecology",
-    },
-    "portfolio-11-subtext-4" : {
-        "ru": "Непосредственная связь со сквером позволяет размещение детской игровой комнаты, в которой работающие в соседних зданиях могут оставить своих детей под присмотром в течение рабочего дня",
-        "en": "The direct connection with the park allows the placement of a children's playroom, in which workers in neighboring buildings can leave their children under supervision during the working day",
-    },
-    "portfolio-11-subtext-5" : {
-        "ru": "В нашем предложении архитектурный подход обусловлен следующими принципиальными аспектами:",
-        "en": "In our proposal, the architectural approach is conditioned by the following fundamental aspects:",
-    },
-    "portfolio-11-subtext-6" : {
-        "ru": "&#8226; влияние на социально-городскую среду",
-        "en": "&#8226; impact on the socio-urban environment",
-    },
-    "portfolio-11-subtext-7" : {
-        "ru": "&#8226; влияние на окружающую среду",
-        "en": "&#8226; environmental impact",
-    },
-    "portfolio-11-subtext-8" : {
-        "ru": "&#8226; использование альтернативных источников энергии",
-        "en": "&#8226; the use of alternative energy sources",
-    },
-    "portfolio-11-subtext-9" : {
-        "ru": "Забота об окружающей среде заслуживает особого внимания. Выбор 'зелёных фасадов', покрытых вечно-зелёными растениями имеет двойной эффект: во первых, в жаркие периоды года солнечное тепло не будет скапливаться в массе здания, а придаст свежести не только внутри здания, но и улице, во вторых растения будут поглощать углекислый газ и загрязнённый машинами воздух ввиду своего естественного назначения путём фотосинтез",
-        "en": "Taking care of the environment deserves special attention. The choice of 'green facades' covered with evergreen plants has a double effect: firstly, in hot periods of the year, solar heat will not accumulate in the mass of the building, but will give freshness not only inside the building, but also outside, secondly, plants will absorb carbon dioxide and air polluted by cars due to their natural purpose by photosynthesis",
-    },
-    "portfolio-11-subtext-10" : {
-        "ru": "В качестве растений предлагается можжевельник, кизильник и бересклет из семейства плющевых, адаптированных к холодному московскому климату",
-        "en": "Juniper, dogwood and birch bark from the ivy family adapted to the cold Moscow climate are offered as plants",
-    },
-    "portfolio-11-subtext-11" : {
-        "ru": "<b>При желании ознакомиться с полной концепцией, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you want to get acquainted with the full concept, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
-    "portfolio-11-subtext-12" : {
-        "ru": "Мнение Архсовета по данному проекту г. Москвы можно посмотреть на сайте",
-        "en": "The opinion of the Arch Council on this project in Moscow can be viewed on the website",
-    },
     "portfolio-11-subtext-13" : {
         "ru": "Вторая жизнь «долгостроев»",
         "en": "The second life of 'long construction'",
@@ -1014,54 +1713,6 @@ const langList = {
         "en": "We publish a selection of projects submitted for consideration related to the reconstruction of «frozen» construction sites or existing buildings for which new investment projects and needs for expansion of areas have appeared",
     },
 
-    "portfolio-12-title" : {
-        "ru": "Реконструкция перехода от м.Театральная к ГУМу",
-        "en": "Reconstruction of the transition from the Teatralnaya metro station to GUM",
-    },
-    "portfolio-12-subtext-1" : {
-        "ru": "Архитектурно-юридическая компания<br>«ART group»",
-        "en": "Architectural law company<br>«ART group»",
-    },
-    "portfolio-12-btn-more" : {
-        "ru": "Подробнее",
-        "en": "More",
-    },
-    "portfolio-12-subtext-3" : {
-        "ru": "На момент разработки проекта нашей организацией совместно с архитектором Л.Л.Павловым из «Моспроекта-2» в 1995г. правообладателем двора была компания «Старград», выступавшая заказчиком реконструкции перехода.",
-        "en": "At the time of the development of the project, our organization, together with architect L.L.Pavlov from Mosproekt-2 in 1995, the copyright holder of the yard was the Stargrad company, which was the customer of the reconstruction of the transition.",
-    },
-    "portfolio-12-subtext-4" : {
-        "ru": "С советских времен территория двора Спасского собора оставалась обветшалой и не обустроенной. Нами было предложено несколько вариантов его реконструкции (см. рис1) , основная идея которой заключалась в том, чтобы максимально освободить визуальное пространство перед храмом путем переноса согласно проекту регенерации квартала с организацией пешеходных связей (см. рис2) вентиляционного киоска на 25 метров в сторону Монетного двора., где около строения № 4 исторически размещалось первое учебное заведение в России -Бурса. Проект регенерации квартала с организацией пешеходных связей (см. рис2 (схема пешеходных связей)) давал основание использовать для этого место застройки утерянного здания Бурсы.",
-        "en": "Since Soviet times, the territory of the courtyard of the Spassky Cathedral has remained dilapidated and unfurnished. We proposed several options for its reconstruction (see Fig1), the main idea of which was to maximize the visual space in front of the temple by transferring, according to the project of regeneration of the quarter with the organization of pedestrian connections (see fig2), a ventilation kiosk 25 meters towards the Mint., where the first educational building was historically located near building No. 4 the institution in Russia is Bursa. The project of regeneration of the quarter with the organization of pedestrian links (see fig2 (diagram of pedestrian connections)) gave reason to use the building site of the lost Bursa building for this purpose.",
-    },
-    "portfolio-12-subtext-5" : {
-        "ru": "Таким образом, достигались две цели: воссоздание исторического объема и высвобождение пространства для парадного двора собора.",
-        "en": "Thus, two goals were achieved: the reconstruction of the historical volume and the release of space for the cathedral's front yard.",
-    },
-    "portfolio-12-subtext-6" : {
-        "ru": "Сейчас, когда, наконец-то Церкви после всех гонений в тяжелые времена советской власти возвращаются храмы, иконы, земли, законно ей принадлежавшие, проект благоустройства двора Спасского собора Заиконоспасского монастыря, на наш взгляд, не теряет актуальности. Он мог бы быть использован Церковью с целью как создания атмосферы, соответствующей церковной жизни, так повысить экономическое положение монастыря (например, путем организации за счет освобожденного пространства объектов продажи церковной утвари, выставочно-конгрессного центра для проведения мероприятий православного содержания)",
-        "en": "Now, when, finally, churches, icons, and lands that legally belonged to the Church are returned to the Church after all the persecutions in the difficult times of the Soviet government, the project of landscaping the courtyard of the Spassky Cathedral of the Zaikonospassky Monastery, in our opinion, does not lose relevance. It could be used by the Church both to create an atmosphere appropriate to church life and to improve the economic situation of the monastery (for example, by organizing, at the expense of the vacated space, objects for the sale of church utensils, an exhibition and congress center for holding events of Orthodox content)",
-    },
-    "portfolio-12-subtext-7" : {
-        "ru": "Также хотелось бы открыть глаза на то, что проект, прошедший в 2002 государственную экспертизу, будучи полностью согласован и Архитектурным, и Общественным советом представляет собой совсем иное, нежели то, во что его превратили при попытках реализации.",
-        "en": "I would also like to open my eyes to the fact that the project, which passed the state examination in 2002, being fully coordinated by both the Architectural and Public Council, is completely different from what it was turned into when trying to implement.",
-    },
-    "portfolio-12-subtext-8" : {
-        "ru": "Необходимость строительства современной коммуникации, соединяющей Театральную площадь и метро с Никольской улицей, ГУМом, Красной площадью возникла в связи с увеличением пешеходных потоков из объединенного вестибюля станций метро «Театральная» и «Площадь революции», где исторически была улица. По статистическим данным, полученным нами во время разработки проекта (эта фраза указывает на период стат. данных) – основной пешеходный поток сосредоточен именно на месте перехода и имеет наиболее высокую проходимость . Поэтому логично было организовать дополнительный вход со стороны Заиконоспасского двора к храму, откуда он хорошо виден и доступен для людей. Перепад между Театральной площадью и Никольской улицей составляет более 5 м – это почти два уровня, к тому же данный узел имеет пересечение с двором музея Ленина и переходит к Иверским воротам, являющимися продолжением Китай-городской стены.",
-        "en": "The need to build modern communications connecting Teatralnaya Square and the metro with Nikolskaya Street, GUM, and Red Square arose due to an increase in pedestrian flows from the combined lobby of the Teatralnaya and Ploshchad Revolyutsii metro stations, where historically there was a street. According to the statistical data obtained by us during the development of the project (this phrase indicates the period of stat. data) – the main pedestrian flow is concentrated precisely at the crossing point and has the highest passability . Therefore, it was logical to organize an additional entrance from the Zaikonospassky courtyard to the temple, from where it is clearly visible and accessible to people. The difference between Teatralnaya Square and Nikolskaya Street is more than 5 m – it is almost two levels, besides, this node has an intersection with the courtyard of the Lenin Museum and goes to the Iversky Gate, which is a continuation of the Kitai-Gorod Wall.",
-    },
-    "portfolio-12-subtext-9" : {
-        "ru": "Также в 1995 г. наша компания предложила концепцию регенерации части квартала, пострадавшего в советское время при строительстве метро, когда было утрачено около 100 м Китайгородской стены, под которой когда-то протекала река Неглинка (см. рис3 фасад со стороны театр площади). Мастерская «Моспроекта-2» в 70-80-е гг. квартал вообще собирались снести и на его месте построить дорогу.",
-        "en": "Also in 1995, our company proposed the concept of regeneration of a part of the quarter that was damaged during the construction of the metro in Soviet times, when about 100 m of the Kitaygorodskaya wall was lost, under which the Neglinka River once flowed (see Fig. 3 facade from the theater square). The Mosproject-2 workshop in the 70s and 80s. the quarter was generally going to be demolished and a road built in its place.",
-    },
-    "portfolio-12-subtext-10" : {
-        "ru": "Реализация пешеходно-туристических маршрутов Китай-города, о которых было уже упомянуто ранее, (см. рис2. (схема пешеходных связей)) позволила бы связать не только стену, но и дворы 2-го квартала – от Казанского собора до Лубянки, где располагаются Монетный двор, РГГУ, Николо-Греческий монастырь, офисный центр «Никольская 17», театр Пакровкого, бывший ресторан «Славянский базар» до магазинов Третьяковского проезда, имеющие как уличные, так и дворовые фасады (см. рис № )Предполагалась реновация домовладений 7-9 и школы Осипа Бове, построенной одновременно с Театральной площадью",
-        "en": "The implementation of the Kitay-Gorod hiking routes, which were already mentioned earlier (see Fig. 2. (diagram of pedestrian connections)) it would allow linking not only the wall, but also the courtyards of the 2nd quarter - from the Kazan Cathedral to the Lubyanka, where the Mint, the Russian State University, the Nikolo–Greek Monastery, the Nikolskaya 17 office center, the Pakrovsky Theater, the former Slavyansky Bazaar restaurant to the Tretyakov Passage shops, which have both street and courtyard facades (see Figure no. )It was supposed to renovate households 7-9 and the Osip Bove school, built simultaneously with the Theater Square",
-    },
-    "portfolio-12-subtext-11" : {
-        "ru": "<b>При желании ознакомиться с полной концепцией, напишите нам по <a href='#contact' class='popup-link-contact'>форме обратной связи!</a></b>",
-        "en": "<b>If you want to get acquainted with the full concept, write to us at <a href='#contact' class='popup-link-contact'>feedback form!</a></b>",
-    },
     
     "popup-title" : {
         "ru": "Арт групп",

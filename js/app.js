@@ -1138,56 +1138,94 @@ if (brandMotion.addEventListener) brandMotion.addEventListener('change', updateB
 else brandMotion.addListener(updateBrandMotion);
 // END HERO WORDMARK
 
-// PORTFOLIO LOAD MORE
-let box = document.querySelectorAll('.portfolio-box');
-let loadMoreBtn = document.querySelector('.portfolio-load-more-btn');
-let currentimg = 6;
+// PORTFOLIO — preserve source order and viewport through 6 → 9 → 11 disclosure.
+const portfolioSection = document.querySelector('#portfolio');
+const portfolioCards = [...portfolioSection.querySelectorAll('[data-project]')];
+const portfolioMore = portfolioSection.querySelector('.portfolio-load-more-btn');
+const portfolioStatus = portfolioSection.querySelector('.portfolio-status');
+let portfolioVisible = portfolioCards.length;
+let portfolioAnnounced = false;
 
-loadMoreBtn.addEventListener('click', () => {
-    for (let i = currentimg; i < currentimg + 3; i++) {
-        if (box[i]){
-            box[i].style.display = 'block';
+function updatePortfolioLanguage() {
+    const language = document.documentElement.lang === 'en' ? 'en' : 'ru';
+    portfolioSection.querySelectorAll('[data-portfolio-label], [data-portfolio-alt]').forEach(node => {
+        const key = node.dataset.portfolioLabel || node.dataset.portfolioAlt;
+        if (!langList[key]) return;
+        // Attribute translations are plain text (not HTML).
+        const text = langList[key][language];
+        if (node.dataset.portfolioAlt) node.alt = text;
+        else node.setAttribute('aria-label', text);
+    });
+    if (portfolioAnnounced) {
+        portfolioStatus.textContent = langList['work-status'][language]
+            .replace('{visible}', portfolioVisible)
+            .replace('{total}', portfolioCards.length);
+    }
+}
+
+(() => {
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const heading = portfolioSection.querySelector('.portfolio-header');
+    let observer;
+    const reveal = target => {
+        target.classList.add('is-revealed');
+        if (observer) observer.unobserve(target);
+    };
+    const showStatic = () => {
+        portfolioSection.classList.remove('portfolio-motion-ready');
+        if (observer) observer.disconnect();
+        [heading, ...portfolioCards].forEach(reveal);
+        observer = null;
+    };
+    if (!motion.matches && 'IntersectionObserver' in window) {
+        try {
+            observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    reveal(entry.target);
+                });
+            }, { threshold: .08, rootMargin: '0px 0px -24px 0px' });
+            [heading, ...portfolioCards].forEach(target => observer.observe(target));
+            portfolioCards.forEach((card, index) => {
+                if ([1, 3, 5, 7, 10].includes(index)) card.classList.add('is-pair-follow');
+            });
+            portfolioSection.classList.add('portfolio-motion-ready');
+        } catch (error) {
+            showStatic();
         }
     }
-    currentimg += 3;
-    if (currentimg >= box.length) {
-        loadMoreBtn.style.display = 'none';
-    }
-})
-// END PORTFOLIO LOAD MORE
+    if (motion.addEventListener) motion.addEventListener('change', showStatic, { once: true });
+    // Tabbing to a caption must never leave the focused control transparent.
+    portfolioSection.addEventListener('focusin', event => {
+        const card = event.target.closest('[data-project]');
+        if (card) reveal(card);
+    });
 
-// // POPUP BOX
-// const portfolioItems = document.querySelector('.portfolio-container');
-// const popup = document.querySelector('.popup-box');
-// const popupCloseIcon = popup.querySelector('.popup-close-icon');
-
-
-// portfolioItems.addEventListener('click', function(e) {
-//     console.log(e.target.className)
-//     if(e.target.className == "portfolio-layer") {
-//         const item = e.target;
-//         const h4 = item.querySelector("h4").innerHTML;
-//         const readMoreCont = item.querySelector('.read-more-content').innerHTML;
-//         popup.querySelector('h3').innerHTML = h4;
-//         popup.querySelector('.popup-body').innerHTML = readMoreCont;
-
-//         popupBox();
-//     }
-// })
-
-// popupCloseIcon.addEventListener('click', popupBox);
-
-// popup.addEventListener('click', function(e) {
-//     if(e.target == popup || e.target.tagName.toLowerCase() === 'a') {
-//         popupBox();
-//         // closeDialog();
-//     }
-// })
-
-// function popupBox(){
-//     popup.classList.toggle('open');
-// }
-// // END POPUP BOX
+    // If the viewer failed to initialise, keep all native stories available.
+    if (!portfolioSection.classList.contains('portfolio-enhanced')) return;
+    portfolioVisible = Math.min(6, portfolioCards.length);
+    portfolioCards.forEach((card, index) => card.hidden = index >= portfolioVisible);
+    portfolioMore.hidden = portfolioVisible >= portfolioCards.length;
+    portfolioMore.addEventListener('click', () => {
+        const viewportY = window.scrollY;
+        const previous = portfolioVisible;
+        portfolioVisible = Math.min(portfolioVisible + 3, portfolioCards.length);
+        portfolioCards.slice(previous, portfolioVisible).forEach(card => {
+            card.hidden = false;
+            if (observer && !card.classList.contains('is-revealed')) observer.observe(card);
+        });
+        portfolioMore.hidden = portfolioVisible >= portfolioCards.length;
+        portfolioAnnounced = true;
+        updatePortfolioLanguage();
+        // Move keyboard/screen-reader focus to the new work, without scrolling.
+        portfolioCards[previous]?.querySelector('.project-open').focus({ preventScroll: true });
+        // Focusing flushes the new layout. Undo the browser's scroll anchoring
+        // to the load-more control, which has just moved below the added row.
+        window.scrollTo({ top: viewportY, behavior: 'instant' });
+    });
+    portfolioSection.classList.add('portfolio-disclosure-ready');
+})();
+// END PORTFOLIO
 
 // READ MORE ABOUT
 function changeReadMore() {
@@ -1381,14 +1419,14 @@ function applyLanguage(lng) {
     document.querySelector('title').innerHTML = mainLang['html-title'][lng];
 
     for (let key in langList) {
-        const element = document.querySelector('.lng-' + key);
-        if (element) {
+        document.querySelectorAll('.lng-' + key).forEach(element => {
             element.innerHTML = langList[key][lng];
-        }
+        });
     }
     sendBtn.value = lng === 'en' ? 'Send' : 'Отправить';
     updateHeroBrand(lng);
     if (typeof updateAboutGalleryLanguage === 'function') updateAboutGalleryLanguage();
+    updatePortfolioLanguage();
     if (typeof refreshProjectPopupLanguage === 'function') refreshProjectPopupLanguage();
 
     // Refresh toggle buttons text if sections are expanded
