@@ -497,8 +497,12 @@ const langList = {
         "ru": "Объединяем <strong>экспертизу конструкторов, дизайнеров, инженеров, экономистов и социологов.</strong> Сотрудничество с экспертами и проектными компаниями позволяет параллельно решать сложные задачи и видеть проект целиком.",
         "en": "We bring together <strong>expertise in structures, design, engineering, economics and sociology.</strong> Working with specialists and design practices lets us address complex challenges in parallel and see the project as a whole.",
     },
+    "partners-eyebrow" : {
+        "ru": "СОТРУДНИЧЕСТВО",
+        "en": "COLLABORATION",
+    },
     "partners-heading" : {
-        "ru": "Наши партнеры",
+        "ru": "Наши партнёры",
         "en": "Our partners",
     },
     "portfolio-heading" : {

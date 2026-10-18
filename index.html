@@ -12,13 +12,13 @@
   <!-- Marks that JS is available, so the scroll-reveal start state (hidden)
        only applies when there is a script able to reveal it again. -->
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="style.css?v=20261017-services-9">
+  <link rel="stylesheet" href="style.css?v=20261018-partners-4">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="https://artgroup.fun/favicon.ico" type="image/x-icon">
 
   <script src="js/gsap.min.js" defer></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" defer></script>
-  <script src="js/lang.js?v=20261017-animation-5" defer></script>
+  <script src="js/lang.js?v=20261018-partners-1" defer></script>
   <script src="js/app.js?v=20261017-animation-5" defer></script>
   <script src="js/estimate.js?v=20261015-feedback-2" defer></script>
   <script src="js/about-slider.js" defer></script>
@@ -820,31 +820,136 @@
       </div>
     </section>
 
-    <section class="partners">
-      <h2 class="services-heading title lng-partners-heading">Наши партнеры</h2>
-
-      <div class="partners-logo">
-        <div class="logos-slider">
-          <img src="img/logo/equal.svg" alt="EQUAL">
-          <img src="img/logo/gazprom.svg" alt="GAZPROMNEFT">
-          <img src="img/logo/X5Group.svg" alt="Perekrestok">
-          <img src="img/logo/rusagro.svg" alt="RUSAGRO">
-          <img src="img/logo/metro.svg" alt="MoscowMetro">
-          <img src="img/logo/sber.svg" alt="SBERBANK">
-          <img src="img/logo/stroygazmontazh.svg" alt="STROYGAZMONTAZH">
-          <img src="img/logo/vtb.svg" alt="VTB">
+    <section class="partners" aria-labelledby="partners-heading">
+      <div class="partners-shell">
+        <div class="partners-header">
+          <p class="partners-eyebrow lng-partners-eyebrow">СОТРУДНИЧЕСТВО</p>
+          <h2 class="partners-heading lng-partners-heading" id="partners-heading">Наши партнёры</h2>
         </div>
-        <div class="logos-slider">
-          <img src="img/logo/equal.svg" alt="EQUAL">
-          <img src="img/logo/gazprom.svg" alt="GAZPROMNEFT">
-          <img src="img/logo/X5Group.svg" alt="Perekrestok">
-          <img src="img/logo/rusagro.svg" alt="RUSAGRO">
-          <img src="img/logo/metro.svg" alt="MoscowMetro">
-          <img src="img/logo/sber.svg" alt="SBERBANK">
-          <img src="img/logo/stroygazmontazh.svg" alt="STROYGAZMONTAZH">
-          <img src="img/logo/vtb.svg" alt="VTB">
+        <div class="partners-gallery">
+          <div class="partners-rules" aria-hidden="true">
+            <span class="partners-rule partners-rule--top"></span>
+            <span class="partners-rule partners-rule--quarter"></span>
+            <span class="partners-rule partners-rule--middle"></span>
+            <span class="partners-rule partners-rule--three-quarter"></span>
+            <span class="partners-rule partners-rule--bottom"></span>
+          </div>
+          <ul class="partners-grid" role="list">
+            <li class="partner partner--equal"><img src="img/logo/equal.svg" width="800" height="800" alt="Equal Housing Opportunity" decoding="async"></li>
+            <li class="partner partner--gazprom"><img src="img/logo/gazprom.svg" width="1024" height="507" alt="GAZPROM" decoding="async"></li>
+            <li class="partner partner--x5"><img src="img/logo/X5Group.svg" width="1349" height="411" alt="X5Group" decoding="async"></li>
+            <li class="partner partner--rusagro"><img src="img/logo/rusagro.svg" width="4700" height="4200" alt="РУСАГРО" decoding="async"></li>
+            <li class="partner partner--metro"><img src="img/logo/metro.svg" width="500" height="500" alt="Московский метрополитен" decoding="async"></li>
+            <li class="partner partner--sber"><img src="img/logo/sber.svg" width="103" height="17" alt="СБЕРБАНК" decoding="async"></li>
+            <li class="partner partner--sgm"><img src="img/logo/stroygazmontazh.svg" width="364" height="49" alt="STROYGAZMONTAZH" decoding="async"></li>
+            <li class="partner partner--vtb"><img src="img/logo/vtb.svg" width="2500" height="916" alt="ВТБ" decoding="async"></li>
+          </ul>
         </div>
       </div>
+      <!-- Initialize here: unrelated deferred scripts must not delay this entrance. -->
+      <script>
+      // Partners remains complete without this enhancement. In particular, do not
+      // reuse .reveal: its pre-hidden, blurred state is unsuitable for brand marks.
+      (() => {
+          const section = document.currentScript.closest('.partners');
+          if (!section) return;
+
+          const names = {
+              rusagro: ['РУСАГРО', 'Rusagro'],
+              metro: ['Московский метрополитен', 'Moscow Metro'],
+              sber: ['СБЕРБАНК', 'Sberbank'],
+              vtb: ['ВТБ', 'VTB']
+          };
+          function updateNames() {
+              const language = document.documentElement.lang === 'en' ? 1 : 0;
+              Object.entries(names).forEach(([mark, labels]) => {
+                  const image = section.querySelector(`.partner--${mark} img`);
+                  if (image) image.alt = labels[language];
+              });
+          }
+          updateNames();
+          if ('MutationObserver' in window) {
+              new MutationObserver(updateNames).observe(document.documentElement, {
+                  attributes: true, attributeFilter: ['lang']
+              });
+          }
+
+          const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+          if (motion.matches || !('IntersectionObserver' in window)) return;
+
+          const heading = section.querySelector('.partners-header');
+          const gallery = section.querySelector('.partners-gallery');
+          const cells = [...section.querySelectorAll('.partner')];
+          const rules = [...section.querySelectorAll('.partners-rule')];
+          const targets = [heading, ...cells, ...rules];
+          const narrow = window.matchMedia('(max-width: 900px)');
+          const assembled = new Set();
+          let observer;
+          let stopped = false;
+
+          function assemble(target) {
+              if (assembled.has(target)) return;
+              assembled.add(target);
+              target.classList.add('is-assembled');
+          }
+
+          function showStatic() {
+              stopped = true;
+              if (observer) observer.disconnect();
+              targets.forEach(target => target.classList.remove('is-assembled'));
+          }
+
+          function observeLayout() {
+              if (stopped) return;
+              if (observer) observer.disconnect();
+              try {
+                  observer = new IntersectionObserver(entries => {
+                      entries.forEach(entry => {
+                          if (!entry.isIntersecting || stopped) return;
+                          if (entry.target === heading) {
+                              assemble(heading);
+                          } else if (entry.target === gallery) {
+                              // A coordinated desktop sequence, rather than eight
+                              // separate entrances spent below the viewport edge.
+                              [...cells, ...rules].forEach(assemble);
+                          } else {
+                              const first = cells.indexOf(entry.target);
+                              cells.slice(first, first + 2).forEach(assemble);
+                              // Each phone row draws its upper and lower boundaries.
+                              assemble(rules[first / 2]);
+                              assemble(rules[first / 2 + 1]);
+                          }
+                          observer.unobserve(entry.target);
+                      });
+                  }, {
+                      threshold: .2,
+                      // Use pixels: IO percentage margins are relative to WIDTH.
+                      // Start around mid-screen, where the visitor is reading the gallery.
+                      rootMargin: `0px 0px -${Math.round(window.innerHeight * .45)}px 0px`
+                  });
+                  if (!assembled.has(heading)) observer.observe(heading);
+                  if (narrow.matches) {
+                      cells.forEach((cell, index) => {
+                          if (index % 2 === 0 && !assembled.has(cell)) observer.observe(cell);
+                      });
+                  } else if (cells.some(cell => !assembled.has(cell))) {
+                      observer.observe(gallery);
+                  }
+              } catch (error) {
+                  showStatic();
+              }
+          }
+
+          observeLayout();
+          if (typeof motion.addEventListener === 'function') {
+              motion.addEventListener('change', showStatic, { once: true });
+              narrow.addEventListener('change', observeLayout);
+          } else if (typeof motion.addListener === 'function') {
+              motion.addListener(showStatic);
+              narrow.addListener(observeLayout);
+          }
+      })();
+      </script>
     </section>
 
     <section class="portfolio" id="portfolio">
