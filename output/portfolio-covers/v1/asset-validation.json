@@ -1,0 +1,130 @@
+{
+  "selected_covers": 11,
+  "generation": "Built-in image_gen",
+  "export": "PNG masters preserved; WebP compression and Lanczos downscaling only",
+  "total_webp_bytes": 3362594,
+  "total_webp_960_bytes": 1306268,
+  "images": [
+    {
+      "id": "01",
+      "master": "01-embankment.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 2691683,
+      "webp_bytes": 264948,
+      "webp_960_bytes": 97148
+    },
+    {
+      "id": "02",
+      "master": "02-imperial.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 2917330,
+      "webp_bytes": 311040,
+      "webp_960_bytes": 123564
+    },
+    {
+      "id": "03",
+      "master": "03-khamovniki.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 3026061,
+      "webp_bytes": 376430,
+      "webp_960_bytes": 144418
+    },
+    {
+      "id": "04",
+      "master": "04-teatralnaya.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 2710885,
+      "webp_bytes": 272220,
+      "webp_960_bytes": 107714
+    },
+    {
+      "id": "05",
+      "master": "05-happy.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 3223159,
+      "webp_bytes": 463560,
+      "webp_960_bytes": 181292
+    },
+    {
+      "id": "06",
+      "master": "06-cube.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 2682917,
+      "webp_bytes": 237142,
+      "webp_960_bytes": 84994
+    },
+    {
+      "id": "07",
+      "master": "07-magadan.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 2505676,
+      "webp_bytes": 219378,
+      "webp_960_bytes": 88696
+    },
+    {
+      "id": "08",
+      "master": "08-rublevskoe.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 2488851,
+      "webp_bytes": 206902,
+      "webp_960_bytes": 78766
+    },
+    {
+      "id": "09",
+      "master": "09-ear-eye-v2.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 2645023,
+      "webp_bytes": 300416,
+      "webp_960_bytes": 125454
+    },
+    {
+      "id": "10",
+      "master": "10-iksha.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 2920495,
+      "webp_bytes": 345836,
+      "webp_960_bytes": 132746
+    },
+    {
+      "id": "11",
+      "master": "11-zhukovka.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "png_bytes": 2871604,
+      "webp_bytes": 364722,
+      "webp_960_bytes": 141476
+    }
+  ]
+}

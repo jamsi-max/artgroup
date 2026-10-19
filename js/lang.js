@@ -1,4 +1,50 @@
 const langList = {
+    // Editorial cover alternatives, separate from original project media.
+    "work-embankment-image-poster-cover": {
+        "ru": "Многофункциональная набережная «Москва-Сити» — архитектурный постер",
+        "en": "Moscow-City multifunctional embankment — architectural poster"
+    },
+    "work-imperial-image-poster-cover": {
+        "ru": "«Территориум» — башня «Империя» — архитектурный постер",
+        "en": "Territorium — Imperia Tower — architectural poster"
+    },
+    "work-khamovniki-image-poster-cover": {
+        "ru": "Многоуровневый паркинг в Хамовниках — архитектурный постер",
+        "en": "Multilevel parking in Khamovniki — architectural poster"
+    },
+    "work-teatralnaya-image-poster-cover": {
+        "ru": "Переход от «Театральной» к ГУМу — архитектурный постер",
+        "en": "Passage from Teatralnaya to GUM — architectural poster"
+    },
+    "work-happy-image-poster-cover": {
+        "ru": "ЖК «Будь счастлив!» — архитектурный постер",
+        "en": "Be Happy! residential quarter — architectural poster"
+    },
+    "work-cube-image-poster-cover": {
+        "ru": "«Психологический куб» — архитектурный постер",
+        "en": "Psychological Cube — architectural poster"
+    },
+    "work-magadan-image-poster-cover": {
+        "ru": "Родильный дом в Магадане — архитектурный постер",
+        "en": "Maternity hospital in Magadan — architectural poster"
+    },
+    "work-rublevskoe-image-poster-cover": {
+        "ru": "МФК на Рублёвском шоссе — архитектурный постер",
+        "en": "Mixed-use complex on Rublevskoye Highway — architectural poster"
+    },
+    "work-ear-eye-image-poster-cover": {
+        "ru": "Инсталляция «Ухоглаз» — архитектурный постер",
+        "en": "Ear-Eye installation — architectural poster"
+    },
+    "work-iksha-image-poster-cover": {
+        "ru": "Учебно-оздоровительный центр «Икша» — архитектурный постер",
+        "en": "Iksha training and wellness centre — architectural poster"
+    },
+    "work-zhukovka-image-poster-cover": {
+        "ru": "Общественно-деловой центр в Жуковке — архитектурный постер",
+        "en": "Public and business centre in Zhukovka — architectural poster"
+    },
+
     // Portfolio: translate leaf nodes so semantic wrappers survive cloning.
     "work-status": {
         "ru": "Показано {visible} из {total} проектов",

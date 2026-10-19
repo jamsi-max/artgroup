@@ -9,7 +9,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const artifacts = process.env.PORTFOLIO_ARTIFACTS || '/private/tmp/artgroup-portfolio-review';
 fs.mkdirSync(artifacts, { recursive: true });
-const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.ico': 'image/x-icon' };
+const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon' };
 const server = http.createServer((req, res) => {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
     const file = path.resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
@@ -201,6 +201,14 @@ let browser;
     assert.equal(await page.locator('.project-story [id]').count(), 0);
     assert.equal(await page.locator('.portfolio h4').count(), 0);
     record('Image dimensions/alt/lazy loading and semantic H2/H3; cloned source has no IDs');
+    assert(await page.locator('.project-image img').evaluateAll(images => images.length === 11 && images.every(image =>
+        image.getAttribute('src').startsWith('img/portfolio/covers/v1/') &&
+        image.getAttribute('srcset').includes('960w') && image.getAttribute('srcset').includes('1536w') &&
+        image.getAttribute('sizes') && image.width && image.height)));
+    for (const original of expectedMedia) {
+        for (const src of original.images) assert(await page.locator(`.project-story img[src="${src}"]`).count() > 0, `Original media missing from source story: ${src}`);
+    }
+    record('All 11 cards use responsive poster covers; every previous cover remains in its popup story');
     await scroll('#portfolio');
     assert(!await page.evaluate(() => performance.getEntriesByType('resource').some(e => /portfolio-9\.3\.jpg|portfolio-6\.4\.jpg/.test(e.name))));
     record('Offscreen full-resolution case images are not eagerly requested');

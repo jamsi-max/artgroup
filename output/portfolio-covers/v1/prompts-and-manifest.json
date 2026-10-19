@@ -1,0 +1,305 @@
+{
+  "series": "ART Group — Architectural editorial covers / v1",
+  "generator": "Built-in image_gen",
+  "art_direction": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.",
+  "style_reference": "01-embankment.png",
+  "status": "Installed in the portfolio: responsive WebP covers; original media preserved in popup stories",
+  "projects": [
+    {
+      "id": "01",
+      "slug": "embankment",
+      "master": "01-embankment.png",
+      "web": "01-embankment.webp",
+      "responsive": "01-embankment-960.webp",
+      "references": [
+        "img/portfolio/portfolio-0.jpg",
+        "img/portfolio/portfolio-0.3.jpg"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 01 / Moscow-City multifunctional embankment. Input image 1 is the project's actual waterfront render and architectural identity reference. Input image 2 is its actual underground public interior, a supporting spatial reference. Create a compelling architectural collage built around the source's long horizontal multilevel river embankment, its white terraces and openings at water level, sailboats in the foreground and simplified stepped Moscow-City tower massing behind. Reveal a refined sectional glimpse of a warm planted public level beneath the promenade using source 2 as a secondary inset architectural fragment, integrated into one coherent composition rather than separate panels. The red graphic gesture links upper promenade and lower public levels as an editorial diagram of connection, not a literal new building element. Dark still water reflection and fine sectional drawing lines establish depth. Preserve the source massing and horizontal waterfront character; no new skyscraper design, no artificial claim of construction. One stunning finished poster.",
+      "generated_file": "exec-8c8ec056-8050-482b-b4f1-c060be92abd0.png",
+      "title": {
+        "ru": "Многофункциональная набережная «Москва-Сити»",
+        "en": "Moscow-City multifunctional embankment"
+      },
+      "summary": {
+        "ru": "Многоуровневая набережная объединяет прогулочные маршруты, общественные функции и подземную инфраструктуру в границах существующего пространства.",
+        "en": "A multilevel embankment brings walking routes, public uses and underground infrastructure into the existing waterfront footprint."
+      },
+      "original_cover": "img/portfolio/portfolio-0.jpg",
+      "suggested_object_position": "50% 24%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/01-embankment.webp",
+        "responsive": "img/portfolio/covers/v1/01-embankment-960.webp"
+      }
+    },
+    {
+      "id": "02",
+      "slug": "imperial",
+      "master": "02-imperial.png",
+      "web": "02-imperial.webp",
+      "responsive": "02-imperial-960.webp",
+      "references": [
+        "img/portfolio/portfolio-1.jpg",
+        "img/portfolio/portfolio-1.3.jpg"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 02 / Territorium — Imperia Tower rooftop adaptation. Input 1 is the actual tower and its distinctive elongated curved roof. Input 2 is the project's actual proposed angular turquoise glass sports-box structures. Input 3 is STYLE ONLY: the approved first poster, use its charcoal/ivory/red, crafted architectural collage and precise sectional lines, but none of its boats, waterfront, tower massing or specific content. Show a spectacular close aerial architectural collage of the top portion of Imperia Tower, preserving the existing long curved roof silhouette and green glass facade. Explore its roof as a place for meeting, recreation and observation, with small source-derived glass-box concept fragments and tiny scale people. A single restrained red elliptical graphic traces the idea of a crown/shared viewing circuit around the roof, clearly an editorial overlay, not a new red building. The lower tower dissolves into fine architectural wireframe against charcoal. Focus tightly on roof-as-public-space, not another generic skyscraper skyline. No invented award or built-project claim; this is a conceptual poster, not a completion photograph.",
+      "generated_file": "exec-f8be4c6f-855e-4dd0-b8ce-ffd53421981f.png",
+      "title": {
+        "ru": "«Территориум» — башня «Империя»",
+        "en": "Territorium — Imperia Tower"
+      },
+      "summary": {
+        "ru": "Крыша деловой башни как пространство для отдыха, встреч и новых городских впечатлений.",
+        "en": "The roof of an office tower reimagined as a place to relax, meet and experience the city."
+      },
+      "original_cover": "img/portfolio/portfolio-1.jpg",
+      "suggested_object_position": "50% 30%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/02-imperial.webp",
+        "responsive": "img/portfolio/covers/v1/02-imperial-960.webp"
+      }
+    },
+    {
+      "id": "03",
+      "slug": "khamovniki",
+      "master": "03-khamovniki.png",
+      "web": "03-khamovniki.webp",
+      "responsive": "03-khamovniki-960.webp",
+      "references": [
+        "img/portfolio/portfolio-11.jpg"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 03 / Multilevel parking in Khamovniki. Input 1 is the actual architectural concept, preserve its compact horizontal rectangular building, dark metal framework, alternating planted facade bands and warm vertical timber fins, glazed ground floor, four upper parking levels. Input 2 is STYLE ONLY: first series poster, use its visual treatment but no waterfront, boats or towers. Create an arresting three-quarter architectural model collage of this specific green parking structure: solid planted upper volume poised over a generous pedestrian public ground level connected to a small green square. Show actual greenery in natural green, warm fins and black structure. Ground-level small people and a restrained few cars communicate the dual use. One clean red graphic strip threads through the public ground plane and becomes a planar urban-route annotation, not a new literal bridge. A thin ivory ground-plan outline/section trace supports the main mass. Dramatic yet refined, substantial architecture, no greenery-swamped fantasy building, no new floors or changed facade language.",
+      "generated_file": "exec-e77ece64-f3c1-48d3-98c3-524e88f8d4f2.png",
+      "title": {
+        "ru": "Многоуровневый паркинг в Хамовниках",
+        "en": "Multilevel parking in Khamovniki"
+      },
+      "summary": {
+        "ru": "Четыре верхних уровня для автомобилей и общественное пространство на первом этаже, связанное со сквером и пешеходными маршрутами.",
+        "en": "Four upper parking levels and a public ground floor connected to a green square and pedestrian routes."
+      },
+      "original_cover": "img/portfolio/portfolio-11.jpg",
+      "suggested_object_position": "50% 15%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/03-khamovniki.webp",
+        "responsive": "img/portfolio/covers/v1/03-khamovniki-960.webp"
+      }
+    },
+    {
+      "id": "04",
+      "slug": "teatralnaya",
+      "master": "04-teatralnaya.png",
+      "web": "04-teatralnaya.webp",
+      "responsive": "04-teatralnaya-960.webp",
+      "references": [
+        "img/portfolio/portfolio-12.jpg",
+        "img/portfolio/portfolio-12.1.jpg"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 04 / Pedestrian passage from Teatralnaya to GUM and historic courtyard regeneration. Input 1 is the actual proposed courtyard/passage view: symmetrical historic cream facades, a central stair and glazed rear volume. Input 2 is the actual archival plan, use it for visual geometry/linework only, do not reproduce text. Input 3 is STYLE ONLY, the first series poster. The visual story is reconnecting historical city routes across levels while revealing an important courtyard. Create a precise architectural cutout collage, a confident deep one-point perspective through the source's historic courtyard and broad central stair into the glass passage. Foreground becomes a beautiful thin ivory sectional/plan drawing of pedestrian connections, partially superimposed like an archival architectural plate. A single red editorial path travels toward the central stair, a striking compositional guide. Charcoal void behind cutout heritage facades, warm ivory stone, muted glass; no river, boats, modern skyscrapers, invented cathedral/domes or new heritage facades. Preserve the recognizable source proposal; render/archival montage, not a photo of an altered historic site. Elegant geometric clarity, not distressed vintage scrapbook.",
+      "generated_file": "exec-62d0be09-261a-4cea-a2a5-88580f2043ff.png",
+      "title": {
+        "ru": "Переход от «Театральной» к ГУМу",
+        "en": "Passage from Teatralnaya to GUM"
+      },
+      "summary": {
+        "ru": "Пешеходные маршруты исторического центра и благоустройство двора Заиконоспасского монастыря — в одном архитектурном решении.",
+        "en": "An architectural proposal connecting historic-centre pedestrian routes with improvements to the Zaikonospassky Monastery courtyard."
+      },
+      "original_cover": "img/portfolio/portfolio-12.jpg",
+      "suggested_object_position": "50% 20%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/04-teatralnaya.webp",
+        "responsive": "img/portfolio/covers/v1/04-teatralnaya-960.webp"
+      }
+    },
+    {
+      "id": "05",
+      "slug": "happy",
+      "master": "05-happy.png",
+      "web": "05-happy.webp",
+      "responsive": "05-happy-960.webp",
+      "references": [
+        "img/portfolio/portfolio-7.jpg",
+        "img/portfolio/portfolio-7.2.jpg"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 05 / Be Happy! residential quarter, Yaroslavl, architecture and community. Input 1 and input 2 are the project's actual housing renders: distinctive lime-green and yellow faceted projecting balconies, a softly rounded glazed colorful corner volume and planted pedestrian courtyard. Input 3 is STYLE ONLY, the approved first series poster. Create a powerful close three-quarter architectural collage where those very recognizable sculptural green/yellow balcony boxes form the main rhythmic mass, with the curved colorful corner appearing as a secondary source-derived architectural fragment. Below, an intimate landscaped courtyard with small believable groups of neighbours meeting, children playing at normal scale and one cyclist represents daily community life, not spectacle. Use real natural greens; do not bleach this colorful design into a generic white model. One flowing red editorial graphic line stitches the shared paths, visibly a poster overlay. Fine ivory elevation/plan traces fade into charcoal ground around the composition. Inviting and inventive, human but not sentimental. No giant smiling faces, heart symbols, happiness slogans, fireworks, fantasy alien buildings or waterfront motifs.",
+      "generated_file": "exec-19a4a004-a424-4405-96ab-fe572cd7a1ac.png",
+      "title": {
+        "ru": "ЖК «Будь счастлив!»",
+        "en": "Be Happy! residential quarter"
+      },
+      "summary": {
+        "ru": "Жилой квартал с вниманием к повседневной жизни: архитектура и сценарии развития местного сообщества.",
+        "en": "A residential quarter shaped around everyday life, combining architecture with ways to support a local community."
+      },
+      "original_cover": "img/portfolio/portfolio-7.1.jpg",
+      "suggested_object_position": "50% 25%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/05-happy.webp",
+        "responsive": "img/portfolio/covers/v1/05-happy-960.webp"
+      }
+    },
+    {
+      "id": "06",
+      "slug": "cube",
+      "master": "06-cube.png",
+      "web": "06-cube.webp",
+      "responsive": "06-cube-960.webp",
+      "references": [
+        "img/portfolio/portfolio-2.jpg"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 06 / Psychological Cube, Rome competition proposal, a place for self-reflection. Input 1 is the actual competition cube render: a tilted dark mirrored cubic volume with gridded glass facets and a flowing spectral/rainbow band winding through its faces. Input 2 is STYLE ONLY, the first series poster; transfer its charcoal, ivory drafting marks, red gesture and art-directed depth, not its buildings, planting, boats, water or spatial layout. Make this the most enigmatic sculptural poster in the series. One large recognizable tilted glass cube dominates a charcoal void, crisp bevels and reflective/refracting surfaces; source-derived gridded geometry must remain clear. A partially revealed reflected interior and one tiny person at its threshold communicate entering and introspection. Preserve the multicolored spectral band as a restrained optical reflection from the original concept, not a neon LED strip. One oxblood red graphic plane passes behind the cube and becomes a precise line, contrasted against sparse ivory wireframe cubic construction lines. Beautiful negative space, a dramatic clear art-object silhouette. No new pavilion design, generic art museum, occult symbols, extra cubes, explosions, text or science claims.",
+      "generated_file": "exec-ee624396-9703-4220-9f56-482c9778fb38.png",
+      "title": {
+        "ru": "«Психологический куб»",
+        "en": "Psychological Cube"
+      },
+      "summary": {
+        "ru": "Пространство для размышления о себе: зеркальные поверхности превращают движение внутри куба в личный опыт восприятия.",
+        "en": "A space for self-reflection, where mirrored surfaces turn movement through the cube into a personal experience of perception."
+      },
+      "original_cover": "img/portfolio/portfolio-2.jpg",
+      "suggested_object_position": "50% 0%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/06-cube.webp",
+        "responsive": "img/portfolio/covers/v1/06-cube-960.webp"
+      }
+    },
+    {
+      "id": "07",
+      "slug": "magadan",
+      "master": "07-magadan.png",
+      "web": "07-magadan.webp",
+      "responsive": "07-magadan-960.webp",
+      "references": [
+        "img/portfolio/portfolio-3.jpg"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 07 / Magadan maternity hospital reconstruction design documentation. Input 1 is the actual proposed hospital building: long four-storey white modern rectilinear wings, characteristic lime-green, yellow and purple facade panels, a dark vertical glazed entrance/stair strip, low plinth and entrance canopy. Input 2 is STYLE ONLY, the first series poster, transfer charcoal/ivory fine drafting work/red spatial graphic and crafted collage; do not import boats, water, towers or underground cafe. Create a modern architectural exhibition poster where this specific long hospital volume is shown as a crisp elevated three-quarter design model, its source-derived facade and overall massing preserved and clearly recognisable. Let one edge transition into an extraordinarily fine ivory elevation/structural drawing layer, communicating design documentation rather than a newly completed hospital. Keep real colored panel accents. One restrained red graphic plane follows the entrance-to-wing circulation as a poster overlay, not a new building addition. Sparse ground plane and small human scale silhouettes, crisp gentle light, reassuring clarity without medical symbolism. No babies, patients, doctors, medical devices, red crosses, invented clinical interiors, snow drama, extra floors or curving replacement design.",
+      "generated_file": "exec-e78ef377-078c-44f1-838a-dd140ebc19f1.png",
+      "title": {
+        "ru": "Родильный дом в Магадане",
+        "en": "Maternity hospital in Magadan"
+      },
+      "summary": {
+        "ru": "Проектная документация для реконструкции под гинекологическое отделение на 50 коек и строительства акушерского корпуса на 100 коек.",
+        "en": "Design documentation for conversion to a 50-bed gynaecology department and construction of a 100-bed obstetrics building."
+      },
+      "original_cover": "img/portfolio/portfolio-3.jpg",
+      "suggested_object_position": "50% 35%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/07-magadan.webp",
+        "responsive": "img/portfolio/covers/v1/07-magadan-960.webp"
+      }
+    },
+    {
+      "id": "08",
+      "slug": "rublevskoe",
+      "master": "08-rublevskoe.png",
+      "web": "08-rublevskoe.webp",
+      "responsive": "08-rublevskoe-960.webp",
+      "references": [
+        "img/portfolio/portfolio-5.3.jpg"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 08 / Mixed-use complex on Rublevskoye Highway, co-developed with Asadov Architectural Bureau. Input 1 is the actual architectural concept render, the identity reference: slender folded ivory-and-golden-metal tower, strong vertical facade rhythm, glazed facades and lower connected mixed-use podium with vertical fins. Input 2 is STYLE ONLY, first series poster. Compose an arresting upward three-quarter cutout of the specific source-derived tower and podium as an architectural gateway/urban marker, not a generic luxury skyscraper. Keep the tower's real angular/folded geometry and slenderness, material palette and podium proportions recognisable, the top fully visible with breathing room. A single red editorial folded plane behind the vertical mass echoes the facade fold and entry-to-city idea. Beneath, a very spare ivory site-plan trace and a few source-context trees; dissolve one corner into precise facade wireframe to convey concept design. Warm side light reveals fine golden vertical ribs against deep charcoal void. No added skyline, extra signature towers, sci-fi spires, changed floor count, logos, gold luxury clichés or implication of completion. Spectacular architectural poster through form and shadow, not dramatic weather.",
+      "generated_file": "exec-0eb2a6db-6f2b-4ad8-be85-16b3449bf410.png",
+      "title": {
+        "ru": "МФК на Рублёвском шоссе",
+        "en": "Mixed-use complex on Rublevskoye Highway"
+      },
+      "summary": {
+        "ru": "Архитектурный акцент на въезде в Москву: вертикальный ритм фасадов и складчатая поверхность формируют узнаваемый силуэт.",
+        "en": "An architectural marker at Moscow’s entrance, with vertical facade rhythms and a folded surface shaping a distinctive silhouette."
+      },
+      "original_cover": "img/portfolio/portfolio-5.jpg",
+      "suggested_object_position": "50% 15%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/08-rublevskoe.webp",
+        "responsive": "img/portfolio/covers/v1/08-rublevskoe-960.webp"
+      }
+    },
+    {
+      "id": "09",
+      "slug": "ear-eye",
+      "master": "09-ear-eye-v2.png",
+      "web": "09-ear-eye-v2.webp",
+      "responsive": "09-ear-eye-v2-960.webp",
+      "references": [
+        "output/portfolio-covers/v1/variants/09-ear-eye-v1.png",
+        "img/portfolio/portfolio-6.jpg",
+        "img/portfolio/portfolio-6.1.jpg"
+      ],
+      "prompt": "Use case: compositing / targeted architectural correction.\nAsset type: one landscape 3:2 architectural editorial cover, 1536x1024.\nInput 1: edit target, the previously generated Ear-Eye poster.\nInput 2: governing actual pavilion photograph, geometry and scale reference.\nInput 3: actual outdoor sculptures, subject reference.\nChange only the pavilion and its implied scale in image 1: replace the invented grand double-height glazed atrium / large multistorey gallery with the modest, compact SINGLE-STOREY opaque dark glass cubical exhibition pavilion from image 2. This is a small temporary exhibition structure, approximately one human room tall, with flat roof, square dark panel grid and a small human-scale entrance. NO second floor, mezzanine, interior balconies, huge glass portal or new large museum building. Keep the massing unmistakably close to the source photo. Any hint of a light-filled interior must be a small conceptual cutaway on one side, as an illustration, not a grand glass-walled atrium.\nRetain the excellent art direction and composition from image 1: charcoal backdrop, warm ivory fine architectural drafting marks, red diagonal editorial plane, high-end sculptural photomontage. Retain the source-derived sculptural ivory ear, blue/green eye and red ribbed connecting forms, but let their large ART-OBJECT scale contrast with the small single-room pavilion. They may form a deliberately surreal architectural collage of the real installation elements; do not duplicate the same eye/ear twice. Main ear and eye as foreground art objects, original red sculptural assembly on roof. Keep greenery modest and visitors only a few tiny silhouettes. Clear light, tactile surfaces, no text, no logo, no watermark. This is an interpretive exhibition poster, not a documentary photograph or new pavilion design.",
+      "generated_file": "exec-a4d8d46a-ff71-44d2-a3c0-0b87ec7c16e5.png",
+      "previous_prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 09 / Ear-Eye architectural installation on perception and accessibility. Input 1 is the actual black glass exhibition pavilion with roof sculptures. Input 2 shows the actual white sculptural ear, blue/green eye and red ribbed sculptural connecting forms; preserve their identity as outdoor art objects, not biological organs. Input 3 is STYLE ONLY, the first series poster. Make a striking contemporary art/architecture poster: the recognizable dark cubic pavilion as a clean three-quarter architectural fragment, the source-derived oversized ivory ear, colored sculptural eye and red sculptural tubing arranged as the visual focus, and a restrained glimpse of a bright open interior behind glass. Strong contrast between exterior dark volume and light-filled inner space, with precise ivory wireframe rays/section traces referencing perception. Use one red graphic plane related to the source's sculptural forms, staying within the visual series. Sparse ground plane and tiny ordinary visitors only. Keep an empathetic artistic tone, no medical diagrams, anatomical dissection, horror, injured bodies, blindfolds, disability stereotypes, pseudoscientific energy beams, decorative fake text or invented foundation logo. Do not turn the project into a new futuristic building. No boats or skyline.",
+      "revision_of": "variants/09-ear-eye-v1.png",
+      "title": {
+        "ru": "Инсталляция «Ухоглаз»",
+        "en": "Ear-Eye installation"
+      },
+      "summary": {
+        "ru": "Контраст внешней формы и наполненного светом интерьера привлекает внимание к опыту людей с одновременным нарушением слуха и зрения.",
+        "en": "A contrast between exterior form and a light-filled interior draws attention to the experience of people with combined hearing and sight loss."
+      },
+      "original_cover": "img/portfolio/portfolio-6.jpg",
+      "suggested_object_position": "50% 25%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/09-ear-eye-v2.webp",
+        "responsive": "img/portfolio/covers/v1/09-ear-eye-v2-960.webp"
+      }
+    },
+    {
+      "id": "10",
+      "slug": "iksha",
+      "master": "10-iksha.png",
+      "web": "10-iksha.webp",
+      "responsive": "10-iksha-960.webp",
+      "references": [
+        "img/portfolio/portfolio-8.jpg",
+        "img/portfolio/portfolio-8.3.jpg"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 10 / Iksha landscape concept, restful family leisure by water. Input 1 is the actual project render, recognizable black-framed single-slope canopy, warm timber gazebos, pale sand children's area, decks, green hedges and waterside setting. Input 2 is the project's actual sun-lounger garden layout. Input 3 is STYLE ONLY, first series poster. Create an extraordinary landscape architecture poster, a crafted shallow topographic sectional diorama floating in a charcoal void. Preserve the source's small-scale timber gazebos and precise black-framed canopy as the main architectural pieces, arranged with planted paths, a pale sand play space and a few sun loungers, with a quiet ribbon of water at one side. A cut edge reveals natural terrain layers only, not invented underground rooms. Very fine ivory contour lines extend from the terrain; one elegant red graphic path loosely follows the site contours to connect places of rest. Warm wood, natural green plants, pale sand and soft warm light, small-scale families using the shared spaces. Compose a flowing horizontal landscape, not another tall urban block. No resort megabuilding, waterfalls, tropical palms, clinical symbolism or health claims, no glowing neon path. Keep these actual structures recognisable; no replacement pavilion architecture.",
+      "generated_file": "exec-9afd65bf-9184-46ab-85ff-59fa587f9d71.png",
+      "title": {
+        "ru": "Учебно-оздоровительный центр «Икша»",
+        "en": "Iksha training and wellness centre"
+      },
+      "summary": {
+        "ru": "Места отдыха, прогулок и семейного досуга вписаны в существующий рельеф зоны климатотерапии.",
+        "en": "Spaces for relaxation, walks and family leisure follow the existing terrain of a climatotherapy area."
+      },
+      "original_cover": "img/portfolio/portfolio-8.jpg",
+      "suggested_object_position": "50% 35%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/10-iksha.webp",
+        "responsive": "img/portfolio/covers/v1/10-iksha-960.webp"
+      }
+    },
+    {
+      "id": "11",
+      "slug": "zhukovka",
+      "master": "11-zhukovka.png",
+      "web": "11-zhukovka.webp",
+      "responsive": "11-zhukovka-960.webp",
+      "references": [
+        "img/portfolio/portfolio-9.jpg",
+        "img/portfolio/portfolio-9.1.jpg"
+      ],
+      "prompt": "Use case: stylized-concept.\nAsset type: premium architectural editorial portfolio cover, one image, landscape 3:2, approximately 1536x1024.\nSeries art direction: a daring contemporary architecture exhibition poster, architecture as a sculptural art object. Sophisticated architectural photomontage with extraordinarily precise model-like volumetric cutouts, fine ivory technical linework, disciplined asymmetry, tactile material detail, deep flat charcoal #252525 ground, warm ivory #f2eee8 architectural light, one restrained but graphic oxblood/architectural red #921c12 spatial ribbon/plane. Let real project material colors remain recognizable. Hard clean compositing, beautiful directional light and restrained shadows, highly legible silhouette at thumbnail size, art-directed not a generic real-estate advertisement. Main subject largely within the central 75% so a website can crop to 4:3; bold but uncluttered, generous breathing room. No words, letters, numbers, logos, badges, fake dimension labels, decorative UI, borders or watermark. No neon, sci-fi city, glows, gratuitous chrome, gradients-as-background or unrelated objects. This is an explicitly illustrative conceptual poster, not a fabricated documentary photograph of a finished building. Keep reference architecture recognizable and do not invent replacement building designs.\nPROJECT 11 / Public and business centre in Zhukovka, completed 2006, authors' Hi-tech country approach. Input 1 is the actual completed building street-front photograph, the governing geometry reference. Input 2 is the actual material/entrance close-up. Input 3 is STYLE ONLY, the approved first series poster. Create a sophisticated architectural portrait/collage of this specific building, preserve its recognizable stepped three-storey street facade, recessed upper rooftop volume, rectangular window proportions, warm horizontal timber cladding, dark natural-stone accents and large dark glazed lower frontage. Use almost the same three-quarter front perspective as the source photo so the real building remains unmistakable, while visually cleaning commercial signs and cars out of the editorial art composition. Show a restrained entrance/pergola hint only where supported by the reference, not a new invented wing. One deep red graphic plane sits behind the building, with fine ivory facade/roof construction lines lifting out of one edge into charcoal ground. Warm soft architectural light reveals timber, stone and glass; no fabricated interior cutaway or additional building levels. At most two small neutral unbranded car silhouettes for scale. No text or business signage, luxury-brand logos, celebrity associations, sci-fi redesign, new curves or changed massing. An elegant confident final cover to the same collection.",
+      "generated_file": "exec-72fe8a6b-af66-405a-b8ee-b23c22fdcf33.png",
+      "title": {
+        "ru": "Общественно-деловой центр в Жуковке",
+        "en": "Public and business centre in Zhukovka"
+      },
+      "summary": {
+        "ru": "Дерево, натуральный камень и стекло в авторской трактовке «Hi-tech country». Реализован в 2006 году.",
+        "en": "Wood, natural stone and glass in the authors’ Hi-tech country approach. Completed in 2006."
+      },
+      "original_cover": "img/portfolio/portfolio-9.jpg",
+      "suggested_object_position": "50% 20%",
+      "site_assets": {
+        "web": "img/portfolio/covers/v1/11-zhukovka.webp",
+        "responsive": "img/portfolio/covers/v1/11-zhukovka-960.webp"
+      }
+    }
+  ]
+}

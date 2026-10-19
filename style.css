@@ -2547,7 +2547,7 @@ body.popup-open {
     position: relative;
     overflow: hidden;
     height: clamp(15rem, 28vw, 22.5rem);
-    background: #1e1e1c;
+    background: var(--bg-color);
     border-radius: 2px;
     isolation: isolate;
 }
@@ -2559,14 +2559,19 @@ body.popup-open {
     transition: transform .5s var(--work-ease);
 }
 .portfolio-box--embankment .project-image img { object-position: 50% 24%; }
-.portfolio-box--imperial .project-image img { object-position: 51% 50%; }
-.portfolio-box--happy .project-image img { object-position: 50% 40%; }
-/* Small original render: no enlargement into a wide hero or destructive crop. */
-.portfolio-box--cube .project-image img { object-fit: contain; }
-.portfolio-box--magadan .project-image img { object-fit: contain; background: #e8e7e1; }
-.portfolio-box--ear-eye .project-image { height: auto; aspect-ratio: 4 / 3; }
-.portfolio-box--ear-eye .project-image img { object-fit: contain; }
+.portfolio-box--imperial .project-image img { object-position: 50% 30%; }
+.portfolio-box--khamovniki .project-image img { object-position: 50% 15%; }
+.portfolio-box--teatralnaya .project-image img { object-position: 50% 20%; }
+.portfolio-box--happy .project-image img { object-position: 50% 25%; }
+.portfolio-box--cube .project-image img { object-position: 50% 0%; }
+.portfolio-box--magadan .project-image img { object-position: 50% 35%; }
+.portfolio-box--rublevskoe .project-image img { object-position: 50% 15%; }
+.portfolio-box--ear-eye .project-image img { object-position: 50% 25%; }
+.portfolio-box--iksha .project-image img { object-position: 50% 35%; }
 .portfolio-box--zhukovka .project-image img { object-position: 50% 20%; }
+/* All covers are 3:2 editorial posters. Preserve the complete tilted cube. */
+.portfolio-box--cube .project-image img { object-fit: contain; }
+.portfolio-box--ear-eye .project-image { height: auto; aspect-ratio: 3 / 2; }
 .portfolio-layer { padding-top: 1.25rem; }
 .project-meta { display: flex; align-items: baseline; gap: 1rem; margin-bottom: .65rem; color: var(--work-muted); font-size: .75rem; line-height: 1.6; }
 .project-number { flex: 0 0 auto; color: #d9907a; font-variant-numeric: tabular-nums; letter-spacing: .06em; }
@@ -2650,7 +2655,7 @@ body.popup-open {
     .portfolio-box { grid-column: 1; }
     .portfolio-box--ear-eye { display: block; }
     .project-image, .portfolio-box--ear-eye .project-image { height: auto; aspect-ratio: 3 / 2; }
-    .portfolio-box--ear-eye .project-image { aspect-ratio: 4 / 3; }
+    .portfolio-box--ear-eye .project-image { aspect-ratio: 3 / 2; }
     .portfolio-layer { padding-top: 1rem; }
     .project-facts { grid-template-columns: minmax(0, 1fr); }
 }
