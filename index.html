@@ -12,14 +12,15 @@
   <!-- Marks that JS is available, so the scroll-reveal start state (hidden)
        only applies when there is a script able to reveal it again. -->
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="style.css?v=20261104-hero-geometry-3">
+  <link rel="stylesheet" href="style.css?v=20261104-contact-3">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="https://artgroup.fun/favicon.ico" type="image/x-icon">
 
   <script src="js/gsap.min.js" defer></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" defer></script>
-  <script src="js/lang.js?v=20261019-portfolio-covers-1" defer></script>
-  <script src="js/app.js?v=20261104-hero-geometry-3" defer></script>
+  <script src="js/lang.js?v=20261104-contact-3" defer></script>
+  <script src="js/app.js?v=20261104-contact-3" defer></script>
+  <script src="js/contact.js?v=20261104-contact-3" defer></script>
   <script src="js/estimate.js?v=20261015-feedback-2" defer></script>
   <script src="js/about-slider.js" defer></script>
 
@@ -1848,108 +1849,112 @@
       </div>
     </section>
 
-    <section class="contact reveal-group" id="contact">
-      <div class="contact-content reveal">
-        <h2 class="lng-contact-text-1">Остались вопросы?</h2>
-        <p class="lng-contact-text-2">
-          Задайте их нам, заполнив форму и мы свяжемся с Вами в ближайшее время,
-          для того, что бы уточнить все детали и ответить на все интересующие Вас
-          вопросы!
-        </p>
-      </div>
-      <div class="contact-container reveal">
-
-        <div class="contactForm">
-
-          <form class="form" onsubmit="sendTelegram(event)" id="contact-form">
-            <h2 class="lng-contact-text-3">Заказать звонок</h2>
-            <!-- Honeypot: hidden from real visitors, only a bot filling every
-                 field will set this. Checked server-side in worker/. -->
-            <input class="hp-field" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <div class="inputBox">
-              <input name="phone" type="tel" avtocomplete="off" maxlength="20" required="required">
-              <span class="lng-contact-text-4">Телефон</span>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-shell">
+        <div class="contact-main">
+          <div class="contact-introduction">
+            <p class="contact-eyebrow" data-contact-text="contact-eyebrow">НАЧНЁМ С ВАШЕЙ ЗАДАЧИ</p>
+            <h2 id="contact-title" data-contact-text="contact-title">Обсудим ваш объект</h2>
+            <p class="contact-invitation" data-contact-text="contact-intro">Есть участок, здание, готовый проект или вопрос к нашей команде? Оставьте контакты и коротко опишите задачу — свяжемся с вами, чтобы обсудить следующий шаг.</p>
+            <figure class="contact-study" aria-label="Архитектурный эскиз: участок, здание, проект" data-contact-aria="contact-study-title">
+              <span class="contact-study-label contact-study-label--site" data-contact-text="contact-study-site">Участок</span>
+              <span class="contact-study-label contact-study-label--building" data-contact-text="contact-study-building">Здание</span>
+              <span class="contact-study-label contact-study-label--project" data-contact-text="contact-study-project">Проект</span>
+              <svg width="480" height="248" viewBox="0 0 480 248" fill="none" aria-hidden="true" focusable="false">
+                <!-- An illustrative architectural study, not measured property data or a process/status diagram. -->
+                <path class="study-guide" d="M101 195 278 238 449 169 272 126Z M150 211 321 142 M198 223 369 154 M148 176 325 219 M195 157 373 200 M242 139 421 182 M191 71V203 M280 49V225 M358 70V195"/>
+                <path class="study-ground study-fill" d="m109 191 171 41 158-63-171-41Z"/>
+                <path class="study-trace study-site" pathLength="1" d="m109 191 171 41 158-63-171-41Z"/>
+                <path class="study-plot" d="m141 188 134 32 128-51-134-32Z"/>
+                <path class="study-walk study-fill" d="m243 223 18 4 49-20-18-4Z"/>
+                <path class="study-front study-fill" d="m194 82 87 21v87l-87-21Z"/>
+                <path class="study-side study-fill" d="m281 103 73-29v87l-73 29Z"/>
+                <path class="study-roof study-fill" d="m194 82 73-29 87 21-73 29Z"/>
+                <path class="study-trace study-frame" pathLength="1" d="m194 82 87 21 73-29-87-21ZM194 82v87l87 21 73-29V74M281 103v87 M223 89v87 M252 96v87 M305 93v87 M330 84v87 M194 111l87 21 73-29 M194 140l87 21 73-29"/>
+                <path class="study-accent-plane study-fill" d="m194 82 29 7v87l-29-7Z"/>
+                <path class="study-trace study-accent" pathLength="1" d="m194 82 29 7v87l-29-7Z"/>
+                <path class="study-projection" d="M194 82V50 M281 103V71 M354 74V42"/>
+                <path class="study-sheet study-fill" d="m188 44 93 23 80-32-93-23Z"/>
+                <path class="study-trace study-drawing" pathLength="1" d="m188 44 93 23 80-32-93-23ZM207 43l73 18 61-25-73-17ZM231 34l73 18 M255 25l73 18 M236 50l61-25 M262 57l20-8-17-4 21-8 29 7"/>
+                <path class="study-trace study-callout" pathLength="1" d="M83 190h31l27-2 M84 105h40l70 21 M361 35h24"/>
+                <path class="study-ticks" d="m107 187 4 8 M278 228l4 8 M436 165l4 8 M265 124l4 8"/>
+                <circle class="study-point" cx="385" cy="35" r="3"/>
+                <circle class="study-point study-point--quiet" cx="194" cy="126" r="2"/>
+              </svg>
+            </figure>
+          </div>
+          <div class="contact-form-panel">
+            <form class="form" id="contact-form" onsubmit="sendTelegram(event)" aria-labelledby="contact-form-title" aria-describedby="contact-instruction">
+              <h3 id="contact-form-title" data-contact-text="contact-form-title">Заказать звонок</h3>
+              <p id="contact-instruction" class="contact-instruction" data-contact-text="contact-instruction">Все поля обязательны. Описание — до 300 символов.</p>
+              <!-- Enabled only after the real JS submission handler is ready. There is no server-rendered fallback. -->
+              <fieldset class="contact-fields" disabled>
+                <legend class="contact-sr-only" data-contact-text="contact-fields">Контактные данные и задача</legend>
+                <!-- Honeypot: out of normal keyboard and screen-reader interaction; the Worker still checks it. -->
+                <input class="hp-field" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <div class="contact-field">
+                  <label for="contact-phone"><span data-contact-text="contact-phone">Телефон</span><span aria-hidden="true"> *</span></label>
+                  <input id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" required aria-describedby="contact-instruction contact-phone-error">
+                  <p class="contact-field-error" id="contact-phone-error" hidden></p>
+                </div>
+                <div class="contact-field">
+                  <label for="contact-name"><span data-contact-text="contact-name">Как к вам обращаться</span><span aria-hidden="true"> *</span></label>
+                  <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="50" required aria-describedby="contact-instruction contact-name-error">
+                  <p class="contact-field-error" id="contact-name-error" hidden></p>
+                </div>
+                <div class="contact-field">
+                  <label for="contact-comment"><span data-contact-text="contact-comment">Коротко о задаче</span><span aria-hidden="true"> *</span></label>
+                  <textarea id="contact-comment" name="comment" rows="3" maxlength="300" required aria-describedby="contact-instruction contact-comment-error" data-contact-placeholder="contact-placeholder" placeholder="Например: есть участок — хотим оценить варианты застройки."></textarea>
+                  <p class="contact-field-error" id="contact-comment-error" hidden></p>
+                </div>
+                <button class="send-btn" type="submit">
+                  <span class="form-spinner" aria-hidden="true"></span>
+                  <span data-contact-submit>Отправить заявку</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
+                </button>
+              </fieldset>
+              <p class="contact-feedback" id="contact-feedback" role="alert" aria-atomic="true"></p>
+            </form>
+            <div class="contact-confirmation" id="contact-confirmation" hidden aria-labelledby="contact-success-title">
+              <svg class="contact-success-mark" width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="26" cy="26" r="23"/><path pathLength="1" d="m15 26 8 8 15-17"/></svg>
+              <h3 id="contact-success-title" tabindex="-1" data-contact-text="contact-success-title">Заявка отправлена</h3>
+              <p data-contact-text="contact-success-body">Спасибо! Свяжемся с вами по указанному номеру, чтобы обсудить вашу задачу.</p>
             </div>
-            <div class="inputBox">
-              <input name="name" type="text" avtocomplete="off" maxlength="50" required="required">
-              <span class="lng-contact-text-5">Имя</span>
+            <p class="contact-sr-only" id="contact-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+            <div class="contact-js-note">
+              <p data-contact-text="contact-no-js">Для отправки формы нужен JavaScript. Позвоните нам или напишите по электронной почте.</p>
+              <p><a href="tel:79933603506">+7 (906) 760-35-06</a> · <a href="mailto:infoartgroupp@yandex.ru">infoartgroupp@yandex.ru</a></p>
+              <noscript><p lang="en">JavaScript is required to send this form. Please call or email us using the links above.</p></noscript>
             </div>
-            <div class="inputBox">
-              <textarea name="comment" avtocomplete="off" maxlength="300" required="required"></textarea>
-              <span class="lng-contact-text-6">Комментарий</span>
-            </div>
-
-            <div class="inputBox">
-              <input type="submit" value="Отправить" class="send-btn">
-              <!-- Shown while the request is in flight (see sendTelegram()
-                   in js/app.js): the button shrinks away as this grows in
-                   over the same spot, so it reads as one morphing into the
-                   other. A separate element, not text inside the button,
-                   since an <input> can't hold child markup. Deliberately
-                   <div>, not <span> — .inputBox span (below) is styled for
-                   the floating field labels and is specific enough to
-                   override a same-specificity .form-spinner rule. The inner
-                   div carries the spin animation on its own transform, kept
-                   apart from the outer div's show/hide transform so the two
-                   never fight over the same property. -->
-              <div class="form-spinner" aria-hidden="true">
-                <div class="form-spinner-ring"></div>
-              </div>
-            </div>
-          </form>
-
-          <!-- Launches on a successful submit: the form folds toward the
-               button, this glyph appears in its place and flies off.
-               See .form-plane / .is-sending in style.css and
-               playSendFlight() in js/app.js. Purely decorative. -->
-          <svg class="form-plane" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-            <path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"></path>
-          </svg>
-
-          <div class="form-send-result"></div>
+          </div>
         </div>
-
-        <div class="contactInfo">
-
-          <div class="box">
-            <div class="icon"><b></b><i class='bx bx-buildings'></i></div>
-            <div class="text">
-              <p class="">ООО «АРТ ГРУПП»</p>
-              <p>ИНН 7726550247</p>
+        <div class="contact-strip">
+          <address class="contact-channels">
+            <div class="contact-channel">
+              <span class="contact-channel-label" data-contact-text="contact-phone">Телефон</span>
+              <!-- Preserve the current local text and existing destination. They differ; owner review is needed. -->
+              <a href="tel:79933603506">+7 (906) 760-35-06</a>
             </div>
-          </div>
-          <div class="box">
-            <div class="icon"><b></b><i class='bx bx-map'></i></div>
-            <div class="text">
-              <p class="lng-contact-text-7">Наш адрес:</p>
-              <p><a href="https://yandex.ru/maps/-/CDxX4Q6K" target="_blank" class="lng-contact-text-8">г. Москва Гранатный пер. 12</a></p>
+            <div class="contact-channel">
+              <span class="contact-channel-label" data-contact-text="contact-email">Почта</span>
+              <a href="mailto:infoartgroupp@yandex.ru">infoartgroupp@yandex.ru</a>
             </div>
-          </div>
-          <div class="box">
-            <div class="icon"><b></b><i class='bx bx-phone-call'></i></div>
-            <div class="text">
-              <p class="lng-contact-text-9">Телефон:</p>
-              <p><a href="tel:79933603506">+7 (906) 760-35-06</a></p>
+            <div class="contact-channel">
+              <span class="contact-channel-label" data-contact-text="contact-address-label">Адрес</span>
+              <a href="https://yandex.ru/maps/-/CDxX4Q6K" target="_blank" rel="noopener noreferrer"><span data-contact-text="contact-address">г. Москва, Гранатный пер., 12</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 15 15 5M5 5h10v10"/></svg></a>
             </div>
-          </div>
-          <div class="box">
-            <div class="icon"><b></b><i class='bx bx-envelope' ></i></div>
-            <div class="text">
-              <p class="lng-contact-text-10">Почта:</p>
-              <p><a href="mailto:infoartgroupp@yandex.ru">infoartgroupp@yandex.ru</a></p>
+          </address>
+          <div class="contact-secondary">
+            <a class="contact-telegram" href="https://t.me/ElizaHappyLife" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="m3 11 18-7-4 16-6-5-4 3 1-6 9-5-7 7"/></svg><span>Telegram</span><span class="contact-sr-only" data-contact-text="contact-new-window"> — откроется в новой вкладке</span></a>
+            <!-- VK source record retained for correction: the old href="#contact" is not a company VK page. No live VK control is rendered. -->
+            <template id="contact-vk-source"><a href="#contact" data-unconfigured="vk">VK</a></template>
+            <div class="contact-review">
+              <a href="https://yandex.ru/maps/org/art_grupp/193271132090/?ll=37.588189%2C55.760054&amp;utm_campaign=v1&amp;utm_medium=rating&amp;utm_source=badge&amp;z=16" target="_blank" rel="noopener noreferrer" data-contact-text="contact-review">Рейтинг на Яндексе</a>
+              <iframe data-contact-badge data-src="https://yandex.ru/sprav/widget/rating-badge/193271132090?type=rating" loading="lazy" width="150" height="50" title="Рейтинг АРТ ГРУПП на Яндексе" data-contact-title="contact-badge-title" hidden></iframe>
             </div>
+            <p class="contact-company"><span>ООО «АРТ ГРУПП»</span><span data-contact-text="contact-inn">ИНН 7726550247</span></p>
           </div>
-
-          <h2 class="txt contact-social-title lng-contact-text-11">Мы в социальных сетях:</h2>
-          <ul class="sci">
-            <li><a href="https://t.me/ElizaHappyLife" target="_blank"><i class='bx bxl-telegram' ></i></a></li>
-            <li><a href="#contact"><i class='bx bxl-vk'></i></a></li>
-            <!-- <li><a href="#contact"><i class='bx bxl-instagram' ></i></a></li> -->
-            <iframe loading="lazy" src="https://yandex.ru/sprav/widget/rating-badge/193271132090?type=rating" width="150" height="50" frameborder="0"></iframe>
-          </ul>
-
         </div>
-
       </div>
     </section>
 
@@ -2034,6 +2039,7 @@
 
   <div class="footer-legal">
     <button type="button" class="footer-legal-link lng-footer-legal-link" id="cookie-settings-reopen">Настройки cookie</button>
+    <p class="footer-site-credit"><span id="footer-credit-text" class="lng-footer-credit-text">Хотите такой же сайт? Пишите</span> <a href="https://t.me/jony2024" target="_blank" rel="noopener noreferrer" aria-labelledby="footer-credit-text footer-credit-link-label"><span id="footer-credit-link-label" class="lng-footer-credit-link">сюда</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="m4 12 8-8M4 4h8v8"/></svg></a></p>
   </div>
 
   <!-- COOKIE CONSENT BANNER

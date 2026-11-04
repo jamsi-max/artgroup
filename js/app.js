@@ -1298,115 +1298,10 @@ async function postTelegramFeedback(payload) {
     }
 }
 
-// Guards against a double-click or double-tap firing two submits before the
-// first fetch has resolved.
-let feedbackSubmitting = false;
-
-// Plays once on a successful submit: the card folds toward the button (see
-// .is-sending in style.css), then the paper-plane glyph launches from there
-// and flies off (.form-plane.is-flying). Resolves once both CSS animations
-// have finished, so the caller can run its normal success handling right
-// after — nothing about that handling needs to know this happened. Skipped
-// outright for anyone who has asked the OS for less motion.
-function playSendFlight(form) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return Promise.resolve();
-    }
-
-    const plane = form.parentElement.querySelector('.form-plane');
-    if (!plane) return Promise.resolve();
-
-    return new Promise((resolve) => {
-        let formDone = false;
-        let planeDone = false;
-        let settled = false;
-
-        const finish = () => {
-            if (settled) return;
-            settled = true;
-            form.removeEventListener('animationend', onFormEnd);
-            plane.removeEventListener('animationend', onPlaneEnd);
-            resolve();
-        };
-        const onFormEnd = () => { formDone = true; if (planeDone) finish(); };
-        const onPlaneEnd = () => { planeDone = true; if (formDone) finish(); };
-
-        form.addEventListener('animationend', onFormEnd);
-        plane.addEventListener('animationend', onPlaneEnd);
-
-        form.classList.add('is-sending');
-        // A short beat behind the fold, so the plane reads as launching out
-        // of the card rather than popping in alongside it.
-        setTimeout(() => plane.classList.add('is-flying'), 220);
-
-        // Safety net in case an animationend is ever missed (e.g. the tab
-        // was backgrounded), so the success handling can never hang.
-        setTimeout(finish, 1600);
-    });
-}
-
-async function sendTelegram(e) {
-    e.preventDefault();
-    if (feedbackSubmitting) return;
-
-    const form = e.target;
-    const formBtn = form.querySelector('.send-btn');
-    const formSpinner = form.querySelector('.form-spinner');
-    const formSendResult = document.querySelector('.form-send-result');
-    formSendResult.textContent = '';
-    formSendResult.classList.remove('is-success', 'is-error');
-
-    // "website" is a honeypot: hidden off-screen in the markup, so only a
-    // bot filling in every field ever sets it. Real submits send it empty.
-    const {phone, name, comment, website} = Object.fromEntries(new FormData(form).entries());
-
-    feedbackSubmitting = true;
-    formBtn.disabled = true;
-    // formBtn is an <input type="submit">, whose visible label comes
-    // from .value, not .textContent.
-    formBtn.value = 'Отправка...';
-    // .is-loading shrinks/fades the button away as the spinner grows in
-    // over the same spot (see style.css), so the button appears to morph
-    // into the preloader rather than a spinner just showing up beside it.
-    formBtn.classList.add('is-loading');
-    formSpinner.classList.add('is-active');
-
-    const showSuccess = async () => {
-        await playSendFlight(form);
-        formSendResult.textContent = `${name}! Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время!`;
-        formSendResult.classList.add('is-success');
-        form.reset();
-        form.style.display = 'none';
-    };
-
-    try {
-        const response = await postTelegramFeedback({ name, phone, message: comment, website });
-
-        if (response.ok) {
-            await showSuccess();
-        } else {
-            // A response did come back and it was an error — trust it.
-            throw new Error(response.statusText);
-        }
-    } catch (error) {
-        console.error(error);
-        // Network failures cannot establish acceptance. Preserve the form
-        // rather than erasing the visitor's details and claiming success.
-        formSendResult.textContent = langList['estimate-error'][currentLng];
-        formSendResult.classList.add('is-error');
-    } finally {
-        feedbackSubmitting = false;
-        formBtn.disabled = false;
-        formBtn.value = currentLng === 'en' ? 'Send' : 'Отправить';
-        formBtn.classList.remove('is-loading');
-        formSpinner.classList.remove('is-active');
-    }
-};
 // END SEND TELEGRAM FORM
 
 // MULTILANGUAGES
 const select = document.querySelector('select');
-const sendBtn = document.querySelector('.send-btn');
 let currentLng = localStorage.getItem('lang') || 'ru'; // Global variable to store current language
 
 select.addEventListener('change', () => {
@@ -1425,7 +1320,7 @@ function applyLanguage(lng) {
             element.innerHTML = langList[key][lng];
         });
     }
-    sendBtn.value = lng === 'en' ? 'Send' : 'Отправить';
+    if (typeof updateContactLanguage === 'function') updateContactLanguage();
     updateHeroBrand(lng);
     if (typeof updateAboutGalleryLanguage === 'function') updateAboutGalleryLanguage();
     updatePortfolioLanguage();
