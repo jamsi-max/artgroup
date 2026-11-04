@@ -473,7 +473,9 @@ function createFigureAnimator(container) {
             const chaosStart = buildingHold + transitionDuration;
             const rebuildStart = chaosStart + chaosDuration;
             const scattered = architecturalParts.map((part, i) => {
-                const fragment = fragmentByPart.get(i);
+                // Site details can sit behind the tower without changing
+                // which building planes form the fifteen abstract fragments.
+                const fragment = fragmentByPart.get(Number(part.shape.dataset.fragmentPart));
                 // Hidden details converge toward a visible piece so the
                 // transition reads as consolidation rather than more debris.
                 const [, cx, cy, size, rotation, depth, color, silhouette] = fragment || fragments[i % fragments.length];

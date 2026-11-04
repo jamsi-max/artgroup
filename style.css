@@ -465,7 +465,9 @@ select option span{
     margin-right: 5%;
     width: 65rem;
     min-width: 0;
-    height: 50rem;
+    /* Keep the whole maquette in view on shorter laptop screens. */
+    height: min(44rem, 74vh);
+    height: min(44rem, 74svh);
     position: relative;
     /* Contain all of the artwork's layers below the copy, even mid-scatter.
        This changes paint order only; existing spacing stays untouched. */
@@ -487,8 +489,8 @@ select option span{
     /* js/app.js requests animation layers only while the figure is visible. */
 }
 
-/* A native vector maquette. Every façade detail belongs to the same
-   assembly animation as the main architectural planes. */
+/* One vector tower, based on example/house.jpg and house_2.jpg. Every facade
+   detail belongs to the assembly animation with the main structural planes. */
 .home-architecture {
     display: block;
     width: 100%;
@@ -498,62 +500,71 @@ select option span{
     position: static;
     opacity: 1;
 }
-.home-architecture .architecture-plinth.architecture-front { fill: #596057; }
-.home-architecture .architecture-plinth.architecture-side { fill: #272c29; }
-.home-architecture .architecture-plinth.architecture-roof { fill: #858c7f; }
-.home-architecture .architecture-stone.architecture-front { fill: #c0b8a6; }
-.home-architecture .architecture-stone.architecture-side { fill: #535753; }
-.home-architecture .architecture-stone.architecture-roof { fill: #ded6c6; }
 .home-architecture .architecture-tower.architecture-front { fill: #e1dacd; }
 .home-architecture .architecture-tower.architecture-side { fill: #72766c; }
 .home-architecture .architecture-tower.architecture-roof { fill: #f4eee3; }
+.home-architecture .architecture-service.architecture-front { fill: #8f9385; }
+.home-architecture .architecture-service.architecture-side { fill: #50584e; }
+.home-architecture .architecture-crown-slab.architecture-front { fill: #e1dacd; }
+.home-architecture .architecture-crown-slab.architecture-side { fill: #93998a; }
+.home-architecture .architecture-support { fill: #ded6c6; }
+.home-architecture .architecture-recess-glass { fill: #303a33; }
 .home-architecture .architecture-core.architecture-front { fill: var(--main-color); }
 .home-architecture .architecture-core.architecture-side { fill: #56140f; }
-.home-architecture .architecture-core.architecture-roof { fill: #a64232; }
-.home-architecture .architecture-gallery.architecture-front { fill: #4b514f; }
-.home-architecture .architecture-gallery.architecture-side { fill: #222826; }
-.home-architecture .architecture-gallery.architecture-roof { fill: #8f978e; }
-.home-architecture .architecture-site,
+.home-architecture .architecture-spine { fill: #d1c8b6; }
+.home-architecture .architecture-window { fill: #424844; }
+.home-architecture .architecture-side-glass { fill: #363d38; }
+.home-architecture .architecture-crown-glass { fill: #303733; }
+.home-architecture .architecture-spine-window { fill: #555a51; }
+.home-architecture .architecture-spine-side-window { fill: #321b17; }
+.home-architecture .architecture-entry { fill: #303733; }
+.home-architecture .architecture-land { fill: #676c5d; }
+.home-architecture .architecture-land-edge { fill: #383e34; }
+.home-architecture .architecture-land-return { fill: #2b312b; }
+.home-architecture .architecture-walk { fill: #b9b4a3; }
+.home-architecture .architecture-planting { fill: #414e3d; }
+.home-architecture .architecture-shrub-shadow { fill: #354032; }
+.home-architecture .architecture-shrub { fill: #596b4e; }
+.home-architecture .architecture-shrub-light { fill: #829071; }
+.home-architecture .architecture-frame,
+.home-architecture .architecture-service-frame,
+.home-architecture .architecture-mast-bracing,
+.home-architecture .architecture-entry-frame,
+.home-architecture .architecture-paving,
+.home-architecture .architecture-site-guide,
 .home-architecture .architecture-datum,
-.home-architecture .architecture-glazing,
-.home-architecture .architecture-fins,
-.home-architecture .architecture-edges {
-    fill: none;
-    stroke-width: 1;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-.home-architecture .architecture-site { stroke: #c5baa8; stroke-opacity: .2; }
-.home-architecture .architecture-datum { stroke: #c5baa8; stroke-opacity: .24; stroke-dasharray: 3 6; }
-.home-architecture .architecture-glazing { stroke: #c8c3b5; stroke-opacity: .45; }
-.home-architecture .architecture-fins { stroke: #92988b; stroke-opacity: .55; }
-.home-architecture .architecture-edges { stroke: #f3eee1; stroke-opacity: .65; }
-
-/* Recessed glazing, ivory frames, and cut stone stay within the original
-   material palette; depth comes from geometry and restrained linework. */
-.home-architecture .architecture-window { fill: #4b514f; }
-.home-architecture .architecture-side-glass { fill: #535753; }
-.home-architecture .architecture-roof-inset { fill: #ded6c6; }
-.home-architecture .architecture-gallery-glass { fill: #4b514f; }
+.home-architecture .architecture-datum-tick,
+.home-architecture .architecture-crown-mullions,
 .home-architecture .architecture-reveal,
 .home-architecture .architecture-mullions,
 .home-architecture .architecture-roofline,
 .home-architecture .architecture-core-edge,
-.home-architecture .architecture-terrace,
-.home-architecture .architecture-gallery-frame,
-.home-architecture .architecture-plinth-edge {
+.home-architecture .architecture-edges {
     fill: none;
     stroke-width: .8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    stroke-linejoin: miter;
 }
+.home-architecture .architecture-frame {
+    stroke: #c8c0ae;
+    stroke-width: 3;
+}
+.home-architecture .architecture-entry-frame { stroke: #b4ae9b; stroke-width: 1.2; }
+.home-architecture .architecture-service-frame { stroke: #a4aa96; stroke-width: 1.5; }
+.home-architecture .architecture-mast-bracing { stroke: #a9aa98; stroke-width: .65; }
+.home-architecture .architecture-paving { stroke: #d2cab6; stroke-opacity: .35; }
+.home-architecture .architecture-site-guide,
+.home-architecture .architecture-datum {
+    stroke: #c5baa8;
+    stroke-opacity: .35;
+    stroke-dasharray: 4 6;
+}
+.home-architecture .architecture-datum-tick { stroke: #c5baa8; stroke-opacity: .5; }
+.home-architecture .architecture-crown-mullions { stroke: #93978b; stroke-width: .6; }
 .home-architecture .architecture-reveal { stroke: #72766c; stroke-opacity: .6; }
 .home-architecture .architecture-mullions { stroke: #92988b; stroke-opacity: .65; }
 .home-architecture .architecture-roofline { stroke: #f3eee1; stroke-opacity: .8; }
 .home-architecture .architecture-core-edge { stroke: #a64232; stroke-opacity: .75; }
-.home-architecture .architecture-terrace { stroke: #ded6c6; stroke-opacity: .65; }
-.home-architecture .architecture-gallery-frame { stroke: #8f978e; stroke-opacity: .7; }
-.home-architecture .architecture-plinth-edge { stroke: #c5baa8; stroke-opacity: .45; }
+.home-architecture .architecture-edges { stroke: #f3eee1; stroke-opacity: .55; }
 
 @keyframes floatImage {
     0%{

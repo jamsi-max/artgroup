@@ -12,14 +12,14 @@
   <!-- Marks that JS is available, so the scroll-reveal start state (hidden)
        only applies when there is a script able to reveal it again. -->
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="style.css?v=20261019-portfolio-covers-1">
+  <link rel="stylesheet" href="style.css?v=20261104-hero-geometry-3">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="https://artgroup.fun/favicon.ico" type="image/x-icon">
 
   <script src="js/gsap.min.js" defer></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" defer></script>
   <script src="js/lang.js?v=20261019-portfolio-covers-1" defer></script>
-  <script src="js/app.js?v=20261019-portfolio-1" defer></script>
+  <script src="js/app.js?v=20261104-hero-geometry-3" defer></script>
   <script src="js/estimate.js?v=20261015-feedback-2" defer></script>
   <script src="js/about-slider.js" defer></script>
 
@@ -121,86 +121,105 @@
         </div>
         <div class="img-wrapper" aria-hidden="true">
           <div class="home-img home-img-container">
-          <svg class="home-architecture" viewBox="90 45 440 550" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path class="shape architecture-site" d="M270,406.32 L503.75,510.82 L331.2,587.96 L97.45,483.46 L270,406.32"/>
-            <path class="shape architecture-datum" d="M114.45,481.94 L114.45,129.94 M108.5,479.28 L120.4,484.6 M108.5,127.28 L120.4,132.6"/>
-            <polygon class="shape architecture-plinth architecture-side" points="474,511.2 333.75,573.9 333.75,555.9 474,493.2"/>
-            <polygon class="shape architecture-plinth architecture-front" points="129.75,482.7 333.75,573.9 333.75,555.9 129.75,464.7"/>
-            <polygon class="shape architecture-plinth architecture-roof" points="270,402 474,493.2 333.75,555.9 129.75,464.7"/>
-            <polygon class="shape architecture-stone architecture-side" points="283.6,458.24 219.85,486.74 219.85,401.74 283.6,373.24"/>
-            <polygon class="shape architecture-stone architecture-front" points="160.35,460.14 219.85,486.74 219.85,401.74 160.35,375.14"/>
-            <polygon class="shape architecture-stone architecture-roof" points="224.1,346.64 283.6,373.24 219.85,401.74 160.35,375.14"/>
-            <polygon class="shape architecture-stone architecture-side" points="367.75,471.54 293.8,504.6 293.8,432.6 367.75,399.54"/>
-            <polygon class="shape architecture-stone architecture-front" points="222.4,472.68 293.8,504.6 293.8,432.6 222.4,400.68"/>
-            <polygon class="shape architecture-stone architecture-roof" points="296.35,367.62 367.75,399.54 293.8,432.6 222.4,400.68"/>
-            <polygon class="shape architecture-tower architecture-side" points="355,403.72 301.45,427.66 301.45,343.66 355,319.72"/>
-            <polygon class="shape architecture-tower architecture-front" points="243.65,401.82 301.45,427.66 301.45,343.66 243.65,317.82"/>
-            <polygon class="shape architecture-tower architecture-roof" points="297.2,293.88 355,319.72 301.45,343.66 243.65,317.82"/>
-            <polygon class="shape architecture-tower architecture-side" points="361.8,316.68 302.3,343.28 302.3,259.28 361.8,232.68"/>
-            <polygon class="shape architecture-tower architecture-front" points="236.85,314.02 302.3,343.28 302.3,259.28 236.85,230.02"/>
-            <polygon class="shape architecture-tower architecture-roof" points="296.35,203.42 361.8,232.68 302.3,259.28 236.85,230.02"/>
-            <polygon class="shape architecture-tower architecture-side" points="349.9,234.2 301.45,255.86 301.45,161.86 349.9,140.2"/>
-            <polygon class="shape architecture-tower architecture-front" points="253,234.2 301.45,255.86 301.45,161.86 253,140.2"/>
-            <polygon class="shape architecture-tower architecture-roof" points="301.45,118.54 349.9,140.2 301.45,161.86 253,140.2"/>
-            <!-- A single raised red corner fin, aligned to the tower's projection. -->
-            <polygon class="shape architecture-core architecture-side" points="315.05,391.3 303.15,396.62 303.15,162.62 315.05,157.3"/>
-            <polygon class="shape architecture-core architecture-front" points="295.5,393.2 303.15,396.62 303.15,162.62 295.5,159.2"/>
-            <polygon class="shape architecture-core architecture-roof" points="307.4,153.88 315.05,157.3 303.15,162.62 295.5,159.2"/>
-            <polygon class="shape architecture-gallery architecture-side" points="442.55,491.3 333.75,539.94 333.75,439.94 442.55,391.3"/>
-            <polygon class="shape architecture-gallery architecture-front" points="259.8,506.88 333.75,539.94 333.75,439.94 259.8,406.88"/>
-            <polygon class="shape architecture-gallery architecture-roof" points="368.6,358.24 442.55,391.3 333.75,439.94 259.8,406.88"/>
-            <!-- Curtain-wall framing, drawn on both faces of the podium. -->
-            <path class="shape architecture-glazing" d="M267.45,497.3 L267.45,421.3 M277.65,501.86 L277.65,425.86 M287.85,506.42 L287.85,430.42 M298.05,510.98 L298.05,434.98 M308.25,515.54 L308.25,439.54 M318.45,520.1 L318.45,444.1 M328.65,524.66 L328.65,448.66"/>
-            <path class="shape architecture-fins" d="M164.5,396.6 L215.7,419.48 M164.5,447.6 L215.7,470.48"/>
-            <path class="shape architecture-edges" d="M160.35,375.14 L219.85,401.74 M259.8,406.88 L333.75,439.94 M236.85,230.02 L293.8,255.48"/>
-            <path class="shape architecture-site" d="M89.8,483.84 L329.5,591"/>
-            <!-- Narrow openings articulate the lower stone pavilion. -->
-            <polygon class="shape architecture-window" points="171.06,411.18 175.82,413.31 175.82,443.31 171.06,441.18"/>
-            <polygon class="shape architecture-window" points="181.77,415.97 186.53,418.1 186.53,448.1 181.77,445.97"/>
-            <polygon class="shape architecture-window" points="192.48,420.76 197.24,422.88 197.24,452.88 192.48,450.76"/>
-            <polygon class="shape architecture-window" points="203.19,425.54 207.95,427.67 207.95,457.67 203.19,455.54"/>
-            <!-- Recessed window bays leave a continuous ivory frame. -->
-            <polygon class="shape architecture-window" points="258.81,157.84 262.34,159.42 262.34,221.46 258.81,219.88"/>
-            <polygon class="shape architecture-window" points="265.11,160.66 268.64,162.23 268.64,224.27 265.11,222.69"/>
-            <polygon class="shape architecture-window" points="271.41,163.47 274.94,165.05 274.94,227.09 271.41,225.51"/>
-            <polygon class="shape architecture-window" points="277.71,166.29 281.24,167.86 281.24,229.9 277.71,228.33"/>
-            <polygon class="shape architecture-window" points="284.01,169.1 287.54,170.68 287.54,232.72 284.01,231.14"/>
-            <polygon class="shape architecture-window" points="290.31,171.92 293.83,173.5 293.83,235.54 290.31,233.96"/>
-            <path class="shape architecture-reveal" d="M256.88,222.3 L293.8,238.81"/>
-            <polygon class="shape architecture-window" points="244.7,247.81 248.28,249.41 248.28,303.17 244.7,301.57"/>
-            <polygon class="shape architecture-window" points="251.09,250.66 254.66,252.26 254.66,306.02 251.09,304.42"/>
-            <polygon class="shape architecture-window" points="257.47,253.52 261.04,255.11 261.04,308.87 257.47,307.28"/>
-            <polygon class="shape architecture-window" points="263.85,256.37 267.42,257.97 267.42,311.73 263.85,310.13"/>
-            <polygon class="shape architecture-window" points="270.23,259.22 273.8,260.82 273.8,314.58 270.23,312.98"/>
-            <polygon class="shape architecture-window" points="276.61,262.08 280.18,263.67 280.18,317.43 276.61,315.84"/>
-            <polygon class="shape architecture-window" points="282.99,264.93 286.57,266.53 286.57,320.29 282.99,318.69"/>
-            <polygon class="shape architecture-window" points="289.37,267.78 292.95,269.38 292.95,323.14 289.37,321.54"/>
-            <path class="shape architecture-reveal" d="M242.09,303.34 L293.8,326.46"/>
-            <polygon class="shape architecture-window" points="250.59,335.2 254.19,336.81 254.19,367.05 250.59,365.44"/>
-            <polygon class="shape architecture-window" points="257.03,338.08 260.63,339.69 260.63,369.93 257.03,368.32"/>
-            <polygon class="shape architecture-window" points="263.47,340.96 267.07,342.57 267.07,372.81 263.47,371.2"/>
-            <polygon class="shape architecture-window" points="269.91,343.84 273.51,345.45 273.51,375.69 269.91,374.08"/>
-            <polygon class="shape architecture-window" points="276.35,346.72 279.96,348.33 279.96,378.57 276.35,376.96"/>
-            <polygon class="shape architecture-window" points="282.79,349.6 286.4,351.21 286.4,381.45 282.79,379.84"/>
-            <polygon class="shape architecture-window" points="289.23,352.48 292.84,354.09 292.84,384.33 289.23,382.72"/>
-            <path class="shape architecture-reveal" d="M248.27,367.35 L293.8,387.7"/>
-            <!-- Glazing and slab edges stop clear of the continuous red fin. -->
-            <polygon class="shape architecture-side-glass" points="316,168.51 345.54,155.31 345.54,224.87 316,238.07"/>
-            <path class="shape architecture-mullions" d="M321.91,165.87 L321.91,235.43 M327.82,163.23 L327.82,232.79 M333.72,160.59 L333.72,230.15 M339.63,157.95 L339.63,227.51 M316,201.9 L345.54,188.7"/>
-            <polygon class="shape architecture-side-glass" points="316,265.76 356.44,247.67 356.44,305.63 316,323.72"/>
-            <path class="shape architecture-mullions" d="M322.74,262.74 L322.74,320.7 M329.48,259.73 L329.48,317.69 M336.22,256.71 L336.22,314.67 M342.96,253.7 L342.96,311.66 M349.7,250.68 L349.7,308.64 M316,293.58 L356.44,275.49"/>
-            <!-- Slab highlights follow the same perspective without crossing the fin. -->
-            <path class="shape architecture-roofline" d="M253,140.2 L293.8,158.44 M316,155.36 L349.9,140.2 M236.85,230.02 L293.8,255.48 M316,253.16 L361.8,232.68 M243.65,317.82 L293.8,340.24"/>
-            <polygon class="shape architecture-roof-inset" points="301.45,126 327,137.42 301.45,148.84 275.9,137.42"/>
-            <path class="shape architecture-roofline" d="M275.9,137.42 L301.45,126 M301.45,126 L327,137.42"/>
-            <path class="shape architecture-core-edge" d="M303.15,166.62 L303.15,386.62"/>
-            <!-- Terrace edging on the stone pavilion. -->
-            <path class="shape architecture-terrace" d="M178,375 L219.85,393.7 M219.85,393.7 L239,385.14"/>
-            <!-- Continuous glazing beneath the gallery's clear roof. -->
-            <polygon class="shape architecture-gallery-glass" points="340.82,450.78 435.48,408.46 435.48,481.46 340.82,523.78"/>
-            <path class="shape architecture-gallery-frame" d="M351.34,446.08 L351.34,519.08 M361.86,441.37 L361.86,514.37 M372.37,436.67 L372.37,509.67 M382.89,431.97 L382.89,504.97 M393.41,427.27 L393.41,500.27 M403.93,422.57 L403.93,495.57 M414.44,417.87 L414.44,490.87 M424.96,413.16 L424.96,486.16 M340.82,489.78 L435.48,447.46"/>
-            <path class="shape architecture-glazing" d="M264,458.75 L329.5,488.03 M264,500.75 L329.5,530.03"/>
-            <path class="shape architecture-plinth-edge" d="M129.75,464.7 L333.75,555.9 L474,493.2"/>
+          <svg class="home-architecture" viewBox="90 15 440 630" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <!-- A shallow landscaped plot and dashed survey datums sit beneath the single tower. -->
+            <polygon class="shape architecture-land-edge" points="130,584 358,590 358,595 130,589"/>
+            <polygon class="shape architecture-land-edge architecture-land-return" points="358,590 498,550 498,555 358,595"/>
+            <polygon class="shape architecture-land" points="130,584 358,590 498,550 270,544"/>
+            <polygon class="shape architecture-walk" points="265,587.6 285,588.1 242,563.8 227,563.4"/>
+            <polygon class="shape architecture-planting" points="156,580 207,581.3 242,571.3 191,570"/>
+            <polygon class="shape architecture-planting" points="390,568 440,553.7 469,554.5 419,568.8"/>
+            <path class="shape architecture-paving" d="M141,581 L356,586.7 L485,549.8 M295,577.5 l20,.5 M174,574.9 l45,1.2"/>
+            <polygon class="shape architecture-shrub-shadow" points="173,575 186,571 196,574 183,578"/>
+            <polygon class="shape architecture-shrub" points="173,575 173,568 180,564 188,567 188,574 183,578"/>
+            <polygon class="shape architecture-shrub-light" points="173,568 180,564 188,567 181,571"/>
+            <polygon class="shape architecture-shrub" points="202,577 202,571 209,567 216,570 216,576 209,580"/>
+            <polygon class="shape architecture-shrub-light" points="202,571 209,567 216,570 209,574"/>
+            <polygon class="shape architecture-shrub" points="426,561 426,555 433,551 440,554 440,560 433,564"/>
+            <polygon class="shape architecture-shrub-light" points="426,555 433,551 440,554 433,558"/>
+            <path class="shape architecture-site-guide" d="M116,590 L359,601 L514,551 L270,538 Z"/>
+            <path class="shape architecture-datum" d="M183,57 V566 M183,57 H319 M183,333 H401 M183,566 L211,563 M354,101 H393 M393,101 V558"/>
+            <path class="shape architecture-datum-tick" d="M177,57 H189 M177,333 H189 M177,566 H189 M387,101 H399 M387,558 H399"/>
+            <!-- Geometry refined from example/house_2.jpg and house.jpg: inclined lower frame, tapered gridded body, thin cantilevered crown slabs and offset service shaft. -->
+            <!-- The lower glazing is a finished facade; diagonal members describe the structural frame without an interior cutaway. -->
+            <polygon class="shape architecture-tower architecture-side" data-fragment-part="2" points="316,333 350,323 350,556 316,566"/>
+            <polygon class="shape architecture-tower architecture-side" data-fragment-part="10" points="318,212 347,204 345,324 316,333"/>
+            <polygon class="shape architecture-service architecture-side" points="360,308 377,299 377,555 360,564"/>
+            <polygon class="shape architecture-service architecture-front" data-fragment-part="5" points="338,308 360,308 360,564 338,564"/>
+            <polygon class="shape architecture-tower architecture-roof" points="338,308 355,299 377,299 360,308"/>
+            <polygon class="shape architecture-side-glass" points="346,315 356,315 356,556 346,556"/>
+            <polygon class="shape architecture-side-glass" points="364,316 373,311 373,548 364,553"/>
+            <path class="shape architecture-service-frame" d="M351,315 V556 M346,353 H356 M346,392 H356 M346,431 H356 M346,470 H356 M346,509 H356 M364,353 l9,-5 M364,392 l9,-5 M364,431 l9,-5 M364,470 l9,-5 M364,509 l9,-5"/>
+            <polygon class="shape architecture-tower architecture-front" data-fragment-part="4" points="219,330 316,333 316,566 211,563"/>
+            <polygon class="shape architecture-tower architecture-roof" points="219,330 227,327 316,330 316,333"/>
+            <polygon class="shape architecture-window" data-fragment-part="16" points="225,338 310,340 310,558 218,556"/>
+            <polygon class="shape architecture-recess-glass" points="274,339.2 310,340 310,558 300,557.8"/>
+            <polygon class="shape architecture-support" data-fragment-part="8" points="266,339 272,339.2 298,558 292,557.8"/>
+            <polygon class="shape architecture-support" data-fragment-part="11" points="306,340 310,340 286,558 282,557.8"/>
+            <polygon class="shape architecture-support" data-fragment-part="3" points="240,338.4 243,338.5 257,557 254,557"/>
+            <path class="shape architecture-frame" d="M223.849,374 L273.274,375.6 M222.667,411 L277.667,412.6 M221.484,448 L282.059,449.6 M220.301,485 L286.452,486.6 M219.119,522 L290.845,523.6"/>
+            <polygon class="shape architecture-entry" data-fragment-part="18" points="229,534 241,534.3 240.5,559 228.3,558.7"/>
+            <path class="shape architecture-entry-frame" d="M228.3,558.7 L229,534 L241,534.3 L240.5,559 M235,534.2 L234.4,558.9"/>
+            <polygon class="shape architecture-tower architecture-front" data-fragment-part="12" points="235,210 318,212 316,333 224,330"/>
+            <polygon class="shape architecture-tower architecture-roof" points="235,210 264,202 347,204 318,212"/>
+            <path class="shape architecture-window" data-building-plane="" d="M239.092,215.512 L250.102,215.782 L248.769,232.969 L237.59,232.68 Z M253.938,215.876 L264.948,216.146 L263.845,233.359 L252.665,233.07 Z M268.784,216.24 L279.794,216.51 L278.92,233.748 L267.74,233.459 Z M283.631,216.605 L294.64,216.874 L293.995,234.138 L282.816,233.849 Z M298.477,216.969 L309.486,217.238 L309.07,234.527 L297.891,234.238 Z"/>
+            <path class="shape architecture-window" data-building-plane="" d="M237.096,238.323 L248.332,238.618 L246.999,255.805 L235.594,255.491 Z M252.247,238.721 L263.482,239.016 L262.379,256.228 L250.974,255.914 Z M267.397,239.119 L278.632,239.414 L277.758,256.651 L266.353,256.337 Z M282.548,239.516 L293.783,239.811 L293.138,257.075 L281.733,256.761 Z M297.698,239.914 L308.933,240.209 L308.517,257.498 L297.112,257.184 Z"/>
+            <path class="shape architecture-window" data-building-plane="" d="M235.1,261.133 L246.561,261.453 L245.229,278.64 L233.598,278.301 Z M250.555,261.565 L262.016,261.885 L260.913,279.097 L249.282,278.758 Z M266.01,261.997 L277.471,262.317 L276.597,279.554 L264.966,279.215 Z M281.465,262.428 L292.926,262.748 L292.281,280.012 L280.65,279.673 Z M296.92,262.86 L308.381,263.18 L307.965,280.469 L296.334,280.13 Z"/>
+            <path class="shape architecture-window" data-building-plane="" d="M233.104,283.944 L244.791,284.289 L243.459,301.476 L231.602,301.112 Z M248.864,284.409 L260.55,284.754 L259.447,301.967 L247.591,301.603 Z M264.623,284.875 L276.31,285.22 L275.435,302.458 L263.579,302.094 Z M280.382,285.34 L292.069,285.685 L291.424,302.949 L279.567,302.584 Z M296.141,285.806 L307.828,286.151 L307.412,303.439 L295.555,303.075 Z"/>
+            <path class="shape architecture-window" data-building-plane="" d="M231.108,306.754 L243.021,307.125 L241.688,324.311 L229.606,323.922 Z M247.172,307.254 L259.084,307.624 L257.981,324.836 L245.899,324.447 Z M263.236,307.753 L275.148,308.123 L274.274,325.361 L262.192,324.972 Z M279.299,308.252 L291.212,308.622 L290.567,325.886 L278.484,325.496 Z M295.363,308.751 L307.275,309.122 L306.859,326.41 L294.777,326.021 Z"/>
+            <path class="shape architecture-side-glass" data-building-plane="" d="M339,218 L343,217 L343,232 L339,233 Z M339,241 L343,240 L343,255 L339,256 Z M339,264 L343,263 L343,278 L339,279 Z M339,287 L343,286 L343,301 L339,302 Z"/>
+            <!-- Eight shallow floor plates form the crown. Their projecting returns remain visible beyond the service shaft, instead of becoming a solid rear wall. -->
+            <polygon class="shape architecture-crown-glass" points="247,204 318,205.776 318,209.776 247,208"/>
+            <polygon class="shape architecture-side-glass" points="318,205.776 350,196.776 350,200.776 318,209.776"/>
+            <polygon class="shape architecture-tower architecture-roof" points="244,201 280,191 354,192.776 318,202.776"/>
+            <polygon class="shape architecture-crown-slab architecture-side" points="318,202.776 354,192.776 354,195.776 318,205.776"/>
+            <polygon class="shape architecture-crown-slab architecture-front" points="244,201 318,202.776 318,205.776 244,204"/>
+            <polygon class="shape architecture-crown-glass" points="247,191 318,192.776 318,201.776 247,200"/>
+            <polygon class="shape architecture-side-glass" points="318,192.776 350,183.776 350,192.776 318,201.776"/>
+            <polygon class="shape architecture-tower architecture-roof" points="244,188 280,178 354,179.776 318,189.776"/>
+            <polygon class="shape architecture-crown-slab architecture-side" points="318,189.776 354,179.776 354,182.776 318,192.776"/>
+            <polygon class="shape architecture-crown-slab architecture-front" points="244,188 318,189.776 318,192.776 244,191"/>
+            <polygon class="shape architecture-crown-glass" points="247,178 318,179.776 318,188.776 247,187"/>
+            <polygon class="shape architecture-side-glass" points="318,179.776 350,170.776 350,179.776 318,188.776"/>
+            <polygon class="shape architecture-tower architecture-roof" points="244,175 280,165 354,166.776 318,176.776"/>
+            <polygon class="shape architecture-crown-slab architecture-side" points="318,176.776 354,166.776 354,169.776 318,179.776"/>
+            <polygon class="shape architecture-crown-slab architecture-front" points="244,175 318,176.776 318,179.776 244,178"/>
+            <polygon class="shape architecture-crown-glass" points="247,165 318,166.776 318,175.776 247,174"/>
+            <polygon class="shape architecture-side-glass" points="318,166.776 350,157.776 350,166.776 318,175.776"/>
+            <polygon class="shape architecture-tower architecture-roof" points="244,162 280,152 354,153.776 318,163.776"/>
+            <polygon class="shape architecture-crown-slab architecture-side" points="318,163.776 354,153.776 354,156.776 318,166.776"/>
+            <polygon class="shape architecture-crown-slab architecture-front" points="244,162 318,163.776 318,166.776 244,165"/>
+            <polygon class="shape architecture-crown-glass" points="247,152 318,153.776 318,162.776 247,161"/>
+            <polygon class="shape architecture-side-glass" points="318,153.776 350,144.776 350,153.776 318,162.776"/>
+            <polygon class="shape architecture-tower architecture-roof" points="244,149 280,139 354,140.776 318,150.776"/>
+            <polygon class="shape architecture-crown-slab architecture-side" points="318,150.776 354,140.776 354,143.776 318,153.776"/>
+            <polygon class="shape architecture-crown-slab architecture-front" data-fragment-part="7" points="244,149 318,150.776 318,153.776 244,152"/>
+            <polygon class="shape architecture-crown-glass" points="256,139 318,140.56 318,149.56 256,148"/>
+            <polygon class="shape architecture-side-glass" points="318,140.56 350,131.56 350,140.56 318,149.56"/>
+            <polygon class="shape architecture-tower architecture-roof" points="253,136 289,126 354,127.56 318,137.56"/>
+            <polygon class="shape architecture-crown-slab architecture-side" points="318,137.56 354,127.56 354,130.56 318,140.56"/>
+            <polygon class="shape architecture-crown-slab architecture-front" points="253,136 318,137.56 318,140.56 253,139"/>
+            <polygon class="shape architecture-crown-glass" points="263,126 318,127.392 318,136.392 263,135"/>
+            <polygon class="shape architecture-side-glass" points="318,127.392 350,118.392 350,127.392 318,136.392"/>
+            <polygon class="shape architecture-tower architecture-roof" points="260,123 296,113 354,114.392 318,124.392"/>
+            <polygon class="shape architecture-crown-slab architecture-side" points="318,124.392 354,114.392 354,117.392 318,127.392"/>
+            <polygon class="shape architecture-crown-slab architecture-front" points="260,123 318,124.392 318,127.392 260,126"/>
+            <polygon class="shape architecture-crown-glass" points="266,113 318,114.32 318,123.32 266,122"/>
+            <polygon class="shape architecture-side-glass" points="318,114.32 350,105.32 350,114.32 318,123.32"/>
+            <polygon class="shape architecture-tower architecture-roof" data-fragment-part="25" points="263,110 299,100 354,101.32 318,111.32"/>
+            <polygon class="shape architecture-crown-slab architecture-side" points="318,111.32 354,101.32 354,104.32 318,114.32"/>
+            <polygon class="shape architecture-crown-slab architecture-front" points="263,110 318,111.32 318,114.32 263,113"/>
+            <path class="shape architecture-crown-mullions" d="M276,113.312 v8 M290,113.648 v8 M304,113.984 v8 M273,126.312 v8 M287,126.648 v8 M301,126.984 v8 M266,139.312 v8 M280,139.648 v8 M294,139.984 v8 M308,140.32 v8 M257,152.312 v8 M271,152.648 v8 M285,152.984 v8 M299,153.32 v8 M313,153.656 v8 M257,165.312 v8 M271,165.648 v8 M285,165.984 v8 M299,166.32 v8 M313,166.656 v8 M257,178.312 v8 M271,178.648 v8 M285,178.984 v8 M299,179.32 v8 M313,179.656 v8 M257,191.312 v8 M271,191.648 v8 M285,191.984 v8 M299,192.32 v8 M313,192.656 v8 M257,204.312 v8 M271,204.648 v8 M285,204.984 v8 M299,205.32 v8 M313,205.656 v8"/>
+            <!-- The narrow, slightly raking service shaft has long structural bays at the base and a short exposed mast above the crown. -->
+            <polygon class="shape architecture-core architecture-side" data-fragment-part="20" points="331,58 340,54 339,560 329,566"/>
+            <polygon class="shape architecture-spine architecture-front" data-fragment-part="15" points="319,57 331,58 329,566 316,565"/>
+            <polygon class="shape architecture-tower architecture-roof" data-fragment-part="22" points="319,57 328,53 340,54 331,58"/>
+            <path class="shape architecture-spine-window" data-building-plane="" d="M322.653,65 L328.053,65.4 L327.976,78.4 L322.576,78 Z M322.546,83 L327.946,83.4 L327.87,96.4 L322.47,96 Z M322.44,101 L327.84,101.4 L327.769,113.4 L322.369,113 Z M322.334,119 L327.734,119.4 L327.569,147.4 L322.169,147 Z M322.133,153 L327.533,153.4 L327.368,181.4 L321.968,181 Z M321.932,187 L327.332,187.4 L327.226,205.4 L321.826,205 Z M321.773,214 L327.173,214.4 L326.96,250.4 L321.56,250 Z M321.519,257 L326.919,257.4 L326.718,291.4 L321.318,291 Z M321.277,298 L326.677,298.4 L326.506,327.4 L321.106,327 Z M321.029,340 L326.429,340.4 L326.175,383.4 L320.775,383 Z M320.728,391 L326.128,391.4 L325.874,434.4 L320.474,434 Z M320.426,442 L325.826,442.4 L325.572,485.4 L320.172,485 Z M320.125,493 L325.525,493.4 L325.153,556.4 L319.753,556 Z"/>
+            <path class="shape architecture-spine-side-window" data-building-plane="" d="M332.972,65 L336.972,63.2 L336.972,76.2 L332.972,78 Z M332.902,83 L336.902,81.2 L336.902,94.2 L332.902,96 Z M332.831,101 L336.831,99.2 L336.831,111.2 L332.831,113 Z M332.76,119 L336.76,117.2 L336.76,145.2 L332.76,147 Z M332.626,153 L336.626,151.2 L336.626,179.2 L332.626,181 Z M332.492,187 L336.492,185.2 L336.492,203.2 L332.492,205 Z M332.386,214 L336.386,212.2 L336.386,248.2 L332.386,250 Z M332.217,257 L336.217,255.2 L336.217,289.2 L332.217,291 Z M332.055,298 L336.055,296.2 L336.055,325.2 L332.055,327 Z M331.89,340 L335.89,338.2 L335.89,381.2 L331.89,383 Z M331.689,391 L335.689,389.2 L335.689,432.2 L331.689,434 Z M331.488,442 L335.488,440.2 L335.488,483.2 L331.488,485 Z M331.287,493 L335.287,491.2 L335.287,554.2 L331.287,556 Z"/>
+            <path class="shape architecture-mast-bracing" d="M322.7,65 L328,78.4 M322.6,83 L327.9,96.4 M322.5,101 L327.8,113.4"/>
+            <path class="shape architecture-edges" d="M219,330 L211,563 L316,566 M235,210 L224,330 M319,57 L316,565 M331,58 L329,566"/>
+            <path class="shape architecture-roofline" d="M235,210 L318,212 M219,330 L316,333 M338,308 H360 L377,299 M319,57 L331,58 L340,54"/>
+            <path class="shape architecture-core-edge" d="M332,62 L330,561"/>
           </svg>
           </div>
         </div>
